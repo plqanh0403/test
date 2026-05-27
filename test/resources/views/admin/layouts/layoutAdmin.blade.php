@@ -142,6 +142,12 @@
         
         <div class="sidebar-item">
             <a href="#">
+                Users
+            </a>   
+        </div>
+
+        <div class="sidebar-item">
+            <a href="#">
                 Blogs
             </a>
         </div>
