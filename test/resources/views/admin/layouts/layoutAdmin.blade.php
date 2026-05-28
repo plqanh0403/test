@@ -46,7 +46,7 @@
         </div>
 
         <div class="sidebar-item">
-            <a href="/admin/blogcategories" class="sidebar-link {{ request()->routeIs('admin.blogcategories') ? 'active' : '' }}">
+            <a href="/admin/categories" class="sidebar-link {{ request()->routeIs('admin.categories') ? 'active' : '' }}">
                 Blog Categories
             </a>
         </div>

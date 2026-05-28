@@ -15,7 +15,7 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
-     *
+     * Cho phép điền hàng loạt field cùng lúc từ request 
      * @var list<string>
      */
     protected $fillable = [
@@ -23,12 +23,12 @@ class User extends Authenticatable
         'username',
         'password',
         'role',
-        'is_active'
+        'is_active',
     ];
 
     /**
      * The attributes that should be hidden for serialization.
-     *
+     * ẩn các thuộc tính khi model được chuyển sang JSON hoặc array
      * @var list<string>
      */
     protected $hidden = [
@@ -44,7 +44,6 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_active' => 'boolean',
         ];

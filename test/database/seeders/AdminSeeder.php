@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -33,6 +34,21 @@ class AdminSeeder extends Seeder
             "username"=> "editor123",
             "password"=> bcrypt('12345678'),
             "role"=> "editor"
+        ]);
+
+        Category::create([
+            "name"=> "Technology",
+            "slug"=> "technology"
+        ]);
+
+        Category::create([
+            "name"=> "AI",
+            "slug"=> "ai"
+        ]);
+
+        Category::create([
+            "name"=> "Company Activity",
+            "slug"=> "company_activity"
         ]);
     }
 }
