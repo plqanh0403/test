@@ -6,118 +6,17 @@
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('public/admin.css') }}">
 
-    <style>
-        *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-        }
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-        body{
-            font-family:'Poppins', sans-serif;
-            background:#f4f6f9;
-            display:flex;
-        }
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="{{ asset('admin.css') }}">
 
-        /* SIDEBAR */
+    
 
-        .sidebar{
-            width:250px;
-            height:100vh;
-            background:linear-gradient(180deg, #bcd6ff, #0a1122);
-            color:white;
-            position:fixed;
-            left:0;
-            top:0;
-            padding:25px 20px;
-        }
-
-        .logo{
-            font-size:24px;
-            font-weight:600;
-            margin-bottom:40px;
-            text-align:center;
-            letter-spacing:1px;
-        }
-
-        .menu-title{
-            font-size:13px;
-            color:#0a1122;
-            margin-bottom:15px;
-            text-transform:uppercase;
-        }
-
-        /* SIDEBAR ITEM */
-
-        .sidebar-item{
-            margin-bottom:10px;
-        }
-
-        /* MENU LINK + BUTTON */
-
-        .sidebar-item a,
-        .sidebar-item button{
-            width:100%;
-            display:flex;
-            align-items:center;
-            padding:14px 16px;
-            border:none;
-            border-radius:10px;
-            background:none;
-            color:#e2e8f0;
-            text-decoration:none;
-            font-size:15px;
-            font-family:'Poppins', sans-serif;
-            cursor:pointer;
-            transition:0.3s;
-        }
-
-        /* HOVER */
-
-        .sidebar-item a:hover, .sidebar-item button:hover{
-            background:#334155;
-            transform:translateX(5px);
-        }
-
-        /* ACTIVE */
-
-        .sidebar-item a.active{
-            background:#3b82f6;
-            color:white;
-        }
-
-        /* CONTENT */
-
-        .content{
-            margin-left:250px;
-            width:100%;
-            padding:30px;
-        }
-
-        .topbar{
-            background:white;
-            padding:18px 25px;
-            border-radius:12px;
-            box-shadow:0 2px 10px rgba(0,0,0,0.08);
-            margin-bottom:25px;
-        }
-
-        .topbar h2{
-            font-size:22px;
-            color:#1e293b;
-        }
-
-        .page-content{
-            background:white;
-            padding:25px;
-            border-radius:12px;
-            box-shadow:0 2px 10px rgba(0,0,0,0.06);
-            min-height:500px;
-        }
-
-    </style>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="admin-layout">
@@ -130,36 +29,42 @@
             <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
         </div>
 
-        <div class="menu-title">
+        <!-- <div class="menu-title">
             Main Menu
-        </div>
+        </div> -->
 
         <div class="sidebar-item">
-            <a href="/admin/dashboard" class="active">
+            <a href="/admin/dashboard" class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                 Dashboard
             </a>
         </div>
         
-        <div class="sidebar-item">
-            <a href="#">
+        <div class="sidebar-item" >   
+            <a href="/admin/users" class="sidebar-link {{ request()->routeIs('admin.users.*') || request()->routeIs('admin.users') ? 'active' : '' }}">
                 Users
             </a>   
         </div>
 
         <div class="sidebar-item">
-            <a href="#">
+            <a href="/admin/blogcategories" class="sidebar-link {{ request()->routeIs('admin.blogcategories') ? 'active' : '' }}">
+                Blog Categories
+            </a>
+        </div>
+
+        <div class="sidebar-item">
+            <a href="/admin/blogs" class="sidebar-link {{ request()->routeIs('admin.blogs') ? 'active' : '' }}">
                 Blogs
             </a>
         </div>
         
         <div class="sidebar-item">
-            <a href="#" >
+            <a href="/admin/services" class="sidebar-link {{ request()->routeIs('admin.services') ? 'active' : '' }}">
                 Services
             </a>
         </div>
         
         <div class="sidebar-item">
-            <a href="#">
+            <a href="/admin/recruitments" class="sidebar-link {{ request()->routeIs('admin.recruitments') ? 'active' : '' }}">
                 Recruitments
             </a>   
         </div>
@@ -180,19 +85,59 @@
     <!-- CONTENT -->
 
     <div class="content">
-
         <div class="topbar">
-            <h2>Welcome Admin 👋</h2>
+            <div class="admin-info">
+                <div>
+                    <h2>
+                        Welcome {{ Auth::user()->name }} 👋
+                    </h2>
+
+                    <p class="admin-role">
+                        {{ Auth::user()->role == 'superAdmin' ? 'Super Admin' : ucfirst(Auth::user()->role) }}
+                    </p>
+                </div>
+            </div>
         </div>
 
         <div class="page-content">
- 
-            {{-- content render here --}}
             @yield('content')
-
         </div>
-
     </div>
 
+    <<div class="position-fixed top-0 end-0 p-4"
+     style="z-index:9999;">
+
+    @if(session('success'))
+
+        <div class="custom-alert success-alert auto-hide-alert">
+            <i class="bi bi-check-circle-fill"></i>
+            <span>{{ session('success') }}</span>
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="custom-alert error-alert auto-hide-alert">
+            <i class="bi bi-x-circle-fill"></i>
+            <span>{{ session('error') }}</span>
+        </div>
+    @endif
+</div>
+
+    <script>
+        setTimeout(() => {
+            const alerts = document.querySelectorAll('.auto-hide-alert');
+
+            alerts.forEach(alert => {
+                alert.style.transition = '0.5s';
+                alert.style.opacity = '0';
+                alert.style.transform = 'translateX(100%)';
+
+                setTimeout(() => {
+                    alert.remove();
+                }, 500);
+            });
+        }, 3000);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
