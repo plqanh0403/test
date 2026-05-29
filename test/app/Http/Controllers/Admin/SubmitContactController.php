@@ -100,15 +100,15 @@ class SubmitContactController extends Controller
                 'Created At',
             ]);
 
-            foreach (SubmitContact::latest()->get() as $contact) {
+            foreach (SubmitContact::latest()->get() as $submitContact) {
                 fputcsv($file, [
-                    $contact->id,
-                    $contact->name,
-                    $contact->email,
-                    $contact->phone,
-                    $contact->company,
-                    $contact->status,
-                    $contact->created_at,
+                    $submitContact->id,
+                    $submitContact->name,
+                    $submitContact->email,
+                    $submitContact->phone,
+                    $submitContact->company,
+                    $submitContact->status,
+                    $submitContact->created_at,
                 ]);
             }
 

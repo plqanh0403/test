@@ -25,72 +25,69 @@
 
     <div class="sidebar">
 
-        <div class="logo">
-            <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+        <div class="sidebar-header">
+            <div class="logo">
+                <x-application-logo class="w-40 h-40 fill-current text-gray-500" />
+            </div>
         </div>
 
-        <!-- <div class="menu-title">
-            Main Menu
-        </div> -->
+        <div class="sidebar-menu">
+            <div class="sidebar-item">
+                <a href="/admin/dashboard" class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                    Dashboard
+                </a>
+            </div>
+            
+            <div class="sidebar-item" >   
+                <a href="/admin/users" class="sidebar-link {{ request()->routeIs('admin.users.*') || request()->routeIs('admin.users') ? 'active' : '' }}">
+                    Users
+                </a>   
+            </div>
 
-        <div class="sidebar-item">
-            <a href="/admin/dashboard" class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-                Dashboard
-            </a>
-        </div>
-        
-        <div class="sidebar-item" >   
-            <a href="/admin/users" class="sidebar-link {{ request()->routeIs('admin.users.*') || request()->routeIs('admin.users') ? 'active' : '' }}">
-                Users
-            </a>   
-        </div>
+            <div class="sidebar-item">
+                <a href="/admin/categories" class="sidebar-link {{ request()->routeIs('admin.categories') ? 'active' : '' }}">
+                    Blog Categories
+                </a>
+            </div>
 
-        <div class="sidebar-item">
-            <a href="/admin/categories" class="sidebar-link {{ request()->routeIs('admin.categories') ? 'active' : '' }}">
-                Blog Categories
-            </a>
-        </div>
+            <div class="sidebar-item">
+                <a href="/admin/blogs" class="sidebar-link {{ request()->routeIs('admin.blogs') ? 'active' : '' }}">
+                    Blogs
+                </a>
+            </div>
+            
+            <div class="sidebar-item">
+                <a href="/admin/services" class="sidebar-link {{ request()->routeIs('admin.services') ? 'active' : '' }}">
+                    Services
+                </a>
+            </div>
+            
+            <div class="sidebar-item">
+                <a href="/admin/recruitments" class="sidebar-link {{ request()->routeIs('admin.recruitments') ? 'active' : '' }}">
+                    Recruitments
+                </a>   
+            </div>
 
-        <div class="sidebar-item">
-            <a href="/admin/blogs" class="sidebar-link {{ request()->routeIs('admin.blogs') ? 'active' : '' }}">
-                Blogs
-            </a>
-        </div>
-        
-        <div class="sidebar-item">
-            <a href="/admin/services" class="sidebar-link {{ request()->routeIs('admin.services') ? 'active' : '' }}">
-                Services
-            </a>
-        </div>
-        
-        <div class="sidebar-item">
-            <a href="/admin/recruitments" class="sidebar-link {{ request()->routeIs('admin.recruitments') ? 'active' : '' }}">
-                Recruitments
-            </a>   
-        </div>
-
-        <div class="sidebar-item">
-            <a href="/admin/submit-emails" class="sidebar-link {{ request()->routeIs('admin.submit_emails') ? 'active' : '' }}">
-                Submit Email
-            </a>
-        </div>
-        
-        <div class="sidebar-item">
-            <a href="/admin/submit-contacts" class="sidebar-link {{ request()->routeIs('admin.submit_contacts') ? 'active' : '' }}">
-                Submit Contact
-            </a>   
-        </div>           
-
-        <form method="POST" action="{{ route('logout') }}" class="sidebar-item">
-
+            <div class="sidebar-item">
+                <a href="/admin/submit-emails" class="sidebar-link {{ request()->routeIs('admin.submit_emails') ? 'active' : '' }}">
+                    Submit Email
+                </a>
+            </div>
+            
+            <div class="sidebar-item">
+                <a href="/admin/submit-contacts" class="sidebar-link {{ request()->routeIs('admin.submit_contacts') ? 'active' : '' }}">
+                    Submit Contact
+                </a>   
+            </div>    
+            
+            <form method="POST" action="{{ route('logout') }}" class="sidebar-item">
                 @csrf
 
                 <button type="submit">
                     Logout
                 </button>
-
-        </form>
-
+            </form>
+        </div> 
     </div>
 
     <!-- CONTENT -->

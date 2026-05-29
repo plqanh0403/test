@@ -15,7 +15,7 @@
 
         <!-- Right -->
         <div class="table-header">
-            <a href="{{ route('admin.submit_email.export') }}" class="btn btn-primary">
+            <a href="{{ route('admin.submit_emails.export') }}" class="btn btn-primary">
                 Export CSV
             </a>
         </div>
@@ -28,7 +28,8 @@
 
             <tr>
                 <th>Email</th>
-                <th>Source</th>            
+                <th>Source</th>
+                <th>Submitted At</th>            
                 <th>Status</th>
                 <th width="170">Actions</th>
             </tr>
@@ -40,22 +41,9 @@
             @foreach($submitEmails as $submitEmail)
             
                 <tr>
-                    <td>{{ $submitContact->email }}</td>
-                    <td>{{ $submitContact->source }}</td>
-
-                    @if ($submitContact->status === 'processing')
-                        <td>
-                            <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold">Processing</span>
-                        </td>
-                    @elseif ($submitContact->status === 'processed')
-                        <td>
-                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">Processed</span>
-                        </td>
-                    @else 
-                        <td>
-                            <span class="bg-red-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Seen</span>
-                        </td>
-                    @endif
+                    <td>{{ $submitEmail->email }}</td>
+                    <td>{{ $submitEmail->source }}</td>
+                    <td>{{ $submitEmail->create_at }}</td>
 
                     @if ($submitEmail->status === 'processing')
                         <td>
@@ -67,19 +55,11 @@
                         </td>
                     @else 
                         <td>
-                            <span class="bg-red-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Seen</span>
+                            <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold">Pending</span>
                         </td>
                     @endif
 
                     <td>            
-                        <button data-id="{{ $submitEmail->id }}" class="btn btn-view mark-seen-btn" data-bs-toggle="modal" data-bs-target="#detailSubmitContactModal{{ $submitContact->id }}">
-                            <i class="bi bi-eye-fill"></i>
-                        </button>
-
-                        <button class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#updateNoteModal{{ $submitContact->id }}">
-                            <i class="bi bi-pencil-fill"></i>
-                        </button>
-
                         <form action="{{ route('admin.submit_emails.destroy', $submitEmail->id) }}" method="POST" class="delete-form">
 
                             @csrf
@@ -91,162 +71,6 @@
                         </form>                      
                     </td> 
                 </tr>
-
-                <!-- Detail Submit Contact Modal -->
-                <div class="modal fade" id="detailSubmitContactModal{{ $submitContact->id }}" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content border-0 rounded-4 shadow-lg">
-                            <div class="modal-header flex justify-content-start items-center gap-6 mb-10 pb-0">
-
-                                <!-- Contact Info -->
-                                <div>
-
-                                    <h2 class="text-2xl font-bold">
-                                        {{ $submitContact->name }}
-                                    </h2>
-
-                                    <p class="text-gray-500 mt-2 text-lg">
-                                        {{ $submitContact->email }}
-                                    </p>
-
-                                    <span class=" inline-block px-4 py-2 rounded-full text-sm font-semibold
-                                        @if($submitContact->status == 'seen')
-                                            bg-blue-100 text-blue-700
-                                        @elseif($submitContact->status == 'processing')
-                                            bg-yellow-100 text-yellow-700
-                                        @elseif($submitContact->status == 'processed')
-                                            bg-green-100 text-green-700
-                                        @else
-                                            bg-red-100 text-red-700
-                                        @endif ">
-                                        {{ ucfirst($submitContact->status) }}
-                                    </span>
-                                </div>
-
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-
-                            <!-- Modal Body -->
-                            <div class="modal-body px-4 pb-4">          
-
-                                <!-- User Card -->
-                                <div class="bg-white rounded-xl shadow p-8">
-
-                                    <!-- Detail Grid -->
-                                    <div class="grid grid-cols-2 gap-6">
-                                        <div class="bg-gray-100 p-5 rounded-lg">
-                                            <p class="text-gray-500 text-sm mb-1">
-                                                Phone
-                                            </p>
-
-                                            <p class="text-xl font-semibold">
-                                                {{ $submitContact->phone ?? '-' }}
-                                            </p>
-                                        </div>
-
-                                        <div class="bg-gray-100 p-5 rounded-lg">
-                                            <p class="text-gray-500 text-sm mb-1">
-                                                Company
-                                            </p>
-
-                                            <p class="text-xl font-semibold break-all">
-                                                {{ $submitContact->company ?? '-' }}
-                                            </p>
-                                        </div>
-
-                                        <div class="bg-gray-100 p-5 rounded-lg">
-                                            <p class="text-gray-500 text-sm mb-1">
-                                                Message
-                                            </p>
-
-                                            <p class="text-xl font-semibold">
-                                                {{ $submitContact->message ?? '-' }}
-                                            </p>
-                                        </div>
-
-                                        <div class="bg-gray-100 p-5 rounded-lg">
-                                            <p class="text-gray-500 text-sm mb-1">
-                                                Created At
-                                            </p>
-
-                                            <p class="text-xl font-semibold">
-                                                {{ $submitContact->created_at->format('d M Y') }}
-                                            </p>
-                                        </div>                                        
-                                    </div>
-                                </div>
-
-                                <!-- Footer -->
-                                <div class="d-flex justify-content-end gap-1 mt-6">
-                                    @if($submitContact->status == 'seen')
-                                        <form action="{{ route('admin.submit_contacts.update_processing', $submitContact) }}" method="POST">
-                                            @csrf
-                                            @method('PUT')
-
-                                            <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded">
-                                                Start Processing
-                                            </button>
-                                        </form>
-                                    @elseif($submitContact->status == 'processing')
-                                        <form action="{{ route('admin.submit_contacts.update_processed', $submitContact) }}" method="POST">
-                                            @csrf
-                                            @method('PUT')
-
-                                            <button type="submit"
-                                                class="bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded">
-                                                Mark as Processed
-                                            </button>
-                                        </form>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Update Note Modal -->
-                <div class="modal fade" id="updateNoteModal{{ $submitContact->id }}" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content border-0 rounded-4 shadow-lg">
-
-                            <!-- Modal Header -->
-                            <div class="modal-header border-0 px-4 pt-4 pb-2">
-                                <h4 class="modal-title fw-bold text-dark mb-1">Update Internal Note</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-
-                            <!-- Modal Body -->
-                            <div class="modal-body px-4 pb-4">
-                                <form action="{{ route('admin.submit_contacts.update_note', $submitContact->id) }}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-
-                                    <!-- Internal Note -->
-                                    <div>
-
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                            Internal Note
-                                        </label>
-
-                                        <input type="text" name="internal_note" value="{{ old('internal_note', $submitContact->internal_note) }}" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-                                    </div>
-
-                                    <!-- Footer -->
-                                    <div class="d-flex justify-content-end gap-2 mt-6">
-                                        <a href="{{ route('admin.submit_contacts') }}" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-3 rounded-lg font-semibold">
-                                            Cancel
-                                        </a>
-
-                                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold shadow">
-                                            Update Note
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             @endforeach
         </tbody>
     </table>

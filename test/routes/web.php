@@ -54,11 +54,14 @@ Route::middleware('auth')
         Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
 
         // Submit Email Management
-        Route::get('/submit-emails', [SubmitEmailController::class, 'emailIndex'])->name('admin.submit_emails');
+        Route::get('/submit-emails', [SubmitEmailController::class, 'index'])->name('admin.submit_emails');
 
-        Route::put('/submit-emails/{submitEmail}', [SubmitEmailController::class, 'updateEmailStatus'])->name('admin.submit_emails.update_status');
+        //Route::put('/submit-emails/{submitEmail}', [SubmitEmailController::class, 'updateEmailStatus'])->name('admin.submit_emails.update_status');
         
-        Route::delete('/submit-emails/{submitEmail}', [SubmitEmailController::class, 'destroyEmail'])->name('admin.submit_emails.destroy');
+        Route::delete('/submit-emails/{submitEmail}', [SubmitEmailController::class, 'destroy'])->name('admin.submit_emails.destroy');
+
+        Route::get('/submit-emails/export', [SubmitEmailController::class, 'exportCsv'])->name('admin.submit_emails.export');
+
 
         // Submit Contact Management
         Route::get('/submit-contacts', [SubmitContactController::class, 'index'])->name('admin.submit_contacts');

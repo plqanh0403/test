@@ -1,10 +1,6 @@
 /* =========================
    ADMIN LAYOUT
 ========================= */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 .admin-layout *{
     margin:0;
     padding:0;
@@ -25,20 +21,74 @@
 .admin-layout .sidebar{
     width:250px;
     height:100vh;
+
     background:linear-gradient(180deg, #bcd6ff, #0a1122);
     color:white;
+
     position:fixed;
     left:0;
     top:0;
-    padding:25px 20px;
+
+    display:flex;
+    flex-direction:column;
+
+    padding:0;
+}
+
+/* HEADER / LOGO */
+
+.admin-layout .sidebar-header{
+    flex-shrink:0;
+    position:sticky;
+    z-index:10;
+
+    border-bottom:1px solid rgba(255,255,255,0.15);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* MENU SCROLL */
+
+.admin-layout .sidebar-menu{
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:20px;
+}
+
+/* SCROLLBAR */
+
+.admin-layout .sidebar-menu::-webkit-scrollbar{
+    width:6px;
+}
+
+.admin-layout .sidebar-menu::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.admin-layout .sidebar-menu::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,0.3);
+    border-radius:10px;
+}
+
+.admin-layout .sidebar-menu::-webkit-scrollbar-thumb:hover{
+    background:rgba(255,255,255,0.5);
 }
 
 .admin-layout .logo{
-    font-size:24px;
-    font-weight:600;
-    margin-bottom:40px;
-    text-align:center;
-    letter-spacing:1px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    width:100%;
+}
+
+.admin-layout .logo svg, .admin-layout .logo img{
+    width:500px;
+    height:auto;
 }
 
 .admin-layout .menu-title{

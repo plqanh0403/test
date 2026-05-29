@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\SubmitContact;
+use App\Models\SubmitEmail;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -72,6 +73,21 @@ class AdminSeeder extends Seeder
             "name"=> "Contact Ba", 
             "email"=> "contact3@gmail.com",
             "message"=> "Test contact 3"
+        ]);
+
+        SubmitEmail::create([
+            "email"=> "email1@gmail.com",
+            "source"=> "Test email 1"
+        ]);
+
+        SubmitEmail::create([
+            "email"=> "email2@gmail.com",
+            "source"=> "Test email 2"
+        ]);
+        
+        SubmitEmail::create([
+            "email"=> "email3@gmail.com",
+            "source"=> "Test email 3"
         ]);
     }
 }
