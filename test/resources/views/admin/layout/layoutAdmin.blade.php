@@ -148,6 +148,30 @@
         }, 3000);
     </script>
 
+    <script>
+        document.querySelectorAll('.mark-seen-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const id = this.dataset.id;
+
+                markAsSeen(id);
+            });
+        });
+    
+        function markAsSeen(submitContact) {
+            console.log(submitContact);
+
+            fetch(`/admin/submit-contacts/${submitContact}/seen`, {
+                method: 'PUT',
+
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            });
+        }
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>

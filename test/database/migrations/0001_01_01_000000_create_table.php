@@ -154,7 +154,7 @@ return new class extends Migration
             $table->id();
             $table->string('email');
             $table->string('source')->nullable();
-            $table->enum('status', ['pending', 'processing', 'Processed'])->default('pending');
+            $table->enum('status', ['pending', 'processing', 'processed'])->default('pending');
             $table->timestamps();
         });
 
@@ -165,7 +165,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('company')->nullable();
             $table->text('message');
-            $table->enum('status', ['new', 'seen', 'processing', 'Processed'])->default('new');
+            $table->enum('status', ['new', 'seen', 'processing', 'processed'])->default('new');
             $table->string('internal_note')->nullable();
             $table->timestamps();
         });

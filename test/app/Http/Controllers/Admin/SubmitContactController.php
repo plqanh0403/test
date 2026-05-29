@@ -45,16 +45,19 @@ class SubmitContactController extends Controller
         return redirect()->back()->with('success', 'Seen status updated successfully.');
     }
 
-    public function updateProcessingStatus(SubmitContact $submitContact) : RedirectResponse
+    public function updateProcessingStatus(SubmitContact $submitContact)
     {
         $submitContact->update(['status' => 'processing',]); 
 
-        return redirect()->back()->with('success', 'Processing status updated successfully.');
+        return response()->json([
+            'success' => true,
+            'message' => 'Seen status updated successfully.'
+        ]);
     }
 
     public function updateProcessedStatus(SubmitContact $submitContact) : RedirectResponse
     {
-        $submitContact->update(['status' => 'Processed']);
+        $submitContact->update(['status' => 'processed']);
 
         return redirect()->back()->with('success', 'Processed status updated successfully.');
     }

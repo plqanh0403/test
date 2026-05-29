@@ -9,7 +9,6 @@ use App\Http\Controllers\Admin\SubmitEmailController;
 use App\Http\Controllers\Admin\BlogController;
 
 Route::get('/', function () {
-    // return redirect()->route('login');
     return view('welcome');
 });
 
@@ -56,13 +55,13 @@ Route::middleware('auth')
 
         // Submit Email Management
         Route::get('/submit-emails', [SubmitEmailController::class, 'emailIndex'])->name('admin.submit_emails');
+
         Route::put('/submit-emails/{submitEmail}', [SubmitEmailController::class, 'updateEmailStatus'])->name('admin.submit_emails.update_status');
+        
         Route::delete('/submit-emails/{submitEmail}', [SubmitEmailController::class, 'destroyEmail'])->name('admin.submit_emails.destroy');
 
         // Submit Contact Management
         Route::get('/submit-contacts', [SubmitContactController::class, 'index'])->name('admin.submit_contacts');
-
-        Route::put('/submit-contacts/{submitContact}', [SubmitContactController::class, 'update'])->name('admin.submit_contacts.update');
 
         Route::put('/submit-contacts/{submitContact}/seen', [SubmitContactController::class, 'updateSeenStatus'])->name('admin.submit_contacts.update_seen');
 
@@ -74,11 +73,7 @@ Route::middleware('auth')
 
         Route::put('/submit-contacts/{submitContact}/note', [SubmitContactController::class, 'updateNote'])->name('admin.submit_contacts.update_note');
 
-        Route::get('/submit-contacts/export', [SubmitContactController::class, 'export'])->name('admin.submit_contacts.export');
-
-        // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-        // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::get('/submit-contacts/export', [SubmitContactController::class, 'exportCsv'])->name('admin.submit_contacts.export');
 });
 
 require __DIR__.'/auth.php';

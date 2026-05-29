@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Category;
+use App\Models\SubmitContact;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -53,6 +54,24 @@ class AdminSeeder extends Seeder
         Category::create([
             "name"=> "Company Activity",
             "slug"=> Str::slug("Company Activity")
+        ]);
+
+        SubmitContact::create([
+            "name"=> "Contact Một", 
+            "email"=> "contact1@gmail.com",
+            "message"=> "Test contact 1"
+        ]);
+
+        SubmitContact::create([
+            "name"=> "Contact Hai", 
+            "email"=> "contact2@gmail.com",
+            "message"=> "Test contact 2"
+        ]);
+
+        SubmitContact::create([
+            "name"=> "Contact Ba", 
+            "email"=> "contact3@gmail.com",
+            "message"=> "Test contact 3"
         ]);
     }
 }

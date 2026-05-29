@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class SubmitContact extends Model
 {
-    //
+    protected $fillables = [
+        "name",
+        "email",
+        "phone",
+        "company",
+        "message"
+    ];
 }

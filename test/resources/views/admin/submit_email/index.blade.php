@@ -5,17 +5,17 @@
         <!-- Left -->
         <div>
             <h1 class="text-4xl font-bold text-gray-800 tracking-tight">
-                Submit Contact Management
+                Submit Email Management
             </h1>
 
             <p class="text-gray-500 mt-2 text-lg">
-                Manage all submit contacts in the system
+                Manage all submit emails in the system
             </p>
         </div>
 
         <!-- Right -->
         <div class="table-header">
-            <a href="{{ route('admin.submit_contacts.export') }}" class="btn btn-primary">
+            <a href="{{ route('admin.submit_email.export') }}" class="btn btn-primary">
                 Export CSV
             </a>
         </div>
@@ -27,10 +27,8 @@
         <thead>
 
             <tr>
-                <th>Name</th>
                 <th>Email</th>
-                <th>Company</th>
-                <th>Phone</th>                
+                <th>Source</th>            
                 <th>Status</th>
                 <th width="170">Actions</th>
             </tr>
@@ -39,17 +37,11 @@
 
         <tbody>
 
-            @foreach($submitContacts as $submitContact)
+            @foreach($submitEmails as $submitEmail)
             
                 <tr>
-
-                    <td>{{ $submitContact->name }}</td>
-
                     <td>{{ $submitContact->email }}</td>
-
-                    <td>{{ $submitContact->company }}</td>
-
-                    <td>{{ $submitContact->phone }}</td>
+                    <td>{{ $submitContact->source }}</td>
 
                     @if ($submitContact->status === 'processing')
                         <td>
@@ -59,9 +51,19 @@
                         <td>
                             <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">Processed</span>
                         </td>
-                    @elseif ($submitContact->status === 'new')
+                    @else 
                         <td>
-                            <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold">New</span>
+                            <span class="bg-red-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Seen</span>
+                        </td>
+                    @endif
+
+                    @if ($submitEmail->status === 'processing')
+                        <td>
+                            <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold">Processing</span>
+                        </td>
+                    @elseif ($submitEmail->status === 'processed')
+                        <td>
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">Processed</span>
                         </td>
                     @else 
                         <td>
@@ -70,7 +72,7 @@
                     @endif
 
                     <td>            
-                        <button data-id="{{ $submitContact->id }}" class="btn btn-view mark-seen-btn" data-bs-toggle="modal" data-bs-target="#detailSubmitContactModal{{ $submitContact->id }}">
+                        <button data-id="{{ $submitEmail->id }}" class="btn btn-view mark-seen-btn" data-bs-toggle="modal" data-bs-target="#detailSubmitContactModal{{ $submitContact->id }}">
                             <i class="bi bi-eye-fill"></i>
                         </button>
 
@@ -78,12 +80,12 @@
                             <i class="bi bi-pencil-fill"></i>
                         </button>
 
-                        <form action="{{ route('admin.submit_contacts.destroy', $submitContact->id) }}" method="POST" class="delete-form">
+                        <form action="{{ route('admin.submit_emails.destroy', $submitEmail->id) }}" method="POST" class="delete-form">
 
                             @csrf
                             @method('DELETE')
 
-                            <button type="submit" class="btn btn-delete" onclick="return confirm('Delete this contact?')">
+                            <button type="submit" class="btn btn-delete" onclick="return confirm('Delete this email?')">
                                 <i class="bi bi-trash-fill"></i>
                             </button>
                         </form>                      
