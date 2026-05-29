@@ -4,6 +4,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\SubmitContactController;
+use App\Http\Controllers\Admin\SubmitEmailController;
+use App\Http\Controllers\Admin\BlogController;
 
 Route::get('/', function () {
     // return redirect()->route('login');
@@ -23,13 +26,7 @@ Route::middleware('auth')
         // User Management
         Route::get('/users', [UserController::class, 'index'])->name('admin.users');
 
-        Route::get('/users/create', [UserController::class, 'create'])->name('admin.users.create');
-
-        Route::get('/users/{user}', [UserController::class, 'detail'])->name('admin.users.show');
-
         Route::post('/users', [UserController::class, 'store'])->name('admin.users.store');
-
-        Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
 
         Route::put('/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
 
@@ -42,17 +39,42 @@ Route::middleware('auth')
         // Blog Category Management
         Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories');
 
-        Route::get('/categories/create', [CategoryController::class, 'create']) ->name('admin.categories.create');
-
         Route::post('/categories', [CategoryController::class, 'store']) ->name('admin.categories.store');
-
-        Route::get('/categories/{category}/edit', [CategoryController::class, 'edit']) ->name('admin.categories.edit');
 
         Route::put('/categories/{category}', [CategoryController::class, 'update']) ->name('admin.categories.update');
 
         Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
 
         // Blog Management
+        Route::get('/blogs', [BlogController::class, 'index'])->name('admin.blogs');
+
+        Route::post('/blogs', [BlogController::class, 'store'])->name('admin.blogs.store');
+
+        Route::put('/blogs/{blog}', [BlogController::class, 'update'])->name('admin.blogs.update');
+        
+        Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
+
+        // Submit Email Management
+        Route::get('/submit-emails', [SubmitEmailController::class, 'emailIndex'])->name('admin.submit_emails');
+        Route::put('/submit-emails/{submitEmail}', [SubmitEmailController::class, 'updateEmailStatus'])->name('admin.submit_emails.update_status');
+        Route::delete('/submit-emails/{submitEmail}', [SubmitEmailController::class, 'destroyEmail'])->name('admin.submit_emails.destroy');
+
+        // Submit Contact Management
+        Route::get('/submit-contacts', [SubmitContactController::class, 'index'])->name('admin.submit_contacts');
+
+        Route::put('/submit-contacts/{submitContact}', [SubmitContactController::class, 'update'])->name('admin.submit_contacts.update');
+
+        Route::put('/submit-contacts/{submitContact}/seen', [SubmitContactController::class, 'updateSeenStatus'])->name('admin.submit_contacts.update_seen');
+
+        Route::put('/submit-contacts/{submitContact}/processing', [SubmitContactController::class, 'updateProcessingStatus'])->name('admin.submit_contacts.update_processing');
+
+        Route::put('/submit-contacts/{submitContact}/processed', [SubmitContactController::class, 'updateProcessedStatus'])->name('admin.submit_contacts.update_processed');
+
+        Route::delete('/submit-contacts/{submitContact}', [SubmitContactController::class, 'destroy'])->name('admin.submit_contacts.destroy');
+
+        Route::put('/submit-contacts/{submitContact}/note', [SubmitContactController::class, 'updateNote'])->name('admin.submit_contacts.update_note');
+
+        Route::get('/submit-contacts/export', [SubmitContactController::class, 'export'])->name('admin.submit_contacts.export');
 
         // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

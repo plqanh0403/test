@@ -68,7 +68,18 @@
                 Recruitments
             </a>   
         </div>
-           
+
+        <div class="sidebar-item">
+            <a href="/admin/submit-emails" class="sidebar-link {{ request()->routeIs('admin.submit_emails') ? 'active' : '' }}">
+                Submit Email
+            </a>
+        </div>
+        
+        <div class="sidebar-item">
+            <a href="/admin/submit-contacts" class="sidebar-link {{ request()->routeIs('admin.submit_contacts') ? 'active' : '' }}">
+                Submit Contact
+            </a>   
+        </div>           
 
         <form method="POST" action="{{ route('logout') }}" class="sidebar-item">
 
@@ -104,24 +115,22 @@
         </div>
     </div>
 
-    <<div class="position-fixed top-0 end-0 p-4"
-     style="z-index:9999;">
+    <div class="position-fixed top-0 end-0 p-4" style="z-index:9999;">
 
-    @if(session('success'))
+        @if(session('success'))
+            <div class="custom-alert success-alert auto-hide-alert">
+                <i class="bi bi-check-circle-fill"></i>
+                <span>{{ session('success') }}</span>
+            </div>
+        @endif
 
-        <div class="custom-alert success-alert auto-hide-alert">
-            <i class="bi bi-check-circle-fill"></i>
-            <span>{{ session('success') }}</span>
-        </div>
-    @endif
-
-    @if(session('error'))
-        <div class="custom-alert error-alert auto-hide-alert">
-            <i class="bi bi-x-circle-fill"></i>
-            <span>{{ session('error') }}</span>
-        </div>
-    @endif
-</div>
+        @if(session('error'))
+            <div class="custom-alert error-alert auto-hide-alert">
+                <i class="bi bi-x-circle-fill"></i>
+                <span>{{ session('error') }}</span>
+            </div>
+        @endif
+    </div>
 
     <script>
         setTimeout(() => {
@@ -138,6 +147,8 @@
             });
         }, 3000);
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

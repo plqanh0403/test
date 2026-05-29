@@ -24,6 +24,7 @@ class User extends Authenticatable
         'password',
         'role',
         'is_active',
+        'slug'
     ];
 
     /**
@@ -33,7 +34,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        'remember_token'
     ];
 
     /**
@@ -47,5 +48,10 @@ class User extends Authenticatable
             'password' => 'hashed',
             'is_active' => 'boolean',
         ];
+    }
+
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
     }
 }

@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Http\RedirectResponse;
 
 class UserController extends Controller
 {
@@ -17,60 +18,46 @@ class UserController extends Controller
 
         return view('admin.user.index', compact('users'));
     }
-
-    public function detail(User $user): View
-    {
-        return view('admin.user.detail', compact('user'));
-    }
     
-    public function create(): View
-    {
-        return view('admin.user.create');
-    }
-
-    public function store(Request $request)
+    public function store(Request $request) : RedirectResponse
     {
         request()->validate([
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
-            'role' => 'required|in:editor,user'
+            'role' => 'required|in:editor,admin'
         ]);
         
         User::create([
             'name' => $request->name,
             'username' => $request->username,
             'password' => Hash::make($request->password),
-            'role' => $request->role
+            'role' => $request->role,
+            'slug' => Str::slug($request->name . '-' . Str::random(6)),
         ]);
 
         return redirect()->route('admin.users')->with('success', 'User created successfully');
     }
 
-    public function edit(User $user): View
-    {
-        return view('admin.user.edit', compact('user'));
-    }
-
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $user) : RedirectResponse
     {
         if ($user->role === 'superAdmin') {
             return redirect()->route('admin.users')->with('error', 'You cannot update a super admin account.');
         }
         request()->validate([
             'name' => 'required|string|max:255',
-            'role' => 'required|in:admin,editor,user'
+            'role' => 'required|in:admin,editor'
         ]);
 
         $user->update([
             'name' => $request->name,
-            'role' => $request->role
+            'role' => $request->role,
         ]);
 
         return redirect()->route('admin.users')->with('success', 'User updated successfully');
     }
 
-    public function lock(User $user)
+    public function lock(User $user) : RedirectResponse
     {
         if ($user->role === 'superAdmin') {
             return redirect()->route('admin.users')->with('error', 'You cannot lock a super admin account.');
@@ -81,7 +68,7 @@ class UserController extends Controller
         return redirect()->route('admin.users')->with('success', 'User locked successfully');
     }
 
-    public function unlock(User $user)
+    public function unlock(User $user) : RedirectResponse
     {
         if ($user->role === 'superAdmin') {
             return redirect()->route('admin.users')->with('error', 'You cannot unlock a super admin account.');
@@ -92,7 +79,7 @@ class UserController extends Controller
         return redirect()->route('admin.users')->with('success', 'User unlocked successfully');
     }
 
-    public function destroy(User $user)
+    public function destroy(User $user) : RedirectResponse
     {
         
         if ($user->role === 'superAdmin') {

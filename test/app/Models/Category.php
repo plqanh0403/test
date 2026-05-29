@@ -8,6 +8,15 @@ class Category extends Model
 {
     protected $fillable = [
         "name",
-        "slug"
+        "slug",
+        "seo_title",
+        "seo_description",
+        "is_visible",
+        "sort_order",
     ];
+
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
+    }
 }
