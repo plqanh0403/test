@@ -70,7 +70,7 @@ return new class extends Migration
             $table->text('requirements');
             $table->text('benefits');
             $table->string('location');
-            $table->enum('work_type', ['full_time', 'part_time', 'remote', 'hybrid']);
+            $table->enum('work_type', ['full-time', 'part-time', 'remote', 'hybrid']);
             $table->timestamp('application_deadline')->nullable();
             $table->enum('status', ['open', 'paused', 'closed'])->default('open');
             $table->text('seo_title')->nullable();
@@ -95,8 +95,9 @@ return new class extends Migration
             $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
             $table->string('name');
             $table->text('thumbnail')->nullable();
+            $table->string('thumbnail_alt')->nullable();
             $table->text('overview')->nullable();
-            $table->string('details')->nullable();
+            $table->text('details')->nullable();
             $table->string('slug')->unique();
             $table->string('banner_image')->nullable();
             $table->text('seo_title')->nullable();

@@ -14,7 +14,7 @@
     <!-- Admin CSS -->
     <link rel="stylesheet" href="{{ asset('admin.css') }}">
 
-    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -42,12 +42,6 @@
                 <a href="/admin/users" class="sidebar-link {{ request()->routeIs('admin.users.*') || request()->routeIs('admin.users') ? 'active' : '' }}">
                     Users
                 </a>   
-            </div>
-
-            <div class="sidebar-item">
-                <a href="/admin/categories" class="sidebar-link {{ request()->routeIs('admin.categories') ? 'active' : '' }}">
-                    Blog Categories
-                </a>
             </div>
 
             <div class="sidebar-item">
@@ -147,26 +141,37 @@
 
     <script>
         document.querySelectorAll('.mark-seen-btn').forEach(button => {
-            button.addEventListener('click', function () {
-                const id = this.dataset.id;
 
-                markAsSeen(id);
-            });
-        });
-    
-        function markAsSeen(submitContact) {
-            console.log(submitContact);
+        button.addEventListener('click', function () {
 
-            fetch(`/admin/submit-contacts/${submitContact}/seen`, {
+            const contactId = this.dataset.id;
+
+            fetch(`/admin/api/submit-contacts/${contactId}/seen`, {
                 method: 'PUT',
-
                 headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 }
+            })
+            .then(response => response.json())
+            .then(data => {
+
+                if (data.success) {
+                    console.log(data.message);
+                } else {
+                    alert(data.message);
+                }
+
+            })
+            .catch(error => {
+                console.error(error);
+                alert('Có lỗi xảy ra khi cập nhật trạng thái.');
             });
-        }
+
+        });
+
+    });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

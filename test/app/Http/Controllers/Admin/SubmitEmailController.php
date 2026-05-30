@@ -17,7 +17,8 @@ class SubmitEmailController extends Controller
 
         if ($request->search) {
             $query->where(function ($q) use ($request) {
-                $q->where('email', 'like', '%' . $request->search . '%');
+                $q->where('email', 'like', '%' . $request->search . '%')
+                    ->orWhere('source', 'like', '%' . $request->search . '%');
             });
         }
 
@@ -33,7 +34,8 @@ class SubmitEmailController extends Controller
 
         $submitEmails = $query
             ->latest()
-            ->paginate(10);
+            ->paginate(10)
+            ->withQueryString();
 
         return view('admin.submit_email.index', compact('submitEmails'));
     }

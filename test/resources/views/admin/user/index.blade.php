@@ -1,5 +1,5 @@
 
-@extends('admin.layout.layoutAdmin')
+@extends('admin.layout.layoutAdmin1')
 
 @section('content')
     <div class="flex justify-between items-center mb-8">
@@ -294,6 +294,10 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="mt-4 d-flex justify-content-center">
+        {{ $users->links() }}
+    </div>
 
     <!-- Create User Modal -->
     <div class="modal fade" id="createUserModal" tabindex="-1" aria-hidden="true">

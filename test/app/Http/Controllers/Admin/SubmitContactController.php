@@ -8,6 +8,7 @@ use App\Models\SubmitContact;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Illuminate\Http\JsonResponse;
 
 
 class SubmitContactController extends Controller
@@ -33,16 +34,33 @@ class SubmitContactController extends Controller
 
         $submitContacts = $query
             ->latest()
-            ->paginate(10);
+            ->paginate(10)
+            ->withQueryString();
 
         return view('admin.submit_contact.index', compact('submitContacts'));
     }
 
-    public function updateSeenStatus(SubmitContact $submitContact) : RedirectResponse
+    public function updateSeenStatus(SubmitContact $submitContact): JsonResponse
     {
-        $submitContact->update(['status' => 'seen']); 
+        try {
+            $submitContact->update([
+                'status' => 'seen'
+            ]);
 
-        return redirect()->back()->with('success', 'Seen status updated successfully.');
+            return response()->json([
+                'success' => true,
+                'message' => 'Seen status updated successfully.',
+                'data' => $submitContact
+            ], 200);
+
+        } catch (\Exception $e) {
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to update seen status.',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     public function updateProcessingStatus(SubmitContact $submitContact)

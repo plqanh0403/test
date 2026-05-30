@@ -458,3 +458,59 @@
 .modal-backdrop.show{
     opacity:0.45;
 }
+
+/* Search box */
+.search-box .input-group-text,
+.search-box .form-control {
+    height: 50px;
+    border-color: #dee2e6;
+}
+
+.search-box .input-group-text {
+    border-right: none;
+    border-radius: 12px 0 0 12px;
+}
+
+.search-box .form-control {
+    border-left: none;
+    border-radius: 0 12px 12px 0;
+    box-shadow: none;
+}
+
+.search-box .form-control:focus {
+    box-shadow: none;
+    border-color: #0d6efd;
+}
+
+/* Status select */
+.filter-select {
+    height: 50px;
+    border-radius: 12px;
+    border-color: #dee2e6;
+    box-shadow: none;
+}
+
+.filter-select:focus {
+    box-shadow: none;
+    border-color: #0d6efd;
+}
+
+/* Buttons */
+.btn-primary, .btn-light {
+    height: 50px;
+    border-radius: 12px;
+    font-weight: 600;
+}  
+
+.btn-reset {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.btn-reset:hover {
+    background: #6c757d;
+    border-color: #6c757d;
+    color: white !important;
+}

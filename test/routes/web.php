@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\SubmitContactController;
 use App\Http\Controllers\Admin\SubmitEmailController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\RecruitmentController;
+use App\Http\Controllers\Admin\ServiceController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -66,7 +68,7 @@ Route::middleware('auth')
         // Submit Contact Management
         Route::get('/submit-contacts', [SubmitContactController::class, 'index'])->name('admin.submit_contacts');
 
-        Route::put('/submit-contacts/{submitContact}/seen', [SubmitContactController::class, 'updateSeenStatus'])->name('admin.submit_contacts.update_seen');
+        Route::put('/api/submit-contacts/{submitContact}/seen', [SubmitContactController::class, 'updateSeenStatus'])->name('admin.submit_contacts.update_seen');
 
         Route::put('/submit-contacts/{submitContact}/processing', [SubmitContactController::class, 'updateProcessingStatus'])->name('admin.submit_contacts.update_processing');
 
@@ -77,6 +79,24 @@ Route::middleware('auth')
         Route::put('/submit-contacts/{submitContact}/note', [SubmitContactController::class, 'updateNote'])->name('admin.submit_contacts.update_note');
 
         Route::get('/submit-contacts/export', [SubmitContactController::class, 'exportCsv'])->name('admin.submit_contacts.export');
+
+        //Recruitment Management
+        Route::get('/recruitments', [RecruitmentController::class, 'index'])->name('admin.recruitments');
+
+        Route::post('/recruitments', [RecruitmentController::class, 'store'])->name('admin.recruitments.store');
+
+        Route::put('/recruitments/{recruitment}', [RecruitmentController::class, 'update'])->name('admin.recruitments.update');
+        
+        Route::delete('/recruitments/{recruitment}', [RecruitmentController::class, 'destroy'])->name('admin.recruitments.destroy');
+
+        //Service Management
+        Route::get('/services', [ServiceController::class, 'index'])->name('admin.services');
+
+        Route::post('/services', [ServiceController::class, 'store'])->name('admin.services.store');
+
+        Route::put('/services/{service}', [ServiceController::class, 'update'])->name('admin.services.update');
+
+        Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('admin.services.destroy');
 });
 
 require __DIR__.'/auth.php';

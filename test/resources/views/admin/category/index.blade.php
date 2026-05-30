@@ -1,163 +1,167 @@
-@extends('admin/layout/layoutAdmin')
+@extends('admin/layout/layoutAdmin1')
 
 @section('content')
-    <div class="flex justify-between items-center mb-8">
-        <!-- Left -->
-        <div>
-            <h1 class="text-4xl font-bold text-gray-800 tracking-tight">
-                Category Management
-            </h1>
+<div class="flex justify-between items-center mb-8">
+    <!-- Left -->
+    <div>
+        <h1 class="text-4xl font-bold text-gray-800 tracking-tight">
+            Category Management
+        </h1>
 
-            <p class="text-gray-500 mt-2 text-lg">
-                Manage all categories in the system
-            </p>
-        </div>
-
-        <!-- Right -->
-        <div class="table-header">
-            <button class="btn btn-create" data-bs-toggle="modal" data-bs-target="#createCategoryModal">
-                + Create Category
-            </button>
-        </div>
+        <p class="text-gray-500 mt-2 text-lg">
+            Manage all categories in the system
+        </p>
     </div>
-    
 
-    <table class="user-table">
+    <!-- Right -->
+    <div class="table-header">
+        <button class="btn btn-create" data-bs-toggle="modal" data-bs-target="#createCategoryModal">
+            + Create Category
+        </button>
+    </div>
+</div>
 
-        <thead>
 
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Slug</th>
-                <th width="215">Actions</th>
-            </tr>
+<table class="user-table">
 
-        </thead>
+    <thead>
 
-        <tbody>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Slug</th>
+            <th width="215">Actions</th>
+        </tr>
 
-            @foreach($categories as $category)
+    </thead>
 
-                <tr>
+    <tbody>
 
-                    <td>{{ $category->id }}</td>
+        @foreach($categories as $category)
 
-                    <td>{{ $category->name }}</td>
+        <tr>
 
-                    <td>{{ $category->slug }}</td>
+            <td>{{ $category->id }}</td>
 
-                    <td>
-                        <button class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#editCategoryModal{{ $category->id }}">
-                            <i class="bi bi-pencil-fill"></i>
-                        </button>
+            <td>{{ $category->name }}</td>
 
-                        <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" class="delete-form">
+            <td>{{ $category->slug }}</td>
 
-                            @csrf
-                            @method('DELETE')
+            <td>
+                <button class="btn btn-edit" data-bs-toggle="modal"
+                    data-bs-target="#editCategoryModal{{ $category->id }}">
+                    <i class="bi bi-pencil-fill"></i>
+                </button>
 
-                            <button type="submit" class="btn btn-delete" onclick="return confirm('Delete this user?')">
-                                <i class="bi bi-trash-fill"></i>
-                            </button>
-                        </form>                      
-                    </td> 
-                </tr>
+                <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" class="delete-form">
 
-                <!-- Edit Category Modal -->
-                <div class="modal fade" id="editCategoryModal{{ $category->id }}" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content border-0 rounded-4 shadow-lg">
+                    @csrf
+                    @method('DELETE')
 
-                            <!-- Modal Header -->
-                            <div class="modal-header border-0 px-4 pt-4 pb-2">
-                                <h4 class="modal-title fw-bold text-dark mb-1">Edit Category</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
+                    <button type="submit" class="btn btn-delete" onclick="return confirm('Delete this user?')">
+                        <i class="bi bi-trash-fill"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
 
-                            <!-- Modal Body -->
-                            <div class="modal-body px-4 pb-4">
-                                <form action="{{ route('admin.categories.update', $category->id) }}" method="POST">
-                                    @csrf
-                                    @method('PUT')
+        <!-- Edit Category Modal -->
+        <div class="modal fade" id="editCategoryModal{{ $category->id }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content border-0 rounded-4 shadow-lg">
 
-                                    <!-- Name -->
-                                    <div>
-
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                            Full Name
-                                        </label>
-
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            value="{{ old('name', $category->name) }}"
-                                            class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        >
-
-                                    </div>
-
-                                    <!-- Footer -->
-                                    <div class="d-flex justify-content-end gap-2 mt-6">
-
-                                        <a href="{{ route('admin.users') }}" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-3 rounded-lg font-semibold">
-                                            Cancel
-                                        </a>
-
-                                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold shadow">
-                                            Update User
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                    <!-- Modal Header -->
+                    <div class="modal-header border-0 px-4 pt-4 pb-2">
+                        <h4 class="modal-title fw-bold text-dark mb-1">Edit Category</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                </div>
-            @endforeach
-        </tbody>
-    </table>
 
-    <!-- Create Category Modal -->
-    <div class="modal fade" id="createCategoryModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content border-0 rounded-4 shadow-lg">
+                    <!-- Modal Body -->
+                    <div class="modal-body px-4 pb-4">
+                        <form action="{{ route('admin.categories.update', $category->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
 
-                <!-- Modal Header -->
-                <div class="modal-header border-0 px-4 pt-4 pb-2">
-                    <h4 class="modal-title fw-bold text-dark mb-1">Create Category</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+                            <!-- Name -->
+                            <div>
 
-                <!-- Modal Body -->
-                <div class="modal-body px-4 pb-4">
-                    <form action="{{ route('admin.categories.store') }}" method="POST">
-                        @csrf
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Full Name
+                                </label>
 
-                        <!-- Name -->
-                        <div class="form-group">
+                                <input type="text" name="name" value="{{ old('name', $category->name) }}"
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
 
-                            <x-input-label for="name" :value="__('Name')" />
+                            </div>
 
-                            <x-text-input id="name" class="form-input" type="text" name="name" :value="old('name')" required autofocus autocomplete="name"/>
+                            <!-- Footer -->
+                            <div class="d-flex justify-content-end gap-2 mt-6">
 
-                            <x-input-error :messages="$errors->get('name')" class="form-error" />
+                                <a href="{{ route('admin.users') }}"
+                                    class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-3 rounded-lg font-semibold">
+                                    Cancel
+                                </a>
 
-                        </div>
-
-                        <!-- Footer -->
-                        <div class="d-flex justify-content-end gap-2">
-
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                Cancel
-                            </button>
-
-                            <button type="submit" class="btn btn-success">
-                                Create Category
-                            </button>
-                        </div>
-                    </form>
+                                <button type="submit"
+                                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold shadow">
+                                    Update User
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+        @endforeach
+    </tbody>
+</table>
+
+<div class="mt-4 d-flex justify-content-center">
+    {{ $categories->links() }}
+</div>
+
+<!-- Create Category Modal -->
+<div class="modal fade" id="createCategoryModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 rounded-4 shadow-lg">
+
+            <!-- Modal Header -->
+            <div class="modal-header border-0 px-4 pt-4 pb-2">
+                <h4 class="modal-title fw-bold text-dark mb-1">Create Category</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body px-4 pb-4">
+                <form action="{{ route('admin.categories.store') }}" method="POST">
+                    @csrf
+
+                    <!-- Name -->
+                    <div class="form-group">
+
+                        <x-input-label for="name" :value="__('Name')" />
+
+                        <x-text-input id="name" class="form-input" type="text" name="name" :value="old('name')" required
+                            autofocus autocomplete="name" />
+
+                        <x-input-error :messages="$errors->get('name')" class="form-error" />
+
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="d-flex justify-content-end gap-2">
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="btn btn-success">
+                            Create Category
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+</div>
 @endsection

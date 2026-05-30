@@ -1,0 +1,172 @@
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#f5f6fa;
+}
+
+.admin-wrapper{
+    display:flex;
+    min-height:100vh;
+}
+
+.sidebar{
+    width:260px;
+    background:#fff;
+    border-right:1px solid #eee;
+    display:flex;
+    flex-direction:column;
+}
+
+.logo{
+    padding:25px;
+    border-bottom:1px solid #eee;
+}
+
+.sidebar-menu{
+    padding:20px;
+}
+
+.menu-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    width:100%;
+
+    padding:12px 15px;
+    margin-bottom:8px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+    color:#555;
+    border:none;
+    background:none;
+}
+
+.menu-item:hover{
+    background:#f3f4f6;
+}
+
+.menu-item.active{
+    background:#6366f1;
+    color:white;
+}
+
+.logout-btn{
+    cursor:pointer;
+}
+
+.topbar{
+    height:70px;
+
+    background:white;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 25px;
+
+    border-bottom:1px solid #eee;
+}
+
+.topbar-left{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.search-box{
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    background:#f6f7fb;
+
+    padding:10px 15px;
+
+    border-radius:12px;
+}
+
+.search-box input{
+    border:none;
+    background:none;
+    outline:none;
+    width:250px;
+}
+
+.topbar-right{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.notification{
+    font-size:20px;
+    cursor:pointer;
+}
+
+.user-profile{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.avatar{
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    background:#6366f1;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:600;
+}
+
+.user-name{
+    font-weight:600;
+}
+
+.user-role{
+    font-size:12px;
+    color:#888;
+}
+
+.page-content{
+    padding:25px;
+}
+
+.dashboard-cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.stat-card{
+    padding:25px;
+    border-radius:16px;
+    color:white;
+}
+
+.purple{
+    background:#6c63ff;
+}
+
+.pink{
+    background:#ff6b81;
+}
+
+.orange{
+    background:#ff9f43;
+}
+
+.blue{
+    background:#3b82f6;
+}
