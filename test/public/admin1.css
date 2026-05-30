@@ -153,20 +153,21 @@ body{
     padding:25px;
     border-radius:16px;
     color:white;
+    box-shadow: 0 10px 25px rgba(123, 97, 255, 0.25);
 }
 
 .purple{
-    background:#6c63ff;
+    background: linear-gradient(to right, #fc5c7d, #6a82fb);
 }
 
 .pink{
-    background:#ff6b81;
+    background: linear-gradient(135deg, #f85f78 0%, #ffa5cb 100%);
 }
 
 .orange{
-    background:#ff9f43;
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
 }
 
 .blue{
-    background:#3b82f6;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
 }
