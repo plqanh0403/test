@@ -1,26 +1,19 @@
 @extends('admin/layout/layoutAdmin1')
 
 @section('content')
-<div class="flex justify-between items-center mb-8">
-    <!-- Left -->
-    <div>
-        <h1 class="text-4xl font-bold text-gray-800 tracking-tight">
-            Category Management
-        </h1>
+<x-admin.page-header
+    title="Category Management"
+    description="Manage all categories in the system">
 
-        <p class="text-gray-500 mt-2 text-lg">
-            Manage all categories in the system
-        </p>
-    </div>
-
-    <!-- Right -->
-    <div class="table-header">
-        <button class="btn btn-create" data-bs-toggle="modal" data-bs-target="#createCategoryModal">
+    <x-slot:action>
+        <button class="btn btn-create"
+            data-bs-toggle="modal"
+            data-bs-target="#createCategoryModal">
             + Create Category
         </button>
-    </div>
-</div>
+    </x-slot:action>
 
+</x-admin.page-header>
 
 <table class="user-table">
 

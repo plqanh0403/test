@@ -1,25 +1,17 @@
 @extends('admin/layout/layoutAdmin1')
 
 @section('content')
-<div class="flex justify-between items-center mb-8">
-    <!-- Left -->
-    <div>
-        <h1 class="text-4xl font-bold text-gray-800 tracking-tight">
-            Submit Email Management
-        </h1>
+<x-admin.page-header
+    title="Submit Email Management"
+    description="Manage all submit emails in the system">
 
-        <p class="text-gray-500 mt-2 text-lg">
-            Manage all submit emails in the system
-        </p>
-    </div>
-
-    <!-- Right -->
-    <div class="table-header">
+    <x-slot:action>
         <a href="{{ route('admin.submit_emails.export') }}" class="btn btn-create">
             Export CSV
         </a>
-    </div>
-</div>
+    </x-slot:action>
+
+</x-admin.page-header>
 
 <!-- Search & Filter -->
 <div class="bg-white rounded-4 shadow-sm p-4 mb-4 border">

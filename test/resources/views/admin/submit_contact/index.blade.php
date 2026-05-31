@@ -5,25 +5,17 @@
 @extends('admin/layout/layoutAdmin1')
 
 @section('content')
-<div class="flex justify-between items-center mb-8">
-    <!-- Left -->
-    <div>
-        <h1 class="text-4xl font-bold text-gray-800 tracking-tight">
-            Submit Contact Management
-        </h1>
+<x-admin.page-header
+    title="Submit Contact Management"
+    description="Manage all submit contacts in the system">
 
-        <p class="text-gray-500 mt-2 text-lg">
-            Manage all submit contacts in the system
-        </p>
-    </div>
-
-    <!-- Right -->
-    <div class="table-header">
+    <x-slot:action>
         <a href="{{ route('admin.submit_contacts.export') }}" class="btn btn-create">
             Export CSV
         </a>
-    </div>
-</div>
+    </x-slot:action>
+
+</x-admin.page-header>
 
 {{-- <div class="row mb-4">
         <div class="col-md-3">

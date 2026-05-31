@@ -1,21 +1,11 @@
 @extends('admin.layout.layoutAdmin1')
 
 @section('content')
-<div class="flex justify-between items-center mb-8">
-    
-    <!-- Left -->
-    <div>
-        <h1 class="text-4xl font-bold text-gray-800 tracking-tight">
-            Blog Management
-        </h1>
+<x-admin.page-header
+    title="Blog Management"
+    description="Manage all blogs in the system">
 
-        <p class="text-gray-500 mt-2 text-lg">
-            Manage all blogs in the system
-        </p>
-    </div>
-
-    <!-- Right -->
-    <div class="flex gap-2">
+    <x-slot:action>
         <a href="{{ route('admin.categories') }}" class="btn btn-primary d-flex align-items-center justify-content-center">
             Category Management
         </a>
@@ -25,9 +15,9 @@
                 data-bs-target="#createBlogModal">
             + Create Blog
         </button>
-    </div>
+    </x-slot:action>
 
-</div>
+</x-admin.page-header>
 
 
 <table class="user-table">
