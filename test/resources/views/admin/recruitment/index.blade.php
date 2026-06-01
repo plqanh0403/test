@@ -53,7 +53,7 @@
                     </option>
 
                     <option value="seen" {{ request('status') == 'part-time' ? 'selected' : '' }}>
-                        Part-time 
+                        Part-time
                     </option>
 
                     <option value="processed" {{ request('status') == 'remote' ? 'selected' : '' }}>
@@ -73,14 +73,14 @@
                 </label>
 
                 <select name="status" class="form-control filter-select p-2 text-secondary">
-                    <option value="">All Status</option>
+                    <option value="">-- Select --</option>
 
                     <option value="new" {{ request('status') == 'open' ? 'selected' : '' }}>
                         Open
                     </option>
 
                     <option value="seen" {{ request('status') == 'paused' ? 'selected' : '' }}>
-                        Paused 
+                        Paused
                     </option>
 
                     <option value="processed" {{ request('status') == 'closed' ? 'selected' : '' }}>
@@ -125,7 +125,7 @@
             <td>{{ $recruitment->position }}</td>
             <td>{{ $recruitment->location }}</td>
             <td>{{ $recruitment->work_type }}</td>
-            
+
             @if ($recruitment->status === 'open')
                 <td>
                     <span
@@ -144,7 +144,7 @@
             <td>
                 <button class="btn btn-view" data-bs-toggle="modal"
                     data-bs-target="#detailRecruitmentModal{{ $recruitment->id }}">
-                    <i class="bi bi-eye-fill"></i>
+                    <i class="bi bi-file-earmark-text-fill"></i>
                 </button>
 
                 <button class="btn btn-edit" data-bs-toggle="modal"
@@ -467,7 +467,7 @@
                                 </button>
                             </div>
                         </form>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>

@@ -39,7 +39,7 @@ class UserController extends Controller
 
         return view('admin.user.index', compact('users'));
     }
-    
+
     public function store(Request $request) : RedirectResponse
     {
         request()->validate([
@@ -48,7 +48,7 @@ class UserController extends Controller
             'password' => 'required|string|min:8|confirmed',
             'role' => 'required|in:editor,admin'
         ]);
-        
+
         User::create([
             'name' => $request->name,
             'username' => $request->username,
@@ -102,10 +102,10 @@ class UserController extends Controller
 
     public function destroy(User $user) : RedirectResponse
     {
-        
+
         if ($user->role === 'superAdmin') {
             return redirect()->route('admin.users')->with('error', 'You cannot delete your own account.');
-        } 
+        }
 
         $user->delete();
 

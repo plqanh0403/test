@@ -25,11 +25,55 @@
 
 </div>
 
-<div class="card p-4">
+<div class="dashboard-chart card p-4 mt-5">
     <h5 class="mb-3">Submissions Last 7 Days</h5>
 
     <canvas id="contactChart"></canvas>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+    const ctx = document.getElementById('contactChart');
+
+    new Chart(ctx, {
+        type: 'line',
+
+        data: {
+            labels: @json($labels),
+
+            datasets: [
+            {
+                label: 'Submit Email',
+                data: @json($emailData)
+            },
+            {
+                label: 'Submit Contact',
+                data: @json($contactData)
+            }
+            ]
+        },
+
+        options: {
+            responsive: true,
+
+            plugins: {
+                legend: {
+                    position: 'top'
+                }
+            },
+
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        precision: 0
+                    }
+                }
+            }
+        }
+    });
+    </script>
 @endsection
 
 {{-- @yield: nơi layout hiển thị nội dung --}}

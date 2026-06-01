@@ -48,6 +48,8 @@ class AdminController extends Controller
 
             $key = $date->toDateString();
 
+            $labels[] = $date->format('d/m');
+
             $emailData[] = $emailStats[$key] ?? 0;
 
             $contactData[] = $contactStats[$key] ?? 0;

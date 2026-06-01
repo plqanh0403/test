@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('role');
             $table->boolean('is_active')->default(true);
-            $table->string('password');           
+            $table->string('password');
             $table->string('slug')->unique();
             $table->rememberToken();
             $table->timestamps();
@@ -175,7 +175,7 @@ return new class extends Migration
             $table->id();
         });
     }
-        
+
     /**
      * Reverse the migrations.
      */

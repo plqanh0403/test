@@ -19,6 +19,50 @@
 
 </x-admin.page-header>
 
+<div class="blog-tabs">
+
+    <a href="{{ route('admin.blogs', ['type' => 'tech-service']) }}" class="blog-tab {{ $type == 'tech-service' ? 'active' : '' }}">
+        <i class="bi bi-cpu-fill"></i>
+        Technical Services
+        <span>{{ $servicesCount }}</span>
+    </a>
+
+    <a href="{{ route('admin.blogs', ['type' => 'EGEAD_activity']) }}" class="blog-tab {{ $type == 'EGEAD_activity' ? 'active' : '' }}">
+        <i class="bi bi-calendar-event-fill"></i>
+        EGEAD Activities
+        <span>{{ $activitiesCount }}</span>
+    </a>
+
+</div>
+
+<x-admin.search-box :route="route('admin.blogs', ['type' => $type])" placeholder="Title or excerpt...">
+
+        <x-admin.filter-box box_name="Category" select_name='category_id'>
+            <option value="">-- Select --</option>
+
+            @foreach($categories as $category)
+            <option value="{{ $category->id }}"
+                {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                {{ $category->name }}
+            </option>
+            @endforeach
+        </x-admin.filter-box>
+
+        <x-admin.filter-box box_name="Status" select_name='status'>
+                <option value="">
+                    All Status
+                </option>
+
+                <option value="published" {{ request('status') === 'published' ? 'selected' : '' }}>
+                    Published
+                </option>
+
+                <option value="draft" {{ request('status') === 'draft' ? 'selected' : '' }}>
+                    Draft
+                </option>
+        </x-admin.filter-box>
+
+</x-admin.search-box>
 
 <table class="index-table">
     <thead class="table-header">
@@ -26,7 +70,7 @@
             <th width="50">Order</th>
             <th>Title</th>
             <th>Excerpt</th>
-            <th>Type</th>
+            <th>Category</th>
             <th>Status</th>
             <th width="215">Actions</th>
         </tr>
@@ -38,14 +82,14 @@
             <td>{{ $blog->sort_order }}</td>
             <td>{{ $blog->title }}</td>
             <td>{{ $blog->excerpt }}</td>
-            <td>{{ $blog->type }}</td>
+            <td>{{ $blog->category?->name }}</td>
             <td>
                 @if($blog->status === 'draft')
-                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-semibold">
+                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-bold">
                     Draft
                 </span>
                 @else
-                <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold">
+                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold">
                     Published
                 </span>
                 @endif
@@ -53,7 +97,7 @@
 
             <td>
                 <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#detailBlogModal{{ $blog->id }}">
-                    <i class="bi bi-eye-fill"></i>
+                    <i class="bi bi-file-earmark-text-fill"></i>
                 </button>
 
                 <button class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#editBlogModal{{ $blog->id }}">
@@ -67,6 +111,28 @@
                         <i class="bi bi-trash-fill"></i>
                     </button>
                 </form>
+
+                @if($blog->is_visible)
+                <form action="{{ route('admin.blogs.hide', $blog->id) }}" method="POST" class="inline-block">
+
+                    @csrf
+                    @method('PUT')
+
+                    <button class="btn btn-lock px-3 py-1 rounded" onclick="return confirm('Hide this blog?')">
+                        <i class="bi bi-eye-fill"></i>
+                    </button>
+                </form>
+                @else
+                <form action="{{ route('admin.blogs.show', $blog->id) }}" method="POST" class="inline-block">
+
+                    @csrf
+                    @method('PUT')
+
+                    <button class="btn btn-unlock px-3 py-1 rounded" onclick="return confirm('Show this blog?')">
+                        <i class="bi bi-eye-slash-fill"></i>
+                    </button>
+                </form>
+                @endif
             </td>
         </tr>
 
@@ -84,10 +150,9 @@
 
                             <span class=" inline-block px-4 py-2 rounded-full text-sm font-semibold
                                         @if($blog->status == 'draft')
-                                            bg-green-100 text-green-700
-                                        @else
                                             bg-red-100 text-red-700
-                                            bg-blue-100 text-blue-700                                   
+                                        @else
+                                            bg-green-100 text-green-700
                                         @endif ">
                             </span>
                         </div>

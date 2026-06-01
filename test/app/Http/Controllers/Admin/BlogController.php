@@ -14,15 +14,46 @@ use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index(Request $request) : View
     {
-        $blogs = Blog::with(['category', 'user'])
+        $servicesCount = Blog::where('type', 'tech-service')->count();
+        $activitiesCount = Blog::where('type', 'EGEAD_activity')->count();
+
+        $query = Blog::query();
+
+        // Default tab Technical Service
+        $type = $request->type ?? 'tech-service';
+
+        $query = Blog::where('type', $type);
+
+        if ($request->search) {
+            $query->where(function ($q) use ($request) {
+
+                $q->where('title', 'like', '%' . $request->search . '%')
+                    ->orWhere('excerpt', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        if ($request->type) {
+            $query->where('type', $request->type);
+        }
+
+        if ($request->category_id) {
+            $query->where('category_id', $request->category_id);
+        }
+
+        if ($request->status) {
+            $query->where('status', $request->status);
+        }
+
+        $blogs = $query->with(['category', 'user'])
             ->latest()
-            ->paginate(10);
+            ->paginate(10)
+            ->withQueryString();
 
         $categories = Category::orderBy('sort_order')->get();
 
-        return view('admin.blog.index', compact('blogs', 'categories'));
+        return view('admin.blog.index', compact('blogs', 'categories', 'servicesCount', 'activitiesCount', 'type'));
     }
 
     public function store(Request $request): RedirectResponse
@@ -83,6 +114,24 @@ class BlogController extends Controller
         ]);
 
         return back()->with('success', 'Blog updated successfully.');
+    }
+
+    public function show(Blog $blog) : RedirectResponse
+    {
+        $blog->update([
+            'is_visible' => true
+        ]);
+
+        return back()->with('success', 'Blog shown successfully.');
+    }
+
+    public function hide(Blog $blog) : RedirectResponse
+    {
+        $blog->update([
+            'is_visible' => false
+        ]);
+
+        return back()->with('success', 'Blog hide successfully.');
     }
 
     public function destroy(Blog $blog): RedirectResponse

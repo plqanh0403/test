@@ -52,14 +52,18 @@ Route::middleware('auth')
         Route::post('/blogs', [BlogController::class, 'store'])->name('admin.blogs.store');
 
         Route::put('/blogs/{blog}', [BlogController::class, 'update'])->name('admin.blogs.update');
-        
+
+        Route::put('/blogs/{blog}/show', [BlogController::class, 'show'])->name('admin.blogs.show');
+
+        Route::put('/blogs/{blog}/hide', [BlogController::class, 'hide'])->name('admin.blogs.hide');
+
         Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
 
         // Submit Email Management
         Route::get('/submit-emails', [SubmitEmailController::class, 'index'])->name('admin.submit_emails');
 
         //Route::put('/submit-emails/{submitEmail}', [SubmitEmailController::class, 'updateEmailStatus'])->name('admin.submit_emails.update_status');
-        
+
         Route::delete('/submit-emails/{submitEmail}', [SubmitEmailController::class, 'destroy'])->name('admin.submit_emails.destroy');
 
         Route::get('/submit-emails/export', [SubmitEmailController::class, 'exportCsv'])->name('admin.submit_emails.export');
@@ -86,7 +90,7 @@ Route::middleware('auth')
         Route::post('/recruitments', [RecruitmentController::class, 'store'])->name('admin.recruitments.store');
 
         Route::put('/recruitments/{recruitment}', [RecruitmentController::class, 'update'])->name('admin.recruitments.update');
-        
+
         Route::delete('/recruitments/{recruitment}', [RecruitmentController::class, 'destroy'])->name('admin.recruitments.destroy');
 
         //Service Management
@@ -95,6 +99,10 @@ Route::middleware('auth')
         Route::post('/services', [ServiceController::class, 'store'])->name('admin.services.store');
 
         Route::put('/services/{service}', [ServiceController::class, 'update'])->name('admin.services.update');
+
+        Route::put('/services/{service}/show', [ServiceController::class, 'show'])->name('admin.services.show');
+
+        Route::put('/services/{service}/hide', [ServiceController::class, 'hide'])->name('admin.services.hide');
 
         Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('admin.services.destroy');
 });

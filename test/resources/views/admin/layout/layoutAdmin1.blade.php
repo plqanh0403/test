@@ -4,6 +4,9 @@
 <head>
     <title>EGEAD CMS Admin</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -99,10 +102,10 @@
                         <i class="bi bi-list"></i>
                     </button>
 
-                    <div class="search-box">
-                        <i class="bi bi-search"></i>
+                    <div class="search-box input-group">
+                        <i class="bi bi-search text-muted p-2"></i>
 
-                        <input type="text" placeholder="Search">
+                        <input type="text" placeholder="Search" class="form-control">
                     </div>
 
                 </div>
@@ -232,50 +235,6 @@
         sidebar.classList.remove('show');
         overlay.classList.remove('show');
 
-    });
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script>
-    const ctx = document.getElementById('contactChart');
-
-    new Chart(ctx, {
-        type: 'line',
-
-        data: {
-            labels: @json($labels),
-
-            datasets: [
-            {
-                label: 'Submit Email',
-                data: @json($emailData)
-            },
-            {
-                label: 'Submit Contact',
-                data: @json($contactData)
-            }
-            ]
-        },
-
-        options: {
-            responsive: true,
-
-            plugins: {
-                legend: {
-                    position: 'top'
-                }
-            },
-
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        precision: 0
-                    }
-                }
-            }
-        }
     });
     </script>
 

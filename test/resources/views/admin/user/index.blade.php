@@ -11,86 +11,33 @@
 
 </x-admin.page-header>
 
-<!-- Search & Filter -->
-<div class="bg-white rounded-4 shadow-sm p-4 mb-4 border">
+<x-admin.search-box route="route('admin.users')" placeholder="Name or username...">
 
-    <form action="{{ route('admin.users') }}" method="GET">
+        <x-admin.filter-box box_name="Role" select_name='role'>
+            <option value="admin" {{ request('role') === 'admin' ? 'selected' : '' }}>
+                Admin
+            </option>
 
-        <div class="row g-3 align-items-end">
+            <option value="editor" {{ request('role') === 'editor' ? 'selected' : '' }}>
+                Editor
+            </option>
+        </x-admin.filter-box>
 
-            <!-- Search -->
-            <div class="col-lg-6">
-                <label class="form-label fw-semibold text-secondary mb-2">
-                    Search
-                </label>
+        <x-admin.filter-box box_name="Status" select_name='is_actived'>
+                <option value="">
+                    -- Select --
+                </option>
 
-                <div class="input-group search-box">
-                    <i class="bi bi-search text-muted p-2"></i>
+                <option value="1" {{ request('is_actived') === '1' ? 'selected' : '' }}>
+                    Active
+                </option>
 
-                    <input type="text" name="search" class="form-control" placeholder="Name or username..."
-                        value="{{ request('search') }}">
-                </div>
-            </div>
+                <option value="0" {{ request('is_actived') === '0' ? 'selected' : '' }}>
+                    Inactive
+                </option>
+        </x-admin.filter-box>
 
-            <!-- Role -->
-            <div class="col-lg-2">
-                <label class="form-label fw-semibold text-secondary mb-2">
-                    Role
-                </label>
-
-                <select name="role" class="form-control filter-select p-2 text-secondary">
-                    <option value="">All Role</option>
-
-                    <option value="admin" {{ request('role') === 'admin' ? 'selected' : '' }}>
-                        Admin
-                    </option>
-
-                    <option value="editor" {{ request('role') === 'editor' ? 'selected' : '' }}>
-                        Editor
-                    </option>
-                </select>
-            </div>
-
-            <!-- Status -->
-            <div class="col-lg-2">
-                <label class="form-label fw-semibold text-secondary mb-2">
-                    Status
-                </label>
-
-                <select name="is_actived" class="form-control filter-select p-2 text-secondary">
-
-                    <option value="">
-                        All Status
-                    </option>
-
-                    <option value="1" {{ request('is_actived') === '1' ? 'selected' : '' }}>
-                        Active
-                    </option>
-
-                    <option value="0" {{ request('is_actived') === '0' ? 'selected' : '' }}>
-                        Inactive
-                    </option>
-
-                </select>
-            </div>
-
-            <!-- Buttons -->
-            <div class="col-lg-2">
-                <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-primary flex-fill">
-                        <i class="bi bi-funnel-fill me-1"></i>
-                        Filter
-                    </button>
-
-                    <a href="{{ route('admin.services') }}"
-                        class="btn btn-outline-secondary btn-reset text-dark d-flex align-items-center justify-content-center">
-                        <i class="bi bi-arrow-clockwise"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+</x-admin.search-box>
 
 <table class="index-table">
     <thead class="table-header">

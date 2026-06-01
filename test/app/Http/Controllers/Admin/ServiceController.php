@@ -8,7 +8,7 @@ use App\Models\Service;
 use App\Models\ServiceCategory;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
- 
+
 class ServiceController extends Controller
 {
     public function index(Request $request): View
@@ -119,6 +119,24 @@ class ServiceController extends Controller
         return redirect()
             ->route('admin.services')
             ->with('success', 'Service updated successfully');
+    }
+
+    public function show(Service $service) : RedirectResponse
+    {
+        $service->update([
+            'is_visible' => true
+        ]);
+
+        return back()->with('success', 'Service shown successfully.');
+    }
+
+    public function hide(Service $service) : RedirectResponse
+    {
+        $service->update([
+            'is_visible' => false
+        ]);
+
+        return back()->with('success', 'Service hide successfully.');
     }
 
     public function destroy(Service $service) : RedirectResponse

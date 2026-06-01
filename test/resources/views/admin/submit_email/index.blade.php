@@ -19,63 +19,12 @@
 
 </x-admin.page-header>
 
-<!-- Search & Filter -->
-<div class="bg-white rounded-4 shadow-sm p-4 mb-4 border">
+<x-admin.search-box route="route('admin.submit_emails')" placeholder="Email or source...">
 
-    <form action="{{ route('admin.submit_emails') }}" method="GET">
+        <x-admin.date-filter-box date_name="From date" input_name="from_date" request_name="from_date"></x-admin.filter-box>
+        <x-admin.date-filter-box date_name="To date" input_name="to_date" request_name="to_date"></x-admin.filter-box>
 
-        <div class="row g-3 align-items-end">
-
-            <!-- Search -->
-            <div class="col-lg-6 search-box>
-                <label class="form-label fw-semibold text-secondary mb-2">
-                    Search
-                </label>
-
-                <div class="input-group search-box">
-                    <i class="bi bi-search text-muted p-2"></i>
-
-                    <input type="text" name="search" class="form-control" placeholder="Email or Source..."
-                        value="{{ request('search') }}">
-                </div>
-            </div>
- 
-            <!-- From Date -->
-            <div class="col-lg-2">
-                <label class="form-label fw-semibold text-secondary mb-2">
-                    <i class="bi bi-calendar-event me-1 "></i>
-                    From Date
-                </label>
-
-                <input type="date" name="from_date" class="form-control filter-select p-2 text-secondary" value="{{ request('from_date') }}">
-            </div>
-
-            <!-- To Date -->
-            <div class="col-lg-2">
-                <label class="form-label fw-semibold text-secondary mb-2">
-                    <i class="bi bi-calendar-check me-1"></i>
-                    To Date
-                </label>
-
-                <input type="date" name="to_date" class="form-control filter-select p-2 text-secondary" value="{{ request('to_date') }}">
-            </div>
-
-            <!-- Buttons -->
-            <div class="col-lg-2">
-                <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-primary flex-fill">
-                        <i class="bi bi-funnel-fill me-1"></i>
-                        Filter
-                    </button>
-
-                    <a href="{{ route('admin.submit_emails') }}" class="btn btn-outline-secondary btn-reset text-dark d-flex align-items-center justify-content-center">
-                        <i class="bi bi-arrow-clockwise"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+</x-admin.search-box>
 
 <table class="index-table">
 

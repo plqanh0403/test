@@ -15,84 +15,36 @@
 
 </x-admin.page-header>
 
-<!-- Search & Filter -->
-<div class="bg-white rounded-4 shadow-sm p-4 mb-4 border">
+<x-admin.search-box :route="route('admin.services')" placeholder="Name or slug...">
 
-    <form action="{{ route('admin.services') }}" method="GET">
+        <x-admin.filter-box box_name="Category" select_name='category_id'>
+            <option value="">
+                -- Select --
+            </option>
 
-        <div class="row g-3 align-items-end">
+            @foreach($categories as $category)
+            <option value="{{ $category->id }}"
+                {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                {{ $category->name }}
+            </option>
+            @endforeach
+        </x-admin.filter-box>
 
-            <!-- Search -->
-            <div class="col-lg-6">
-                <label class="form-label fw-semibold text-secondary mb-2">
-                    Search
-                </label>
+        <x-admin.filter-box box_name="Visibility" select_name='is_visible'>
+                <option value="">
+                    -- Select --
+                </option>
 
-                <div class="input-group search-box">
-                    <i class="bi bi-search text-muted p-2"></i>
+                <option value="1" {{ request('is_visible') === '1' ? 'selected' : '' }}>
+                    Visible
+                </option>
 
-                    <input type="text" name="search" class="form-control" placeholder="Name or slug..."
-                        value="{{ request('search') }}">
-                </div>
-            </div>
+                <option value="0" {{ request('is_visible') === '0' ? 'selected' : '' }}>
+                    Hidden
+                </option>
+        </x-admin.filter-box>
 
-            <!-- Category -->
-            <div class="col-lg-2">
-                <label class="form-label fw-semibold text-secondary mb-2">
-                    Category
-                </label>
-
-                <select name="category_id" class="form-control filter-select p-2 text-secondary">
-                    <option value="">All Type</option>
-
-                    @foreach($categories as $category)
-                    <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
-                        {{ $category->name}}
-                    </option>
-                    @endforeach
-                </select>
-            </div>
-
-            <!-- Visibility -->
-            <div class="col-lg-2">
-                <label class="form-label fw-semibold text-secondary mb-2">
-                    Visibility
-                </label>
-
-                <select name="is_visible" class="form-control filter-select p-2 text-secondary">
-
-                    <option value="">
-                        All Visibility
-                    </option>
-
-                    <option value="1" {{ request('is_visible') === '1' ? 'selected' : '' }}>
-                        Visible
-                    </option>
-
-                    <option value="0" {{ request('is_visible') === '0' ? 'selected' : '' }}>
-                        Hidden
-                    </option>
-
-                </select>
-            </div>
-
-            <!-- Buttons -->
-            <div class="col-lg-2">
-                <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-primary flex-fill">
-                        <i class="bi bi-funnel-fill me-1"></i>
-                        Filter
-                    </button>
-
-                    <a href="{{ route('admin.services') }}"
-                        class="btn btn-outline-secondary btn-reset text-dark d-flex align-items-center justify-content-center">
-                        <i class="bi bi-arrow-clockwise"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+</x-admin.search-box>
 
 <table class="index-table">
     <thead class="table-header">
@@ -127,7 +79,7 @@
             <td>
                 <button class="btn btn-view" data-bs-toggle="modal"
                     data-bs-target="#detailServiceModal{{ $service->id }}">
-                    <i class="bi bi-eye-fill"></i>
+                    <i class="bi bi-file-earmark-text-fill"></i>
                 </button>
 
                 <button class="btn btn-edit" data-bs-toggle="modal"
@@ -142,6 +94,28 @@
                         <i class="bi bi-trash-fill"></i>
                     </button>
                 </form>
+
+                @if($service->is_visible)
+                <form action="{{ route('admin.services.hide', $service->id) }}" method="POST" class="inline-block">
+
+                    @csrf
+                    @method('PUT')
+
+                    <button class="btn btn-lock px-3 py-1 rounded" onclick="return confirm('Hide this service?')">
+                        <i class="bi bi-eye-fill"></i>
+                    </button>
+                </form>
+                @else
+                <form action="{{ route('admin.services.show', $service->id) }}" method="POST" class="inline-block">
+
+                    @csrf
+                    @method('PUT')
+
+                    <button class="btn btn-unlock px-3 py-1 rounded" onclick="return confirm('Show this service?')">
+                        <i class="bi bi-eye-slash-fill"></i>
+                    </button>
+                </form>
+                @endif
             </td>
         </tr>
 

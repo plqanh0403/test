@@ -85,7 +85,7 @@ use Illuminate\Support\Str;
                 </label>
 
                 <select name="status" class="form-control filter-select p-2 text-secondary">
-                    <option value="">All Status</option>
+                    <option value="">-- Select --</option>
 
                     <option value="new" {{ request('status') == 'new' ? 'selected' : '' }}>
                         New
@@ -174,7 +174,7 @@ use Illuminate\Support\Str;
             <td>
                 <button data-id="{{ $submitContact->id }}" class="btn btn-view mark-seen-btn" data-bs-toggle="modal"
                     data-bs-target="#detailSubmitContactModal{{ $submitContact->id }}">
-                    <i class="bi bi-eye-fill"></i>
+                    <i class="bi bi-file-earmark-text-fill"></i>
                 </button>
 
                 <button class="btn btn-edit" data-bs-toggle="modal"
