@@ -1,25 +1,22 @@
 @extends('admin.layout.layoutAdmin1')
 
 @section('content')
-<div class="flex justify-between items-center mb-8">
-    <!-- Left -->
-    <div>
-        <h1 class="text-4xl font-bold text-gray-800 tracking-tight">
-            Recruitment Management
-        </h1>
+<x-admin.page-header
+    title="Recruitment Management"
+    description="Manage all recruitment opportunities in the system"
+>
+    <x-slot:action>
+        <button
+            class="btn btn-create"
+            data-bs-toggle="modal"
+            data-bs-target="#createRecruitmentModal">
 
-        <p class="text-gray-500 mt-2 text-lg">
-            Manage all recruitment opportunities in the system
-        </p>
-    </div>
-
-    <!-- Right -->
-    <div class="table-header">
-        <button class="btn btn-create" data-bs-toggle="modal" data-bs-target="#createRecruitmentModal">
             + Create Recruitment
+
         </button>
-    </div>
-</div>
+    </x-slot:action>
+
+</x-admin.page-header>
 
 <!-- Search & Filter -->
 <div class="bg-white shadow-sm rounded-4 p-4 mb-4 border">

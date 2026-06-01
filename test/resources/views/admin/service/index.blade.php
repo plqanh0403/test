@@ -1,25 +1,19 @@
 @extends('admin.layout.layoutAdmin1')
 
 @section('content')
-<div class="flex justify-between items-center mb-8">
-    <!-- Left -->
-    <div>
-        <h1 class="text-4xl font-bold text-gray-800 tracking-tight">
-            Service Management
-        </h1>
+<x-admin.page-header
+    title="Service Management"
+    description="Manage all services in the system">
 
-        <p class="text-gray-500 mt-2 text-lg">
-            Manage all services in the system
-        </p>
-    </div>
-
-    <!-- Right -->
-    <div class="table-header">
-        <button class="btn btn-create" data-bs-toggle="modal" data-bs-target="#createServiceModal">
-            + Create Service
+    <x-slot:action>
+        <button class="btn btn-create"
+            data-bs-toggle="modal"
+            data-bs-target="#createServiceModal">
+            + Create User
         </button>
-    </div>
-</div>
+    </x-slot:action>
+
+</x-admin.page-header>
 
 <!-- Search & Filter -->
 <div class="bg-white rounded-4 shadow-sm p-4 mb-4 border">
