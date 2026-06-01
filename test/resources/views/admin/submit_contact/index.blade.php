@@ -57,82 +57,39 @@ use Illuminate\Support\Str;
 </div>
 </div> --}}
 
-<!-- Search & Filter -->
-<div class="bg-white shadow-sm rounded-4 p-4 mb-4 border">
 
-    <form action="{{ route('admin.submit_contacts') }}" method="GET">
+<x-admin.search-box :route="route('admin.submit_contacts')" placeholder="Search by name, email, phone, company...">
+    <x-admin.filter-box box_name="Status" select_name='status'>
+        <option value="">
+            -- Select --
+        </option>
+        
+        <option value="new" {{ request('status') == 'new' ? 'selected' : '' }}>
+            New
+        </option>
 
-        <div class="row g-3 align-items-end">
+        <option value="seen" {{ request('status') == 'seen' ? 'selected' : '' }}>
+            Seen
+        </option>
 
-            <!-- Search -->
-            <div class="col-lg-8">
-                <label class="form-label fw-semibold text-secondary mb-2">
-                    Search Contact
-                </label>
+        <option value="processing" {{ request('status') == 'processing' ? 'selected' : '' }}>
+            Processing
+        </option>
 
-                <div class="input-group search-box">
-                    <i class="bi bi-search text-muted p-2"></i>
-
-                    <input type="text" name="search" class="form-control"
-                        placeholder="Search by name, email, phone, company..." value="{{ request('search') }}">
-                </div>
-            </div>
-
-            <!-- Status -->
-            <div class="col-lg-2">
-                <label class="form-label fw-semibold text-secondary mb-2">
-                    Status
-                </label>
-
-                <select name="status" class="form-control filter-select p-2 text-secondary">
-                    <option value="">-- Select --</option>
-
-                    <option value="new" {{ request('status') == 'new' ? 'selected' : '' }}>
-                        New
-                    </option>
-
-                    <option value="seen" {{ request('status') == 'seen' ? 'selected' : '' }}>
-                        Seen
-                    </option>
-
-                    <option value="processing" {{ request('status') == 'processing' ? 'selected' : '' }}>
-                        Processing
-                    </option>
-
-                    <option value="processed" {{ request('status') == 'processed' ? 'selected' : '' }}>
-                        Processed
-                    </option>
-                </select>
-            </div>
-
-            <!-- Actions -->
-            <div class="col-lg-2">
-                <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-primary flex-fill">
-                        <i class="bi bi-funnel-fill me-1"></i>
-                        Filter
-                    </button>
-
-                    <a href="{{ route('admin.submit_contacts') }}"
-                        class="btn btn-outline-secondary btn-reset text-dark d-flex align-items-center justify-content-center">
-                        <i class="bi bi-arrow-clockwise"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+        <option value="processed" {{ request('status') == 'processed' ? 'selected' : '' }}>
+            Processed
+        </option>
+    </x-admin.filter-box>
+</x-admin.search-box>
 
 <table class="index-table">
 
     <thead class="table-header">
 
         <tr>
-            <th>Order</th>
             <th>Name</th>
             <th>Email</th>
             <th>Company</th>
-            <th>Phone</th>
             <th>Status</th>
             <th>Note</th>
             <th width="170">Actions</th>
@@ -140,21 +97,17 @@ use Illuminate\Support\Str;
 
     </thead>
 
-    <tbody>
+    <tbody class="text-sm">
 
         @foreach($submitContacts as $submitContact)
 
         <tr>
-
-            <td>{{ $submitContact->sort_order }}</td>
 
             <td>{{ $submitContact->name }}</td>
 
             <td>{{ $submitContact->email }}</td>
 
             <td>{{ $submitContact->company }}</td>
-
-            <td>{{ $submitContact->phone }}</td>
 
             <td class="text-center align-middle">
                 @if ($submitContact->status === 'processing')

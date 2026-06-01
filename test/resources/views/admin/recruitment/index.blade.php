@@ -1,110 +1,53 @@
 @extends('admin.layout.layoutAdmin1')
 
 @section('content')
-<x-admin.page-header
-    title="Recruitment Management"
-    description="Manage all recruitment opportunities in the system"
->
+<x-admin.page-header title="Recruitment Management" description="Manage all recruitment opportunities in the system">
     <x-slot:action>
-        <button
-            class="btn btn-create"
-            data-bs-toggle="modal"
-            data-bs-target="#createRecruitmentModal">
-
+        <button class="btn btn-create" data-bs-toggle="modal" data-bs-target="#createRecruitmentModal">
             + Create Recruitment
-
         </button>
     </x-slot:action>
-
 </x-admin.page-header>
 
-<!-- Search & Filter -->
-<div class="bg-white shadow-sm rounded-4 p-4 mb-4 border">
+<x-admin.search-box :route="route('admin.recruitments')" placeholder="Search by position, location...">
+        <x-admin.filter-box box_name="Work Type" select_name='work_type'>
+            <option value="">-- Select --</option>
 
-    <form action="{{ route('admin.recruitments') }}" method="GET">
+            <option value="new" {{ request('status') == 'full-time' ? 'selected' : '' }}>
+                Full-time
+            </option>
 
-        <div class="row g-3 align-items-end">
+            <option value="seen" {{ request('status') == 'part-time' ? 'selected' : '' }}>
+                Part-time
+            </option>
 
-            <!-- Search -->
-            <div class="col-lg-6">
-                <label class="form-label fw-semibold text-secondary mb-2">
-                    Search Contact
-                </label>
+            <option value="processed" {{ request('status') == 'remote' ? 'selected' : '' }}>
+                Remote
+            </option>
 
-                <div class="input-group search-box">
-                    <i class="bi bi-search text-muted p-2"></i>
+            <option value="processed" {{ request('status') == 'hybrid' ? 'selected' : '' }}>
+                Hybrid
+            </option>
+        </x-admin.filter-box>
 
-                    <input type="text" name="search" class="form-control"
-                        placeholder="Search by name, email, phone, company..." value="{{ request('search') }}">
-                </div>
-            </div>
+        <x-admin.filter-box box_name="Status" select_name='status'>
+                <option value="">
+                    -- Select --
+                </option>
 
-            <!-- Work Type -->
-            <div class="col-lg-2">
-                <label class="form-label fw-semibold text-secondary mb-2">
-                    Work Type
-                </label>
+                <option value="new" {{ request('status') == 'open' ? 'selected' : '' }}>
+                    Open
+                </option>
 
-                <select name="status" class="form-control filter-select p-2 text-secondary">
-                    <option value="">All Type</option>
+                <option value="seen" {{ request('status') == 'paused' ? 'selected' : '' }}>
+                    Paused
+                </option>
 
-                    <option value="new" {{ request('status') == 'full-time' ? 'selected' : '' }}>
-                        Full-time
-                    </option>
-
-                    <option value="seen" {{ request('status') == 'part-time' ? 'selected' : '' }}>
-                        Part-time
-                    </option>
-
-                    <option value="processed" {{ request('status') == 'remote' ? 'selected' : '' }}>
-                        Remote
-                    </option>
-
-                    <option value="processed" {{ request('status') == 'hybrid' ? 'selected' : '' }}>
-                        Hybrid
-                    </option>
-                </select>
-            </div>
-
-            <!-- Status -->
-            <div class="col-lg-2">
-                <label class="form-label fw-semibold text-secondary mb-2">
-                    Status
-                </label>
-
-                <select name="status" class="form-control filter-select p-2 text-secondary">
-                    <option value="">-- Select --</option>
-
-                    <option value="new" {{ request('status') == 'open' ? 'selected' : '' }}>
-                        Open
-                    </option>
-
-                    <option value="seen" {{ request('status') == 'paused' ? 'selected' : '' }}>
-                        Paused
-                    </option>
-
-                    <option value="processed" {{ request('status') == 'closed' ? 'selected' : '' }}>
-                        Closed
-                    </option>
-                </select>
-            </div>
-
-            <!-- Actions -->
-            <div class="col-lg-2">
-                <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-primary flex-fill">
-                        <i class="bi bi-funnel-fill me-1"></i>
-                        Filter
-                    </button>
-
-                    <a href="{{ route('admin.recruitments') }}" class="btn btn-outline-secondary btn-reset text-dark d-flex align-items-center justify-content-center">
-                        <i class="bi bi-arrow-clockwise"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+                <option value="processed" {{ request('status') == 'closed' ? 'selected' : '' }}>
+                    Closed
+                </option>
+        </x-admin.filter-box>
+</x-admin.search-box>
 
 <table class="index-table">
     <thead class="table-header">

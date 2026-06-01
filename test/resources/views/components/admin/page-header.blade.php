@@ -5,7 +5,7 @@
             {{ $title }}
         </h1>
 
-        <p class="text-gray-500 mt-2 text-lg">
+        <p class="text-gray-500 mt-2 text-base">
             {{ $description }}
         </p>
     </div>

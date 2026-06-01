@@ -19,7 +19,7 @@
 
 </x-admin.page-header>
 
-<x-admin.search-box route="route('admin.submit_emails')" placeholder="Email or source...">
+<x-admin.search-box :route="route('admin.submit_emails')" placeholder="Email or source...">
 
         <x-admin.date-filter-box date_name="From date" input_name="from_date" request_name="from_date"></x-admin.filter-box>
         <x-admin.date-filter-box date_name="To date" input_name="to_date" request_name="to_date"></x-admin.filter-box>
@@ -40,7 +40,7 @@
 
     </thead>
 
-    <tbody>
+    <tbody class="text-sm">
 
         @foreach($submitEmails as $submitEmail)
 

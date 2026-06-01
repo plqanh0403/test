@@ -460,8 +460,7 @@
 }
 
 /* Search box */
-.search-box .input-group-text,
-.search-box .form-control {
+.search-box .input-group-text, .search-box .form-control {
     height: 50px;
     border-color: #dee2e6;
 }

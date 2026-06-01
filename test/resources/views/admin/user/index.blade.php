@@ -11,9 +11,13 @@
 
 </x-admin.page-header>
 
-<x-admin.search-box route="route('admin.users')" placeholder="Name or username...">
+<x-admin.search-box :route="route('admin.users')" placeholder="Name or username...">
 
         <x-admin.filter-box box_name="Role" select_name='role'>
+            <option value="">
+                -- Select --
+            </option>
+
             <option value="admin" {{ request('role') === 'admin' ? 'selected' : '' }}>
                 Admin
             </option>
@@ -40,7 +44,7 @@
 </x-admin.search-box>
 
 <table class="index-table">
-    <thead class="table-header">
+    <thead class="table-header text-base">
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -51,7 +55,7 @@
         </tr>
     </thead>
 
-    <tbody>
+    <tbody class="text-sm">
         @foreach($users as $user)
         <tr>
             <td>{{ $user->id }}</td>

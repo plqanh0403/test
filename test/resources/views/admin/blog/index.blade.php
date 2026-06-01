@@ -49,9 +49,7 @@
         </x-admin.filter-box>
 
         <x-admin.filter-box box_name="Status" select_name='status'>
-                <option value="">
-                    All Status
-                </option>
+                <option value="">-- Select --</option>
 
                 <option value="published" {{ request('status') === 'published' ? 'selected' : '' }}>
                     Published
