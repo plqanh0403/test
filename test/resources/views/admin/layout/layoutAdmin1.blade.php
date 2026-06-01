@@ -115,7 +115,7 @@
 
                     <div class="user-profile">
 
-                        <div class="avatar">
+                        <div class="avatar purple">
                             {{ strtoupper(substr(Auth::user()->name,0,1)) }}
                         </div>
 
@@ -232,6 +232,50 @@
         sidebar.classList.remove('show');
         overlay.classList.remove('show');
 
+    });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+    const ctx = document.getElementById('contactChart');
+
+    new Chart(ctx, {
+        type: 'line',
+
+        data: {
+            labels: @json($labels),
+
+            datasets: [
+            {
+                label: 'Submit Email',
+                data: @json($emailData)
+            },
+            {
+                label: 'Submit Contact',
+                data: @json($contactData)
+            }
+            ]
+        },
+
+        options: {
+            responsive: true,
+
+            plugins: {
+                legend: {
+                    position: 'top'
+                }
+            },
+
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        precision: 0
+                    }
+                }
+            }
+        }
     });
     </script>
 

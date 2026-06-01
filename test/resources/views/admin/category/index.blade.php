@@ -15,9 +15,9 @@
 
 </x-admin.page-header>
 
-<table class="user-table">
+<table class="index-table">
 
-    <thead>
+    <thead class="table-header>
 
         <tr>
             <th>ID</th>
@@ -46,7 +46,7 @@
                     <i class="bi bi-pencil-fill"></i>
                 </button>
 
-                <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" class="delete-form">
+                <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" class="inline-block">
 
                     @csrf
                     @method('DELETE')

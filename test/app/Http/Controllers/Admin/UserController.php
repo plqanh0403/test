@@ -12,9 +12,30 @@ use Illuminate\Http\RedirectResponse;
 
 class UserController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        $users = User::latest()->paginate(10);
+        $query = User::query();
+
+        if ($request->search) {
+            $query->where(function ($q) use ($request) {
+
+                $q->where('name', 'like', '%' . $request->search . '%')
+                    ->orWhere('username', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        if ($request->role) {
+            $query->where('role', $request->role);
+        }
+
+        if ($request->is_active) {
+            $query->where('is_active', $request->is_active);
+        }
+
+        $users = $query
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
 
         return view('admin.user.index', compact('users'));
     }

@@ -9,7 +9,7 @@
         <button class="btn btn-create"
             data-bs-toggle="modal"
             data-bs-target="#createServiceModal">
-            + Create User
+            + Create Service
         </button>
     </x-slot:action>
 
@@ -29,9 +29,7 @@
                 </label>
 
                 <div class="input-group search-box">
-                    <span class="input-group-text bg-white">
-                        <i class="bi bi-search text-muted p-2"></i>
-                    </span>
+                    <i class="bi bi-search text-muted p-2"></i>
 
                     <input type="text" name="search" class="form-control" placeholder="Name or slug..."
                         value="{{ request('search') }}">
@@ -96,8 +94,8 @@
     </form>
 </div>
 
-<table class="user-table">
-    <thead>
+<table class="index-table">
+    <thead class="table-header">
         <tr>
             <th>Order</th>
             <th>Name</th>
@@ -137,7 +135,7 @@
                     <i class="bi bi-pencil-fill"></i>
                 </button>
 
-                <form action="{{ route('admin.services.destroy', $service->id) }}" method="POST" class="delete-form">
+                <form action="{{ route('admin.services.destroy', $service->id) }}" method="POST" class="inline-block">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-delete" onclick="return confirm('Delete this service?')">

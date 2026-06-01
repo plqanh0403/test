@@ -6,7 +6,13 @@
     description="Manage all submit emails in the system">
 
     <x-slot:action>
-        <a href="{{ route('admin.submit_emails.export') }}" class="btn btn-create">
+        <button class="btn btn-create"
+            data-bs-toggle="modal"
+            data-bs-target="#createServiceModal">
+            + Add Submitted Email
+        </button>
+
+        <a href="{{ route('admin.submit_emails.export') }}" class="btn blue">
             Export CSV
         </a>
     </x-slot:action>
@@ -21,15 +27,13 @@
         <div class="row g-3 align-items-end">
 
             <!-- Search -->
-            <div class="col-lg-6">
+            <div class="col-lg-6 search-box>
                 <label class="form-label fw-semibold text-secondary mb-2">
                     Search
                 </label>
 
                 <div class="input-group search-box">
-                    <span class="input-group-text bg-white">
-                        <i class="bi bi-search text-muted p-2"></i>
-                    </span>
+                    <i class="bi bi-search text-muted p-2"></i>
 
                     <input type="text" name="search" class="form-control" placeholder="Email or Source..."
                         value="{{ request('search') }}">
@@ -73,9 +77,9 @@
     </form>
 </div>
 
-<table class="user-table">
+<table class="index-table">
 
-    <thead>
+    <thead class="table-header">
 
         <tr>
             <th>Email</th>
@@ -112,8 +116,7 @@
             @endif
 
             <td>
-                <form action="{{ route('admin.submit_emails.destroy', $submitEmail->id) }}" method="POST"
-                    class="delete-form">
+                <form action="{{ route('admin.submit_emails.destroy', $submitEmail->id) }}" method="POST" class="inline-block">
 
                     @csrf
                     @method('DELETE')

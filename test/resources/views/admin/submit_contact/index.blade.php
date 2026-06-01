@@ -1,16 +1,18 @@
 @php
-    use Illuminate\Support\Str;
+use Illuminate\Support\Str;
 @endphp
 
 @extends('admin/layout/layoutAdmin1')
 
 @section('content')
-<x-admin.page-header
-    title="Submit Contact Management"
-    description="Manage all submit contacts in the system">
+<x-admin.page-header title="Submit Contact Management" description="Manage all submit contacts in the system">
 
     <x-slot:action>
-        <a href="{{ route('admin.submit_contacts.export') }}" class="btn btn-create">
+        <button class="btn btn-create" data-bs-toggle="modal" data-bs-target="#createServiceModal">
+            + Add Submitted Contact
+        </button>
+
+        <a href="{{ route('admin.submit_contacts.export') }}" class="btn blue">
             Export CSV
         </a>
     </x-slot:action>
@@ -23,9 +25,9 @@
                 <div class="card-body">
                     <h6 class="text-muted">New</h6>
                     <h3>{{ $newCount }}</h3>
-                </div>
-            </div>
-    </div>
+</div>
+</div>
+</div>
 
 <div class="col-md-3">
     <div class="card border-0 shadow-sm">
@@ -69,9 +71,7 @@
                 </label>
 
                 <div class="input-group search-box">
-                    <span class="input-group-text bg-white">
-                        <i class="bi bi-search text-muted p-2"></i>
-                    </span>
+                    <i class="bi bi-search text-muted p-2"></i>
 
                     <input type="text" name="search" class="form-control"
                         placeholder="Search by name, email, phone, company..." value="{{ request('search') }}">
@@ -113,7 +113,8 @@
                         Filter
                     </button>
 
-                    <a href="{{ route('admin.submit_contacts') }}" class="btn btn-outline-secondary btn-reset text-dark d-flex align-items-center justify-content-center">
+                    <a href="{{ route('admin.submit_contacts') }}"
+                        class="btn btn-outline-secondary btn-reset text-dark d-flex align-items-center justify-content-center">
                         <i class="bi bi-arrow-clockwise"></i>
                     </a>
                 </div>
@@ -122,9 +123,9 @@
     </form>
 </div>
 
-<table class="user-table">
+<table class="index-table">
 
-    <thead>
+    <thead class="table-header">
 
         <tr>
             <th>Order</th>
@@ -146,7 +147,7 @@
         <tr>
 
             <td>{{ $submitContact->sort_order }}</td>
-            
+
             <td>{{ $submitContact->name }}</td>
 
             <td>{{ $submitContact->email }}</td>
@@ -157,13 +158,14 @@
 
             <td class="text-center align-middle">
                 @if ($submitContact->status === 'processing')
-                    <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold">Processing</span>
+                <span
+                    class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold">Processing</span>
                 @elseif ($submitContact->status === 'processed')
-                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">Processed</span>
+                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">Processed</span>
                 @elseif ($submitContact->status === 'new')
-                    <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold">New</span>
-                @else 
-                    <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Seen</span>
+                <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold">New</span>
+                @else
+                <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Seen</span>
                 @endif
             </td>
 
@@ -181,7 +183,7 @@
                 </button>
 
                 <form action="{{ route('admin.submit_contacts.destroy', $submitContact->id) }}" method="POST"
-                    class="delete-form">
+                    class="inline-block">
 
                     @csrf
                     @method('DELETE')

@@ -32,9 +32,7 @@
                 </label>
 
                 <div class="input-group search-box">
-                    <span class="input-group-text bg-white">
-                        <i class="bi bi-search text-muted p-2"></i>
-                    </span>
+                    <i class="bi bi-search text-muted p-2"></i>
 
                     <input type="text" name="search" class="form-control"
                         placeholder="Search by name, email, phone, company..." value="{{ request('search') }}">
@@ -108,8 +106,8 @@
     </form>
 </div>
 
-<table class="user-table">
-    <thead>
+<table class="index-table">
+    <thead class="table-header">
         <tr>
             <th>ID</th>
             <th>Position</th>
@@ -154,8 +152,7 @@
                     <i class="bi bi-pencil-fill"></i>
                 </button>
 
-                <form action="{{ route('admin.recruitments.destroy', $recruitment->id) }}" method="POST"
-                    class="delete-form">
+                <form action="{{ route('admin.recruitments.destroy', $recruitment->id) }}" method="POST" class="inline-block">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-delete" onclick="return confirm('Delete this recruitment?')">

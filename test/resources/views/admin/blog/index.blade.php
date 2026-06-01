@@ -6,7 +6,7 @@
     description="Manage all blogs in the system">
 
     <x-slot:action>
-        <a href="{{ route('admin.categories') }}" class="btn btn-primary d-flex align-items-center justify-content-center">
+        <a href="{{ route('admin.categories') }}" class="btn blue d-flex align-items-center justify-content-center">
             Category Management
         </a>
 
@@ -20,8 +20,8 @@
 </x-admin.page-header>
 
 
-<table class="user-table">
-    <thead>
+<table class="index-table">
+    <thead class="table-header">
         <tr>
             <th width="50">Order</th>
             <th>Title</th>
@@ -60,7 +60,7 @@
                     <i class="bi bi-pencil-fill"></i>
                 </button>
 
-                <form action="{{ route('admin.blogs.destroy', $blog->id) }}" method="POST" class="delete-form">
+                <form action="{{ route('admin.blogs.destroy', $blog->id) }}" method="POST" class="inline-block">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-delete" onclick="return confirm('Delete this blog?')">

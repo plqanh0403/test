@@ -31,10 +31,8 @@ class BlogFactory extends Factory
             'slug' => Str::slug($title . '-' . fake()->unique()->numberBetween(1, 9999)),
 
             'type' => fake()->randomElement([
-                'news',
-                'blog',
-                'event',
-                'announcement'
+                'tech-service',
+                'EGEAD_activity',
             ]),
 
             'title' => $title,
