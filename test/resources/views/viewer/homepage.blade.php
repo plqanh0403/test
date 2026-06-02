@@ -325,5 +325,152 @@
                 </div>
             </div>
         </section>
+
+        <section class="why-section">
+
+            <div class="container">
+
+                <div class="row align-items-center">
+
+                    <!-- LEFT -->
+                    <div class="col-lg-6">
+
+                        <span class="section-badge">
+                            Why Choose Us
+                        </span>
+
+                        <h2 class="why-title">
+                            We Build Scalable
+                            Digital Solutions
+                        </h2>
+
+                        <p class="why-desc">
+                            At EGEAD, we combine technology expertise with business insight
+                            to deliver solutions that drive growth and innovation.
+                        </p>
+
+                        <a href="#" class="why-btn">
+                            Learn More
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                    <!-- RIGHT -->
+                    <div class="col-lg-6">
+
+                        <div class="why-list">
+
+                            <div class="why-item">
+                                <i class="bi bi-lightning-charge"></i>
+                                <div>
+                                    <h4>Fast Delivery</h4>
+                                    <p>Quick turnaround with high quality output</p>
+                                </div>
+                            </div>
+
+                            <div class="why-item">
+                                <i class="bi bi-shield-check"></i>
+                                <div>
+                                    <h4>Secure Systems</h4>
+                                    <p>Enterprise-grade security and reliability</p>
+                                </div>
+                            </div>
+
+                            <div class="why-item">
+                                <i class="bi bi-bar-chart"></i>
+                                <div>
+                                    <h4>Business Growth</h4>
+                                    <p>Solutions designed to scale your business</p>
+                                </div>
+                            </div>
+
+                            <div class="why-item">
+                                <i class="bi bi-people"></i>
+                                <div>
+                                    <h4>Expert Team</h4>
+                                    <p>Experienced engineers and consultants</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="portfolio-section">
+
+            <div class="container">
+
+                <div class="section-heading text-center">
+
+                    <span class="section-badge">Our Work</span>
+
+                    <h2>
+                        Featured Projects
+                    </h2>
+
+                    <p>
+                        Explore some of our recent projects and success stories
+                    </p>
+
+                </div>
+
+                <div class="swiper portfolioSwiper">
+
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <a href="#" class="portfolio-card">
+                                <img src="{{ asset('images/hero1.jpg') }}">
+                                <div class="portfolio-overlay">
+                                    <span class="portfolio-tag">E-commerce</span>
+                                    <h4>E-commerce Platform</h4>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <a href="#" class="portfolio-card">
+                                <img src="{{ asset('images/hero2.jpg') }}">
+                                <div class="portfolio-overlay">
+                                    <span class="portfolio-tag">Mobile</span>
+                                    <h4>Banking App</h4>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <a href="#" class="portfolio-card">
+                                <img src="{{ asset('images/hero3.jpg') }}">
+                                <div class="portfolio-overlay">
+                                    <span class="portfolio-tag">AI</span>
+                                    <h4>AI Dashboard</h4>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <!-- arrows -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+
+                </div>
+
+                <div class="text-center mt-5">
+                    <a href="#" class="portfolio-btn">
+                        View All Projects
+                    </a>
+                </div> 
+
+            </div>
+
+        </section>
     </div>
 @endsection

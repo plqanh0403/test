@@ -333,6 +333,45 @@
         });
     </script>
 
+    <script>
+        const items = document.querySelectorAll('.why-item');
+
+        window.addEventListener('scroll', () => {
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if(rect.top < window.innerHeight - 100){
+                    item.classList.add('show');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        new Swiper('.portfolioSwiper', {
+
+            slidesPerView: 3,
+            spaceBetween: 25,
+            loop: true,
+
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+
+            navigation: {
+                nextEl: '.portfolioSwiper .swiper-button-next',
+                prevEl: '.portfolioSwiper .swiper-button-prev',
+            },
+
+            breakpoints: {
+                0: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1200: { slidesPerView: 3 }
+            }
+
+        });
+    </script>
+
 </body>
 
 </html>
