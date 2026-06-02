@@ -9,20 +9,21 @@ use App\Http\Controllers\Admin\SubmitEmailController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\RecruitmentController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Viewer\HomeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'home'])->name('home');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')
+Route::middleware([
+    'auth',
+    'role:superAdmin'
+])
     ->prefix('admin')
     ->group(function () {
-
-        Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
         // User Management
         Route::get('/users', [UserController::class, 'index'])->name('admin.users');
@@ -36,6 +37,14 @@ Route::middleware('auth')
         Route::put('/users/{user}/unlock', [UserController::class, 'unlock'])->name('admin.users.unlock');
 
         Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
+});
+
+Route::middleware([
+    'auth',
+    'role:superAdmin,admin'
+])
+    ->prefix('admin')
+    ->group(function () {
 
         // Blog Category Management
         Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories');
@@ -45,19 +54,6 @@ Route::middleware('auth')
         Route::put('/categories/{category}', [CategoryController::class, 'update']) ->name('admin.categories.update');
 
         Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
-
-        // Blog Management
-        Route::get('/blogs', [BlogController::class, 'index'])->name('admin.blogs');
-
-        Route::post('/blogs', [BlogController::class, 'store'])->name('admin.blogs.store');
-
-        Route::put('/blogs/{blog}', [BlogController::class, 'update'])->name('admin.blogs.update');
-
-        Route::put('/blogs/{blog}/show', [BlogController::class, 'show'])->name('admin.blogs.show');
-
-        Route::put('/blogs/{blog}/hide', [BlogController::class, 'hide'])->name('admin.blogs.hide');
-
-        Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
 
         // Submit Email Management
         Route::get('/submit-emails', [SubmitEmailController::class, 'index'])->name('admin.submit_emails');
@@ -105,6 +101,28 @@ Route::middleware('auth')
         Route::put('/services/{service}/hide', [ServiceController::class, 'hide'])->name('admin.services.hide');
 
         Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('admin.services.destroy');
-});
+    });
+
+Route::middleware([
+    'auth'
+])
+    ->prefix('admin')
+    ->group(function () {
+
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+
+        // Blog Management
+        Route::get('/blogs', [BlogController::class, 'index'])->name('admin.blogs');
+
+        Route::post('/blogs', [BlogController::class, 'store'])->name('admin.blogs.store');
+
+        Route::put('/blogs/{blog}', [BlogController::class, 'update'])->name('admin.blogs.update');
+
+        Route::put('/blogs/{blog}/show', [BlogController::class, 'show'])->name('admin.blogs.show');
+
+        Route::put('/blogs/{blog}/hide', [BlogController::class, 'hide'])->name('admin.blogs.hide');
+
+        Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
+    });
 
 require __DIR__.'/auth.php';
