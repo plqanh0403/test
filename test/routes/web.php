@@ -10,9 +10,14 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\RecruitmentController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Viewer\HomeController;
+use App\Http\Controllers\Viewer\ViewerServiceController;
+use App\Http\Controllers\Viewer\ViewerRecruitmentController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
-
+Route::get('/services/category/{slug}', [ViewerServiceController::class, 'index'])->name('viewer.services.index');
+Route::get('/services/{slug}', [ViewerServiceController::class, 'show'])->name('viewer.services.show');
+Route::get('/recruitments', [ViewerRecruitmentController::class, 'index'])->name('viewer.recruitments.index');
+Route::get('/recruitments/{slug}', [ViewerRecruitmentController::class, 'show'])->name('viewer.recruitments.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

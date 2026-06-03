@@ -22,10 +22,9 @@ class ServiceCategoryFactory extends Factory
         return [
             'name' => ucfirst($name),
             'slug' => Str::slug($name),
-
+            'description' => fake()->paragraph(),
             'seo_title' => fake()->sentence(),
             'seo_description' => fake()->paragraph(),
-
             'is_visible' => fake()->boolean(90),
             'sort_order' => fake()->numberBetween(1, 20),
         ];

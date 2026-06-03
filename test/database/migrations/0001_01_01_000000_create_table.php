@@ -83,6 +83,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->string('description');
             $table->text('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->boolean('is_visible')->default(true);

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\ServiceCategory;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::composer('*', function ($view) {
+            $view->with('serviceCategories', ServiceCategory::where('is_visible', 1)->get());
+        });
     }
 }

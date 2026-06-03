@@ -37,6 +37,8 @@
     {{-- App CSS & JS --}}
     <link rel="stylesheet" href="{{ asset('viewer.css') }}">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
     @vite(['resources/css/app.css','resources/js/app.js'])
 
     @stack('styles')
@@ -60,15 +62,25 @@
 
                     <ul class="navbar-nav nav-menu">
 
-                        <li class="nav-item">
+                        <li class="nav-item dropdown-custom">
                             <a href="#" class="nav-link">
-                                Services
-                                <i class="bi bi-chevron-down"></i>
+                                Services <i class="bi bi-chevron-down"></i>
                             </a>
+
+                            <div class="dropdown-menu-custom">
+                                @foreach($serviceCategories as $serviceCategory)
+                                    <a href="{{ route('viewer.services.index', $serviceCategory->slug) }}">
+                                        <i class="bi bi-grid"></i>
+                                        {{ $serviceCategory->name}}
+                                    </a>
+                                @endforeach
+                            </div>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Recruitment</a>
+                            <a href="{{ route('viewer.recruitments.index')}}" class="nav-link">
+                                Recruitment
+                            </a>
                         </li>
 
                         <li class="nav-item">
@@ -164,9 +176,9 @@
                 </div>
 
                 <div class="footer-social">
-                    <a href="#"><i class="bi bi-facebook"></i></a>
-                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                    <a href="#"><i class="bi bi-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
                 </div>
 
             </div>
@@ -223,6 +235,35 @@
                 </ul>
 
             </div>
+
+            <!-- SUBSCRIBE -->
+        <div class="footer-subscribe">
+
+            <h4>Subscribe to our newsletter</h4>
+
+            <p>
+                Get latest updates, job opportunities and tech insights from EGEAD.
+            </p>
+
+            <form action="#" method="POST" class="subscribe-form">
+                @csrf
+
+                <div class="subscribe-box">
+
+                    <input type="email"
+                        name="email"
+                        placeholder="Enter your email..."
+                        required>
+
+                    <button type="submit">
+                        <i class="bi bi-send"></i>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
 
         </div>
 
@@ -283,7 +324,7 @@
 
         const portfolioSection = document.querySelector('.portfolio-section');
 
-        const observer = new IntersectionObserver((entries) => {
+        const portfolioObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
 
                 if (entry.isIntersecting && !portfolioSwiper) {
@@ -319,21 +360,90 @@
             threshold: 0.3 // xuất hiện 30% thì chạy
         });
 
-        observer.observe(portfolioSection);
+        portfolioObserver.observe(portfolioSection);
 
         /* TESTIMONIAL SWIPER */
         new Swiper('.testimonialSwiper', {
             direction: 'vertical',
-            slidesPerView: 'auto', // 🔥 thay vì 3
+
+            slidesPerView: 'auto',   // 👈 QUAN TRỌNG
             centeredSlides: true,
+
             loop: true,
+            loopedSlides: 4,
+            loopAdditionalSlides: 2,
+
             spaceBetween: 20,
+            speed: 800,
 
             autoplay: {
                 delay: 2500,
                 disableOnInteraction: false,
             },
         });
+
+        /* PROCESS */
+        const steps = document.querySelectorAll('.process-step');
+
+        window.addEventListener('scroll', () => {
+            steps.forEach((step, index) => {
+
+                const rect = step.getBoundingClientRect();
+
+                if(rect.top < window.innerHeight - 100){
+
+                    // hiệu ứng fade-in cũ
+                    step.classList.add('show');
+
+                    // 🔥 thêm animation vòng tròn (chạy 1 lần)
+                    if(!step.classList.contains('animate')){
+                        setTimeout(() => {
+                            step.classList.add('animate');
+
+                            setTimeout(() => {
+                                step.classList.remove('animate');
+                            }, 1200);
+                        }, index * 200); // delay cho đẹp
+                    }
+
+                }
+
+            });
+        });
+
+        /* TRUST COUNTER */
+        const counters = document.querySelectorAll('.trust-item h3');
+
+        const runCounter = (el) => {
+            const target = el.innerText.replace('+','').replace('/7','');
+            let count = 0;
+
+            const update = () => {
+                count += Math.ceil(target / 50);
+                if(count < target){
+                    el.innerText = count + (el.innerText.includes('+') ? '+' : '');
+                    requestAnimationFrame(update);
+                }else{
+                    el.innerText = el.dataset.original;
+                }
+            };
+
+            update();
+        };
+
+        const trustObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    counters.forEach(el => {
+                        el.dataset.original = el.innerText;
+                        runCounter(el);
+                    });
+                    trustObserver.disconnect();
+                }
+            });
+        });
+
+        trustObserver.observe(document.querySelector('.trust-section'));
     </script>
 
     <script>

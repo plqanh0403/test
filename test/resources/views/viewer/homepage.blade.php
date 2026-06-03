@@ -192,6 +192,44 @@
 
         </section>
 
+        <section class="trust-section">
+            <div class="container">
+
+                <div class="row text-center">
+
+                    <div class="col-md-3 col-6">
+                        <div class="trust-item">
+                            <h3>100+</h3>
+                            <p>Clients Worldwide</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-6">
+                        <div class="trust-item">
+                            <h3>50+</h3>
+                            <p>Projects Delivered</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-6">
+                        <div class="trust-item">
+                            <h3>5+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-6">
+                        <div class="trust-item">
+                            <h3>24/7</h3>
+                            <p>Support</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
         <section class="services-section">
 
             <div class="section-heading">
@@ -396,6 +434,46 @@
 
         </section>
 
+        <section class="process-section">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="section-badge">Our Process</span>
+                    <h2>How We Work</h2>
+                    <p>We follow a proven process to deliver high-quality solutions</p>
+                </div>
+
+                <div class="process-wrapper">
+
+                    <div class="process-step">
+                        <div class="process-icon">1</div>
+                        <h4>Discovery</h4>
+                        <p>We understand your business needs and goals.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="process-icon">2</div>
+                        <h4>Planning</h4>
+                        <p>We create a clear roadmap and strategy.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="process-icon">3</div>
+                        <h4>Development</h4>
+                        <p>We build scalable and high-performance solutions.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="process-icon">4</div>
+                        <h4>Delivery</h4>
+                        <p>We deploy and support your product.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
         <section class="portfolio-section">
 
             <div class="section-heading text-center">
@@ -472,6 +550,7 @@
 
         </section>
 
+        {{-- Chưa xong, đang lỗi bố cục --}}
         <section class="testimonial-section">
             <div class="row align-items-center">
 
@@ -616,6 +695,120 @@
 
                         </div>
                     </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="blog-section">
+            <div class="container">
+
+                <!-- HEADING -->
+                <div class="section-heading text-center">
+                    <span class="section-badge">Insights</span>
+
+                    <h2>
+                        Latest Articles & Insights
+                    </h2>
+
+                    <p>
+                        Stay updated with technology trends, business strategies and expert knowledge from EGEAD.
+                    </p>
+                </div>
+
+                <!-- BLOG GRID -->
+                <div class="row g-4">
+
+                    <!-- ITEM -->
+                    <div class="col-lg-4 col-md-6">
+                        <a href="#" class="blog-card">
+
+                            <div class="blog-image">
+                                <img src="{{ asset('images/hero1.jpg') }}" alt="AI Trends 2025">
+                                <span class="blog-tag">Technology</span>
+                            </div>
+
+                            <div class="blog-content">
+
+                                <div class="blog-meta">
+                                    <span><i class="bi bi-calendar"></i> May 2026</span>
+                                    <span><i class="bi bi-clock"></i> 5 min read</span>
+                                </div>
+
+                                <h3>
+                                    Top AI Trends That Will Shape 2026
+                                </h3>
+
+                                <p>
+                                    Discover how artificial intelligence is transforming industries and what businesses should prepare for.
+                                </p>
+
+                                <span class="blog-read">
+                                    Read More <i class="bi bi-arrow-right"></i>
+                                </span>
+
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- COPY thêm 2-3 card nữa -->
+                    <div class="col-lg-4 col-md-6">
+                        <a href="#" class="blog-card">
+
+                            <div class="blog-image">
+                                <img src="{{ asset('images/hero2.jpg') }}">
+                                <span class="blog-tag">Business</span>
+                            </div>
+
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="bi bi-calendar"></i> May 2026</span>
+                                    <span><i class="bi bi-clock"></i> 6 min</span>
+                                </div>
+
+                                <h3>How Digital Transformation Boosts Growth</h3>
+
+                                <p>Practical strategies for companies to scale using modern technologies.</p>
+
+                                <span class="blog-read">
+                                    Read More <i class="bi bi-arrow-right"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <a href="#" class="blog-card">
+
+                            <div class="blog-image">
+                                <img src="{{ asset('images/hero3.jpg') }}">
+                                <span class="blog-tag">Recruitment</span>
+                            </div>
+
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="bi bi-calendar"></i> May 2026</span>
+                                    <span><i class="bi bi-clock"></i> 4 min</span>
+                                </div>
+
+                                <h3>Hiring Tech Talent in 2026</h3>
+
+                                <p>What companies need to know to attract and retain top developers.</p>
+
+                                <span class="blog-read">
+                                    Read More <i class="bi bi-arrow-right"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- CTA -->
+                <div class="text-center mt-5">
+                    <a href="#" class="blog-btn">
+                        View All Articles
+                    </a>
                 </div>
 
             </div>
