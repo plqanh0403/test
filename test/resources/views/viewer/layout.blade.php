@@ -23,7 +23,7 @@
     <meta property="og:type" content="website">
 
     {{-- Favicon --}}
-    <link rel="icon" href="{{ asset('imagesfavicon.png') }}">
+    <link rel="icon" href="{{ asset('images/favicon.png') }}">
 
     {{-- Bootstrap --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -110,192 +110,138 @@
 
     {{-- QUOTE --}}
     <section class="cta-section">
-    <div class="container">
-        <div class="cta-box">
+        <div class="container">
+            <div class="cta-box">
 
-            <div class="cta-content">
-                <span class="cta-badge">
-                    EGEAD Technology Solutions
-                </span>
+                <div class="cta-content">
+                    <span class="cta-badge">
+                        EGEAD Technology Solutions
+                    </span>
 
-                <h2>
-                    Ready to Transform Your Business?
-                </h2>
+                    <h2>
+                        Ready to Transform Your Business?
+                    </h2>
 
-                <p>
-                    We help businesses build scalable software solutions,
-                    optimize operations, and accelerate digital transformation.
-                </p>
+                    <p>
+                        We help businesses build scalable software solutions,
+                        optimize operations, and accelerate digital transformation.
+                    </p>
+                </div>
+
+                <div class="cta-action">
+                    <a href="#" class="cta-btn"> {{--{{ route('contact') }}--}}
+                        Get Free Consultation
+                    </a>
+                </div>
+
             </div>
-
-            <div class="cta-action">
-                <a href="#" class="cta-btn"> {{--{{ route('contact') }}--}}
-                    Get Free Consultation
-                </a>
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
+
     {{-- FOOTER --}}
-   <footer class="site-footer">
+    <footer class="site-footer">
 
-    <div class="container">
-        <div class="footer-container">
+        <div class="container">
+            <div class="footer-container">
 
-        <!-- Company -->
-        <div class="footer-col footer-brand">
+            <!-- Company -->
+            <div class="footer-col footer-brand">
 
-            <a href="#" class="footer-logo">
-                <img src="{{ asset('images/logo.png') }}" alt="EGEAD Logo">
-            </a>
-
-            <p class="footer-description mb-4">
-                EGEAD provides innovative technology solutions,
-                recruitment services and digital transformation
-                consulting for businesses.
-            </p>
-
-            <div class="footer-action">
-                <a href="#" class="consultation-btn"> {{--{{ route('contact') }}--}}
-                    Get Free Consultation
+                <a href="#" class="footer-logo">
+                    <img src="{{ asset('images/logo.png') }}" alt="EGEAD Logo">
                 </a>
+
+                <p class="footer-description mb-4">
+                    EGEAD provides innovative technology solutions,
+                    recruitment services and digital transformation
+                    consulting for businesses.
+                </p>
+
+                <div class="footer-action">
+                    <a href="#" class="consultation-btn"> {{--{{ route('contact') }}--}}
+                        Get Free Consultation
+                    </a>
+                </div>
+
+                <div class="footer-social">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                    <a href="#"><i class="bi bi-youtube"></i></a>
+                </div>
+
             </div>
 
-            <div class="footer-social">
-                <a href="#"><i class="bi bi-facebook"></i></a>
-                <a href="#"><i class="bi bi-linkedin"></i></a>
-                <a href="#"><i class="bi bi-youtube"></i></a>
+            <!-- Quick Links -->
+            <div class="footer-col">
+
+                <h4>Quick Links</h4>
+
+                <ul>
+                    <li><a href="{{ route('home') }}">Home</a></li> {{--{{ route('home') }}--}}
+                    <li><a href="#">About Us</a></li> {{--{{ route('about') }}--}}
+                    <li><a href="#">Services</a></li> {{--{{ route('services') }}--}}
+                    <li><a href="#">Recruitment</a></li> {{--{{ route('recruitments') }}--}}
+                    <li><a href="#">Contact</a></li> {{--{{ route('contact') }}--}}
+                </ul>
+
+            </div>
+
+            <!-- Services -->
+            <div class="footer-col">
+
+                <h4>Services</h4>
+
+                <ul>
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">Mobile Development</a></li>
+                    <li><a href="#">Cloud Solutions</a></li>
+                    <li><a href="#">IT Consulting</a></li>
+                </ul>
+
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-col">
+
+                <h4>Contact</h4>
+
+                <ul class="footer-contact">
+                    <li>
+                        <i class="bi bi-envelope"></i>
+                        info@egead.com
+                    </li>
+
+                    <li>
+                        <i class="bi bi-telephone"></i>
+                        +84 xxx xxx xxx
+                    </li>
+
+                    <li>
+                        <i class="bi bi-geo-alt"></i>
+                        Buon Ma Thuot City, Vietnam
+                    </li>
+                </ul>
+
             </div>
 
         </div>
 
-        <!-- Quick Links -->
-        <div class="footer-col">
-
-            <h4>Quick Links</h4>
-
-            <ul>
-                <li><a href="{{ route('home') }}">Home</a></li> {{--{{ route('home') }}--}}
-                <li><a href="#">About Us</a></li> {{--{{ route('about') }}--}}
-                <li><a href="#">Services</a></li> {{--{{ route('services') }}--}}
-                <li><a href="#">Recruitment</a></li> {{--{{ route('recruitments') }}--}}
-                <li><a href="#">Contact</a></li> {{--{{ route('contact') }}--}}
-            </ul>
-
+        <div class="footer-bottom">
+            <p>
+                © {{ date('Y') }} EGEAD. All Rights Reserved.
+            </p>
+        </div>
         </div>
 
-        <!-- Services -->
-        <div class="footer-col">
-
-            <h4>Services</h4>
-
-            <ul>
-                <li><a href="#">Web Development</a></li>
-                <li><a href="#">Mobile Development</a></li>
-                <li><a href="#">Cloud Solutions</a></li>
-                <li><a href="#">IT Consulting</a></li>
-            </ul>
-
-        </div>
-
-        <!-- Contact -->
-        <div class="footer-col">
-
-            <h4>Contact</h4>
-
-            <ul class="footer-contact">
-                <li>
-                    <i class="bi bi-envelope"></i>
-                    info@egead.com
-                </li>
-
-                <li>
-                    <i class="bi bi-telephone"></i>
-                    +84 xxx xxx xxx
-                </li>
-
-                <li>
-                    <i class="bi bi-geo-alt"></i>
-                    Buon Ma Thuot City, Vietnam
-                </li>
-            </ul>
-
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-        <p>
-            © {{ date('Y') }} EGEAD. All Rights Reserved.
-        </p>
-    </div>
-    </div>
-
-
-</footer>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     @stack('scripts')
 
-    {{-- <script>
-        document.addEventListener('DOMContentLoaded', function () {
-
-            const cards = document.querySelectorAll('.service-card');
-
-            const nextBtn = document.querySelector('.service-nav.next');
-            const prevBtn = document.querySelector('.service-nav.prev');
-
-            let current = 0;
-
-            function updateActive(){
-
-                cards.forEach(card => {
-                    card.classList.remove('active');
-                });
-
-                cards[current].classList.add('active');
-            }
-
-            nextBtn.addEventListener('click', () => {
-
-                current++;
-
-                if(current >= cards.length){
-                    current = 0;
-                }
-
-                updateActive();
-            });
-
-            prevBtn.addEventListener('click', () => {
-
-                current--;
-
-                if(current < 0){
-                    current = cards.length - 1;
-                }
-
-                updateActive();
-            });
-
-            setInterval(() => {
-
-                current++;
-
-                if(current >= cards.length){
-                    current = 0;
-                }
-
-                updateActive();
-
-            }, 5000);
-
-        });
-        </script> --}}
     <script>
+        /* SERVICE SWIPER */
         new Swiper(".serviceSwiper", {
 
             loop: true,
@@ -312,8 +258,8 @@
             },
 
             navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+                nextEl: ".service-next",
+                prevEl: ".service-prev",
             },
 
             breakpoints: {
@@ -331,6 +277,63 @@
                 }
             }
         });
+
+        /* PORTFOLIO SWIPER */
+        let portfolioSwiper = null;
+
+        const portfolioSection = document.querySelector('.portfolio-section');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting && !portfolioSwiper) {
+
+                    portfolioSwiper = new Swiper('.portfolioSwiper', {
+
+                        slidesPerView: 3,
+                        spaceBetween: 25,
+                        loop: true,
+
+                        autoplay: {
+                            delay: 4000,
+                            disableOnInteraction: false,
+                        },
+
+                        navigation: {
+                            nextEl: '.portfolio-next',
+                            prevEl: '.portfolio-prev',
+                        },
+
+                        breakpoints: {
+                            0: { slidesPerView: 1 },
+                            768: { slidesPerView: 2 },
+                            1200: { slidesPerView: 3 }
+                        }
+
+                    });
+
+                }
+
+            });
+        }, {
+            threshold: 0.3 // xuất hiện 30% thì chạy
+        });
+
+        observer.observe(portfolioSection);
+
+        /* TESTIMONIAL SWIPER */
+        new Swiper('.testimonialSwiper', {
+            direction: 'vertical',
+            slidesPerView: 'auto', // 🔥 thay vì 3
+            centeredSlides: true,
+            loop: true,
+            spaceBetween: 20,
+
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+        });
     </script>
 
     <script>
@@ -345,33 +348,6 @@
             });
         });
     </script>
-
-    <script>
-        new Swiper('.portfolioSwiper', {
-
-            slidesPerView: 3,
-            spaceBetween: 25,
-            loop: true,
-
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-
-            navigation: {
-                nextEl: '.portfolioSwiper .swiper-button-next',
-                prevEl: '.portfolioSwiper .swiper-button-prev',
-            },
-
-            breakpoints: {
-                0: { slidesPerView: 1 },
-                768: { slidesPerView: 2 },
-                1200: { slidesPerView: 3 }
-            }
-
-        });
-    </script>
-
 </body>
 
 </html>

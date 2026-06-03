@@ -31,7 +31,7 @@
 }
 
 .navbar-brand img{
-    height: 90px;
+    height: 60px;
 }
 
 .navbar-nav{
@@ -194,7 +194,7 @@
 }
 
 .footer-logo img{
-    height:60px;
+    height:100px;
     margin-bottom:20px;
 }
 
@@ -241,7 +241,7 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    background:#1e293b;
+    background:var(--tech-pink);
     color:white;
 }
 
@@ -273,6 +273,24 @@
 
     .hero-content p{
         font-size:16px;
+    }
+
+    .testimonialSwiper {
+        height: 360px;
+        padding-left: 20px; /* giảm padding */
+    }
+
+    .testimonial-card {
+        transform: scale(.6) translateX(0); /* reset */
+    }
+
+    .testimonialSwiper .swiper-slide-active .testimonial-card {
+        transform: scale(0.9) translateX(0); /* 🔥 giảm scale */
+    }
+
+    .testimonialSwiper .swiper-slide-prev .testimonial-card,
+    .testimonialSwiper .swiper-slide-next .testimonial-card {
+        transform: scale(0.7) translateX(0);
     }
 }
 
@@ -489,7 +507,8 @@ body::after{
 
 /* SERVICES */
 .services-section{
-    padding:120px 0;
+    padding:100px 0;
+    position: relative;
 }
 
 .section-heading{
@@ -537,7 +556,6 @@ body::after{
     opacity:.55;
     transform:scale(.92);
     width:100%;
-
     display:flex;
     flex-direction:column;
     justify-content:space-between;
@@ -554,18 +572,13 @@ body::after{
 .service-icon{
     width:90px;
     height:90px;
-
     margin:auto;
     margin-bottom:25px;
-
     border-radius:24px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     background:var(--tech-blue);
-
     color:white;
     transition:.4s;
     font-size:38px;
@@ -599,21 +612,11 @@ body::after{
 .service-card h3{
     font-size:22px;
     font-weight:700;
-
     margin-bottom:15px;
 }
 
-.service-nav:hover{
-    transform:scale(1.08);
-}
-
 .serviceSwiper{
-    padding:40px 0;
-}
-
-.swiper-slide{
-    height:auto;
-    display:flex;
+    padding:40px 40px;
 }
 
 .swiper-slide-active .service-card{
@@ -634,7 +637,27 @@ body::after{
     color:white;
 }
 
-.swiper-button-next, .swiper-button-prev{
+.service-prev, .service-next{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:white;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.service-prev{
+    left: 0;
+}
+
+.service-next{
+    right: 0;
+}
+
+/* .swiper-button-next, .swiper-button-prev{
     width:60px;
     height:60px;
 
@@ -644,12 +667,27 @@ body::after{
 
     box-shadow:
         0 10px 25px rgba(0,0,0,.08);
-}
+} */
 
+.service-prev:after, .service-next::after{
+    font-size:20px;
+    font-weight:700;
+    color:#2563eb;
+}
+/*
 .swiper-button-next::after, .swiper-button-prev::after{
     font-size:20px;
     font-weight:700;
     color:#2563eb;
+} */
+
+.service-prev:hover, .service-next:hover{
+    background: var(--tech-blue);
+    transform: translateY(-50%) scale(1);
+}
+
+.service-prev:hover::after, .service-next:hover::after{
+    color:white;
 }
 
 /* WHY CHOOSE US*/
@@ -696,7 +734,6 @@ body::after{
     border-radius:20px;
     background:white;
     box-shadow:0 10px 30px rgba(0,0,0,.05);
-    transition:.3s;
     opacity:0;
     transform:translateY(30px);
     transition:.6s ease;
@@ -835,19 +872,248 @@ body::after{
 }
 
 .portfolioSwiper{
-    padding:40px 0;
+    padding:40px 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
-.swiper-slide{
+.portfolioSwiper .swiper-wrapper{
+    position: relative;
+}
+
+/* .serviceSwiper .swiper-slide, .portfolioSwiper .swiper-slide{
     height:auto;
     display:flex;
+} */
+
+.portfolioSwiper .swiper-slide{
+    opacity:.6;
+    transform:scale(.9);
+    transition:.4s ease;
 }
 
-
-.swiper-wrapper{
-    align-items:stretch;
+.portfolioSwiper .swiper-slide-active{
+    opacity:1;
+    transform:scale(1);
 }
 
+.portfolio-prev, .portfolio-next{
+    position: absolute;
+    top:55%;
+    transform: translateY(-50%);
+    z-index: 20;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: all .3s ease;
+    z-index:20;
+}
 
+.portfolio-prev{
+    left: 0;
+}
+
+.portfolio-next{
+    right: 0;
+}
+
+.portfolio-prev.swiper-button-disabled, .portfolio-next.swiper-button-disabled{
+    opacity: 1 !important;
+    pointer-events: auto;
+}
+
+.portfolio-prev:hover, .portfolio-next:hover{
+    background: rgba(255,255,255,0.25);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.portfolio-prev:hover::after, .portfolio-next:hover::after{
+    color:white;
+}
+
+.portfolio-prev:after, .portfolio-next::after{
+    font-size:20px;
+    font-weight:700;
+    color:var(--tech-blue);
+}
+
+/* TESTIMONIALS */
+/* WRAPPER */
+.testimonial-section {
+    overflow: visible;
+}
+
+.testimonialSwiper {
+    height: auto;
+    overflow: visible;
+}
+
+/* BASE SLIDE */
+.testimonialSwiper .swiper-slide {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    height: auto;
+    opacity: 0;
+    pointer-events: none;
+    width: 100% !important;
+}
+
+.testimonialSwiper .swiper-wrapper {
+    align-items: center;
+}
+
+.testimonial-section .row {
+    display: flex;
+    justify-content: space-between; /* 🔥 đẩy 2 bên */
+    align-items: center;
+}
+
+/* HIỆN 3 SLIDE */
+.testimonialSwiper .swiper-slide.swiper-slide-active,
+.testimonialSwiper .swiper-slide.swiper-slide-prev,
+.testimonialSwiper .swiper-slide.swiper-slide-next {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* CARD BASE */
+.testimonial-card {
+    background: rgba(255,255,255,0.9);
+    border-radius: 20px;
+    padding: 25px;
+    height: auto;
+    transition: all .4s ease;
+
+    opacity: .4;
+    transform: translateX(-30px);
+    border: 1px solid rgba(0,0,0,.05);
+    backdrop-filter: blur(10px);
+    max-width: none;
+    width: 100%;
+}
+
+/* TOP */
+.testimonial-top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+/* AVATAR */
+.avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+}
+
+/* INFO */
+.testimonial-card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.testimonial-card span {
+    font-size: 13px;
+    color: #64748b;
+}
+
+/* STARS */
+.stars {
+    margin-top: 5px;
+    color: #fbbf24; /* vàng */
+    font-size: 12px;
+}
+
+/* TEXT */
+.testimonial-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #475569;
+    margin-top: 10px;
+}
+
+.testimonial-text i {
+    color: #2563eb;
+    margin-right: 6px;
+}
+
+/* CENTER */
+.testimonialSwiper .swiper-slide-active .testimonial-card {
+    opacity: 1;
+    transform: scale(1) translateX(40px);
+    z-index: 10;
+    background: white;
+    border: 1px solid rgba(37,99,235,.15);
+    box-shadow:0 30px 60px rgba(37,99,235,.15);
+}
+
+/* TRÊN + DƯỚI */
+.testimonialSwiper .swiper-slide-prev .testimonial-card,
+.testimonialSwiper .swiper-slide-next .testimonial-card {
+    opacity: .6;
+    transform: scale(.9) translateX(-40px);
+}
+
+/* TESTIMONIAL LEFT */
+.testimonial-section {
+    padding: 120px 0;
+}
+
+/* block trái */
+.testimonial-content {
+    max-width: 520px;
+}
+
+/* title */
+.testimonial-content h2 {
+    font-size: 46px;
+    font-weight: 800;
+    margin: 20px 0;
+    line-height: 1.2;
+}
+
+/* mô tả */
+.testimonial-content p {
+    font-size: 18px;
+    color: #64748b;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+/* CTA button */
+.testimonial-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px 28px;
+
+    border-radius: 999px;
+
+    background: var(--tech-blue);
+    color: white;
+
+    text-decoration: none;
+    font-weight: 600;
+
+    transition: .3s;
+}
+
+.testimonial-btn:hover {
+    transform: translateY(-3px);
+    color: white;
+}
 /* END HOMEPAGE =============================================================================================================================================*/
 

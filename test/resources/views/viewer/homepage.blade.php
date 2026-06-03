@@ -194,205 +194,198 @@
 
         <section class="services-section">
 
-            <div class="container">
+            <div class="section-heading">
 
-                <div class="section-heading">
+                <span class="section-badge">Our Services</span>
 
-                    <span class="section-badge">Our Services</span>
+                <h2>
+                    Technology Solutions
+                    Tailored For Your Business
+                </h2>
 
-                    <h2>
-                        Technology Solutions
-                        Tailored For Your Business
-                    </h2>
+                <p>
+                    We provide end-to-end technology services
+                    helping businesses innovate, scale and succeed.
+                </p>
 
-                    <p>
-                        We provide end-to-end technology services
-                        helping businesses innovate, scale and succeed.
-                    </p>
+            </div>
 
-                </div>
+            <div class="swiper serviceSwiper">
 
-                <div class="swiper serviceSwiper">
+                <div class="swiper-wrapper">
 
-                    <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="service-card">
 
-                        <div class="swiper-slide">
-                            <div class="service-card">
-
-                                <div class="service-icon">
-                                    <i class="bi bi-code-slash"></i>
-                                </div>
-
-                                <h3>Web Development</h3>
-
-                                <p>
-                                    Custom websites and enterprise systems
-                                    built with modern technologies.
-                                </p>
-
-                                <a href="#">
-                                    Learn More
-                                </a>
-
+                            <div class="service-icon">
+                                <i class="bi bi-code-slash"></i>
                             </div>
-                        </div>
 
-                        <div class="swiper-slide">
-                            <div class="service-card">
+                            <h3>Web Development</h3>
 
-                                <div class="service-icon">
-                                    <i class="bi bi-phone"></i>
-                                </div>
+                            <p>
+                                Custom websites and enterprise systems
+                                built with modern technologies.
+                            </p>
 
-                                <h3>Mobile Apps</h3>
+                            <a href="#">
+                                Learn More
+                            </a>
 
-                                <p>
-                                    Native and cross-platform mobile
-                                    applications for businesses.
-                                </p>
-
-                                <a href="#">
-                                    Learn More
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="service-card">
-
-                                <div class="service-icon">
-                                    <i class="bi bi-cloud"></i>
-                                </div>
-
-                                <h3>Cloud Solutions</h3>
-
-                                <p>
-                                    Secure cloud infrastructure
-                                    and scalable deployment solutions.
-                                </p>
-
-                                <a href="#">
-                                    Learn More
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="service-card">
-
-                                <div class="service-icon">
-                                    <i class="bi bi-people"></i>
-                                </div>
-
-                                <h3>IT Recruitment</h3>
-
-                                <p>
-                                    Connecting top technology talent
-                                    with growing businesses.
-                                </p>
-
-                                <a href="#">
-                                    Learn More
-                                </a>
-
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="service-card">
-
-                                <div class="service-icon">
-                                    <i class="bi bi-cpu"></i>
-                                </div>
-
-                                <h3>AI Solutions</h3>
-
-                                <p>
-                                    AI-powered automation and intelligent
-                                    business processes.
-                                </p>
-
-                                <a href="#">
-                                    Learn More
-                                </a>
-
-                            </div>
                         </div>
                     </div>
 
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                    <div class="swiper-slide">
+                        <div class="service-card">
+
+                            <div class="service-icon">
+                                <i class="bi bi-phone"></i>
+                            </div>
+
+                            <h3>Mobile Apps</h3>
+
+                            <p>
+                                Native and cross-platform mobile
+                                applications for businesses.
+                            </p>
+
+                            <a href="#">
+                                Learn More
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="service-card">
+
+                            <div class="service-icon">
+                                <i class="bi bi-cloud"></i>
+                            </div>
+
+                            <h3>Cloud Solutions</h3>
+
+                            <p>
+                                Secure cloud infrastructure
+                                and scalable deployment solutions.
+                            </p>
+
+                            <a href="#">
+                                Learn More
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="service-card">
+
+                            <div class="service-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+
+                            <h3>IT Recruitment</h3>
+
+                            <p>
+                                Connecting top technology talent
+                                with growing businesses.
+                            </p>
+
+                            <a href="#">
+                                Learn More
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="service-card">
+
+                            <div class="service-icon">
+                                <i class="bi bi-cpu"></i>
+                            </div>
+
+                            <h3>AI Solutions</h3>
+
+                            <p>
+                                AI-powered automation and intelligent
+                                business processes.
+                            </p>
+
+                            <a href="#">
+                                Learn More
+                            </a>
+
+                        </div>
+                    </div>
                 </div>
+
+                <div class="swiper-button-prev service-prev"></div>
+                <div class="swiper-button-next service-next"></div>
             </div>
         </section>
 
         <section class="why-section">
 
-            <div class="container">
+            <div class="row align-items-center">
 
-                <div class="row align-items-center">
+                <!-- LEFT -->
+                <div class="col-lg-6 mb-4">
 
-                    <!-- LEFT -->
-                    <div class="col-lg-6">
+                    <span class="section-badge">
+                        Why Choose Us
+                    </span>
 
-                        <span class="section-badge">
-                            Why Choose Us
-                        </span>
+                    <h2 class="why-title">
+                        We Build Scalable
+                        Digital Solutions
+                    </h2>
 
-                        <h2 class="why-title">
-                            We Build Scalable
-                            Digital Solutions
-                        </h2>
+                    <p class="why-desc">
+                        At EGEAD, we combine technology expertise with business insight
+                        to deliver solutions that drive growth and innovation.
+                    </p>
 
-                        <p class="why-desc">
-                            At EGEAD, we combine technology expertise with business insight
-                            to deliver solutions that drive growth and innovation.
-                        </p>
+                    <a href="#" class="why-btn">
+                        Learn More
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
 
-                        <a href="#" class="why-btn">
-                            Learn More
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
+                </div>
 
-                    </div>
+                <!-- RIGHT -->
+                <div class="col-lg-6">
 
-                    <!-- RIGHT -->
-                    <div class="col-lg-6">
+                    <div class="why-list">
 
-                        <div class="why-list">
-
-                            <div class="why-item">
-                                <i class="bi bi-lightning-charge"></i>
-                                <div>
-                                    <h4>Fast Delivery</h4>
-                                    <p>Quick turnaround with high quality output</p>
-                                </div>
+                        <div class="why-item">
+                            <i class="bi bi-lightning-charge"></i>
+                            <div>
+                                <h4>Fast Delivery</h4>
+                                <p>Quick turnaround with high quality output</p>
                             </div>
+                        </div>
 
-                            <div class="why-item">
-                                <i class="bi bi-shield-check"></i>
-                                <div>
-                                    <h4>Secure Systems</h4>
-                                    <p>Enterprise-grade security and reliability</p>
-                                </div>
+                        <div class="why-item">
+                            <i class="bi bi-shield-check"></i>
+                            <div>
+                                <h4>Secure Systems</h4>
+                                <p>Enterprise-grade security and reliability</p>
                             </div>
+                        </div>
 
-                            <div class="why-item">
-                                <i class="bi bi-bar-chart"></i>
-                                <div>
-                                    <h4>Business Growth</h4>
-                                    <p>Solutions designed to scale your business</p>
-                                </div>
+                        <div class="why-item">
+                            <i class="bi bi-bar-chart"></i>
+                            <div>
+                                <h4>Business Growth</h4>
+                                <p>Solutions designed to scale your business</p>
                             </div>
+                        </div>
 
-                            <div class="why-item">
-                                <i class="bi bi-people"></i>
-                                <div>
-                                    <h4>Expert Team</h4>
-                                    <p>Experienced engineers and consultants</p>
-                                </div>
+                        <div class="why-item">
+                            <i class="bi bi-people"></i>
+                            <div>
+                                <h4>Expert Team</h4>
+                                <p>Experienced engineers and consultants</p>
                             </div>
-
                         </div>
 
                     </div>
@@ -405,72 +398,227 @@
 
         <section class="portfolio-section">
 
-            <div class="container">
+            <div class="section-heading text-center">
 
-                <div class="section-heading text-center">
+                <span class="section-badge">Our Work</span>
 
-                    <span class="section-badge">Our Work</span>
+                <h2>
+                    Featured Projects
+                </h2>
 
-                    <h2>
-                        Featured Projects
-                    </h2>
-
-                    <p>
-                        Explore some of our recent projects and success stories
-                    </p>
-
-                </div>
-
-                <div class="swiper portfolioSwiper">
-
-                    <div class="swiper-wrapper">
-
-                        <div class="swiper-slide">
-                            <a href="#" class="portfolio-card">
-                                <img src="{{ asset('images/hero1.jpg') }}">
-                                <div class="portfolio-overlay">
-                                    <span class="portfolio-tag">E-commerce</span>
-                                    <h4>E-commerce Platform</h4>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <a href="#" class="portfolio-card">
-                                <img src="{{ asset('images/hero2.jpg') }}">
-                                <div class="portfolio-overlay">
-                                    <span class="portfolio-tag">Mobile</span>
-                                    <h4>Banking App</h4>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <a href="#" class="portfolio-card">
-                                <img src="{{ asset('images/hero3.jpg') }}">
-                                <div class="portfolio-overlay">
-                                    <span class="portfolio-tag">AI</span>
-                                    <h4>AI Dashboard</h4>
-                                </div>
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <!-- arrows -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-
-                </div>
-
-                <div class="text-center mt-5">
-                    <a href="#" class="portfolio-btn">
-                        View All Projects
-                    </a>
-                </div> 
+                <p>
+                    Explore some of our recent projects and success stories
+                </p>
 
             </div>
 
+            <div class="swiper portfolioSwiper">
+
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <a href="#" class="portfolio-card">
+                            <img src="{{ asset('images/hero1.jpg') }}">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-tag">E-commerce</span>
+                                <h4>E-commerce Platform</h4>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a href="#" class="portfolio-card">
+                            <img src="{{ asset('images/hero2.jpg') }}">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-tag">Mobile</span>
+                                <h4>Banking App</h4>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a href="#" class="portfolio-card">
+                            <img src="{{ asset('images/hero3.jpg') }}">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-tag">AI</span>
+                                <h4>AI Dashboard</h4>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a href="#" class="portfolio-card">
+                            <img src="{{ asset('images/hero3.jpg') }}">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-tag">Four</span>
+                                <h4>Cái số 4</h4>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- arrows -->
+                <div class="swiper-button-prev portfolio-prev"></div>
+                <div class="swiper-button-next portfolio-next"></div>
+
+            </div>
+
+            <div class="text-center mt-2">
+                <a href="#" class="portfolio-btn">
+                    View More
+                </a>
+            </div>
+
+        </section>
+
+        <section class="testimonial-section">
+            <div class="row align-items-center">
+
+                <!-- LEFT -->
+                <div class="col-lg-6 testimonial-content">
+
+                    <span class="section-badge">Testimonials</span>
+
+                    <h2>
+                        Trusted by <br>
+                        Our Clients Worldwide
+                    </h2>
+
+                    <p>
+                        We deliver scalable solutions and real business value
+                        that help companies grow faster and smarter.
+                    </p>
+
+                    <a href="#" class="testimonial-btn">
+                        View More Reviews
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+
+                <!-- RIGHT -->
+                <div class="col-lg-6">
+                    <div class="swiper testimonialSwiper">
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-card">
+
+                                    <div class="testimonial-top">
+                                        <img src="{{ asset('images/billgates.jpg') }}" class="avatar">
+
+                                        <div class="info">
+                                            <h4>Bill Gates</h4>
+                                            <span>CEO, ABC Company</span>
+
+                                            <div class="stars">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="testimonial-text">
+                                        <i class="bi bi-quote"></i>
+                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                    </p>
+
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-card">
+
+                                    <div class="testimonial-top">
+                                        <img src="{{ asset('images/mark.jpg') }}" class="avatar">
+
+                                        <div class="info">
+                                            <h4>Mark Zuckerberg</h4>
+                                            <span>CEO, Meta</span>
+
+                                            <div class="stars">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="testimonial-text">
+                                        <i class="bi bi-quote"></i>
+                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                    </p>
+
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-card">
+
+                                    <div class="testimonial-top">
+                                        <img src="{{ asset('images/trump.jpg') }}" class="avatar">
+
+                                        <div class="info">
+                                            <h4>Donald Trump</h4>
+                                            <span>CEO, ABC Company</span>
+
+                                            <div class="stars">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="testimonial-text">
+                                        <i class="bi bi-quote"></i>
+                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                    </p>
+
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-card">
+
+                                    <div class="testimonial-top">
+                                        <img src="https://i.pravatar.cc/100?img=1" class="avatar">
+
+                                        <div class="info">
+                                            <h4>Nguyễn Văn A</h4>
+                                            <span>CEO, ABC Company</span>
+
+                                            <div class="stars">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="testimonial-text">
+                                        <i class="bi bi-quote"></i>
+                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                    </p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </section>
     </div>
 @endsection
