@@ -24,7 +24,7 @@ class BlogFactory extends Factory
 
         return [
             'user_id' => User::query()->inRandomOrder()->value('id'),
-                
+
 
             'category_id' => Category::query()->inRandomOrder()->value('id'),
 
@@ -32,7 +32,7 @@ class BlogFactory extends Factory
 
             'type' => fake()->randomElement([
                 'tech-service',
-                'EGEAD_activity',
+                'EGEAD-activity',
             ]),
 
             'title' => $title,

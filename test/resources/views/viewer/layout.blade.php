@@ -90,7 +90,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('viewer.blogs.index')}}" class="nav-link">
                                 Blogs
                                 <i class="bi bi-chevron-down"></i>
                             </a>
@@ -275,7 +275,7 @@
 
         <div class="footer-bottom">
             <p>
-                © {{ date('Y') }} EGEAD. All Rights Reserved.
+                © {{ date('Y') }} E-GEAD.
             </p>
         </div>
         </div>

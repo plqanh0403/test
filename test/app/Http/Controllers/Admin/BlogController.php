@@ -17,7 +17,7 @@ class BlogController extends Controller
     public function index(Request $request) : View
     {
         $servicesCount = Blog::where('type', 'tech-service')->count();
-        $activitiesCount = Blog::where('type', 'EGEAD_activity')->count();
+        $activitiesCount = Blog::where('type', 'EGEAD-activity')->count();
 
         $query = Blog::query();
 

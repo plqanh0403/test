@@ -1,0 +1,86 @@
+<?php
+
+namespace App\Http\Controllers\Viewer;
+
+use App\Http\Controllers\Controller;
+use App\Models\Blog;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+
+class ViewerBlogController extends Controller
+{
+    public function index(Request $request)
+    {
+        $servicesCount = Cache::remember(
+            'services_count',
+            now()->addHours(1),
+            fn() => Blog::where('type', 'tech-service')
+                        ->where('status', 'published')
+                        ->where('is_visible', true)
+                        ->count()
+        );
+
+        $activitiesCount = Cache::remember(
+            'activities_count',
+            now()->addHours(1),
+            fn() => Blog::where('type', 'EGEAD-activity')
+                        ->where('status', 'published')
+                        ->where('is_visible', true)
+                        ->count()
+        );
+
+        $type = $request->type ?? 'tech-service';
+
+        $blogs = Cache::remember(
+            "blogs_list_{$type}",
+            now()->addHours(12),
+            function () use ($type) {
+
+                return Blog::with('user', 'category')
+                    ->where('status', 'published')
+                    ->where('is_visible', true)
+                    ->where('type', $type)
+                    ->orderBy('sort_order')
+                    ->latest('published_at')
+                    ->get();
+
+            }
+        );
+
+        return view('viewer.blog.index', compact('blogs', 'servicesCount', 'activitiesCount', 'type'));
+    }
+
+    public function show($slug)
+    {
+        $blog = Cache::remember(
+            "blog_{$slug}",
+            now()->addHours(1),
+            function () use ($slug) {
+
+                return Blog::with('user', 'category')
+                    ->where('slug', $slug)
+                    ->where('status', 'published')
+                    ->where('is_visible', '1')
+                    ->firstOrFail();
+            }
+        );
+
+        $relatedBlogs = Cache::remember(
+            "related_blogs_{$blog->id}",
+            now()->addHours(1),
+            function () use ($blog) {
+
+                return Blog::with('user', 'category')
+                    ->where('id', '!=', $blog->id)
+                    ->where('type', $blog->type)
+                    ->where('status', 'published')
+                    ->where('is_visible', '1')
+                    ->orderBy('sort_order')
+                    ->take(3)
+                    ->get();
+            }
+        );
+
+        return view('viewer.blog.show', compact('blog', 'relatedBlogs'));
+    }
+}

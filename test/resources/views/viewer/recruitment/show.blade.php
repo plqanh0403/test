@@ -46,7 +46,7 @@
             <div class="row g-4">
                 @foreach($relatedJobs as $job)
                     <div class="col-md-4">
-                        <a href="{{ route('viewer.recruitments.show', $job->id) }}"
+                        <a href="{{ route('viewer.recruitments.show', $job->slug) }}"
                            class="recruitment-card small">
 
                             <h4>{{ $job->position }}</h4>

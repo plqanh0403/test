@@ -6,6 +6,7 @@ use App\Models\AboutUs;
 use App\Models\ServiceCategory;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        URL::forceScheme('https');
+
         View::composer('*', function ($view) {
             $serviceCategories = ServiceCategory::where('is_visible', 1)->get();
             $about_us = AboutUs::first();

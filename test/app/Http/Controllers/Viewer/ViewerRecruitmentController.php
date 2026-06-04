@@ -20,14 +20,14 @@ class ViewerRecruitmentController extends Controller
     }
 
     // DETAIL PAGE
-    public function show($id)
+    public function show($slug)
     {
-        $recruitment = Recruitment::where('id', $id)
+        $recruitment = Recruitment::where('slug', $slug)
             ->where('is_visible', true)
             ->firstOrFail();
 
         // gợi ý job khác
-        $relatedJobs = Recruitment::where('id', '!=', $id)
+        $relatedJobs = Recruitment::where('slug', '!=', $slug)
             ->where('status', 'open')
             ->take(3)
             ->get();

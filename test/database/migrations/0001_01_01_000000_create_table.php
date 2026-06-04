@@ -48,7 +48,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
             $table->string('slug')->unique();
-            $table->string('type');
+            $table->enum('type', ['EGEAD-activity', 'tech-service']);
             $table->string('title');
             $table->text('seo_title')->nullable();
             $table->text('seo_description')->nullable();
@@ -73,6 +73,7 @@ return new class extends Migration
             $table->enum('work_type', ['full-time', 'part-time', 'remote', 'hybrid']);
             $table->timestamp('application_deadline')->nullable();
             $table->enum('status', ['open', 'paused', 'closed'])->default('open');
+            $table->string('slug')->unique();
             $table->text('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->boolean('is_visible')->default(true);

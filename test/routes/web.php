@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\RecruitmentController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Viewer\HomeController;
 use App\Http\Controllers\viewer\ViewerAboutUsController;
+use App\Http\Controllers\Viewer\ViewerBlogController;
 use App\Http\Controllers\Viewer\ViewerContactController;
 use App\Http\Controllers\Viewer\ViewerServiceController;
 use App\Http\Controllers\Viewer\ViewerRecruitmentController;
@@ -23,6 +24,8 @@ Route::get('/recruitments/{slug}', [ViewerRecruitmentController::class, 'show'])
 Route::get('/contact', [ViewerContactController::class, 'index'])->name('viewer.contact');
 Route::post('/contact', [ViewerContactController::class, 'store'])->name('viewer.contact.store');
 Route::get('/about_us', [ViewerAboutUsController::class, 'index'])->name('viewer.about_us');
+Route::get('/blogs', [ViewerBlogController::class, 'index'])->name('viewer.blogs.index');
+Route::get('/blogs/{slug}', [ViewerBlogController::class, 'show'])->name('viewer.blogs.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

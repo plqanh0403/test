@@ -19,6 +19,7 @@ class Recruitment extends Model
         'application_deadline',
         'status',
         'is_visible',
+        'slug',
         'seo_title',
         'seo_description',
         'is_visible'

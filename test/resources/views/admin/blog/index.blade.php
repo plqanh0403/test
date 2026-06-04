@@ -27,9 +27,9 @@
         <span>{{ $servicesCount }}</span>
     </a>
 
-    <a href="{{ route('admin.blogs', ['type' => 'EGEAD_activity']) }}" class="blog-tab {{ $type == 'EGEAD_activity' ? 'active' : '' }}">
+    <a href="{{ route('admin.blogs', ['type' => 'EGEAD-activity']) }}" class="blog-tab {{ $type == 'EGEAD-activity' ? 'active' : '' }}">
         <i class="bi bi-calendar-event-fill"></i>
-        EGEAD Activities
+        E-GEAD Activities
         <span>{{ $activitiesCount }}</span>
     </a>
 

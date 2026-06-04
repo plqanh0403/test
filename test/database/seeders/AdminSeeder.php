@@ -105,6 +105,7 @@ class AdminSeeder extends Seeder
             "work_type" => "full-time",
             "application_deadline" => now()->addMonth(),
             "status" => "open",
+            "slug" => Str::slug('Software Engineer' . '-' . Str::random(6))
         ]);
 
         Recruitment::create([
@@ -116,6 +117,7 @@ class AdminSeeder extends Seeder
             "work_type" => "full-time",
             "application_deadline" => now()->addMonth(),
             "status" => "open",
+            "slug" => Str::slug('Product Manager' . '-' . Str::random(6))
         ]);
 
         Recruitment::create([
@@ -127,6 +129,7 @@ class AdminSeeder extends Seeder
             "work_type" => "full-time",
             "application_deadline" => now()->addMonth(),
             "status" => "open",
+            "slug" => Str::slug('UX/UI Designer' . '-' . Str::random(6))
         ]);
 
         // ServiceCategory::create([
