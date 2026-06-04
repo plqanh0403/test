@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\RecruitmentController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Viewer\HomeController;
+use App\Http\Controllers\viewer\ViewerAboutUsController;
+use App\Http\Controllers\Viewer\ViewerContactController;
 use App\Http\Controllers\Viewer\ViewerServiceController;
 use App\Http\Controllers\Viewer\ViewerRecruitmentController;
 
@@ -18,6 +20,9 @@ Route::get('/services/category/{slug}', [ViewerServiceController::class, 'index'
 Route::get('/services/{slug}', [ViewerServiceController::class, 'show'])->name('viewer.services.show');
 Route::get('/recruitments', [ViewerRecruitmentController::class, 'index'])->name('viewer.recruitments.index');
 Route::get('/recruitments/{slug}', [ViewerRecruitmentController::class, 'show'])->name('viewer.recruitments.show');
+Route::get('/contact', [ViewerContactController::class, 'index'])->name('viewer.contact');
+Route::post('/contact', [ViewerContactController::class, 'store'])->name('viewer.contact.store');
+Route::get('/about_us', [ViewerAboutUsController::class, 'index'])->name('viewer.about_us');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

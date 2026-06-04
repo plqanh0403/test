@@ -63,7 +63,7 @@
                     <ul class="navbar-nav nav-menu">
 
                         <li class="nav-item dropdown-custom">
-                            <a href="#" class="nav-link">
+                            <a class="nav-link">
                                 Services <i class="bi bi-chevron-down"></i>
                             </a>
 
@@ -84,14 +84,20 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('viewer.about_us')}}" class="nav-link">
                                 About Us
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                Blogs
                                 <i class="bi bi-chevron-down"></i>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Contact</a>
+                            <a href="{{ route('viewer.contact')}}" class="nav-link">Contact Us</a>
                         </li>
                     </ul>
 
@@ -220,17 +226,17 @@
                 <ul class="footer-contact">
                     <li>
                         <i class="bi bi-envelope"></i>
-                        info@egead.com
+                        {{ $about_us->email }}
                     </li>
 
                     <li>
                         <i class="bi bi-telephone"></i>
-                        +84 xxx xxx xxx
+                        {{ $about_us->phone }}
                     </li>
 
                     <li>
                         <i class="bi bi-geo-alt"></i>
-                        Buon Ma Thuot City, Vietnam
+                        {{ $about_us->address }}
                     </li>
                 </ul>
 

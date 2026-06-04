@@ -1,7 +1,7 @@
 
 @extends('viewer.layout')
 
-@section('title', 'Home-EGEAD')
+@section('title', 'E-GEAD Company')
 
 @section('description', 'Explore technology consulting, software development and digital transformation services from EGEAD.')
 
