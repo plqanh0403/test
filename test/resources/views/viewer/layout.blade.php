@@ -92,7 +92,6 @@
                         <li class="nav-item">
                             <a href="{{ route('viewer.blogs.index')}}" class="nav-link">
                                 Blogs
-                                <i class="bi bi-chevron-down"></i>
                             </a>
                         </li>
 
@@ -104,7 +103,7 @@
                 </div>
 
                 <div class="nav-action">
-                    <a href="#" class="consultation-btn"> {{--{{ route('contact') }}--}}
+                    <a href="{{ route('viewer.contact') }}" class="consultation-btn"> {{--{{ route('contact') }}--}}
                         Get Free Consultation
                     </a>
                 </div>
@@ -147,7 +146,7 @@
                 </div>
 
                 <div class="cta-action">
-                    <a href="#" class="cta-btn"> {{--{{ route('contact') }}--}}
+                    <a href="{{ route('viewer.contact') }}" class="cta-btn"> {{--{{ route('contact') }}--}}
                         Get Free Consultation
                     </a>
                 </div>
@@ -176,7 +175,7 @@
                 </p>
 
                 <div class="footer-action">
-                    <a href="#" class="consultation-btn"> {{--{{ route('contact') }}--}}
+                    <a href="{{ route('viewer.contact') }}" class="consultation-btn"> {{--{{ route('contact') }}--}}
                         Get Free Consultation
                     </a>
                 </div>

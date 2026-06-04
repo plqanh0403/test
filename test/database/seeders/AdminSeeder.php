@@ -207,7 +207,7 @@ class AdminSeeder extends Seeder
         SubmitEmail::factory(50)->create();
         SubmitContact::factory(50)->create();
         Category::factory(5)->create();
-        Blog::factory(50)->create();
+        Blog::factory(100)->create();
         ServiceCategory::factory(5)->create();
         Service::factory(50)->create();
         Recruitment::factory(10)->create();

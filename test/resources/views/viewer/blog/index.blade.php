@@ -62,17 +62,21 @@
             </div>
 
             <!-- FEATURED BLOG -->
-            @if ($blogs->count())
+            @if($blogs->count() > 0)
+
                 @php
-                    $featured = $blogs->first();
+                    $featuredMain = $blogs->first();
+
+                    $featuredSide = $blogs->slice(1, 3);
+
+                    $normalBlogs = $blogs->slice(4);
                 @endphp
 
-                <a href="{{ route('viewer.blogs.show', $featured->slug) }}" class="featured-blog">
+                {{-- FEATURED MAIN --}}
+                <a href="{{ route('viewer.blogs.show', $featuredMain->slug) }}" class="featured-blog">
 
                     <div class="featured-image">
-
-                        <img src="{{ asset('images/hero1.jpg') }}" alt="{{ $featured->thumbnail_alt ?? $featured->title }}"> /*asset($featured->thumbnail)*/
-
+                        <img src="{{ asset('images/hero3.jpg') }}" alt="{{ $featuredMain->thumbnail_alt }}"> /*featuredMain->thumbnail*/
                     </div>
 
                     <div class="featured-content">
@@ -82,30 +86,67 @@
                         </span>
 
                         <h2>
-                            {{ $featured->title }}
+                            {{ $featuredMain->title }}
                         </h2>
 
                         <p>
-                            {{ Str::limit($featured->excerpt, 250) }}
+                            {{ Str::limit($featuredMain->excerpt, 100) }}
                         </p>
 
-                        <div class="featured-read">
-                            Read Full Article
+                        <div class="blog-read-more">
+                            Read Article
                             <i class="bi bi-arrow-right"></i>
                         </div>
 
                     </div>
 
                 </a>
+
+                {{-- SECONDARY FEATURED --}}
+                @if($featuredSide->count() >= 3)
+
+                    <div class="featured-secondary-grid">
+
+                        <div class="featured-secondary-left">
+
+                            @foreach($blogs->skip(1)->take(2) as $blog)
+                                @include('viewer.blog.partials.featured-horizontal')
+                            @endforeach
+
+                        </div>
+
+                        <div class="featured-secondary-right">
+
+                            @php
+                                $verticalBlog = $blogs->skip(3)->first();
+                            @endphp
+
+                            @if($verticalBlog)
+                                @include('viewer.blog.partials.featured-vertical', ['blog' => $verticalBlog])
+                            @endif
+                        </div>
+
+                    </div>
+
+                @endif
+
             @endif
 
-            <!-- BLOG GRID -->
-            <div class="blog-grid">
+            <div class="blog-grid-wrapper">
+                <div class="blog-grid-label">
+                    <span>
+                        Latest Articles
+                    </span>
+                </div>
 
-                @foreach ($blogs->skip(1) as $blog)
-                    @include('viewer.blog.partials.card')
-                @endforeach
+                <!-- BLOG GRID -->
+                <div class="blog-grid">
 
+                    @foreach ($normalBlogs as $blog)
+                        @include('viewer.blog.partials.card')
+                    @endforeach
+
+                </div>
             </div>
 
         </div>

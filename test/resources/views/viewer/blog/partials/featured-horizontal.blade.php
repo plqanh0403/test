@@ -1,12 +1,18 @@
 <a href="{{ route('viewer.blogs.show', $blog->slug) }}"
-   class="blog-card">
+   class="featured-horizontal-card">
 
     <div class="blog-image">
-        <img src="{{ asset('images/hero1.jpg') }}"
+        <img src="{{ asset('images/hero2.jpg') }}"
              alt="{{ $blog->thumbnail_alt ?? $blog->title }}">
     </div>
 
     <div class="blog-content">
+
+        <h3>{{ $blog->title }}</h3>
+
+        <p>
+            {{ Str::limit($blog->excerpt, 100) }}
+        </p>
 
         <div class="blog-meta-row">
 
@@ -20,16 +26,7 @@
                     {{ $blog->category->name }}
                 </span>
             @endif
-
         </div>
-
-        <h3>
-            {{ $blog->title }}
-        </h3>
-
-        <p>
-            {{ Str::limit($blog->excerpt, 70) }}
-        </p>
 
         <div class="blog-read-more">
             Read Article

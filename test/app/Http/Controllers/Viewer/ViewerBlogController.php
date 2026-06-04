@@ -31,6 +31,30 @@ class ViewerBlogController extends Controller
 
         $type = $request->type ?? 'tech-service';
 
+        $featuredBlogs = Cache::remember(
+            "featured_blogs_{$type}",
+            now()->addDays(7),
+            function () use ($type) {
+                return Blog::with('user', 'category')
+                    ->where('status', 'published')
+                    ->where('is_visible', 1)
+                    ->where('type', $type)
+                    ->orderByDesc('published_at')
+                    ->orderBy('sort_order')
+                    ->take(4)
+                    ->get();
+            }
+        );
+
+        $normalBlogs = Blog::with('user', 'category')
+            ->where('status', 'published')
+            ->where('is_visible', 1)
+            ->where('type', $type)
+            ->orderByDesc('published_at')
+            ->orderBy('sort_order')
+            ->skip(4)
+            ->paginate(6);
+
         $blogs = Cache::remember(
             "blogs_list_{$type}",
             now()->addHours(12),
@@ -47,7 +71,7 @@ class ViewerBlogController extends Controller
             }
         );
 
-        return view('viewer.blog.index', compact('blogs', 'servicesCount', 'activitiesCount', 'type'));
+        return view('viewer.blog.index', compact('blogs', 'servicesCount', 'activitiesCount', 'type', 'normalBlogs', 'featuredBlogs'));
     }
 
     public function show($slug)

@@ -1,5 +1,4 @@
-<a href="{{ route('viewer.blogs.show', $blog->slug) }}"
-   class="blog-card">
+<a href="{{ route('viewer.blogs.show', $blog->slug) }}" class="featured-vertical-card">
 
     <div class="blog-image">
         <img src="{{ asset('images/hero1.jpg') }}"
@@ -8,29 +7,23 @@
 
     <div class="blog-content">
 
-        <div class="blog-meta-row">
+        <h3>{{ $blog->title }}</h3>
 
+        <p>
+            {{ Str::limit($blog->excerpt, 150) }}
+        </p>
+
+        <div class="blog-meta-row">
             <div class="blog-meta">
                 <i class="bi bi-calendar3"></i>
                 {{ date('d M Y', strtotime($blog->published_at)) }}
             </div>
-
             @if($blog->category)
                 <span class="blog-category">
                     {{ $blog->category->name }}
                 </span>
             @endif
-
         </div>
-
-        <h3>
-            {{ $blog->title }}
-        </h3>
-
-        <p>
-            {{ Str::limit($blog->excerpt, 70) }}
-        </p>
-
         <div class="blog-read-more">
             Read Article
             <i class="bi bi-arrow-right"></i>

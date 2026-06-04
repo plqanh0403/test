@@ -44,7 +44,7 @@
 
                             <div class="hero-buttons">
 
-                                <a href="#"
+                                <a href="{{ route('viewer.contact') }}"
                                     class="btn-hero-primary">
                                     Contact Us
                                     <i class="bi bi-arrow-right"></i>
@@ -90,13 +90,13 @@
 
                             <div class="hero-buttons">
 
-                                <a href="#"
+                                <a href="{{ route('viewer.contact') }}"
                                     class="btn-hero-primary">
                                     Contact Us
                                     <i class="bi bi-arrow-right"></i>
                                 </a>
 
-                                <a href="#"
+                                <a href="{{ route('viewer.recruitments.index') }}"
                                     class="btn-hero-secondary">
                                     Explore Recruitment
                                 </a>
@@ -133,7 +133,7 @@
 
                             <div class="hero-buttons">
 
-                                <a href="#"
+                                <a href="{{ route('viewer.contact') }}"
                                     class="btn-hero-primary">
                                     Contact Us
                                     <i class="bi bi-arrow-right"></i>
@@ -432,6 +432,36 @@
 
             </div>
 
+        </section>
+
+        <section class="process-cta">
+            <div class="container">
+
+                <div class="process-cta-box">
+
+                    <div class="process-cta-content">
+                        <h3>
+                            Let's Build Something Great Together
+                        </h3>
+                    </div>
+
+                    <div class="process-cta-actions">
+
+                        <a href="{{ route('viewer.contact') }}"
+                        class="process-cta-btn primary">
+                            Get Free Consultation
+                        </a>
+
+                        <a href="#"
+                        class="process-cta-btn secondary">
+                            Explore Services
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
         </section>
 
         <section class="process-section">
@@ -806,7 +836,7 @@
 
                 <!-- CTA -->
                 <div class="text-center mt-5">
-                    <a href="#" class="blog-btn">
+                    <a href="{{ route('viewer.blogs.index') }}" class="blog-btn">
                         View All Articles
                     </a>
                 </div>
