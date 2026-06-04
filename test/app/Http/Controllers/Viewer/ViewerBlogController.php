@@ -55,26 +55,10 @@ class ViewerBlogController extends Controller
             ->skip(4)
             ->paginate(6);
 
-        $blogs = Cache::remember(
-            "blogs_list_{$type}",
-            now()->addHours(12),
-            function () use ($type) {
-
-                return Blog::with('user', 'category')
-                    ->where('status', 'published')
-                    ->where('is_visible', true)
-                    ->where('type', $type)
-                    ->orderBy('sort_order')
-                    ->latest('published_at')
-                    ->get();
-
-            }
-        );
-
-        return view('viewer.blog.index', compact('blogs', 'servicesCount', 'activitiesCount', 'type', 'normalBlogs', 'featuredBlogs'));
+        return view('viewer.blog.index', compact('servicesCount', 'activitiesCount', 'type', 'normalBlogs', 'featuredBlogs'));
     }
 
-    public function show($slug)
+    public function show(String $slug)
     {
         $blog = Cache::remember(
             "blog_{$slug}",

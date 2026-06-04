@@ -5,7 +5,7 @@
 
 @section('content')
 
-<section class="services-page">
+<section class="recruitment-page">
     <div class="container">
 
         <!-- HEADER -->

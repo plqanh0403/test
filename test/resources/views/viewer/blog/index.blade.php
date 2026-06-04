@@ -62,21 +62,18 @@
             </div>
 
             <!-- FEATURED BLOG -->
-            @if($blogs->count() > 0)
+            @if($featuredBlogs->count() > 0)
 
                 @php
-                    $featuredMain = $blogs->first();
-
-                    $featuredSide = $blogs->slice(1, 3);
-
-                    $normalBlogs = $blogs->slice(4);
+                    $featuredMain = $featuredBlogs->first();
+                    $featuredSide = $featuredBlogs->skip(1)->take(3);
                 @endphp
 
                 {{-- FEATURED MAIN --}}
                 <a href="{{ route('viewer.blogs.show', $featuredMain->slug) }}" class="featured-blog">
 
                     <div class="featured-image">
-                        <img src="{{ asset('images/hero3.jpg') }}" alt="{{ $featuredMain->thumbnail_alt }}"> /*featuredMain->thumbnail*/
+                        <img src="{{ asset($featuredMain->thumbnail) }}" alt="{{ $featuredMain->thumbnail_alt }}"> 
                     </div>
 
                     <div class="featured-content">
@@ -104,23 +101,22 @@
 
                 {{-- SECONDARY FEATURED --}}
                 @if($featuredSide->count() >= 3)
+                    @php
+                        $horizontalBlogs = $featuredSide->take(2);
+                        $verticalBlog = $featuredSide->slice(2,1)->first();
+                    @endphp
 
                     <div class="featured-secondary-grid">
 
                         <div class="featured-secondary-left">
 
-                            @foreach($blogs->skip(1)->take(2) as $blog)
+                            @foreach($horizontalBlogs as $blog)
                                 @include('viewer.blog.partials.featured-horizontal')
                             @endforeach
 
                         </div>
 
                         <div class="featured-secondary-right">
-
-                            @php
-                                $verticalBlog = $blogs->skip(3)->first();
-                            @endphp
-
                             @if($verticalBlog)
                                 @include('viewer.blog.partials.featured-vertical', ['blog' => $verticalBlog])
                             @endif
@@ -146,6 +142,10 @@
                         @include('viewer.blog.partials.card')
                     @endforeach
 
+                </div>
+
+                <div class="blog-pagination-center">
+                    {{ $normalBlogs->links() }}
                 </div>
             </div>
 

@@ -1,8 +1,7 @@
 <a href="{{ route('viewer.blogs.show', $blog->slug) }}" class="featured-vertical-card">
 
     <div class="blog-image">
-        <img src="{{ asset('images/hero1.jpg') }}"
-             alt="{{ $blog->thumbnail_alt ?? $blog->title }}">
+        <img src="{{ asset($blog->thumbnail) }}" alt="{{ $blog->thumbnail_alt ?? $blog->title }}">
     </div>
 
     <div class="blog-content">
