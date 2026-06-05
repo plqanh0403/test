@@ -53,7 +53,8 @@ class ViewerBlogController extends Controller
             ->orderByDesc('published_at')
             ->orderBy('sort_order')
             ->skip(4)
-            ->paginate(6);
+            ->paginate(6)
+            ->withQueryString();;
 
         return view('viewer.blog.index', compact('servicesCount', 'activitiesCount', 'type', 'normalBlogs', 'featuredBlogs'));
     }
@@ -74,7 +75,7 @@ class ViewerBlogController extends Controller
         );
 
         $relatedBlogs = Cache::remember(
-            "related_blogs_{$blog->id}",
+            "related_blogs_{$blog->id}_{$blog->updated_at->timestamp}",
             now()->addHours(1),
             function () use ($blog) {
 
@@ -82,12 +83,24 @@ class ViewerBlogController extends Controller
                     ->where('id', '!=', $blog->id)
                     ->where('type', $blog->type)
                     ->where('status', 'published')
-                    ->where('is_visible', '1')
-                    ->orderBy('sort_order')
-                    ->take(3)
+                    ->where('is_visible', 1)
+                    ->latest('published_at')
+                    ->take(5)
                     ->get();
             }
         );
+
+        // $previousBlog = Blog::where('status', 'published')
+        //                     ->where('is_visible', 1)
+        //                     ->where('published_at', '<', $blog->published_at)
+        //                     ->latest('published_at')
+        //                     ->first();
+
+        // $nextBlog = Blog::where('status', 'published')
+        //                 ->where('is_visible', 1)
+        //                 ->where('published_at', '>', $blog->published_at)
+        //                 ->oldest('published_at')
+        //                 ->first();
 
         return view('viewer.blog.show', compact('blog', 'relatedBlogs'));
     }

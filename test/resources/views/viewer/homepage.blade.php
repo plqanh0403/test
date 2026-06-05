@@ -773,7 +773,7 @@
                                     Discover how artificial intelligence is transforming industries and what businesses should prepare for.
                                 </p>
 
-                                <span class="blog-read">
+                                <span class="blog-read-more">
                                     Read More <i class="bi bi-arrow-right"></i>
                                 </span>
 
@@ -800,7 +800,7 @@
 
                                 <p>Practical strategies for companies to scale using modern technologies.</p>
 
-                                <span class="blog-read">
+                                <span class="blog-read-more">
                                     Read More <i class="bi bi-arrow-right"></i>
                                 </span>
                             </div>
@@ -825,7 +825,7 @@
 
                                 <p>What companies need to know to attract and retain top developers.</p>
 
-                                <span class="blog-read">
+                                <span class="blog-read-more">
                                     Read More <i class="bi bi-arrow-right"></i>
                                 </span>
                             </div>

@@ -56,6 +56,28 @@ class BlogController extends Controller
         return view('admin.blog.index', compact('blogs', 'categories', 'servicesCount', 'activitiesCount', 'type'));
     }
 
+    public function uploadImage(Request $request)
+    {
+        if ($request->hasFile('upload')) {
+
+            $file = $request->file('upload');
+
+            $filename = time().'_'.$file->getClientOriginalName();
+
+            $file->move(public_path('uploads/blogs'), $filename);
+
+            return response()->json([
+                'uploaded' => 1,
+                'fileName' => $filename,
+                'url' => asset('uploads/blogs/'.$filename)
+            ]);
+        }
+
+        return response()->json([
+            'error' => 'Upload failed'
+        ], 400);
+    }
+
     public function store(Request $request): RedirectResponse
     {
         $categories = Category::all();
@@ -77,11 +99,10 @@ class BlogController extends Controller
             'thumbnail_alt' => $request->thumbnail_alt,
             'seo_title' => $request->seo_title ?? $request->title,
             'seo_description' => $request->seo_description ?? $request->excerpt,
-            'status' => $request->status,
+            'status' => $request->has('status'),
             'is_visible' => $request->has('is_visible'),
             'sort_order' => $request->sort_order ?? 0,
             'published_at' => $request->status === 'published' ? now() : null,
-
         ]);
 
         return back()->with('success', 'Blog created successfully.');

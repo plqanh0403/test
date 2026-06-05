@@ -9,23 +9,6 @@
 
         <div class="container">
 
-            <div class="section-heading text-center">
-
-                <span class="section-badge">
-                    EGEAD BLOG
-                </span>
-
-                <h2>
-                    Insights, Technology & Activities
-                </h2>
-
-                <p>
-                    Explore the latest technology trends, digital transformation
-                    strategies, and company activities from EGEAD.
-                </p>
-
-            </div>
-
             <!-- BLOG TABS -->
             <div class="blog-tabs-viewer">
 
@@ -73,7 +56,7 @@
                 <a href="{{ route('viewer.blogs.show', $featuredMain->slug) }}" class="featured-blog">
 
                     <div class="featured-image">
-                        <img src="{{ asset($featuredMain->thumbnail) }}" alt="{{ $featuredMain->thumbnail_alt }}"> 
+                        <img src="{{ asset($featuredMain->thumbnail) }}" alt="{{ $featuredMain->thumbnail_alt }}">
                     </div>
 
                     <div class="featured-content">
@@ -89,6 +72,21 @@
                         <p>
                             {{ Str::limit($featuredMain->excerpt, 100) }}
                         </p>
+
+                        <div class="blog-meta-row">
+
+                            <div class="blog-meta">
+                                <i class="bi bi-calendar3"></i>
+                                {{ date('d M Y', strtotime($featuredMain->published_at)) }}
+                            </div>
+
+                            @if($featuredMain->category)
+                                <span class="blog-category">
+                                    {{ $featuredMain->category->name }}
+                                </span>
+                            @endif
+
+                        </div>
 
                         <div class="blog-read-more">
                             Read Article
@@ -127,6 +125,12 @@
                 @endif
 
             @endif
+
+            <div class="section-heading text-center">
+                <h2>
+                    Insights, Technology & Activities
+                </h2>
+            </div>
 
             <div class="blog-grid-wrapper">
                 <div class="blog-grid-label">

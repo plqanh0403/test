@@ -400,8 +400,9 @@
 
                         <x-input-label for="content" :value="__('Content')" />
 
-                        <textarea id="content" name="content" class="form-input" rows="5"
-                            required>{{ old('content') }}</textarea>
+                            <textarea name="content" id="content" class="form-control" rows="10" >
+                                {{ old('content', $blog->content ?? '') }}
+                            </textarea>
 
                         <x-input-error :messages="$errors->get('content')" class="form-error" />
                     </div>

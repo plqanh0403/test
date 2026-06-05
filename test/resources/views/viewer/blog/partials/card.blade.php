@@ -1,5 +1,4 @@
-<a href="{{ route('viewer.blogs.show', $blog->slug) }}"
-   class="blog-card">
+<a href="{{ route('viewer.blogs.show', $blog->slug) }}" class="blog-card">
 
     <div class="blog-image">
         <img src="{{ asset($blog->thumbnail) }}" alt="{{ $blog->thumbnail_alt ?? $blog->title }}">

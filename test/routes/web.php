@@ -136,6 +136,8 @@ Route::middleware([
         Route::put('/blogs/{blog}/hide', [BlogController::class, 'hide'])->name('admin.blogs.hide');
 
         Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
+
+        Route::post('/blogs/upload-image', [BlogController::class, 'uploadImage'])->name('admin.blogs.upload.image');
     });
 
 require __DIR__.'/auth.php';

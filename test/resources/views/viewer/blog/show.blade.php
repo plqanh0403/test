@@ -5,47 +5,131 @@
 
 @section('content')
 
-<section class="blog-detail">
+<section class="blog-detail-page">
 
     <div class="container">
 
-        <div class="blog-hero">
-
-            <span class="section-badge">
-
-                {{ $blog->type == 'tech-service'
-                    ? 'Tech Service'
-                    : 'EGEAD Activity' }}
-
-            </span>
+        {{-- HEADER --}}
+        <div class="blog-detail-header">
 
             <h1>
                 {{ $blog->title }}
             </h1>
 
+            <p class="blog-detail-excerpt">
+                {{ $blog->excerpt }}
+            </p>
+
             <div class="blog-detail-meta">
 
                 <span>
-                    {{ $blog->user->name }}
+                    <i class="bi bi-calendar3"></i>
+                    {{ date('d M Y', strtotime($blog->published_at)) }}
                 </span>
 
                 <span>
-                    {{ optional($blog->published_at)->format('d M Y') }}
+                    <i class="bi bi-person-circle"></i>
+                    {{ $blog->user->name ?? 'EGEAD Team' }}
                 </span>
+
+                <span>
+                    <i class="bi bi-clock"></i>
+                    {{ ceil(str_word_count(strip_tags($blog->content)) / 200) }}
+                    min read
+                </span>
+
+                @if($blog->category)
+                    <span class="blog-detail-category">
+                        {{ $blog->category->name }}
+                    </span>
+                @endif
 
             </div>
 
         </div>
 
-        <div class="blog-feature-image">
+        {{-- COVER --}}
+        @if($blog->thumbnail)
+            <div class="blog-detail-cover">
 
-            <img src="{{ asset($blog->thumbnail) }}"
-                 alt="{{ $blog->thumbnail_alt }}">
-        </div>
+                <img src="{{ asset('images/hero1.jpg') }}" {{-- $blog->thumbnail --}}
+                     alt="{{ $blog->thumbnail_alt ?? $blog->title }}">
 
-        <div class="blog-content">
+            </div>
+        @endif
 
-            {!! $blog->content !!}
+        {{-- BODY --}}
+        <div class="blog-detail-layout">
+
+            {{-- CONTENT --}}
+            <div class="blog-detail-content">
+
+                {!! $blog->content !!}
+
+                {{-- SHARE --}}
+                <div class="blog-share">
+
+                    <h5>Share Article</h5>
+
+                    <div class="blog-share-buttons">
+
+                        <a href="#">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="bi bi-twitter-x"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {{-- SIDEBAR --}}
+            <aside class="blog-sidebar">
+
+                <div class="blog-sidebar-card">
+
+                    <h4>
+                        Related Articles
+                    </h4>
+
+                    @foreach($relatedBlogs as $item)
+
+                        <a href="{{ route('viewer.blogs.show',$item->slug) }}" class="related-blog-item">
+
+                            <div class="related-blog-image">
+
+                                <img src="{{ asset('images/hero3.jpg') }}" {{-- $item->thumbnail --}}
+                                     alt="{{ $item->thumbnail_alt ?? $item->title }}">
+
+                            </div>
+
+                            <div class="related-blog-content">
+
+                                <span>
+                                    {{ date('d M Y', strtotime($item->published_at)) }}
+                                </span>
+
+                                <h5>
+                                    {{ Str::limit($item->title,70) }}
+                                </h5>
+
+                            </div>
+
+                        </a>
+
+                    @endforeach
+
+                </div>
+
+            </aside>
 
         </div>
 

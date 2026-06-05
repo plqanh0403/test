@@ -12,6 +12,7 @@ class ViewerContactController extends Controller
     public function index()
     {
         $about_us = AboutUs::first();
+
         return view('viewer.contact.index', compact('about_us'));
     }
 

@@ -241,6 +241,21 @@
     });
     </script>
 
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+
+    <script>
+        ClassicEditor.create(document.querySelector('#content'), {
+
+            ckfinder: {
+                uploadUrl: '{{ route('admin.blogs.upload.image') }}?_token={{ csrf_token() }}'
+            }
+
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>

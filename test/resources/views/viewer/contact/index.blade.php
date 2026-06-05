@@ -70,11 +70,7 @@
                         </div>
 
                         <div class="contact-map position-relative">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3892.316831429843!2d108.05620962509323!3d12.692731954595649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3171f72a19d5a35f%3A0xce576448846bf08f!2sC%C3%B4ng%20Ty%20TNHH%20E%20GEAD!5e0!3m2!1svi!2s!4v1780496814990!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-                            <div class="map-badge">
-                                Our Location
-                            </div>
+                            {!! $about_us->google_map !!}
                         </div>
                     </div>
 
