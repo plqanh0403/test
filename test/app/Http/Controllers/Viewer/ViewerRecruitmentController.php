@@ -14,6 +14,7 @@ class ViewerRecruitmentController extends Controller
         $recruitments = Recruitment::where('is_visible', true)
             ->where('status', 'open')
             ->latest()
+            ->paginate(6)
             ->get();
 
         return view('viewer.recruitment.index', compact('recruitments'));

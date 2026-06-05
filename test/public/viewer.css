@@ -1975,6 +1975,7 @@ body::after{
 
 .recruitment-card{
     display:block;
+    width:100%;
     background:white;
     border-radius:28px;
     overflow:hidden;
@@ -2025,6 +2026,121 @@ body::after{
 }
 
 /* BODY */
+
+.recruitment-grid-wrapper{
+    position:relative;
+    margin-top:auto;
+}
+
+.recruitment-grid{
+    display:grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap:35px;
+    align-items:start;
+}
+
+.recruitment-pagination-center{
+    margin-top: 55px;
+}
+
+.recruitment-pagination-center nav a, .recruitment-pagination-center nav [aria-current="page"] span, .recruitment-pagination-center nav [aria-disabled="true"] span {
+    width:46px;
+    height:46px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    border-radius:50%;
+    transition:.3s ease;
+    margin:0 5px;
+}
+
+.recruitment-pagination-center nav a{
+    background:#fff;
+    color:#475569;
+    box-shadow:0 5px 15px rgba(15,23,42,.05);
+}
+
+.recruitment-pagination-center nav a:hover{
+    transform:translateY(-3px);
+
+    background:linear-gradient(
+        135deg,
+        var(--tech-blue),
+        var(--tech-pink)
+    );
+
+    color:#a7a7a7;
+}
+
+.recruitment-pagination-center nav *{
+    box-shadow:none !important;
+}
+
+.recruitment-pagination-center nav span[aria-current="page"] span{
+    background:var(--tech-pink);
+
+    color:white;
+
+    box-shadow:
+        0 10px 15px rgba(215, 59, 246, 0.25);
+}
+
+.recruitment-pagination-center p{
+    font-size:16px;
+}
+
+.blog-grid .blog-card:nth-child(3n+2){
+    transform:translateY(100px);
+}
+
+.blog-grid .blog-card:nth-child(3n+2):hover{
+    transform:translateY(108px);
+}
+
+.blog-grid .blog-card:not(:nth-child(3n+2)):hover{
+    transform:translateY(-12px);
+}
+
+.blog-grid-label{
+    position:absolute;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+
+    z-index:20;
+}
+
+.blog-grid-label span{
+    display:inline-flex;
+
+    padding:12px 30px;
+
+    border-radius:999px;
+
+    background:var(--tech-blue);
+
+    color:white;
+
+    font-weight:700;
+    font-size:14px;
+
+    box-shadow:
+        0 15px 40px rgba(37,99,235,.12);
+}
+
+.recruitment-grid .recruitment-card:nth-child(3n+2){
+    transform:translateY(100px);
+}
+
+.recruitment-grid .recruitment-card:nth-child(3n+2):hover{
+    transform:translateY(90px);
+}
+
+.recruitment-grid .recruitment-card:not(:nth-child(3n+2)):hover{
+    transform:translateY(-10px);
+}
 
 .recruitment-body{
     padding:25px;

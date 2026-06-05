@@ -24,42 +24,35 @@
 
                             <i class="bi bi-search"></i>
 
-                            <input type="text"
-                                name="keyword"
-                                value="{{ request('keyword') }}"
-                                placeholder="Search by position...">
+                            <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="Search by position...">
 
                         </div>
 
-                        <div class="select-wrapper">
-                            <i class="bi bi-chevron-down"></i>
+                        <select name="work_type" class="career-filter-select">
 
-                            <select name="work_type" class="career-filter-select">
+                            <option value="">-- All Types --</option>
 
-                                <option value="">-- All Types--</option>
+                            <option value="full-time"
+                                {{ request('work_type') == 'full-time' ? 'selected' : '' }}>
+                                Full Time
+                            </option>
 
-                                <option value="full-time"
-                                    {{ request('work_type') == 'full-time' ? 'selected' : '' }}>
-                                    Full Time
-                                </option>
+                            <option value="part-time"
+                                {{ request('work_type') == 'part-time' ? 'selected' : '' }}>
+                                Part Time
+                            </option>
 
-                                <option value="part-time"
-                                    {{ request('work_type') == 'part-time' ? 'selected' : '' }}>
-                                    Part Time
-                                </option>
+                            <option value="internship"
+                                {{ request('work_type') == 'internship' ? 'selected' : '' }}>
+                                Internship
+                            </option>
 
-                                <option value="internship"
-                                    {{ request('work_type') == 'internship' ? 'selected' : '' }}>
-                                    Internship
-                                </option>
+                            <option value="remote"
+                                {{ request('work_type') == 'remote' ? 'selected' : '' }}>
+                                Remote
+                            </option>
 
-                                <option value="remote"
-                                    {{ request('work_type') == 'remote' ? 'selected' : '' }}>
-                                    Remote
-                                </option>
-
-                            </select>
-                        </div>
+                        </select>
 
                         <button type="submit" class="career-filter-btn">
                             <i class="bi bi-funnel"></i>
@@ -103,11 +96,11 @@
         </section>
 
         <!-- JOB GRID -->
-        <div class="row g-4">
+        <div class="recruitment-grid-wrapper">
 
             @foreach($recruitments as $job)
 
-                <div class="col-lg-4 col-md-6">
+                <div class="recruitment-grid">
 
                     <a href="{{ route('viewer.recruitments.show', $job->slug) }}" class="recruitment-card">
 
@@ -168,6 +161,9 @@
 
             @endforeach
 
+            <div class="recruitment-pagination-center">
+                {{ $recruitments->links() }}
+            </div>
         </div>
 
     </div>

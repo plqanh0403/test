@@ -54,7 +54,7 @@ class ViewerBlogController extends Controller
             ->orderBy('sort_order')
             ->skip(4)
             ->paginate(6)
-            ->withQueryString();;
+            ->withQueryString();
 
         return view('viewer.blog.index', compact('servicesCount', 'activitiesCount', 'type', 'normalBlogs', 'featuredBlogs'));
     }
