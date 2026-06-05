@@ -6,70 +6,172 @@
 @section('content')
 
 <section class="recruitment-page">
+
     <div class="container">
 
-        <!-- HEADER -->
-        <div class="section-heading">
-            <span class="section-badge">Careers</span>
+        <!-- HERO -->
+        <section class="career-hero">
 
-            <h2>Join Our Team</h2>
+            <div class="career-toolbar">
+
+                <!-- LEFT -->
+                <div class="career-filters">
+
+                    <form method="GET" action="{{ route('viewer.recruitments.index') }}"
+                        class="career-search-form">
+
+                        <div class="career-search">
+
+                            <i class="bi bi-search"></i>
+
+                            <input type="text"
+                                name="keyword"
+                                value="{{ request('keyword') }}"
+                                placeholder="Search by position...">
+
+                        </div>
+
+                        <div class="select-wrapper">
+                            <i class="bi bi-chevron-down"></i>
+
+                            <select name="work_type" class="career-filter-select">
+
+                                <option value="">-- All Types--</option>
+
+                                <option value="full-time"
+                                    {{ request('work_type') == 'full-time' ? 'selected' : '' }}>
+                                    Full Time
+                                </option>
+
+                                <option value="part-time"
+                                    {{ request('work_type') == 'part-time' ? 'selected' : '' }}>
+                                    Part Time
+                                </option>
+
+                                <option value="internship"
+                                    {{ request('work_type') == 'internship' ? 'selected' : '' }}>
+                                    Internship
+                                </option>
+
+                                <option value="remote"
+                                    {{ request('work_type') == 'remote' ? 'selected' : '' }}>
+                                    Remote
+                                </option>
+
+                            </select>
+                        </div>
+
+                        <button type="submit" class="career-filter-btn">
+                            <i class="bi bi-funnel"></i>
+                            Filter
+                        </button>
+
+                    </form>
+
+                </div>
+
+                <!-- RIGHT -->
+                <div class="career-stats">
+
+                    <div class="career-stat">
+                        <strong>{{ $recruitments->count() }}</strong>
+                        <span>Open Positions</span>
+                    </div>
+
+                    <div class="career-stat">
+                        <strong>100%</strong>
+                        <span>Growth Mindset</span>
+                    </div>
+
+                    <div class="career-stat">
+                        <strong>Tech</strong>
+                        <span>Innovation Driven</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h1>
+                Build The Future With EGEAD
+            </h1>
 
             <p>
-                Explore exciting career opportunities and grow with EGEAD.
+                Join our talented team and help create innovative technology solutions.
             </p>
-        </div>
 
-        <!-- GRID -->
+        </section>
+
+        <!-- JOB GRID -->
         <div class="row g-4">
 
             @foreach($recruitments as $job)
+
                 <div class="col-lg-4 col-md-6">
 
-                    <a href="{{ route('viewer.recruitments.show', $job->slug) }}"
-                       class="recruitment-card">
+                    <a href="{{ route('viewer.recruitments.show', $job->slug) }}" class="recruitment-card">
 
-                        <!-- TOP -->
-                        <div class="recruitment-top">
-                            <span class="badge-type {{ $job->work_type }}">
+                        <div class="recruitment-thumbnail">
+
+                            <img src="{{ asset($job->thumbnail) }}" alt="{{ $job->position }}">
+
+                            <span class="job-type">
                                 {{ strtoupper($job->work_type) }}
                             </span>
 
-                            <span class="badge-status">
-                                {{ ucfirst($job->status) }}
-                            </span>
                         </div>
 
-                        <!-- CONTENT -->
-                        <h3>{{ $job->position }}</h3>
+                        <div class="recruitment-body">
 
-                        <p>
-                            {{ Str::limit($job->description, 100) }}
-                        </p>
+                            <div class="job-meta">
 
-                        <!-- META -->
-                        <div class="recruitment-meta">
-                            <span><i class="bi bi-geo-alt"></i> {{ $job->location }}</span>
-
-                            @if($job->application_deadline)
                                 <span>
-                                    <i class="bi bi-calendar"></i>
-                                    {{ \Carbon\Carbon::parse($job->application_deadline)->format('d M Y') }}
+                                    <i class="bi bi-geo-alt"></i>
+                                    {{ $job->location }}
                                 </span>
-                            @endif
-                        </div>
 
-                        <span class="service-read">
-                            Apply Now <i class="bi bi-arrow-right"></i>
-                        </span>
+                                @if($job->application_deadline)
+                                    <span>
+                                        <i class="bi bi-hourglass-split"></i>
+                                        {{ \Carbon\Carbon::parse($job->application_deadline)->format('d M Y') }}
+                                    </span>
+                                @endif
+
+                            </div>
+
+                            <h3>
+                                {{ $job->position }}
+                            </h3>
+
+                            <p>
+                                {{ Str::limit(strip_tags($job->description), 120) }}
+                            </p>
+
+                            <div class="job-footer">
+
+                                <span class="job-status">
+                                    {{ ucfirst($job->status) }}
+                                </span>
+
+                                <span class="apply-btn">
+                                    Apply Now
+                                    <i class="bi bi-arrow-right"></i>
+                                </span>
+
+                            </div>
+
+                        </div>
 
                     </a>
 
                 </div>
+
             @endforeach
 
         </div>
 
     </div>
+
 </section>
 
 @endsection

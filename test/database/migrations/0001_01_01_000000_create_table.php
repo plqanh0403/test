@@ -72,6 +72,8 @@ return new class extends Migration
             $table->string('location');
             $table->enum('work_type', ['full-time', 'part-time', 'remote', 'hybrid']);
             $table->timestamp('application_deadline')->nullable();
+            $table->string('thumbnail')->nullable();
+            $table->string('thumbnail_alt')->nullable();
             $table->enum('status', ['open', 'paused', 'closed'])->default('open');
             $table->string('slug')->unique();
             $table->text('seo_title')->nullable();
@@ -118,6 +120,8 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('address');
+            $table->string('thumbnail')->nullable();
+            $table->string('thumbnail_alt')->nullable();
 
             // Logo and Favicon
             $table->string('light_logo')->nullable();
@@ -131,14 +135,12 @@ return new class extends Migration
             $table->string('tiktok')->nullable();
 
             // Description
-            $table->text('short_description')->nullable();
+            $table->longText('description')->nullable();
             $table->text('footer_text')->nullable();
+            $table->text('recruitment_description')->nullable();
 
             // Google Map
             $table->longText('google_map')->nullable();
-            $table->decimal('latitude', 10, 7)->nullable();
-            $table->decimal('longitude', 10, 7)->nullable();
-            $table->timestamps();
 
             // SEO
             $table->text('seo_title')->nullable();
@@ -151,6 +153,8 @@ return new class extends Migration
             $table->text('google_site_verification')->nullable();
             $table->longText('google_analytics')->nullable();
             $table->longText('meta_pixel')->nullable();
+
+            $table->timestamps();
         });
 
         Schema::create('submit_emails', function (Blueprint $table) {

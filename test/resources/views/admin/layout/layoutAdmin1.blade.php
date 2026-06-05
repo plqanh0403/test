@@ -172,73 +172,73 @@
     </div>
 
     <script>
-    setTimeout(() => {
-        const alerts = document.querySelectorAll('.auto-hide-alert');
+        setTimeout(() => {
+            const alerts = document.querySelectorAll('.auto-hide-alert');
 
-        alerts.forEach(alert => {
-            alert.style.transition = '0.5s';
-            alert.style.opacity = '0';
-            alert.style.transform = 'translateX(100%)';
+            alerts.forEach(alert => {
+                alert.style.transition = '0.5s';
+                alert.style.opacity = '0';
+                alert.style.transform = 'translateX(100%)';
 
-            setTimeout(() => {
-                alert.remove();
-            }, 500);
-        });
-    }, 3000);
+                setTimeout(() => {
+                    alert.remove();
+                }, 500);
+            });
+        }, 3000);
     </script>
 
     <script>
-    document.querySelectorAll('.mark-seen-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const id = this.dataset.id;
+        document.querySelectorAll('.mark-seen-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.dataset.id;
 
-            markAsSeen(id);
+                markAsSeen(id);
+            });
         });
-    });
 
-    function markAsSeen(submitContact) {
-        console.log(submitContact);
+        function markAsSeen(submitContact) {
+            console.log(submitContact);
 
-        fetch(`/admin/submit-contacts/${submitContact}/seen`, {
-            method: 'PUT',
+            fetch(`/admin/submit-contacts/${submitContact}/seen`, {
+                method: 'PUT',
 
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        });
-    }
-    </script>
-
-    <script>
-    const sidebar = document.getElementById('sidebar');
-    const mainContent = document.querySelector('.main-content');
-    const menuToggle = document.getElementById('menuToggle');
-    const overlay = document.getElementById('sidebarOverlay');
-
-    menuToggle.addEventListener('click', () => {
-
-        if (window.innerWidth <= 768) {
-
-            sidebar.classList.toggle('show');
-            overlay.classList.toggle('show');
-
-        } else {
-
-            sidebar.classList.toggle('collapsed');
-            mainContent.classList.toggle('expanded');
-
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            });
         }
+    </script>
 
-    });
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.querySelector('.main-content');
+        const menuToggle = document.getElementById('menuToggle');
+        const overlay = document.getElementById('sidebarOverlay');
 
-    overlay.addEventListener('click', () => {
+        menuToggle.addEventListener('click', () => {
 
-        sidebar.classList.remove('show');
-        overlay.classList.remove('show');
+            if (window.innerWidth <= 768) {
 
-    });
+                sidebar.classList.toggle('show');
+                overlay.classList.toggle('show');
+
+            } else {
+
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+
+            }
+
+        });
+
+        overlay.addEventListener('click', () => {
+
+            sidebar.classList.remove('show');
+            overlay.classList.remove('show');
+
+        });
     </script>
 
     <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>

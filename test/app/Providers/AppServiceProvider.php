@@ -28,7 +28,6 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $serviceCategories = ServiceCategory::where('is_visible', 1)->get();
             $about_us = AboutUs::first();
-
             $view->with([
                 'serviceCategories' => $serviceCategories,
                 'about_us' => $about_us

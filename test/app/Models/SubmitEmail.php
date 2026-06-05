@@ -10,4 +10,9 @@ class SubmitEmail extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'email',
+        'source',
+        'status'
+    ];
 }

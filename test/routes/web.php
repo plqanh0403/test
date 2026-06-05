@@ -13,6 +13,7 @@ use App\Http\Controllers\Viewer\HomeController;
 use App\Http\Controllers\viewer\ViewerAboutUsController;
 use App\Http\Controllers\Viewer\ViewerBlogController;
 use App\Http\Controllers\Viewer\ViewerContactController;
+use App\Http\Controllers\Viewer\ViewerEmailController;
 use App\Http\Controllers\Viewer\ViewerServiceController;
 use App\Http\Controllers\Viewer\ViewerRecruitmentController;
 
@@ -26,6 +27,7 @@ Route::post('/contact', [ViewerContactController::class, 'store'])->name('viewer
 Route::get('/about_us', [ViewerAboutUsController::class, 'index'])->name('viewer.about_us');
 Route::get('/blogs', [ViewerBlogController::class, 'index'])->name('viewer.blogs.index');
 Route::get('/blogs/{slug}', [ViewerBlogController::class, 'show'])->name('viewer.blogs.show');
+Route::post('/email', [ViewerEmailController::class, 'store'])->name('viewer.email.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -72,7 +74,6 @@ Route::middleware([
         Route::get('/submit-emails', [SubmitEmailController::class, 'index'])->name('admin.submit_emails');
 
         //Route::put('/submit-emails/{submitEmail}', [SubmitEmailController::class, 'updateEmailStatus'])->name('admin.submit_emails.update_status');
-
         Route::delete('/submit-emails/{submitEmail}', [SubmitEmailController::class, 'destroy'])->name('admin.submit_emails.destroy');
 
         Route::get('/submit-emails/export', [SubmitEmailController::class, 'exportCsv'])->name('admin.submit_emails.export');

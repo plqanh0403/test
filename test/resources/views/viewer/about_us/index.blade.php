@@ -9,39 +9,47 @@
     <div class="container">
 
         <!-- HERO -->
-        <div class="about-hero text-center">
+        <div class="about-hero">
+
+            <div class="about-hero-content">
+
+                <span class="section-badge">
+                    About Us
+                </span>
+
+                <h1>
+                    {{ $about_us->name }}
+                </h1>
+
+            </div>
 
             @if($about_us->light_logo)
-                <img src="{{ asset($about_us->light_logo) }}" class="about-logo">
+                <div class="about-hero-logo">
+                    <img src="{{ asset('$about_us->light_logo') }}">
+                </div>
             @endif
 
-            <span class="section-badge">About Us</span>
-
-            <h1>{{ $about_us->name }}</h1>
-
-            <p>
-                {{ $about_us->short_description }}
-            </p>
-
         </div>
 
-        <!-- STORY -->
-        <div class="about-story text-center">
-            <h2>Who We Are</h2>
+        <div class="about-content-layout">
 
-            <p>
-                We are a technology-driven company focused on delivering scalable,
-                high-quality software solutions and digital transformation strategies.
-            </p>
-        </div>
+            {{-- LEFT CONTENT --}}
+            <div class="about-main-content">
 
-        <div class="about-details-grid">
+                <h2>Who We Are</h2>
 
-            <div class="about-card">
+                <div class="about-description">
+                    {!! $about_us->description !!}
+                </div>
 
-                <h3>Company Information</h3>
+            </div>
 
-                <div class="about-info-list">
+            {{-- RIGHT SIDEBAR --}}
+            <div class="about-sidebar">
+
+                <div class="about-sidebar-card">
+
+                    <h3>Company Information</h3>
 
                     <div class="about-info-item">
                         <i class="bi bi-telephone"></i>
@@ -72,42 +80,54 @@
 
                 </div>
 
-            </div>
+                <div class="about-sidebar-card">
 
-            <div class="about-card">
+                    <h3>Connect With Us</h3>
 
-                <h3>Connect With Us</h3>
+                    <div class="social-list">
 
-                <p>
-                    Follow EGEAD on social media to stay updated with
-                    technology insights, company activities and opportunities.
-                </p>
+                        @if($about_us->facebook)
+                            <a href="{{ $about_us->facebook }}">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                        @endif
 
-                <div class="social-list">
+                        @if($about_us->linkedin)
+                            <a href="{{ $about_us->linkedin }}">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </a>
+                        @endif
 
-                    @if($about_us->facebook)
-                        <a href="{{ $about_us->facebook }}">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-                    @endif
+                        @if($about_us->youtube)
+                            <a href="{{ $about_us->youtube }}">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                        @endif
 
-                    @if($about_us->linkedin)
-                        <a href="{{ $about_us->linkedin }}">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </a>
-                    @endif
+                        @if($about_us->tiktok)
+                            <a href="{{ $about_us->tiktok }}">
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
+                        @endif
 
-                    @if($about_us->youtube)
-                        <a href="{{ $about_us->youtube }}">
-                            <i class="fa-brands fa-youtube"></i>
-                        </a>
-                    @endif
+                    </div>
 
-                    @if($about_us->tiktok)
-                        <a href="{{ $about_us->tiktok }}">
-                            <i class="fa-brands fa-tiktok"></i>
-                        </a>
-                    @endif
+                    <form action=" {{ route('viewer.email.store')}}" method="POST" class="subscribe-form">
+                        @csrf
+
+                        <div class="subscribe-box">
+
+                            <input type="email" name="email" placeholder="Enter your email..." required>
+
+                            <input type="hidden" name="source" value="about_us">
+
+                            <button type="submit">
+                                <i class="bi bi-send"></i>
+                            </button>
+
+                        </div>
+
+                    </form>
 
                 </div>
 
@@ -118,7 +138,7 @@
         <!-- MAP -->
         @if($about_us->google_map)
             <div class="about-map">
-                {!! $about_us->google_map !!}
+                {!! $about_us->google_map !!} {{-- Dấu !! hai đầu để chèn đoạn HTML--}}
             </div>
         @endif
 

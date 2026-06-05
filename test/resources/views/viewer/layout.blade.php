@@ -103,7 +103,7 @@
                 </div>
 
                 <div class="nav-action">
-                    <a href="{{ route('viewer.contact') }}" class="consultation-btn"> {{--{{ route('contact') }}--}}
+                    <a href="{{ route('viewer.contact') }}" class="consultation-btn">
                         Get Free Consultation
                     </a>
                 </div>
@@ -194,11 +194,11 @@
                 <h4>Quick Links</h4>
 
                 <ul>
-                    <li><a href="{{ route('home') }}">Home</a></li> {{--{{ route('home') }}--}}
-                    <li><a href="#">About Us</a></li> {{--{{ route('about') }}--}}
-                    <li><a href="#">Services</a></li> {{--{{ route('services') }}--}}
-                    <li><a href="#">Recruitment</a></li> {{--{{ route('recruitments') }}--}}
-                    <li><a href="#">Contact</a></li> {{--{{ route('contact') }}--}}
+                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li><a href="{{ route('viewer.about_us') }}">About Us</a></li>
+                    <li><a href="{{ route('viewer.recruitments.index') }}">Recruitment</a></li>
+                    <li><a href="{{ route('viewer.blogs.index') }}">Blogs</a></li>
+                    <li><a href="{{ route('viewer.contact') }}">Contact</a></li>
                 </ul>
 
             </div>
@@ -209,10 +209,11 @@
                 <h4>Services</h4>
 
                 <ul>
-                    <li><a href="#">Web Development</a></li>
-                    <li><a href="#">Mobile Development</a></li>
-                    <li><a href="#">Cloud Solutions</a></li>
-                    <li><a href="#">IT Consulting</a></li>
+                    @foreach($serviceCategories as $category)
+                    <li>
+                        <a href="{{ route('viewer.services.index', $category->slug) }}">{{ $category->name}}</a>
+                    </li>
+                    @endforeach
                 </ul>
 
             </div>
@@ -250,15 +251,14 @@
                 Get latest updates, job opportunities and tech insights from EGEAD.
             </p>
 
-            <form action="#" method="POST" class="subscribe-form">
+            <form action=" {{ route('viewer.email.store')}}" method="POST" class="subscribe-form">
                 @csrf
 
                 <div class="subscribe-box">
 
-                    <input type="email"
-                        name="email"
-                        placeholder="Enter your email..."
-                        required>
+                    <input type="email" name="email" placeholder="Enter your email..." required>
+
+                    <input type="hidden" name="source" value="footer">
 
                     <button type="submit">
                         <i class="bi bi-send"></i>
@@ -281,10 +281,43 @@
 
     </footer>
 
+    <div class="position-fixed top-0 end-0 p-4" style="z-index:9999;">
+
+        @if(session('success'))
+        <div class="custom-alert success-alert auto-hide-alert">
+            <i class="bi bi-check-circle-fill"></i>
+            <span>{{ session('success') }}</span>
+        </div>
+        @endif
+
+        @if(session('error'))
+        <div class="custom-alert error-alert auto-hide-alert">
+            <i class="bi bi-x-circle-fill"></i>
+            <span>{{ session('error') }}</span>
+        </div>
+        @endif
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     @stack('scripts')
+
+    <script>
+        setTimeout(() => {
+            const alerts = document.querySelectorAll('.auto-hide-alert');
+
+            alerts.forEach(alert => {
+                alert.style.transition = '0.5s';
+                alert.style.opacity = '0';
+                alert.style.transform = 'translateX(100%)';
+
+                setTimeout(() => {
+                    alert.remove();
+                }, 500);
+            });
+        }, 3000);
+    </script>
 
     <script>
         /* SERVICE SWIPER */
@@ -365,7 +398,9 @@
             threshold: 0.3 // xuất hiện 30% thì chạy
         });
 
-        portfolioObserver.observe(portfolioSection);
+        if (portfolioSection) {
+            portfolioObserver.observe(portfolioSection);
+        }
 
         /* TESTIMONIAL SWIPER */
         new Swiper('.testimonialSwiper', {
@@ -417,38 +452,50 @@
         });
 
         /* TRUST COUNTER */
-        const counters = document.querySelectorAll('.trust-item h3');
+        const trustSection = document.querySelector('.trust-section');
 
-        const runCounter = (el) => {
-            const target = el.innerText.replace('+','').replace('/7','');
-            let count = 0;
+        if (trustSection) {
 
-            const update = () => {
-                count += Math.ceil(target / 50);
-                if(count < target){
-                    el.innerText = count + (el.innerText.includes('+') ? '+' : '');
-                    requestAnimationFrame(update);
-                }else{
-                    el.innerText = el.dataset.original;
-                }
+            const counters = document.querySelectorAll('.trust-item h3');
+
+            const runCounter = (el) => {
+                const target = el.innerText.replace('+','').replace('/7','');
+                let count = 0;
+
+                const update = () => {
+                    count += Math.ceil(target / 50);
+
+                    if (count < target) {
+                        el.innerText = count + (el.dataset.original.includes('+') ? '+' : '');
+                        requestAnimationFrame(update);
+                    } else {
+                        el.innerText = el.dataset.original;
+                    }
+                };
+
+                update();
             };
 
-            update();
-        };
+            const trustObserver = new IntersectionObserver(entries => {
 
-        const trustObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting){
-                    counters.forEach(el => {
-                        el.dataset.original = el.innerText;
-                        runCounter(el);
-                    });
-                    trustObserver.disconnect();
-                }
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        counters.forEach(el => {
+                            el.dataset.original = el.innerText;
+                            runCounter(el);
+                        });
+
+                        trustObserver.disconnect();
+                    }
+
+                });
+
             });
-        });
 
-        trustObserver.observe(document.querySelector('.trust-section'));
+            trustObserver.observe(trustSection);
+        }
     </script>
 
     <script>
