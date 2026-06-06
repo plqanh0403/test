@@ -132,7 +132,7 @@
                 </h2>
             </div>
 
-            <div class="blog-grid-wrapper">
+            <div class="blog-grid-wrapper" id="blog-list">
                 <div class="blog-grid-label">
                     <span>
                         Latest Articles
@@ -149,7 +149,7 @@
                 </div>
 
                 <div class="blog-pagination-center">
-                    {{ $normalBlogs->links() }}
+                    {{ $normalBlogs->fragment('blog-list')->links() }}
                 </div>
             </div>
 

@@ -12,13 +12,89 @@
         <!-- HERO -->
         <section class="career-hero">
 
+            <div class="career-intro">
+
+                <div class="career-intro-content">
+
+                    <h1>
+                        Why Join E-GEAD?
+                    </h1>
+
+                    <p>
+                        At E-GEAD, we don’t just build systems — we create solutions that help
+                        businesses grow sustainably in the global market. You’ll work in a young,
+                        dynamic environment where every idea is valued and your professional
+                        growth is always a priority.
+                    </p>
+
+                    <div class="career-benefits">
+
+                        <div class="career-benefit">
+                            <i class="bi bi-cash-stack"></i>
+                            Competitive salary + KPI bonuses
+                        </div>
+
+                        <div class="career-benefit">
+                            <i class="bi bi-laptop"></i>
+                            Fully equipped working environment
+                        </div>
+
+                        <div class="career-benefit">
+                            <i class="bi bi-people"></i>
+                            Team building & open culture
+                        </div>
+
+                        <div class="career-benefit">
+                            <i class="bi bi-graph-up-arrow"></i>
+                            Clear career growth path
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="career-intro-image">
+
+                    <img src="{{ asset('images/career-banner.jpg') }}"
+                        alt="Career at EGEAD">
+
+                </div>
+
+            </div>
+
+            <section class="career-highlight">
+
+                <div class="career-highlight-left">
+
+
+                    <h2>
+                        Your Career <br>
+                        &emsp;&emsp;Starts Here
+                    </h2>
+
+                </div>
+
+                <div class="career-highlight-right">
+
+                    <div class="career-highlight-badge">
+                        <img src="{{ asset('images/logo.png') }}" alt="logo E-Gead">
+                        <span class="text-lg">Best Career Opportunities</span>
+                    </div>
+
+                    <p>
+                        Join E-GEAD and create innovative technology solutions while growing your career in a dynamic and collaborative environment.
+                    </p>
+
+                </div>
+
+            </section>
+
             <div class="career-toolbar">
 
                 <!-- LEFT -->
                 <div class="career-filters">
 
-                    <form method="GET" action="{{ route('viewer.recruitments.index') }}"
-                        class="career-search-form">
+                    <form method="GET" action="{{ route('viewer.recruitments.index') }}" class="career-search-form">
 
                         <div class="career-search">
 
@@ -67,7 +143,7 @@
                 <div class="career-stats">
 
                     <div class="career-stat">
-                        <strong>{{ $recruitments->count() }}</strong>
+                        <strong>{{ $recruitmentCount }}</strong>
                         <span>Open Positions</span>
                     </div>
 
@@ -96,11 +172,17 @@
         </section>
 
         <!-- JOB GRID -->
-        <div class="recruitment-grid-wrapper">
+        <div class="recruitment-grid-wrapper" id="job-list">
 
-            @foreach($recruitments as $job)
+            <div class="blog-grid-label">
+                <span>
+                    Careers
+                </span>
+            </div>
 
-                <div class="recruitment-grid">
+            <div class="recruitment-grid">
+
+                @foreach($recruitments as $job)
 
                     <a href="{{ route('viewer.recruitments.show', $job->slug) }}" class="recruitment-card">
 
@@ -147,7 +229,7 @@
                                 </span>
 
                                 <span class="apply-btn">
-                                    Apply Now
+                                    Read More
                                     <i class="bi bi-arrow-right"></i>
                                 </span>
 
@@ -157,13 +239,14 @@
 
                     </a>
 
-                </div>
+                @endforeach
 
-            @endforeach
+            </div>
 
             <div class="recruitment-pagination-center">
-                {{ $recruitments->links() }}
+                {{ $recruitments->fragment('job-list')->links() }}
             </div>
+
         </div>
 
     </div>

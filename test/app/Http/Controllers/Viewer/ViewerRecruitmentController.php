@@ -11,13 +11,17 @@ class ViewerRecruitmentController extends Controller
     // LIST PAGE
     public function index()
     {
+        $recruitmentCount = Recruitment::where('is_visible', true)
+            ->where('status', 'open')
+            ->count();
+
         $recruitments = Recruitment::where('is_visible', true)
             ->where('status', 'open')
             ->latest()
             ->paginate(6)
-            ->get();
+            ->withQueryString();
 
-        return view('viewer.recruitment.index', compact('recruitments'));
+        return view('viewer.recruitment.index', compact('recruitments', 'recruitmentCount'));
     }
 
     // DETAIL PAGE

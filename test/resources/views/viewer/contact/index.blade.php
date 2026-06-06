@@ -90,7 +90,9 @@
                         <h3>Let’s Start Your Project</h3>
 
                         <p>
-                            Tell us about your idea and we’ll provide the best solution for your business.
+                            Whether you're planning a new digital product, modernizing existing systems,
+                            or exploring innovative technology solutions, our experts are ready to help.
+                            Tell us about your vision, and we'll work with you to create the most effective strategy for your business.
                         </p>
                     </div>
 

@@ -188,21 +188,6 @@
 
             </div>
 
-            <!-- Quick Links -->
-            <div class="footer-col">
-
-                <h4>Quick Links</h4>
-
-                <ul>
-                    <li><a href="{{ route('home') }}">Home</a></li>
-                    <li><a href="{{ route('viewer.about_us') }}">About Us</a></li>
-                    <li><a href="{{ route('viewer.recruitments.index') }}">Recruitment</a></li>
-                    <li><a href="{{ route('viewer.blogs.index') }}">Blogs</a></li>
-                    <li><a href="{{ route('viewer.contact') }}">Contact</a></li>
-                </ul>
-
-            </div>
-
             <!-- Services -->
             <div class="footer-col">
 

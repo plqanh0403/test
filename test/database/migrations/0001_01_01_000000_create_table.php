@@ -70,6 +70,7 @@ return new class extends Migration
             $table->text('requirements');
             $table->text('benefits');
             $table->string('location');
+            $table->string('work_time');
             $table->enum('work_type', ['full-time', 'part-time', 'remote', 'hybrid']);
             $table->timestamp('application_deadline')->nullable();
             $table->string('thumbnail')->nullable();
@@ -137,7 +138,10 @@ return new class extends Migration
             // Description
             $table->longText('description')->nullable();
             $table->text('footer_text')->nullable();
-            $table->text('recruitment_description')->nullable();
+
+            // HR Contact
+            $table->string('hr_email');
+            $table->string('hr_phone');
 
             // Google Map
             $table->longText('google_map')->nullable();
