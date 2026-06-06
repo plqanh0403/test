@@ -168,11 +168,7 @@
                     <img src="{{ asset('images/logo.png') }}" alt="EGEAD Logo">
                 </a>
 
-                <p class="footer-description mb-4">
-                    EGEAD provides innovative technology solutions,
-                    recruitment services and digital transformation
-                    consulting for businesses.
-                </p>
+
 
                 <div class="footer-action">
                     <a href="{{ route('viewer.contact') }}" class="consultation-btn"> {{--{{ route('contact') }}--}}
@@ -203,6 +199,34 @@
 
             </div>
 
+            <!-- SUBSCRIBE -->
+            <div class="footer-col footer-subscribe">
+
+                <h4>Subscribe to our newsletter</h4>
+
+                <p>
+                    Get latest updates, job opportunities and tech insights from EGEAD.
+                </p>
+
+                <form action=" {{ route('viewer.email.store')}}" method="POST" class="subscribe-form">
+                    @csrf
+
+                    <div class="subscribe-box">
+
+                        <input type="email" name="email" placeholder="Enter your email..." required>
+
+                        <input type="hidden" name="source" value="footer">
+
+                        <button type="submit">
+                            <i class="bi bi-send"></i>
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
             <!-- Contact -->
             <div class="footer-col">
 
@@ -226,34 +250,6 @@
                 </ul>
 
             </div>
-
-            <!-- SUBSCRIBE -->
-        <div class="footer-subscribe">
-
-            <h4>Subscribe to our newsletter</h4>
-
-            <p>
-                Get latest updates, job opportunities and tech insights from EGEAD.
-            </p>
-
-            <form action=" {{ route('viewer.email.store')}}" method="POST" class="subscribe-form">
-                @csrf
-
-                <div class="subscribe-box">
-
-                    <input type="email" name="email" placeholder="Enter your email..." required>
-
-                    <input type="hidden" name="source" value="footer">
-
-                    <button type="submit">
-                        <i class="bi bi-send"></i>
-                    </button>
-
-                </div>
-
-            </form>
-
-        </div>
 
         </div>
 

@@ -88,6 +88,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('description');
+            $table->string('banner_image')->nullable();
             $table->text('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->boolean('is_visible')->default(true);
@@ -104,7 +105,6 @@ return new class extends Migration
             $table->text('overview')->nullable();
             $table->text('details')->nullable();
             $table->string('slug')->unique();
-            $table->string('banner_image')->nullable();
             $table->text('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->text('seo_keywords')->nullable();

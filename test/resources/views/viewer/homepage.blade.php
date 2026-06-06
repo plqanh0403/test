@@ -8,8 +8,10 @@
 @section('keywords', 'technology services, software development, digital transformation')
 
 @section('content')
-<!-- HERO SECTION -->
+
     <div class="container">
+
+        <!-- HERO SECTION -->
         <section class="hero-section">
 
             <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
@@ -731,117 +733,115 @@
         </section>
 
         <section class="blog-section">
-            <div class="container">
 
-                <!-- HEADING -->
-                <div class="section-heading text-center">
-                    <span class="section-badge">Insights</span>
+            <!-- HEADING -->
+            <div class="section-heading text-center">
+                <span class="section-badge">Insights</span>
 
-                    <h2>
-                        Latest Articles & Insights
-                    </h2>
+                <h2>
+                    Latest Articles & Insights
+                </h2>
 
-                    <p>
-                        Stay updated with technology trends, business strategies and expert knowledge from EGEAD.
-                    </p>
+                <p>
+                    Stay updated with technology trends, business strategies and expert knowledge from EGEAD.
+                </p>
+            </div>
+
+            <!-- BLOG GRID -->
+            <div class="row g-4">
+
+                <!-- ITEM -->
+                <div class="col-lg-4 col-md-6">
+                    <a href="#" class="blog-card">
+
+                        <div class="blog-image">
+                            <img src="{{ asset('images/hero1.jpg') }}" alt="AI Trends 2025">
+                            <span class="blog-tag">Technology</span>
+                        </div>
+
+                        <div class="blog-content">
+
+                            <div class="blog-meta">
+                                <span><i class="bi bi-calendar"></i> May 2026</span>
+                                <span><i class="bi bi-clock"></i> 5 min read</span>
+                            </div>
+
+                            <h3>
+                                Top AI Trends That Will Shape 2026
+                            </h3>
+
+                            <p>
+                                Discover how artificial intelligence is transforming industries and what businesses should prepare for.
+                            </p>
+
+                            <span class="blog-read-more">
+                                Read More <i class="bi bi-arrow-right"></i>
+                            </span>
+
+                        </div>
+                    </a>
                 </div>
 
-                <!-- BLOG GRID -->
-                <div class="row g-4">
+                <!-- COPY thêm 2-3 card nữa -->
+                <div class="col-lg-4 col-md-6">
+                    <a href="#" class="blog-card">
 
-                    <!-- ITEM -->
-                    <div class="col-lg-4 col-md-6">
-                        <a href="#" class="blog-card">
+                        <div class="blog-image">
+                            <img src="{{ asset('images/hero2.jpg') }}">
+                            <span class="blog-tag">Business</span>
+                        </div>
 
-                            <div class="blog-image">
-                                <img src="{{ asset('images/hero1.jpg') }}" alt="AI Trends 2025">
-                                <span class="blog-tag">Technology</span>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="bi bi-calendar"></i> May 2026</span>
+                                <span><i class="bi bi-clock"></i> 6 min</span>
                             </div>
 
-                            <div class="blog-content">
+                            <h3>How Digital Transformation Boosts Growth</h3>
 
-                                <div class="blog-meta">
-                                    <span><i class="bi bi-calendar"></i> May 2026</span>
-                                    <span><i class="bi bi-clock"></i> 5 min read</span>
-                                </div>
+                            <p>Practical strategies for companies to scale using modern technologies.</p>
 
-                                <h3>
-                                    Top AI Trends That Will Shape 2026
-                                </h3>
-
-                                <p>
-                                    Discover how artificial intelligence is transforming industries and what businesses should prepare for.
-                                </p>
-
-                                <span class="blog-read-more">
-                                    Read More <i class="bi bi-arrow-right"></i>
-                                </span>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- COPY thêm 2-3 card nữa -->
-                    <div class="col-lg-4 col-md-6">
-                        <a href="#" class="blog-card">
-
-                            <div class="blog-image">
-                                <img src="{{ asset('images/hero2.jpg') }}">
-                                <span class="blog-tag">Business</span>
-                            </div>
-
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <span><i class="bi bi-calendar"></i> May 2026</span>
-                                    <span><i class="bi bi-clock"></i> 6 min</span>
-                                </div>
-
-                                <h3>How Digital Transformation Boosts Growth</h3>
-
-                                <p>Practical strategies for companies to scale using modern technologies.</p>
-
-                                <span class="blog-read-more">
-                                    Read More <i class="bi bi-arrow-right"></i>
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <a href="#" class="blog-card">
-
-                            <div class="blog-image">
-                                <img src="{{ asset('images/hero3.jpg') }}">
-                                <span class="blog-tag">Recruitment</span>
-                            </div>
-
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <span><i class="bi bi-calendar"></i> May 2026</span>
-                                    <span><i class="bi bi-clock"></i> 4 min</span>
-                                </div>
-
-                                <h3>Hiring Tech Talent in 2026</h3>
-
-                                <p>What companies need to know to attract and retain top developers.</p>
-
-                                <span class="blog-read-more">
-                                    Read More <i class="bi bi-arrow-right"></i>
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-
+                            <span class="blog-read-more">
+                                Read More <i class="bi bi-arrow-right"></i>
+                            </span>
+                        </div>
+                    </a>
                 </div>
 
-                <!-- CTA -->
-                <div class="text-center mt-5">
-                    <a href="{{ route('viewer.blogs.index') }}" class="blog-btn">
-                        View All Articles
+                <div class="col-lg-4 col-md-6">
+                    <a href="#" class="blog-card">
+
+                        <div class="blog-image">
+                            <img src="{{ asset('images/hero3.jpg') }}">
+                            <span class="blog-tag">Recruitment</span>
+                        </div>
+
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="bi bi-calendar"></i> May 2026</span>
+                                <span><i class="bi bi-clock"></i> 4 min</span>
+                            </div>
+
+                            <h3>Hiring Tech Talent in 2026</h3>
+
+                            <p>What companies need to know to attract and retain top developers.</p>
+
+                            <span class="blog-read-more">
+                                Read More <i class="bi bi-arrow-right"></i>
+                            </span>
+                        </div>
                     </a>
                 </div>
 
             </div>
+
+            <!-- CTA -->
+            <div class="text-center mt-5">
+                <a href="{{ route('viewer.blogs.index') }}" class="blog-btn">
+                    View All Articles
+                </a>
+            </div>
+
         </section>
     </div>
 @endsection

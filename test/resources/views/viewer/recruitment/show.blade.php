@@ -97,10 +97,7 @@
                 <div>
                     <span>Deadline</span>
                     <h5>
-                        {{ $recruitment->application_deadline
-                            ? \Carbon\Carbon::parse($recruitment->application_deadline)->format('d M Y')
-                            : 'Open'
-                        }}
+                        {{ \Carbon\Carbon::parse($recruitment->application_deadline)->format('d M Y') }}
                     </h5>
                 </div>
 
@@ -200,46 +197,59 @@
 
                     <h3>Job Summary</h3>
 
-                    <ul class="job-summary">
+                    <div class="summary-grid">
 
-                        <li>
-                            <i class="bi bi-geo-alt"></i>
-                            <div>
-                                <span>Location</span>
-                                <strong>{{ $recruitment->location }}</strong>
+                        <div class="summary-box location">
+
+                            <div class="summary-icon">
+                                <i class="bi bi-geo-alt-fill"></i>
                             </div>
-                        </li>
 
-                        <li>
-                            <i class="bi bi-briefcase"></i>
-                            <div>
-                                <span>Work Type</span>
-                                <strong>{{ ucfirst($recruitment->work_type) }}</strong>
+                            <span>Location</span>
+
+                            <h5>{{ $recruitment->location }}</h5>
+
+                        </div>
+
+                        <div class="summary-box type">
+
+                            <div class="summary-icon">
+                                <i class="bi bi-briefcase-fill"></i>
                             </div>
-                        </li>
 
-                        <li>
-                            <i class="bi bi-check-circle"></i>
-                            <div>
-                                <span>Status</span>
-                                <strong>{{ ucfirst($recruitment->status) }}</strong>
+                            <span>Work Type</span>
+
+                            <h5>{{ ucfirst($recruitment->work_type) }}</h5>
+
+                        </div>
+
+                        <div class="summary-box deadline">
+
+                            <div class="summary-icon">
+                                <i class="bi bi-hourglass-split"></i>
                             </div>
-                        </li>
 
-                        <li>
-                            <i class="bi bi-hourglass-split"></i>
-                            <div>
-                                <span>Deadline</span>
-                                <strong>
-                                    {{ $recruitment->application_deadline
-                                        ? \Carbon\Carbon::parse($recruitment->application_deadline)->format('d M Y')
-                                        : 'Open'
-                                    }}
-                                </strong>
+                            <span>Deadline</span>
+
+                            <h5>
+                                {{ \Carbon\Carbon::parse($recruitment->application_deadline)->format('d M Y') }}
+                            </h5>
+
+                        </div>
+
+                        <div class="summary-box status">
+
+                            <div class="summary-icon">
+                                <i class="bi bi-check-circle-fill"></i>
                             </div>
-                        </li>
 
-                    </ul>
+                            <span>Status</span>
+
+                            <h5>{{ ucfirst($recruitment->status) }}</h5>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -275,33 +285,63 @@
                 <div class="row g-4">
 
                     @foreach($relatedJobs as $job)
-
                         <div class="col-lg-4">
 
                             <a href="{{ route('viewer.recruitments.show', $job->slug) }}" class="recruitment-card">
 
                                 <div class="recruitment-thumbnail">
 
-                                    <img src="{{ asset($job->thumbnail) }}" alt="{{ $job->thumbnail_alt ?? $job->position }}">
+                                    <img src="{{ asset($job->thumbnail) }}" alt="{{ $job->position }}">
+
+                                    <span class="job-type">
+                                        {{ strtoupper($job->work_type) }}
+                                    </span>
 
                                 </div>
 
                                 <div class="recruitment-body">
+
+                                    <div class="job-meta">
+
+                                        <span>
+                                            <i class="bi bi-geo-alt"></i>
+                                            {{ $job->location }}
+                                        </span>
+
+                                        @if($job->application_deadline)
+                                            <span>
+                                                <i class="bi bi-hourglass-split"></i>
+                                                {{ \Carbon\Carbon::parse($job->application_deadline)->format('d M Y') }}
+                                            </span>
+                                        @endif
+
+                                    </div>
 
                                     <h3>
                                         {{ $job->position }}
                                     </h3>
 
                                     <p>
-                                        {{ Str::limit(strip_tags($job->description), 80) }}
+                                        {{ Str::limit(strip_tags($job->description), 120) }}
                                     </p>
+
+                                    <div class="job-footer">
+
+                                        <span class="job-status">
+                                            {{ ucfirst($job->status) }}
+                                        </span>
+
+                                        <span class="apply-btn">
+                                            Read More
+                                            <i class="bi bi-arrow-right"></i>
+                                        </span>
+
+                                    </div>
 
                                 </div>
 
                             </a>
-
                         </div>
-
                     @endforeach
 
                 </div>
