@@ -10,43 +10,43 @@
 </x-admin.page-header>
 
 <x-admin.search-box :route="route('admin.recruitments')" placeholder="Search by position, location...">
-        <x-admin.filter-box box_name="Work Type" select_name='work_type'>
-            <option value="">-- Select --</option>
+    <x-admin.filter-box box_name="Work Type" select_name='work_type'>
+        <option value="">-- Select --</option>
 
-            <option value="new" {{ request('status') == 'full-time' ? 'selected' : '' }}>
-                Full-time
-            </option>
+        <option value="new" {{ request('status') == 'full-time' ? 'selected' : '' }}>
+            Full-time
+        </option>
 
-            <option value="seen" {{ request('status') == 'part-time' ? 'selected' : '' }}>
-                Part-time
-            </option>
+        <option value="seen" {{ request('status') == 'part-time' ? 'selected' : '' }}>
+            Part-time
+        </option>
 
-            <option value="processed" {{ request('status') == 'remote' ? 'selected' : '' }}>
-                Remote
-            </option>
+        <option value="processed" {{ request('status') == 'remote' ? 'selected' : '' }}>
+            Remote
+        </option>
 
-            <option value="processed" {{ request('status') == 'hybrid' ? 'selected' : '' }}>
-                Hybrid
-            </option>
-        </x-admin.filter-box>
+        <option value="processed" {{ request('status') == 'hybrid' ? 'selected' : '' }}>
+            Hybrid
+        </option>
+    </x-admin.filter-box>
 
-        <x-admin.filter-box box_name="Status" select_name='status'>
-                <option value="">
-                    -- Select --
-                </option>
+    <x-admin.filter-box box_name="Status" select_name='status'>
+        <option value="">
+            -- Select --
+        </option>
 
-                <option value="new" {{ request('status') == 'open' ? 'selected' : '' }}>
-                    Open
-                </option>
+        <option value="new" {{ request('status') == 'open' ? 'selected' : '' }}>
+            Open
+        </option>
 
-                <option value="seen" {{ request('status') == 'paused' ? 'selected' : '' }}>
-                    Paused
-                </option>
+        <option value="seen" {{ request('status') == 'paused' ? 'selected' : '' }}>
+            Paused
+        </option>
 
-                <option value="processed" {{ request('status') == 'closed' ? 'selected' : '' }}>
-                    Closed
-                </option>
-        </x-admin.filter-box>
+        <option value="processed" {{ request('status') == 'closed' ? 'selected' : '' }}>
+            Closed
+        </option>
+    </x-admin.filter-box>
 </x-admin.search-box>
 
 <table class="index-table">
@@ -70,18 +70,18 @@
             <td>{{ $recruitment->work_type }}</td>
 
             @if ($recruitment->status === 'open')
-                <td>
-                    <span
-                        class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">Open</span>
-                </td>
+            <td>
+                <span
+                    class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">Open</span>
+            </td>
             @elseif ($recruitment->status === 'paused')
-                <td>
-                    <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold">Paused</span>
-                </td>
+            <td>
+                <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold">Paused</span>
+            </td>
             @else
-                <td>
-                    <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold">Closed</span>
-                </td>
+            <td>
+                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold">Closed</span>
+            </td>
             @endif
 
             <td>
@@ -394,7 +394,7 @@
 
                                 <x-input-label for="seo_description" :value="__('SEO Description')" />
 
-                                <textarea id="seo_description" name="seo_description" class="form-input" rows="4" >{{ old('seo_description', $recruitment->seo_description) }}</textarea>
+                                <textarea id="seo_description" name="seo_description" class="form-input" rows="4">{{ old('seo_description', $recruitment->seo_description) }}</textarea>
 
                             </div>
 
@@ -425,139 +425,263 @@
 
 <!-- Create Recruitment Modal -->
 <div class="modal fade" id="createRecruitmentModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content border-0 rounded-4 shadow-lg">
 
-            <!-- Modal Header -->
-            <div class="modal-header border-0 px-4 pt-4 pb-2">
-                <h4 class="modal-title fw-bold text-dark mb-1">Create Recruitment</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+
+        <div class="modal-content admin-modal">
+
+            <!-- HEADER -->
+            <div class="modal-header border-0 pb-0">
+
+                <div>
+
+                    <h3 class="fw-bold mb-1">
+                        Create Recruitment
+                    </h3>
+
+                    <p class="text-muted mb-0">
+                        Create a new job opportunity.
+                    </p>
+
+                </div>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+
             </div>
 
-            <!-- Modal Body -->
-            <div class="modal-body px-4 pb-4">
-                <form action="{{ route('admin.recruitments.store') }}" method="POST">
+            <!-- BODY -->
+            <div class="modal-body">
+
+                <form action="{{ route('admin.recruitments.store') }}"
+                    method="POST"
+                    enctype="multipart/form-data">
+
                     @csrf
 
-                    <!-- Position -->
-                    <div class="form-group">
+                    <div class="row g-4">
 
-                        <x-input-label for="position" :value="__('Position')" />
+                        <!-- LEFT -->
+                        <div class="col-lg-8 d-flex">
+                            <div class="admin-card content-card flex-grow-1">
 
-                        <x-text-input id="position" class="form-input" type="text" name="position" :value="old('position') ?? ''"
-                            required autofocus autocomplete="name" />
+                                <!-- POSITION -->
+                                <div class="mb-4">
 
-                        <x-input-error :messages="$errors->get('position')" class="form-error" />
+                                    <label class="form-label fw-semibold">
+                                        Position
+                                    </label>
+
+                                    <input type="text" name="position" value="{{ old('position') }}" class="form-control admin-input" required>
+
+                                </div>
+
+                                <!-- DESCRIPTION -->
+                                <div class="mb-4 editor-wrapper">
+
+                                    <label class="form-label fw-semibold">
+                                        Job Description
+                                    </label>
+
+                                    <textarea name="description" class="ckeditor">{{ old('description') }}</textarea>
+
+                                </div>
+
+                                <!-- REQUIREMENTS -->
+                                <div class="mb-4 editor-wrapper">
+
+                                    <label class="form-label fw-semibold">
+                                        Requirements
+                                    </label>
+
+                                    <textarea name="requirements" class="ckeditor">{{ old('requirements') }}</textarea>
+
+                                </div>
+
+                                <!-- BENEFITS -->
+                                <div class="editor-wrapper">
+
+                                    <label class="form-label fw-semibold">
+                                        Benefits
+                                    </label>
+
+                                    <textarea name="benefits" class="ckeditor">{{ old('benefits') }}</textarea>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- RIGHT -->
+                        <div class="col-lg-4">
+
+                            <!-- SETTINGS -->
+                            <div class="admin-card mb-4">
+
+                                <h6 class="admin-card-title">
+                                    Recruitment Settings
+                                </h6>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        Location
+                                    </label>
+
+                                    <textarea type="text" name="location" value="{{ old('location') }}" class="form-control"></textarea>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        Working Time
+                                    </label>
+
+                                    <textarea type="text" name="work_time" value="{{ old('work_time') }}" class="form-control" placeholder="Mon - Fri, 08:00 - 17:00"></textarea>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        Work Type
+                                    </label>
+
+                                    <select name="work_type" class="form-select">
+
+                                        <option value="full-time">Full-time</option>
+                                        <option value="part-time">Part-time</option>
+                                        <option value="remote">Remote</option>
+                                        <option value="hybrid">Hybrid</option>
+
+                                    </select>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        Status
+                                    </label>
+
+                                    <select name="status" class="form-select">
+
+                                        <option value="open">Open</option>
+                                        <option value="paused">Paused</option>
+                                        <option value="closed">Closed</option>
+
+                                    </select>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        Deadline
+                                    </label>
+
+                                    <input type="datetime-local" name="application_deadline" class="form-control">
+
+                                </div>
+
+                                <div>
+
+                                    <label class="form-label">
+                                        Visibility
+                                    </label>
+
+                                    <select name="is_visible" class="form-select">
+
+                                        <option value="1">
+                                            Visible
+                                        </option>
+
+                                        <option value="0">
+                                            Hidden
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                            <!-- THUMBNAIL -->
+                            <div class="admin-card mb-4">
+
+                                <h6 class="admin-card-title">
+                                    Thumbnail
+                                </h6>
+
+                                <div class="mb-3">
+
+                                    <input type="file" name="thumbnail" class="form-control">
+
+                                </div>
+
+                                <input type="text" name="thumbnail_alt" class="form-control" placeholder="Thumbnail alt text">
+
+                            </div>
+
+                            <!-- SEO -->
+                            <div class="admin-card">
+
+                                <h6 class="admin-card-title">
+                                    SEO Settings
+                                </h6>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        SEO Title
+                                    </label>
+
+                                    <input type="text" name="seo_title" class="form-control">
+
+                                </div>
+
+                                <div>
+
+                                    <label class="form-label">
+                                        SEO Description
+                                    </label>
+
+                                    <textarea name="seo_description" rows="4" class="form-control"></textarea>
+
+                                </div>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
-                    <!-- Description -->
-                    <div class="form-group">
+                    <!-- FOOTER -->
+                    <div class="d-flex justify-content-end gap-2 mt-4">
 
-                        <x-input-label for="description" :value="__('Description')" />
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">
 
-                        <textarea id="description" name="description" class="form-input" rows="4"
-                            required>{{ old('description') }}</textarea>
-
-                        <x-input-error :messages="$errors->get('description')" class="form-error" />
-
-                    </div>
-
-                    <!-- Requirements -->
-                    <div class="form-group">
-
-                        <x-input-label for="requirements" :value="__('Requirements')" />
-
-                        <textarea id="requirements" name="requirements" class="form-input" rows="4"
-                            required>{{ old('requirements') }}</textarea>
-
-                        <x-input-error :messages="$errors->get('requirements')" class="form-error" />
-
-                    </div>
-
-                    <!-- Benefits -->
-                    <div class="form-group">
-
-                        <x-input-label for="benefits" :value="__('Benefits')" />
-
-                        <textarea id="benefits" name="benefits" class="form-input" rows="4"
-                            required>{{ old('benefits') }}</textarea>
-
-                        <x-input-error :messages="$errors->get('benefits')" class="form-error" />
-                    </div>
-
-
-                    <!-- Location -->
-                    <div class="form-group">
-
-                        <x-input-label for="location" :value="__('Location')" />
-
-                        <input type="text" id="location" name="location" value="{{ old('location') }}"
-                            class="form-input" required>
-
-                        <x-input-error :messages="$errors->get('location')" class="form-error" />
-                    </div>
-
-                    <!-- Work Type -->
-                    <div class="form-group">
-
-                        <x-input-label for="work_type" :value="__('Work Type')" />
-
-                        <select id="work_type" name="work_type" class="form-input" required>
-                            <option value="">Select Work Type</option>
-
-                            <option value="full-time" {{ old('work_type') == 'full-time' ? 'selected' : '' }}>Full Time
-                            </option>
-
-                            <option value="part-time" {{ old('work_type') == 'part-time' ? 'selected' : '' }}>Part Time
-                            </option>
-
-                            <option value="remote" {{ old('work_type') == 'remote' ? 'selected' : '' }}>Remote</option>
-
-                            <option value="hybrid" {{ old('work_type') == 'hybrid' ? 'selected' : '' }}>Hybrid</option>
-                        </select>
-
-                        <x-input-error :messages="$errors->get('work_type')" class="form-error" />
-
-                    </div>
-
-                    <!-- SEO Title -->
-                    <div class="form-group">
-
-                        <x-input-label for="seo_title" :value="__('SEO Title')" />
-
-                        <x-text-input id="seo_title" class="form-input" type="text" name="seo_title"
-                            value="{{ old('seo_title') ?? '' }}" />
-
-                        <x-input-error :messages="$errors->get('seo_title')" class="form-error" />
-
-                    </div>
-
-                    <!-- SEO Description -->
-                    <div class="form-group">
-
-                        <x-input-label for="seo_description" :value="__('SEO Description')" />
-
-                        <textarea id="seo_description" name="seo_description" class="form-input" rows="4">{{ old('seo_description') }}</textarea>
-
-                        <x-input-error :messages="$errors->get('seo_description')" class="form-error" />
-                    </div>
-
-                    <!-- Footer -->
-
-                    <div class="d-flex justify-content-end gap-2">
-
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             Cancel
+
                         </button>
 
-                        <button type="submit" class="btn btn-success">
+                        <button type="submit" class="btn btn-primary px-4">
+
                             Create Recruitment
+
                         </button>
+
                     </div>
+
                 </form>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
 @endsection

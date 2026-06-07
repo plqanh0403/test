@@ -39,9 +39,9 @@
                 </span>
 
                 @if($blog->category)
-                    <span class="blog-detail-category">
-                        {{ $blog->category->name }}
-                    </span>
+                <span class="blog-detail-category">
+                    {{ $blog->category->name }}
+                </span>
                 @endif
 
             </div>
@@ -50,12 +50,12 @@
 
         {{-- COVER --}}
         @if($blog->thumbnail)
-            <div class="blog-detail-cover">
+        <div class="blog-detail-cover">
 
-                <img src="{{ asset('images/hero1.jpg') }}" {{-- $blog->thumbnail --}}
-                     alt="{{ $blog->thumbnail_alt ?? $blog->title }}">
+            <img src="{{ asset('images/hero1.jpg') }}" {{-- $blog->thumbnail --}}
+                alt="{{ $blog->thumbnail_alt ?? $blog->title }}">
 
-            </div>
+        </div>
         @endif
 
         {{-- BODY --}}
@@ -102,28 +102,28 @@
 
                     @foreach($relatedBlogs as $item)
 
-                        <a href="{{ route('viewer.blogs.show',$item->slug) }}" class="related-blog-item">
+                    <a href="{{ route('viewer.blogs.show',$item->slug) }}" class="related-blog-item">
 
-                            <div class="related-blog-image">
+                        <div class="related-blog-image">
 
-                                <img src="{{ asset('images/hero3.jpg') }}" {{-- $item->thumbnail --}}
-                                     alt="{{ $item->thumbnail_alt ?? $item->title }}">
+                            <img src="{{ asset('images/hero3.jpg') }}" {{-- $item->thumbnail --}}
+                                alt="{{ $item->thumbnail_alt ?? $item->title }}">
 
-                            </div>
+                        </div>
 
-                            <div class="related-blog-content">
+                        <div class="related-blog-content">
 
-                                <span>
-                                    {{ date('d M Y', strtotime($item->published_at)) }}
-                                </span>
+                            <span>
+                                {{ date('d M Y', strtotime($item->published_at)) }}
+                            </span>
 
-                                <h5>
-                                    {{ Str::limit($item->title,70) }}
-                                </h5>
+                            <h5>
+                                {{ Str::limit($item->title,70) }}
+                            </h5>
 
-                            </div>
+                        </div>
 
-                        </a>
+                    </a>
 
                     @endforeach
 

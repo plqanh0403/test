@@ -29,6 +29,9 @@ class AboutUsFactory extends Factory
             'dark_logo' => 'logos/dark-logo.png',
             'favicon' => 'logos/favicon.ico',
 
+            'hr_phone' => fake()->phoneNumber(),
+            'hr_email' => fake()->companyEmail(),
+
             // Social
             'facebook' => fake()->url(),
             'youtube' => fake()->url(),

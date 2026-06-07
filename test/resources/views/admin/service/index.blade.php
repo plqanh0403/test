@@ -17,32 +17,32 @@
 
 <x-admin.search-box :route="route('admin.services')" placeholder="Name or slug...">
 
-        <x-admin.filter-box box_name="Category" select_name='category_id'>
-            <option value="">
-                -- Select --
-            </option>
+    <x-admin.filter-box box_name="Category" select_name='category_id'>
+        <option value="">
+            -- Select --
+        </option>
 
-            @foreach($categories as $category)
-            <option value="{{ $category->id }}"
-                {{ request('category_id') == $category->id ? 'selected' : '' }}>
-                {{ $category->name }}
-            </option>
-            @endforeach
-        </x-admin.filter-box>
+        @foreach($categories as $category)
+        <option value="{{ $category->id }}"
+            {{ request('category_id') == $category->id ? 'selected' : '' }}>
+            {{ $category->name }}
+        </option>
+        @endforeach
+    </x-admin.filter-box>
 
-        <x-admin.filter-box box_name="Visibility" select_name='is_visible'>
-                <option value="">
-                    -- Select --
-                </option>
+    <x-admin.filter-box box_name="Visibility" select_name='is_visible'>
+        <option value="">
+            -- Select --
+        </option>
 
-                <option value="1" {{ request('is_visible') === '1' ? 'selected' : '' }}>
-                    Visible
-                </option>
+        <option value="1" {{ request('is_visible') === '1' ? 'selected' : '' }}>
+            Visible
+        </option>
 
-                <option value="0" {{ request('is_visible') === '0' ? 'selected' : '' }}>
-                    Hidden
-                </option>
-        </x-admin.filter-box>
+        <option value="0" {{ request('is_visible') === '0' ? 'selected' : '' }}>
+            Hidden
+        </option>
+    </x-admin.filter-box>
 
 </x-admin.search-box>
 
@@ -465,167 +465,269 @@
     {{ $services->links() }}
 </div>
 
-<!-- Create Service Modal -->
+<!-- CREATE SERVICE MODAL -->
 <div class="modal fade" id="createServiceModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content border-0 rounded-4 shadow-lg">
 
-            <!-- Modal Header -->
-            <div class="modal-header border-0 px-4 pt-4 pb-2">
-                <h4 class="modal-title fw-bold text-dark mb-1">Create Service</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+
+        <div class="modal-content admin-modal">
+
+            <!-- HEADER -->
+            <div class="modal-header border-0 pb-0">
+
+                <div>
+                    <h3 class="fw-bold mb-1">
+                        Create Service
+                    </h3>
+
+                    <p class="text-muted mb-0">
+                        Create a new service for your website.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
             </div>
 
-            <!-- Modal Body -->
-            <div class="modal-body px-4 pb-4">
-                <form action="{{ route('admin.services.store') }}" method="POST">
+            <!-- BODY -->
+            <div class="modal-body">
+
+                <form
+                    action="{{ route('admin.services.store') }}"
+                    method="POST"
+                    enctype="multipart/form-data">
+
                     @csrf
 
-                    <!-- Name -->
-                    <div class="form-group">
+                    <div class="row g-4">
 
-                        <x-input-label for="name" :value="__('Name')" />
+                        <!-- LEFT -->
+                        <div class="col-lg-8 d-flex">
 
-                        <x-text-input id="name" class="form-input" type="text" name="name" :value="old('name') ?? ''"
-                            required autofocus autocomplete="name" />
+                            <div class="admin-card content-card flex-grow-1">
 
-                        <x-input-error :messages="$errors->get('name')" class="form-error" />
+                                <!-- NAME -->
+                                <div class="mb-4">
 
-                    </div>
+                                    <label class="form-label fw-semibold">
+                                        Service Name
+                                    </label>
 
-                    <!-- Overview -->
-                    <div class="form-group">
+                                    <input type="text" name="name" class="form-control admin-input" value="{{ old('name') }}" placeholder="Enter service name..." required>
 
-                        <x-input-label for="overview" :value="__('Overview')" />
+                                </div>
 
-                        <textarea id="overview" name="overview" class="form-input" rows="4"
-                            required>{{ old('overview') }}</textarea>
+                                <!-- OVERVIEW -->
+                                <div class="mb-4">
 
-                        <x-input-error :messages="$errors->get('overview')" class="form-error" />
+                                    <label class="form-label fw-semibold">
+                                        Overview
+                                    </label>
 
-                    </div>
+                                    <textarea name="overview" rows="5" class="form-control admin-input" placeholder="Short service introduction...">{{ old('overview') }}</textarea>
 
-                    <!-- Details -->
-                    <div class="form-group">
+                                </div>
 
-                        <x-input-label for="details" :value="__('Details')" />
+                                <!-- DETAILS -->
+                                <div class="editor-wrapper">
 
-                        <textarea id="details" name="details" class="form-input" rows="4"
-                            required>{{ old('details') }}</textarea>
+                                    <label class="form-label fw-semibold">
+                                        Service Details
+                                    </label>
 
-                        <x-input-error :messages="$errors->get('details')" class="form-error" />
+                                    <textarea name="details" class="form-control ckeditor">{{ old('details') }}</textarea>
 
-                    </div>
+                                </div>
 
-                    <!-- Visibility -->
-                    <div class="form-group">
-
-                        <x-input-label for="is_visible" :value="__('Visibility')" />
-
-                        <div class="mt-2 flex items-center gap-3">
-
-                            <input type="checkbox" id="is_visible" name="is_visible" value="1"
-                                {{ old('is_visible') ? 'checked' : '' }} class="w-5 h-5">
-
-                            <label for="is_visible" class="text-sm text-gray-700">
-                                Visible on website
-                            </label>
+                            </div>
 
                         </div>
 
-                        <x-input-error :messages="$errors->get('is_visible')" class="form-error" />
+                        <!-- RIGHT -->
+                        <div class="col-lg-4">
+
+                            <!-- SETTINGS -->
+                            <div class="admin-card mb-4">
+
+                                <h6 class="admin-card-title">
+                                    Settings
+                                </h6>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        Category
+                                    </label>
+
+                                    <select
+                                        name="category_id"
+                                        class="form-select">
+
+                                        <option value="">
+                                            -- Select Category --
+                                        </option>
+
+                                        @foreach($serviceCategories as $category)
+
+                                        <option
+                                            value="{{ $category->id }}">
+
+                                            {{ $category->name }}
+
+                                        </option>
+
+                                        @endforeach
+
+                                    </select>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        Visibility
+                                    </label>
+
+                                    <select
+                                        name="is_visible"
+                                        class="form-select">
+
+                                        <option value="1">
+                                            Visible
+                                        </option>
+
+                                        <option value="0">
+                                            Hidden
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                                <div>
+
+                                    <label class="form-label">
+                                        Sort Order
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        name="sort_order"
+                                        value="0"
+                                        class="form-control">
+
+                                </div>
+
+                            </div>
+
+                            <!-- MEDIA -->
+                            <div class="admin-card mb-4">
+
+                                <h6 class="admin-card-title">
+                                    Media
+                                </h6>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        Thumbnail
+                                    </label>
+
+                                    <input
+                                        type="file"
+                                        name="thumbnail"
+                                        class="form-control">
+
+                                </div>
+
+                                <div>
+
+                                    <label class="form-label">
+                                        Thumbnail Alt
+                                    </label>
+
+                                    <input type="text" name="thumbnail_alt" class="form-control" placeholder="Image description...">
+
+                                </div>
+
+                            </div>
+
+                            <!-- SEO -->
+                            <div class="admin-card">
+
+                                <h6 class="admin-card-title">
+                                    SEO Settings
+                                </h6>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        SEO Title
+                                    </label>
+
+                                    <input type="text" name="seo_title" class="form-control">
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        SEO Description
+                                    </label>
+
+                                    <textarea name="seo_description" rows="4" class="form-control"></textarea>
+
+                                </div>
+
+                                <div>
+
+                                    <label class="form-label">
+                                        SEO Keywords
+                                    </label>
+
+                                    <input type="text" name="seo_keywords" class="form-control">
+
+                                </div>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
-                    <!-- Thumbnail -->
-                    <div class="form-group">
+                    <!-- FOOTER -->
+                    <div class="d-flex justify-content-end gap-2 mt-4">
 
-                        <x-input-label for="thumbnail" :value="__('Thumbnail')" />
+                        <button
+                            type="button"
+                            class="btn btn-light"
+                            data-bs-dismiss="modal">
 
-                        <input type="file" id="thumbnail" name="thumbnail" class="form-input">
-                    </div>
-
-                    <!-- Thumbnail Alt -->
-                    <div class="form-group">
-
-                        <x-input-label for="thumbnail_alt" :value="__('Thumbnail Alt')" />
-
-                        <input type="text" id="thumbnail_alt" name="thumbnail_alt" value="{{ old('thumbnail_alt') }}"
-                            class="form-input">
-
-                        <x-input-error :messages="$errors->get('thumbnail_alt')" class="form-error" />
-                    </div>
-
-                    <!-- Banner Image -->
-                    <div class="form-group">
-
-                        <x-input-label for="banner" :value="__('Banner Image')" />
-
-                        <input type="file" id="banner" name="banner" class="form-input">
-                    </div>
-
-                    <!-- Slug -->
-                    <div class="form-group">
-
-                        <x-input-label for="slug" :value="__('Slug')" />
-
-                        <x-text-input id="slug" class="form-input" type="text" name="slug" :value="old('slug') ?? ''"
-                            required />
-
-                        <x-input-error :messages="$errors->get('slug')" class="form-error" />
-
-                    </div>
-
-                    <!-- SEO Title -->
-                    <div class="form-group">
-
-                        <x-input-label for="seo_title" :value="__('SEO Title')" />
-
-                        <x-text-input id="seo_title" class="form-input" type="text" name="seo_title"
-                            value="{{ old('seo_title') ?? '' }}" />
-
-                        <x-input-error :messages="$errors->get('seo_title')" class="form-error" />
-
-                    </div>
-
-                    <!-- SEO Description -->
-                    <div class="form-group">
-
-                        <x-input-label for="seo_description" :value="__('SEO Description')" />
-
-                        <textarea id="seo_description" name="seo_description" class="form-input"
-                            rows="4">{{ old('seo_description') }}</textarea>
-
-                        <x-input-error :messages="$errors->get('seo_description')" class="form-error" />
-                    </div>
-
-                    <!-- SEO Keywords -->
-                    <div class="form-group">
-
-                        <x-input-label for="seo_keywords" :value="__('SEO Keywords')" />
-
-                        <x-text-input id="seo_keywords" class="form-input" type="text" name="seo_keywords"
-                            value="{{ old('seo_keywords') ?? '' }}" />
-
-                        <x-input-error :messages="$errors->get('seo_keywords')" class="form-error" />
-
-                    </div>
-
-                    <!-- Footer -->
-
-                    <div class="d-flex justify-content-end gap-2">
-
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             Cancel
+
                         </button>
 
-                        <button type="submit" class="btn btn-success">
+                        <button
+                            type="submit"
+                            class="btn btn-primary px-4">
+
                             Create Service
+
                         </button>
+
                     </div>
+
                 </form>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
 @endsection

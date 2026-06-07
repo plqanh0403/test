@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 <x-admin.page-header title="Submit Contact Management" description="Manage all submit contacts in the system">
 
     <x-slot:action>
-        <button class="btn btn-create" data-bs-toggle="modal" data-bs-target="#createServiceModal">
+        <button class="btn btn-create" data-bs-toggle="modal" data-bs-target="#createContactModal">
             + Add Submitted Contact
         </button>
 
@@ -63,7 +63,7 @@ use Illuminate\Support\Str;
         <option value="">
             -- Select --
         </option>
-        
+
         <option value="new" {{ request('status') == 'new' ? 'selected' : '' }}>
             New
         </option>
@@ -327,5 +327,191 @@ use Illuminate\Support\Str;
 
 <div class="mt-4 d-flex justify-content-center">
     {{ $submitContacts->links() }}
+</div>
+
+<div class="modal fade" id="createContactModal" tabindex="-1" aria-hidden="true">
+
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+
+        <div class="modal-content admin-modal">
+
+            <!-- HEADER -->
+            <div class="modal-header border-0 pb-0">
+
+                <div>
+
+                    <h3 class="fw-bold mb-1">
+                        Create Contact Submission
+                    </h3>
+
+                    <p class="text-muted mb-0">
+                        Create a new customer inquiry manually.
+                    </p>
+
+                </div>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <!-- BODY -->
+            <div class="modal-body">
+
+                <form action="{{ route('admin.submit_contacts.store') }}" method="POST">
+
+                    @csrf
+
+                    <div class="row g-4">
+
+                        <!-- LEFT -->
+                        <div class="col-lg-8 d-flex flex-column">
+
+                            <!-- CUSTOMER INFO -->
+                            <div class="admin-card mb-4">
+
+                                <h6 class="admin-card-title">
+                                    Customer Information
+                                </h6>
+
+                                <div class="row g-3">
+
+                                    <div class="col-md-6">
+
+                                        <label class="form-label">
+                                            Full Name
+                                        </label>
+
+                                        <input type="text" name="name" value="{{ old('name') }}" class="form-control admin-input" required>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <label class="form-label">
+                                            Email
+                                        </label>
+
+                                        <input type="email" name="email" value="{{ old('email') }}" class="form-control admin-input" required>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <label class="form-label">
+                                            Phone
+                                        </label>
+
+                                        <input type="text" name="phone" value="{{ old('phone') }}" class="form-control admin-input">
+
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <label class="form-label">
+                                            Company
+                                        </label>
+
+                                        <input type="text" name="company" value="{{ old('company') }}" class="form-control admin-input">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- MESSAGE -->
+                            <div class="admin-card content-card">
+
+                                <label class="form-label fw-semibold">
+                                    Message
+                                </label>
+
+                                <textarea name="message" rows="12" class="form-control ckeditor admin-input" required>{{ old('message') }}</textarea>
+
+                            </div>
+
+                        </div>
+
+                        <!-- RIGHT -->
+                        <div class="col-lg-4">
+
+                            <!-- STATUS -->
+                            <div class="admin-card mb-4">
+
+                                <h6 class="admin-card-title">
+                                    Processing Status
+                                </h6>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        Status
+                                    </label>
+
+                                    <select name="status"
+                                        class="form-select">
+
+                                        <option value="new">
+                                            New
+                                        </option>
+
+                                        <option value="seen">
+                                            Seen
+                                        </option>
+
+                                        <option value="processing">
+                                            Processing
+                                        </option>
+
+                                        <option value="processed">
+                                            Processed
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                            <!-- INTERNAL NOTE -->
+                            <div class="admin-card">
+
+                                <h6 class="admin-card-title">
+                                    Internal Note
+                                </h6>
+
+                                <textarea name="internal_note" rows="10" class="form-control" placeholder="Internal notes for team members...">{{ old('internal_note') }}</textarea>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- FOOTER -->
+                    <div class="d-flex justify-content-end gap-2 mt-4">
+
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+
+                            Cancel
+
+                        </button>
+
+                        <button type="submit" class="btn btn-primary px-4">
+
+                            Create Contact
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 @endsection

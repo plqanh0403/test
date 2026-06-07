@@ -56,28 +56,6 @@ class BlogController extends Controller
         return view('admin.blog.index', compact('blogs', 'categories', 'servicesCount', 'activitiesCount', 'type'));
     }
 
-    public function uploadImage(Request $request)
-    {
-        if ($request->hasFile('upload')) {
-
-            $file = $request->file('upload');
-
-            $filename = time().'_'.$file->getClientOriginalName();
-
-            $file->move(public_path('uploads/blogs'), $filename);
-
-            return response()->json([
-                'uploaded' => 1,
-                'fileName' => $filename,
-                'url' => asset('uploads/blogs/'.$filename)
-            ]);
-        }
-
-        return response()->json([
-            'error' => 'Upload failed'
-        ], 400);
-    }
-
     public function store(Request $request): RedirectResponse
     {
         $categories = Category::all();

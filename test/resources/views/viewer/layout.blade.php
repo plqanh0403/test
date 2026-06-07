@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     {{-- Swiper --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     {{-- App CSS & JS --}}
     <link rel="stylesheet" href="{{ asset('viewer.css') }}">
@@ -69,10 +69,10 @@
 
                             <div class="dropdown-menu-custom">
                                 @foreach($serviceCategories as $serviceCategory)
-                                    <a href="{{ route('viewer.services.index', $serviceCategory->slug) }}">
-                                        <i class="bi bi-grid"></i>
-                                        {{ $serviceCategory->name}}
-                                    </a>
+                                <a href="{{ route('viewer.services.index', $serviceCategory->slug) }}">
+                                    <i class="bi bi-grid"></i>
+                                    {{ $serviceCategory->name}}
+                                </a>
                                 @endforeach
                             </div>
                         </li>
@@ -161,103 +161,103 @@
         <div class="container">
             <div class="footer-container">
 
-            <!-- Company -->
-            <div class="footer-col footer-brand">
+                <!-- Company -->
+                <div class="footer-col footer-brand">
 
-                <a href="#" class="footer-logo">
-                    <img src="{{ asset('images/logo.png') }}" alt="EGEAD Logo">
-                </a>
-
-
-
-                <div class="footer-action">
-                    <a href="{{ route('viewer.contact') }}" class="consultation-btn"> {{--{{ route('contact') }}--}}
-                        Get Free Consultation
+                    <a href="#" class="footer-logo">
+                        <img src="{{ asset('images/logo.png') }}" alt="EGEAD Logo">
                     </a>
-                </div>
 
-                <div class="footer-social">
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                </div>
 
-            </div>
 
-            <!-- Services -->
-            <div class="footer-col">
-
-                <h4>Services</h4>
-
-                <ul>
-                    @foreach($serviceCategories as $category)
-                    <li>
-                        <a href="{{ route('viewer.services.index', $category->slug) }}">{{ $category->name}}</a>
-                    </li>
-                    @endforeach
-                </ul>
-
-            </div>
-
-            <!-- SUBSCRIBE -->
-            <div class="footer-col footer-subscribe">
-
-                <h4>Subscribe to our newsletter</h4>
-
-                <p>
-                    Get latest updates, job opportunities and tech insights from EGEAD.
-                </p>
-
-                <form action=" {{ route('viewer.email.store')}}" method="POST" class="subscribe-form">
-                    @csrf
-
-                    <div class="subscribe-box">
-
-                        <input type="email" name="email" placeholder="Enter your email..." required>
-
-                        <input type="hidden" name="source" value="footer">
-
-                        <button type="submit">
-                            <i class="bi bi-send"></i>
-                        </button>
-
+                    <div class="footer-action">
+                        <a href="{{ route('viewer.contact') }}" class="consultation-btn"> {{--{{ route('contact') }}--}}
+                            Get Free Consultation
+                        </a>
                     </div>
 
-                </form>
+                    <div class="footer-social">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+
+                </div>
+
+                <!-- Services -->
+                <div class="footer-col">
+
+                    <h4>Services</h4>
+
+                    <ul>
+                        @foreach($serviceCategories as $category)
+                        <li>
+                            <a href="{{ route('viewer.services.index', $category->slug) }}">{{ $category->name}}</a>
+                        </li>
+                        @endforeach
+                    </ul>
+
+                </div>
+
+                <!-- SUBSCRIBE -->
+                <div class="footer-col footer-subscribe">
+
+                    <h4>Subscribe to our newsletter</h4>
+
+                    <p>
+                        Get latest updates, job opportunities and tech insights from EGEAD.
+                    </p>
+
+                    <form action=" {{ route('viewer.email.store')}}" method="POST" class="subscribe-form">
+                        @csrf
+
+                        <div class="subscribe-box">
+
+                            <input type="email" name="email" placeholder="Enter your email..." required>
+
+                            <input type="hidden" name="source" value="footer">
+
+                            <button type="submit">
+                                <i class="bi bi-send"></i>
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-col">
+
+                    <h4>Contact</h4>
+
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="bi bi-envelope"></i>
+                            {{ $about_us->email }}
+                        </li>
+
+                        <li>
+                            <i class="bi bi-telephone"></i>
+                            {{ $about_us->phone }}
+                        </li>
+
+                        <li>
+                            <i class="bi bi-geo-alt"></i>
+                            {{ $about_us->address }}
+                        </li>
+                    </ul>
+
+                </div>
 
             </div>
 
-            <!-- Contact -->
-            <div class="footer-col">
-
-                <h4>Contact</h4>
-
-                <ul class="footer-contact">
-                    <li>
-                        <i class="bi bi-envelope"></i>
-                        {{ $about_us->email }}
-                    </li>
-
-                    <li>
-                        <i class="bi bi-telephone"></i>
-                        {{ $about_us->phone }}
-                    </li>
-
-                    <li>
-                        <i class="bi bi-geo-alt"></i>
-                        {{ $about_us->address }}
-                    </li>
-                </ul>
-
+            <div class="footer-bottom">
+                <p>
+                    © {{ date('Y') }} E-GEAD.
+                </p>
             </div>
-
-        </div>
-
-        <div class="footer-bottom">
-            <p>
-                © {{ date('Y') }} E-GEAD.
-            </p>
-        </div>
         </div>
 
     </footer>
@@ -365,9 +365,15 @@
                         },
 
                         breakpoints: {
-                            0: { slidesPerView: 1 },
-                            768: { slidesPerView: 2 },
-                            1200: { slidesPerView: 3 }
+                            0: {
+                                slidesPerView: 1
+                            },
+                            768: {
+                                slidesPerView: 2
+                            },
+                            1200: {
+                                slidesPerView: 3
+                            }
                         }
 
                     });
@@ -387,7 +393,7 @@
         new Swiper('.testimonialSwiper', {
             direction: 'vertical',
 
-            slidesPerView: 'auto',   // 👈 QUAN TRỌNG
+            slidesPerView: 'auto', // 👈 QUAN TRỌNG
             centeredSlides: true,
 
             loop: true,
@@ -411,13 +417,13 @@
 
                 const rect = step.getBoundingClientRect();
 
-                if(rect.top < window.innerHeight - 100){
+                if (rect.top < window.innerHeight - 100) {
 
                     // hiệu ứng fade-in cũ
                     step.classList.add('show');
 
                     // 🔥 thêm animation vòng tròn (chạy 1 lần)
-                    if(!step.classList.contains('animate')){
+                    if (!step.classList.contains('animate')) {
                         setTimeout(() => {
                             step.classList.add('animate');
 
@@ -440,7 +446,7 @@
             const counters = document.querySelectorAll('.trust-item h3');
 
             const runCounter = (el) => {
-                const target = el.innerText.replace('+','').replace('/7','');
+                const target = el.innerText.replace('+', '').replace('/7', '');
                 let count = 0;
 
                 const update = () => {
@@ -485,7 +491,7 @@
         window.addEventListener('scroll', () => {
             items.forEach(item => {
                 const rect = item.getBoundingClientRect();
-                if(rect.top < window.innerHeight - 100){
+                if (rect.top < window.innerHeight - 100) {
                     item.classList.add('show');
                 }
             });

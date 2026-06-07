@@ -40,6 +40,25 @@ class SubmitContactController extends Controller
         return view('admin.submit_contact.index', compact('submitContacts'));
     }
 
+    public function store(Request $request) : RedirectResponse
+    {
+        $validated = $request->validate([
+            'name'          => ['required', 'string', 'max:255'],
+            'email'         => ['required', 'email', 'max:255'],
+            'phone'         => ['nullable', 'string', 'max:255'],
+            'company'       => ['nullable', 'string', 'max:255'],
+            'message'       => ['required', 'string'],
+            'status'        => ['nullable', 'in:new,seen,processing,processed'],
+            'internal_note' => ['nullable', 'string'],
+        ]);
+
+        SubmitContact::create($validated);
+
+        return redirect()
+            ->back()
+            ->with('success', 'Contact submission created successfully.');
+    }
+
     public function updateSeenStatus(SubmitContact $submitContact): JsonResponse
     {
         try {

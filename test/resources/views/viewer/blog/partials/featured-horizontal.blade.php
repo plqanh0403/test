@@ -20,9 +20,9 @@
             </div>
 
             @if($blog->category)
-                <span class="blog-category">
-                    {{ $blog->category->name }}
-                </span>
+            <span class="blog-category">
+                {{ $blog->category->name }}
+            </span>
             @endif
         </div>
 

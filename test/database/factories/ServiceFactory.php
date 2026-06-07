@@ -23,28 +23,16 @@ class ServiceFactory extends Factory
 
         return [
             'category_id' => ServiceCategory::inRandomOrder()->first()->id,
-
             'name' => ucfirst($name),
-
             'thumbnail' => 'services/default-thumbnail.jpg',
             'thumbnail_alt' => $name,
-
             'overview' => fake()->paragraph(3),
-
             'details' => fake()->paragraphs(5, true),
-
             'slug' => Str::slug($name),
-
-            'banner_image' => 'services/default-banner.jpg',
-
             'seo_title' => fake()->sentence(),
-
             'seo_description' => fake()->paragraph(),
-
             'seo_keywords' => implode(',', fake()->words(8)),
-
             'is_visible' => fake()->boolean(90),
-
             'sort_order' => fake()->numberBetween(1, 100),
         ];
     }

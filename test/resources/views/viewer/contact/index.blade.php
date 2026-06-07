@@ -97,9 +97,9 @@
                     </div>
 
                     @if(session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
                     @endif
 
                     <form action="{{ route('viewer.contact.store') }}" method="POST">

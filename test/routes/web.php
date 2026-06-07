@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -7,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\SubmitContactController;
 use App\Http\Controllers\Admin\SubmitEmailController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\CKEditorController;
 use App\Http\Controllers\Admin\RecruitmentController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Viewer\HomeController;
@@ -52,7 +54,7 @@ Route::middleware([
         Route::put('/users/{user}/unlock', [UserController::class, 'unlock'])->name('admin.users.unlock');
 
         Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
-});
+    });
 
 Route::middleware([
     'auth',
@@ -64,14 +66,16 @@ Route::middleware([
         // Blog Category Management
         Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories');
 
-        Route::post('/categories', [CategoryController::class, 'store']) ->name('admin.categories.store');
+        Route::post('/categories', [CategoryController::class, 'store'])->name('admin.categories.store');
 
-        Route::put('/categories/{category}', [CategoryController::class, 'update']) ->name('admin.categories.update');
+        Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
 
         Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
 
         // Submit Email Management
         Route::get('/submit-emails', [SubmitEmailController::class, 'index'])->name('admin.submit_emails');
+
+         Route::post('/submit-emails', [SubmitEmailController::class, 'store'])->name('admin.submit_emails.store');
 
         //Route::put('/submit-emails/{submitEmail}', [SubmitEmailController::class, 'updateEmailStatus'])->name('admin.submit_emails.update_status');
         Route::delete('/submit-emails/{submitEmail}', [SubmitEmailController::class, 'destroy'])->name('admin.submit_emails.destroy');
@@ -81,6 +85,8 @@ Route::middleware([
 
         // Submit Contact Management
         Route::get('/submit-contacts', [SubmitContactController::class, 'index'])->name('admin.submit_contacts');
+
+        Route::post('/submit-contacts', [SubmitContactController::class, 'store'])->name('admin.submit_contacts.store');
 
         Route::put('/api/submit-contacts/{submitContact}/seen', [SubmitContactController::class, 'updateSeenStatus'])->name('admin.submit_contacts.update_seen');
 
@@ -138,7 +144,15 @@ Route::middleware([
 
         Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
 
-        Route::post('/blogs/upload-image', [BlogController::class, 'uploadImage'])->name('admin.blogs.upload.image');
+        // About Us Management
+        Route::get('/about_us', [AboutUsController::class, 'index'])->name('admin.about_us');
+
+        Route::post('/about_us', [AboutUsController::class, 'store'])->name('admin.about_us.store');
+
+        Route::put('/about_us/{about_us}', [AboutUsController::class, 'update'])->name('admin.about_us.update');
+
+        // CKEditor 
+        Route::post('/ckeditor/upload-image', [CKEditorController::class, 'uploadImage'])->name('admin.ckeditor.upload.image');
     });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -34,10 +34,10 @@
                     </span>
 
                     @if($recruitment->application_deadline)
-                        <span>
-                            <i class="bi bi-hourglass-split"></i>
-                            {{ \Carbon\Carbon::parse($recruitment->application_deadline)->format('d M Y') }}
-                        </span>
+                    <span>
+                        <i class="bi bi-hourglass-split"></i>
+                        {{ \Carbon\Carbon::parse($recruitment->application_deadline)->format('d M Y') }}
+                    </span>
                     @endif
 
                 </div>
@@ -52,8 +52,7 @@
 
                 <img
                     src="{{ asset($recruitment->thumbnail) }}"
-                    alt="{{ $recruitment->thumbnail_alt ?? $recruitment->position }}"
-                >
+                    alt="{{ $recruitment->thumbnail_alt ?? $recruitment->position }}">
 
             </div>
 
@@ -186,7 +185,7 @@
                     </div>
 
                     <a href="{{ route('viewer.contact') }}"
-                    class="apply-btn-card">
+                        class="apply-btn-card">
                         Apply Now
                         <i class="bi bi-arrow-right"></i>
                     </a>
@@ -278,75 +277,75 @@
         {{-- RELATED JOBS --}}
         @if($relatedJobs->count())
 
-            <div class="related-jobs">
+        <div class="related-jobs">
 
-                <h2>Other Opportunities</h2>
+            <h2>Other Opportunities</h2>
 
-                <div class="row g-4">
+            <div class="row g-4">
 
-                    @foreach($relatedJobs as $job)
-                        <div class="col-lg-4">
+                @foreach($relatedJobs as $job)
+                <div class="col-lg-4">
 
-                            <a href="{{ route('viewer.recruitments.show', $job->slug) }}" class="recruitment-card">
+                    <a href="{{ route('viewer.recruitments.show', $job->slug) }}" class="recruitment-card">
 
-                                <div class="recruitment-thumbnail">
+                        <div class="recruitment-thumbnail">
 
-                                    <img src="{{ asset($job->thumbnail) }}" alt="{{ $job->position }}">
+                            <img src="{{ asset($job->thumbnail) }}" alt="{{ $job->position }}">
 
-                                    <span class="job-type">
-                                        {{ strtoupper($job->work_type) }}
-                                    </span>
+                            <span class="job-type">
+                                {{ strtoupper($job->work_type) }}
+                            </span>
 
-                                </div>
-
-                                <div class="recruitment-body">
-
-                                    <div class="job-meta">
-
-                                        <span>
-                                            <i class="bi bi-geo-alt"></i>
-                                            {{ $job->location }}
-                                        </span>
-
-                                        @if($job->application_deadline)
-                                            <span>
-                                                <i class="bi bi-hourglass-split"></i>
-                                                {{ \Carbon\Carbon::parse($job->application_deadline)->format('d M Y') }}
-                                            </span>
-                                        @endif
-
-                                    </div>
-
-                                    <h3>
-                                        {{ $job->position }}
-                                    </h3>
-
-                                    <p>
-                                        {{ Str::limit(strip_tags($job->description), 120) }}
-                                    </p>
-
-                                    <div class="job-footer">
-
-                                        <span class="job-status">
-                                            {{ ucfirst($job->status) }}
-                                        </span>
-
-                                        <span class="apply-btn">
-                                            Read More
-                                            <i class="bi bi-arrow-right"></i>
-                                        </span>
-
-                                    </div>
-
-                                </div>
-
-                            </a>
                         </div>
-                    @endforeach
 
+                        <div class="recruitment-body">
+
+                            <div class="job-meta">
+
+                                <span>
+                                    <i class="bi bi-geo-alt"></i>
+                                    {{ $job->location }}
+                                </span>
+
+                                @if($job->application_deadline)
+                                <span>
+                                    <i class="bi bi-hourglass-split"></i>
+                                    {{ \Carbon\Carbon::parse($job->application_deadline)->format('d M Y') }}
+                                </span>
+                                @endif
+
+                            </div>
+
+                            <h3>
+                                {{ $job->position }}
+                            </h3>
+
+                            <p>
+                                {{ Str::limit(strip_tags($job->description), 120) }}
+                            </p>
+
+                            <div class="job-footer">
+
+                                <span class="job-status">
+                                    {{ ucfirst($job->status) }}
+                                </span>
+
+                                <span class="apply-btn">
+                                    Read More
+                                    <i class="bi bi-arrow-right"></i>
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </a>
                 </div>
+                @endforeach
 
             </div>
+
+        </div>
 
         @endif
 

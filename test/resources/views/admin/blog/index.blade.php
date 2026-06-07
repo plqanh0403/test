@@ -11,8 +11,8 @@
         </a>
 
         <button class="btn btn-create"
-                data-bs-toggle="modal"
-                data-bs-target="#createBlogModal">
+            data-bs-toggle="modal"
+            data-bs-target="#createBlogModal">
             + Create Blog
         </button>
     </x-slot:action>
@@ -37,28 +37,28 @@
 
 <x-admin.search-box :route="route('admin.blogs', ['type' => $type])" placeholder="Title or excerpt...">
 
-        <x-admin.filter-box box_name="Category" select_name='category_id'>
-            <option value="">-- Select --</option>
+    <x-admin.filter-box box_name="Category" select_name='category_id'>
+        <option value="">-- Select --</option>
 
-            @foreach($categories as $category)
-            <option value="{{ $category->id }}"
-                {{ request('category_id') == $category->id ? 'selected' : '' }}>
-                {{ $category->name }}
-            </option>
-            @endforeach
-        </x-admin.filter-box>
+        @foreach($categories as $category)
+        <option value="{{ $category->id }}"
+            {{ request('category_id') == $category->id ? 'selected' : '' }}>
+            {{ $category->name }}
+        </option>
+        @endforeach
+    </x-admin.filter-box>
 
-        <x-admin.filter-box box_name="Status" select_name='status'>
-                <option value="">-- Select --</option>
+    <x-admin.filter-box box_name="Status" select_name='status'>
+        <option value="">-- Select --</option>
 
-                <option value="published" {{ request('status') === 'published' ? 'selected' : '' }}>
-                    Published
-                </option>
+        <option value="published" {{ request('status') === 'published' ? 'selected' : '' }}>
+            Published
+        </option>
 
-                <option value="draft" {{ request('status') === 'draft' ? 'selected' : '' }}>
-                    Draft
-                </option>
-        </x-admin.filter-box>
+        <option value="draft" {{ request('status') === 'draft' ? 'selected' : '' }}>
+            Draft
+        </option>
+    </x-admin.filter-box>
 
 </x-admin.search-box>
 
@@ -317,145 +317,271 @@
     {{ $blogs->links() }}
 </div>
 
-<!-- Create Blog Modal -->
+<!-- CREATE BLOG MODAL -->
 <div class="modal fade" id="createBlogModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content border-0 rounded-4 shadow-lg">
 
-            <!-- Modal Header -->
-            <div class="modal-header border-0 px-4 pt-4 pb-2">
-                <h4 class="modal-title fw-bold text-dark mb-1">Create Blog</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+
+        <div class="modal-content admin-modal">
+
+            <!-- HEADER -->
+            <div class="modal-header border-0 pb-0">
+
+                <div>
+                    <h3 class="fw-bold mb-1">
+                        Create Blog
+                    </h3>
+
+                    <p class="text-muted mb-0">
+                        Create and publish a new article.
+                    </p>
+                </div>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
             </div>
 
-            <!-- Modal Body -->
-            <div class="modal-body px-4 pb-4">
-                <form action="{{ route('admin.blogs.store') }}" method="POST">
+            <!-- BODY -->
+            <div class="modal-body">
+
+                <form action="{{ route('admin.blogs.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    <!-- Title -->
-                    <div class="form-group">
+                    <div class="row g-4">
 
-                        <x-input-label for="title" :value="__('Title')" />
+                        <!-- LEFT -->
+                        <div class="col-lg-8 d-flex">
 
-                        <x-text-input id="title" class="form-input" type="text" name="title" :value="old('title')"
-                            required autofocus autocomplete="title" />
+                            <div class="admin-card content-card flex-grow-1">
 
-                        <x-input-error :messages="$errors->get('title')" class="form-error" />
+                                <!-- TITLE -->
+                                <div class="mb-4">
 
-                    </div>
+                                    <label class="form-label fw-semibold">
+                                        Blog Title
+                                    </label>
 
-                    <!-- Category -->
-                    <div class="form-group">
+                                    <input type="text" name="title" class="form-control admin-input" value="{{ old('title') }}" placeholder="Enter blog title..." required>
 
-                        <x-input-label for="category" :value="__('Category')" />
+                                </div>
 
-                        <select id="category" name="category" class="form-input" required>
-                            <option value="">-- Select Category --</option>
+                                <!-- EXCERPT -->
+                                <div class="mb-4">
 
-                            @foreach($categories as $category)
-                            <option value="{{ $category->id }}"
-                                {{ old('category') == $category->id ? 'selected' : '' }}>
-                                {{ $category->name }}
-                            </option>
-                            @endforeach
-                        </select>
+                                    <label class="form-label fw-semibold">
+                                        Excerpt
+                                    </label>
 
-                        <x-input-error :messages="$errors->get('category')" class="form-error" />
+                                    <textarea name="excerpt" rows="4" class="form-control admin-input" placeholder="Short description...">{{ old('excerpt') }}</textarea>
 
-                    </div>
+                                </div>
 
-                    <!-- Type -->
-                    <div class="form-group">
+                                <!-- CONTENT -->
+                                <div class="editor-wrapper">
 
-                        <x-input-label for="type" :value="__('Type')" />
+                                    <label class="form-label fw-semibold">
+                                        Content
+                                    </label>
 
-                        <select id="type" name="type" class="form-input" required>
-                            <option value="" readonly>-- Select Type--</option>
+                                    <textarea name="content" class="form-control ckeditor">{{ old('content') }}</textarea>
 
-                            <option value="service" {{ old('type') == 'service' ? 'selected' : '' }}>Service</option>
+                                </div>
 
-                            <option value="company_activity" {{ old('type') == 'company_activity' ? 'selected' : '' }}>
-                                Company Activity</option>
-                        </select>
+                            </div>
 
-                        <x-input-error :messages="$errors->get('type')" class="form-error" />
-
-                    </div>
-
-                    <!-- Excerpt -->
-                    <div class="form-group">
-
-                        <x-input-label for="excerpt" :value="__('Excerpt')" />
-
-                        <textarea id="excerpt" name="excerpt" class="form-input" rows="3"
-                            required>{{ old('excerpt') }}</textarea>
-
-                        <x-input-error :messages="$errors->get('excerpt')" class="form-error" />
-
-                    </div>
-
-                    <!-- Content -->
-                    <div class="form-group">
-
-                        <x-input-label for="content" :value="__('Content')" />
-
-                            <textarea name="content" id="content" class="form-control" rows="10" >
-                                {{ old('content', $blog->content ?? '') }}
-                            </textarea>
-
-                        <x-input-error :messages="$errors->get('content')" class="form-error" />
-                    </div>
-
-                    <!-- SEO Title -->
-                    <div class="form-group">
-                        <div class="form-group">
-
-                            <x-input-label for="seo_title" :value="__('SEO Title')" />
-
-                            <x-text-input id="seo_title" class="form-input" type="text" name="seo_title"
-                                :value="old('seo_title')" required autofocus autocomplete="seo_title" />
-
-                            <x-input-error :messages="$errors->get('seo_title')" class="form-error" />
                         </div>
 
-                        <!-- SEO Description -->
-                        <div class="form-group">
-                            <div class="form-group">
+                        <!-- RIGHT -->
+                        <div class="col-lg-4">
 
-                                <x-input-label for="seo_description" :value="__('SEO Description')" />
+                            <!-- PUBLISH -->
+                            <div class="admin-card mb-4">
 
-                                <x-text-input id="seo_description" class="form-input" type="text" name="seo_description"
-                                    :value="old('seo_description')" required autofocus autocomplete="seo_description" />
+                                <h6 class="admin-card-title">
+                                    Publish
+                                </h6>
 
-                                <x-input-error :messages="$errors->get('seo_description')" class="form-error" />
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        Status
+                                    </label>
+
+                                    <select name="status" class="form-select">
+                                        <option value="draft">
+                                            Draft
+                                        </option>
+
+                                        <option value="published">
+                                            Published
+                                        </option>
+                                    </select>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        Visibility
+                                    </label>
+
+                                    <select name="is_visible" class="form-select">
+                                        <option value="1">
+                                            Visible
+                                        </option>
+
+                                        <option value="0">
+                                            Hidden
+                                        </option>
+                                    </select>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        Publish Date
+                                    </label>
+
+                                    <input type="datetime-local" name="published_at" class="form-control">
+
+                                </div>
+
+                                <div>
+
+                                    <label class="form-label">
+                                        Sort Order
+                                    </label>
+
+                                    <input type="number" name="sort_order" value="0" class="form-control">
+
+                                </div>
+
                             </div>
 
+                            <!-- CATEGORY -->
+                            <div class="admin-card mb-4">
 
-                            <!-- Thumbnail -->
-                            <div class="form-group">
+                                <h6 class="admin-card-title">
+                                    Classification
+                                </h6>
 
-                                <x-input-label for="thumbnail" :value="__('Thumbnail')" />
+                                <div class="mb-3">
 
-                                <input id="thumbnail" type="file" name="thumbnail" class="form-input">
+                                    <label class="form-label">
+                                        Category
+                                    </label>
 
-                                <x-input-error :messages="$errors->get('thumbnail')" class="form-error" />
+                                    <select name="category_id" class="form-select">
+                                        <option value="">
+                                            -- Select Category --
+                                        </option>
+
+                                        @foreach($categories as $category)
+
+                                        <option value="{{ $category->id }}">
+                                            {{ $category->name }}
+                                        </option>
+
+                                        @endforeach
+
+                                    </select>
+
+                                </div>
+
+                                <div>
+
+                                    <label class="form-label">
+                                        Type
+                                    </label>
+
+                                    <select name="type" class="form-select">
+
+                                        <option value="tech-service">
+                                            Tech Service
+                                        </option>
+
+                                        <option value="EGEAD-activity">
+                                            EGEAD Activity
+                                        </option>
+
+                                    </select>
+
+                                </div>
 
                             </div>
 
-                            <!-- Footer -->
-                            <div class="d-flex justify-content-end gap-2 mt-6">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                    Cancel
-                                </button>
+                            <!-- THUMBNAIL -->
+                            <div class="admin-card mb-4">
 
-                                <button type="submit" class="btn btn-success">
-                                    Create Blog
-                                </button>
+                                <h6 class="admin-card-title">
+                                    Thumbnail
+                                </h6>
+
+                                <div class="mb-3">
+
+                                    <input type="file" name="thumbnail" class="form-control">
+
+                                </div>
+
+                                <input type="text" name="thumbnail_alt" class="form-control" placeholder="Thumbnail alt text...">
+
                             </div>
+
+                            <!-- SEO -->
+                            <div class="admin-card">
+
+                                <h6 class="admin-card-title">
+                                    SEO Settings
+                                </h6>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        SEO Title
+                                    </label>
+
+                                    <input type="text" name="seo_title" class="form-control">
+
+                                </div>
+
+                                <div>
+
+                                    <label class="form-label">
+                                        SEO Description
+                                    </label>
+
+                                    <textarea name="seo_description" rows="4" class="form-control"></textarea>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- FOOTER -->
+                    <div class="d-flex justify-content-end gap-2 mt-4">
+
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="btn btn-primary px-4">
+                            Create Blog
+                        </button>
+
+                    </div>
+
                 </form>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
+
 @endsection

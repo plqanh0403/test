@@ -24,9 +24,9 @@
             </div>
 
             @if($about_us->light_logo)
-                <div class="about-hero-logo">
-                    <img src="{{ asset('$about_us->light_logo') }}">
-                </div>
+            <div class="about-hero-logo">
+                <img src="{{ asset('$about_us->light_logo') }}">
+            </div>
             @endif
 
         </div>
@@ -87,27 +87,27 @@
                     <div class="social-list">
 
                         @if($about_us->facebook)
-                            <a href="{{ $about_us->facebook }}">
-                                <i class="fa-brands fa-facebook-f"></i>
-                            </a>
+                        <a href="{{ $about_us->facebook }}">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
                         @endif
 
                         @if($about_us->linkedin)
-                            <a href="{{ $about_us->linkedin }}">
-                                <i class="fa-brands fa-linkedin-in"></i>
-                            </a>
+                        <a href="{{ $about_us->linkedin }}">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
                         @endif
 
                         @if($about_us->youtube)
-                            <a href="{{ $about_us->youtube }}">
-                                <i class="fa-brands fa-youtube"></i>
-                            </a>
+                        <a href="{{ $about_us->youtube }}">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
                         @endif
 
                         @if($about_us->tiktok)
-                            <a href="{{ $about_us->tiktok }}">
-                                <i class="fa-brands fa-tiktok"></i>
-                            </a>
+                        <a href="{{ $about_us->tiktok }}">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
                         @endif
 
                     </div>
@@ -137,9 +137,9 @@
 
         <!-- MAP -->
         @if($about_us->google_map)
-            <div class="about-map">
-                {!! $about_us->google_map !!} {{-- Dấu !! hai đầu để chèn đoạn HTML--}}
-            </div>
+        <div class="about-map">
+            {!! $about_us->google_map !!} {{-- Dấu !! hai đầu để chèn đoạn HTML--}}
+        </div>
         @endif
 
     </div>

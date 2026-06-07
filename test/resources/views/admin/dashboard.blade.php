@@ -33,7 +33,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script>
+<script>
     const ctx = document.getElementById('contactChart');
 
     new Chart(ctx, {
@@ -42,15 +42,14 @@
         data: {
             labels: @json($labels),
 
-            datasets: [
-            {
-                label: 'Submit Email',
-                data: @json($emailData)
-            },
-            {
-                label: 'Submit Contact',
-                data: @json($contactData)
-            }
+            datasets: [{
+                    label: 'Submit Email',
+                    data: @json($emailData)
+                },
+                {
+                    label: 'Submit Contact',
+                    data: @json($contactData)
+                }
             ]
         },
 
@@ -73,7 +72,7 @@
             }
         }
     });
-    </script>
+</script>
 @endsection
 
 {{-- @yield: nơi layout hiển thị nội dung --}}

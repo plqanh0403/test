@@ -40,6 +40,31 @@ class SubmitEmailController extends Controller
         return view('admin.submit_email.index', compact('submitEmails'));
     }
 
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => [
+                'required',
+                'email',
+                'max:255',
+                'unique:submit_emails,email'
+            ],
+            'source' => [
+                'nullable',
+                'string',
+                'max:255'
+            ]
+        ]);
+
+        SubmitEmail::create([
+            'email'  => $validated['email'],
+            'source' => $validated['source'] ?? 'admin',
+            'status' => 'pending'
+        ]);
+
+        return back()->with('success', 'Email subscriber created successfully.');
+    }
+
     public function destroy(SubmitEmail $submitEmail) : RedirectResponse
     {
         $submitEmail->delete();

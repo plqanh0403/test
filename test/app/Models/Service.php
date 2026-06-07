@@ -17,7 +17,6 @@ class Service extends Model
         'overview',
         'details',
         'slug',
-        'banner_image',
         'seo_title',
         'seo_description',
         'seo_keywords',

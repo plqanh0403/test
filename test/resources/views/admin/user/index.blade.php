@@ -13,33 +13,33 @@
 
 <x-admin.search-box :route="route('admin.users')" placeholder="Name or username...">
 
-        <x-admin.filter-box box_name="Role" select_name='role'>
-            <option value="">
-                -- Select --
-            </option>
+    <x-admin.filter-box box_name="Role" select_name='role'>
+        <option value="">
+            -- Select --
+        </option>
 
-            <option value="admin" {{ request('role') === 'admin' ? 'selected' : '' }}>
-                Admin
-            </option>
+        <option value="admin" {{ request('role') === 'admin' ? 'selected' : '' }}>
+            Admin
+        </option>
 
-            <option value="editor" {{ request('role') === 'editor' ? 'selected' : '' }}>
-                Editor
-            </option>
-        </x-admin.filter-box>
+        <option value="editor" {{ request('role') === 'editor' ? 'selected' : '' }}>
+            Editor
+        </option>
+    </x-admin.filter-box>
 
-        <x-admin.filter-box box_name="Status" select_name='is_actived'>
-                <option value="">
-                    -- Select --
-                </option>
+    <x-admin.filter-box box_name="Status" select_name='is_actived'>
+        <option value="">
+            -- Select --
+        </option>
 
-                <option value="1" {{ request('is_actived') === '1' ? 'selected' : '' }}>
-                    Active
-                </option>
+        <option value="1" {{ request('is_actived') === '1' ? 'selected' : '' }}>
+            Active
+        </option>
 
-                <option value="0" {{ request('is_actived') === '0' ? 'selected' : '' }}>
-                    Inactive
-                </option>
-        </x-admin.filter-box>
+        <option value="0" {{ request('is_actived') === '0' ? 'selected' : '' }}>
+            Inactive
+        </option>
+    </x-admin.filter-box>
 
 </x-admin.search-box>
 

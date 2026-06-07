@@ -43,8 +43,7 @@
 
                 <img
                     src="{{ asset($serviceCategory->banner_image) }}"
-                    alt="{{ $serviceCategory->name }}"
-                >
+                    alt="{{ $serviceCategory->name }}">
 
             </div>
 
@@ -66,42 +65,41 @@
 
             @foreach($services as $service)
 
-                <div class="col-lg-4 col-md-6">
+            <div class="col-lg-4 col-md-6">
 
-                    <a href="{{ route('viewer.services.show',$service->slug) }}" class="service-card-v3">
+                <a href="{{ route('viewer.services.show',$service->slug) }}" class="service-card-v3">
 
-                        <div class="service-thumb">
+                    <div class="service-thumb">
 
-                            <img
-                                src="{{ asset($service->thumbnail) }}"
-                                alt="{{ $service->thumbnail_alt }}"
-                            >
+                        <img
+                            src="{{ asset($service->thumbnail) }}"
+                            alt="{{ $service->thumbnail_alt }}">
 
-                        </div>
+                    </div>
 
-                        <div class="service-body">
+                    <div class="service-body">
 
-                            <h3>
-                                {{ $service->name }}
-                            </h3>
+                        <h3>
+                            {{ $service->name }}
+                        </h3>
 
-                            <p>
-                                {{ Str::limit($service->overview,120) }}
-                            </p>
+                        <p>
+                            {{ Str::limit($service->overview,120) }}
+                        </p>
 
-                            <span class="explore-btn">
+                        <span class="explore-btn">
 
-                                Explore Service
+                            Explore Service
 
-                                <i class="bi bi-arrow-right"></i>
+                            <i class="bi bi-arrow-right"></i>
 
-                            </span>
+                        </span>
 
-                        </div>
+                    </div>
 
-                    </a>
+                </a>
 
-                </div>
+            </div>
 
             @endforeach
 

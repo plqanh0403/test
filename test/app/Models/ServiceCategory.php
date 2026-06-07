@@ -17,6 +17,7 @@ class ServiceCategory extends Model
         'seo_description',
         'is_visible',
         'sort_order',
+        'banner_image',
     ];
 
     public function services()

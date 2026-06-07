@@ -2031,7 +2031,7 @@ body::after{
     display:flex;
     align-items:center;
     gap:12px;
-
+    text-align: left;
     background:white;
 
     padding:16px 18px;

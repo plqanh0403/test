@@ -41,11 +41,18 @@
                     <span>Dashboard</span>
                 </a>
 
+                <a href="{{ route('admin.about_us') }}"
+                    class="menu-item {{ request()->routeIs('admin.about_us') ? 'active' : '' }}">
+                    <i class="bi bi-journal-text"></i>
+                    <span>Information</span>
+                </a>
+
                 @if(Auth::user()->role === 'superAdmin')
-                    <a href="{{ route('admin.users') }}" class="menu-item {{ request()->routeIs('admin.users') ? 'active' : '' }}">
-                        <i class="bi bi-people"></i>
-                        <span>Users</span>
-                    </a>
+                <a href="{{ route('admin.users') }}"
+                    class="menu-item {{ request()->routeIs('admin.users') ? 'active' : '' }}">
+                    <i class="bi bi-people"></i>
+                    <span>Users</span>
+                </a>
                 @endif
 
                 <a href="{{ route('admin.blogs') }}"
@@ -55,29 +62,29 @@
                 </a>
 
                 @if(Auth::user()->role === 'superAdmin' || Auth::user()->role === 'admin')
-                    <a href="{{ route('admin.services') }}"
-                        class="menu-item {{ request()->routeIs('admin.services') ? 'active' : '' }}">
-                        <i class="bi bi-briefcase"></i>
-                        <span>Services</span>
-                    </a>
+                <a href="{{ route('admin.services') }}"
+                    class="menu-item {{ request()->routeIs('admin.services') ? 'active' : '' }}">
+                    <i class="bi bi-briefcase"></i>
+                    <span>Services</span>
+                </a>
 
-                    <a href="{{ route('admin.recruitments') }}"
-                        class="menu-item {{ request()->routeIs('admin.recruitments') ? 'active' : '' }}">
-                        <i class="bi bi-person-workspace"></i>
-                        <span>Recruitments</span>
-                    </a>
+                <a href="{{ route('admin.recruitments') }}"
+                    class="menu-item {{ request()->routeIs('admin.recruitments') ? 'active' : '' }}">
+                    <i class="bi bi-person-workspace"></i>
+                    <span>Recruitments</span>
+                </a>
 
-                    <a href="{{ route('admin.submit_emails') }}"
-                        class="menu-item {{ request()->routeIs('admin.submit_emails') ? 'active' : '' }}">
-                        <i class="bi bi-envelope"></i>
-                        <span>Submit Email</span>
-                    </a>
+                <a href="{{ route('admin.submit_emails') }}"
+                    class="menu-item {{ request()->routeIs('admin.submit_emails') ? 'active' : '' }}">
+                    <i class="bi bi-envelope"></i>
+                    <span>Submit Email</span>
+                </a>
 
-                    <a href="{{ route('admin.submit_contacts') }}"
-                        class="menu-item {{ request()->routeIs('admin.submit_contacts') ? 'active' : '' }}">
-                        <i class="bi bi-chat-left-text"></i>
-                        <span>Submit Contact</span>
-                    </a>
+                <a href="{{ route('admin.submit_contacts') }}"
+                    class="menu-item {{ request()->routeIs('admin.submit_contacts') ? 'active' : '' }}">
+                    <i class="bi bi-chat-left-text"></i>
+                    <span>Submit Contact</span>
+                </a>
                 @endif
 
                 <form method="POST" action="{{ route('logout') }}">
@@ -121,7 +128,7 @@
 
                     <div class="user-profile">
 
-                        <div class="avatar purple">
+                        <div class="avatar">
                             {{ strtoupper(substr(Auth::user()->name,0,1)) }}
                         </div>
 
@@ -244,15 +251,19 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 
     <script>
-        ClassicEditor.create(document.querySelector('#content'), {
+        document.querySelectorAll('.ckeditor').forEach(editor => {
 
-            ckfinder: {
-                uploadUrl: '{{ route('admin.blogs.upload.image') }}?_token={{ csrf_token() }}'
-            }
+            ClassicEditor.create(editor, {
 
-        })
-        .catch(error => {
-            console.error(error);
+                    ckfinder: {
+                        uploadUrl: "{{ route('admin.ckeditor.upload.image') }}?_token={{ csrf_token() }}"
+                    }
+
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
         });
     </script>
 

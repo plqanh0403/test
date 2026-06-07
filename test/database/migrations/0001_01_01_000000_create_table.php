@@ -70,7 +70,7 @@ return new class extends Migration
             $table->text('requirements');
             $table->text('benefits');
             $table->string('location');
-            $table->string('work_time');
+            $table->string('work_time')->nullable();
             $table->enum('work_type', ['full-time', 'part-time', 'remote', 'hybrid']);
             $table->timestamp('application_deadline')->nullable();
             $table->string('thumbnail')->nullable();
@@ -128,7 +128,7 @@ return new class extends Migration
             $table->string('light_logo')->nullable();
             $table->string('dark_logo')->nullable();
             $table->string('favicon')->nullable();
-
+            $table->string('slogan')->nullable();
             // Social
             $table->string('facebook')->nullable();
             $table->string('youtube')->nullable();
@@ -183,6 +183,12 @@ return new class extends Migration
 
         Schema::create('media', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('path');
+            $table->string('url');
+            $table->string('mime_type')->nullable();
+            $table->unsignedBigInteger('size')->nullable();
+            $table->timestamps();
         });
     }
 

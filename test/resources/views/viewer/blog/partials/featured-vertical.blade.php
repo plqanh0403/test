@@ -18,9 +18,9 @@
                 {{ date('d M Y', strtotime($blog->published_at)) }}
             </div>
             @if($blog->category)
-                <span class="blog-category">
-                    {{ $blog->category->name }}
-                </span>
+            <span class="blog-category">
+                {{ $blog->category->name }}
+            </span>
             @endif
         </div>
         <div class="blog-read-more">
