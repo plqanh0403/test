@@ -517,7 +517,7 @@ use Illuminate\Support\Str;
                                     Message
                                 </label>
 
-                                <textarea name="message" rows="12" class="form-control ckeditor admin-input" required>{{ old('message') }}</textarea>
+                                <textarea name="message" rows="12" class="form-control ckeditor admin-input">{{ old('message') }}</textarea>
 
                             </div>
 
@@ -539,8 +539,7 @@ use Illuminate\Support\Str;
                                         Status
                                     </label>
 
-                                    <select name="status"
-                                        class="form-select">
+                                    <select name="status" class="form-select">
 
                                         <option value="new">
                                             New

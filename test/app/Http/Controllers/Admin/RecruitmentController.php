@@ -48,10 +48,11 @@ class RecruitmentController extends Controller
             'requirements' => 'required|string',
             'benefits' => 'required|string',
             'location' => 'required|string|max:255',
-
             'work_type' => 'required|in:full-time,part-time,remote,hybrid',
-
+            'work_time' => 'required|string|max:255',
             'application_deadline' => 'nullable|date',
+            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'thumbnail_alt' => 'nullable|string|max:255',
         ]);
 
         Recruitment::create([
@@ -61,11 +62,14 @@ class RecruitmentController extends Controller
             'benefits' => $request->benefits,
             'location' => $request->location,
             'work_type' => $request->work_type,
+            'work_time' => $request->work_time,
             'application_deadline' => $request->application_deadline,
             'slug' => Str::slug($request->position),
-            'seo_title' => $request->seo_title ?? '',
-            'seo_description' => $request->seo_description ?? '',
-            'is_visible' => $request->has('is_visible'),
+            'seo_title' => $request->seo_title,
+            'seo_description' => $request->seo_description,
+            'is_visible' => $request->is_visible,
+            'thumbnail' => $request->thumbnail,
+            'thumbnail_alt' => $request->thumbnail_alt ?? $request->position,
         ]);
 
         return redirect()
@@ -80,11 +84,12 @@ class RecruitmentController extends Controller
             'description' => 'required|string',
             'requirements' => 'required|string',
             'benefits' => 'required|string',
+            'work_time' => 'required|string|max:255',
             'location' => 'required|string|max:255',
-
             'work_type' => 'required|in:full-time,part-time,remote,hybrid',
-
             'application_deadline' => 'nullable|date',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'thumbnail_alt' => 'nullable|string|max:255',
         ]);
 
         $recruitment->update([
@@ -96,9 +101,12 @@ class RecruitmentController extends Controller
             'work_type' => $request->work_type,
             'application_deadline' => $request->application_deadline,
             'slug' => Str::slug($request->position),
-            'seo_title' => $request->seo_title ?? '',
-            'seo_description' => $request->seo_description ?? '',
-            'is_visible' => $request->has('is_visible'),
+            'seo_title' => $request->seo_title,
+            'seo_description' => $request->seo_description,
+            'is_visible' => $request->is_visible,
+            'thumbnail' => $request->thumbnail,
+            'thumbnail_alt' => $request->thumbnail_alt ?? $request->position,
+            'work_time' => $request->work_time,
         ]);
 
         return redirect()->route('admin.recruitments')->with('success', 'Recruitment updated successfully');

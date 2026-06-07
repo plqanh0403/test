@@ -17,13 +17,13 @@
 
 <table class="index-table">
 
-    <thead class="table-header>
+    <thead class="table-header">
 
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Slug</th>
-            <th width=" 215">Actions</th>
+            <th width="215">Actions</th>
         </tr>
 
     </thead>
@@ -79,25 +79,22 @@
                             <div>
 
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Full Name
+                                    Category Name
                                 </label>
 
-                                <input type="text" name="name" value="{{ old('name', $category->name) }}"
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="text" name="name" required value="{{ old('name', $category->name) }}" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
 
                             </div>
 
                             <!-- Footer -->
                             <div class="d-flex justify-content-end gap-2 mt-6">
 
-                                <a href="{{ route('admin.users') }}"
-                                    class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-3 rounded-lg font-semibold">
+                                <a href="{{ route('admin.users') }}" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-3 rounded-lg font-semibold">
                                     Cancel
                                 </a>
 
-                                <button type="submit"
-                                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold shadow">
-                                    Update User
+                                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold shadow">
+                                    Update Category
                                 </button>
                             </div>
                         </form>
@@ -133,11 +130,7 @@
                     </p>
                 </div>
 
-                <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal">
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 
             </div>
 

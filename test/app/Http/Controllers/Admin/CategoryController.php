@@ -29,8 +29,7 @@ class CategoryController extends Controller
     public function store(Request $request) : RedirectResponse
     {
         request()->validate([
-            'name' => 'required|string|max:255|unique:categories,name',
-                                                //unique:ten_bang,ten_cot
+            'name' => 'required|string|max:255|unique:categories,name', //unique:ten_bang,ten_cot
         ]);
 
         Category::create([
@@ -38,8 +37,8 @@ class CategoryController extends Controller
             'slug'=> Str::slug($request->name), // chuyển chuỗi thành slug
             'seo_title' => $request->seo_title,
             'seo_description' => $request->seo_description,
-            'is_visible' => $request->has('is_visible'),
-            'sort_order' => $request->sort_order ?? 0,
+            'is_visible' => $request->is_visible,
+            'sort_order' => $request->sort_order,
         ]);
         
         return redirect()->route('admin.categories')->with('success', 'Category created successfully.');;
@@ -48,8 +47,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category) : RedirectResponse
     {
         request()->validate([
-            'name' => ['required','string','max:255',Rule::unique('categories', 'name')->ignore($category->id),
-            ],
+            'name' => 'required|string|max:255|unique:categories,name'
         ]);
 
         $category->update([
@@ -57,8 +55,8 @@ class CategoryController extends Controller
             'slug' => Str::slug($request->name),
             'seo_title' => $request->seo_title,
             'seo_description' => $request->seo_description,
-            'is_visible' => $request->has('is_visible'),
-            'sort_order' => $request->sort_order ?? 0,
+            'is_visible' => $request->is_visible,
+            'sort_order' => $request->sort_order,
         ]);
 
         return redirect()->route('admin.categories')->with('success', 'Category updated successfully.');

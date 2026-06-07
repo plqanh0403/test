@@ -355,43 +355,6 @@
 
                                         </div>
 
-                                        <!-- USERNAME -->
-                                        <div class="mb-4">
-
-                                            <label class="form-label">
-                                                Username
-                                            </label>
-
-                                            <input type="text" name="username" value="{{ old('username', $user->username) }}" class="form-control admin-input" placeholder="Enter username..." required>
-
-                                        </div>
-
-                                        <div class="row">
-
-                                            <!-- PASSWORD -->
-                                            <div class="col-md-6">
-
-                                                <label class="form-label">
-                                                    Password
-                                                </label>
-
-                                                <input type="password" name="password" class="form-control admin-input" required>
-
-                                            </div>
-
-                                            <!-- CONFIRM PASSWORD -->
-                                            <div class="col-md-6">
-
-                                                <label class="form-label">
-                                                    Confirm Password
-                                                </label>
-
-                                                <input type="password" name="password_confirmation" class="form-control admin-input" required>
-
-                                            </div>
-
-                                        </div>
-
                                     </div>
 
                                 </div>
@@ -430,9 +393,7 @@
 
                                             <select name="role" class="form-select" required>
 
-                                                <option value="">
-                                                    Select Role
-                                                </option>
+                                                <option value="">Select Role</option>
 
                                                 <option value="admin"
                                                     {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>
@@ -446,29 +407,7 @@
 
                                             </select>
 
-                                        </div>
-
-                                        <div>
-
-                                            <label class="form-label">
-                                                Account Status
-                                            </label>
-
-                                            <select name="is_active" class="form-select">
-
-                                                <option value="1"
-                                                    {{ old('is_active', $user->is_active) == 1 ? 'selected' : '' }}>
-                                                    Active
-                                                </option>
-
-                                                <option value="0"
-                                                    {{ old('is_active', $user->is_active) == 0 ? 'selected' : '' }}>
-                                                    Inactive
-                                                </option>
-
-                                            </select>
-
-                                        </div>
+                                        </div>                           
 
                                     </div>
 
@@ -533,8 +472,7 @@
 
                 </div>
 
-                <button type="button" class="btn-close" data-bs-dismiss="modal">
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 
             </div>
 

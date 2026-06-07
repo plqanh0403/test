@@ -68,12 +68,12 @@ class UserController extends Controller
         
         request()->validate([
             'name' => 'required|string|max:255',
-            'role' => 'required|in:admin,editor'
+            'role' => 'required|in:admin,editor',
         ]);
 
         $user->update([
             'name' => $request->name,
-            'role' => $request->role,
+            'role' => $request->role
         ]);
 
         return redirect()->route('admin.users')->with('success', 'User updated successfully');

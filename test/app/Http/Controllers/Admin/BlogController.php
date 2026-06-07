@@ -62,19 +62,14 @@ class BlogController extends Controller
             'category_id' => 'nullable|exists:categories,id',
             'title' => 'required|string|max:255',
             'type' => 'required|in:EGEAD-activity,tech-service',
-
-            'excerpt' => 'nullable|string|max:1000',
+            'excerpt' => 'required|string|max:1000',
             'content' => 'required|string',
-
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
             'thumbnail_alt' => 'nullable|string|max:255',
-
             'seo_title' => 'nullable|string|max:255',
             'seo_description' => 'nullable|string|max:500',
-
             'sort_order' => 'nullable|integer|min:0',
-
-            'status' => 'required|in:draft,published',
+            'status' => 'nullable|in:draft,published',
             'is_visible' => 'nullable|boolean',
         ]);
 
@@ -95,7 +90,7 @@ class BlogController extends Controller
             'excerpt' => $request->excerpt,
             'content' => $request->content,
             'thumbnail' => $thumbnail,
-            'thumbnail_alt' => $request->thumbnail_alt,
+            'thumbnail_alt' => $request->thumbnail_alt ?? $request->title,
             'seo_title' => $request->seo_title ?? $request->title,
             'seo_description' => $request->seo_description ?? $request->excerpt,
             'status' => $request->status,
@@ -114,7 +109,7 @@ class BlogController extends Controller
                 'title' => 'required|string|max:255',
                 'type' => 'required|in:EGEAD-activity,tech-service',
 
-                'excerpt' => 'nullable|string|max:1000',
+                'excerpt' => 'required|string|max:1000',
                 'content' => 'required|string',
 
                 'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
@@ -145,7 +140,7 @@ class BlogController extends Controller
             'content' => $request->content,
             'type' => $request->type,
             'thumbnail' => $thumbnail,
-            'thumbnail_alt' => $request->thumbnail_alt,
+            'thumbnail_alt' => $request->thumbnail_alt ?? $request->title,
             'seo_title' => $request->seo_title ?? $request->title,
             'seo_description' => $request->seo_description ?? $request->excerpt,
             'status' => $request->status,

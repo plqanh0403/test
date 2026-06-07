@@ -42,24 +42,16 @@ class SubmitEmailController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'email' => [
-                'required',
-                'email',
-                'max:255',
-                'unique:submit_emails,email'
-            ],
-            'source' => [
-                'nullable',
-                'string',
-                'max:255'
-            ]
+        request()->validate([
+            'email' => 'required|email|max:255|unique:submit_emails,email',
+            'source' => 'nullable|string|max:255',
+            'status'=> 'nullable|in:pending,processing,processed',
         ]);
 
         SubmitEmail::create([
-            'email'  => $validated['email'],
-            'source' => $validated['source'] ?? 'admin',
-            'status' => 'pending'
+            'email'  => $request->email,
+            'source' => $request->source,
+            'status' => $request->status
         ]);
 
         return back()->with('success', 'Email subscriber created successfully.');

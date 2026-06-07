@@ -415,7 +415,7 @@
                                                 Location
                                             </label>
 
-                                            <textarea type="text" name="location" class="form-control">{{ $recruitment->location }}</textarea>
+                                            <textarea type="text" name="location" class="form-control" required>{{ $recruitment->location }}</textarea>
 
                                         </div>
 
@@ -425,7 +425,7 @@
                                                 Working Time
                                             </label>
 
-                                            <textarea type="text" name="work_time" value="{{ old('work_time', $recruitment->work_time) }}" class="form-control" placeholder="Mon - Fri, 08:00 - 17:00"></textarea>
+                                            <textarea type="text" required name="work_time" class="form-control" placeholder="Mon - Fri, 08:00 - 17:00">{{ old('work_time', $recruitment->work_time) }}</textarea>
 
                                         </div>
 
@@ -437,10 +437,10 @@
 
                                             <select name="work_type" class="form-select">
 
-                                                <option value="full-time">Full-time</option>
-                                                <option value="part-time">Part-time</option>
-                                                <option value="remote">Remote</option>
-                                                <option value="hybrid">Hybrid</option>
+                                                <option value="full-time" {{ old('work_type', $recruitment->work_type) == 'full-time' ? 'selected' : '' }}>Full-time</option>
+                                                <option value="part-time" {{ old('work_type', $recruitment->work_type) == 'part-time' ? 'selected' : '' }}>Part-time</option>
+                                                <option value="remote" {{ old('work_type', $recruitment->work_type) == 'remote' ? 'selected' : '' }}>Remote</option>
+                                                <option value="hybrid" {{ old('work_type', $recruitment->work_type) == 'hybrid' ? 'selected' : '' }}>Hybrid</option>
 
                                             </select>
 
@@ -454,9 +454,9 @@
 
                                             <select name="status" class="form-select">
 
-                                                <option value="open">Open</option>
-                                                <option value="paused">Paused</option>
-                                                <option value="closed">Closed</option>
+                                                <option value="open" {{ old('status', $recruitment->status) == 'open' ? 'selected' : '' }}>Open</option>
+                                                <option value="paused" {{ old('status', $recruitment->status) == 'paused' ? 'selected' : '' }}>Paused</option>
+                                                <option value="closed" {{ old('status', $recruitment->status) == 'closed' ? 'selected' : '' }}>Closed</option>
 
                                             </select>
 
@@ -480,11 +480,11 @@
 
                                             <select name="is_visible" class="form-select">
 
-                                                <option value="1">
+                                                <option value="1" {{ old('is_visible', $recruitment->is_visible) == '1' ? 'selected' : '' }}>
                                                     Visible
                                                 </option>
 
-                                                <option value="0">
+                                                <option value="0" {{ old('is_visible', $recruitment->is_visible) == '0' ? 'selected' : '' }}>
                                                     Hidden
                                                 </option>
 
@@ -507,7 +507,7 @@
 
                                         </div>
 
-                                        <input type="text" name="thumbnail_alt" class="form-control" placeholder="Thumbnail alt text">
+                                        <input type="text" name="thumbnail_alt" value="{{ old('thumbnail_alt', $recruitment->thumbnail_alt) }}" class="form-control" placeholder="Thumbnail alt text">
 
                                     </div>
 
@@ -534,7 +534,7 @@
                                                 SEO Description
                                             </label>
 
-                                            <textarea name="seo_description" value="{{ old('seo_description', $recruitment->seo_description) }}" rows="4" class="form-control"></textarea>
+                                            <textarea name="seo_description" rows="4" class="form-control">{{ old('seo_description', $recruitment->seo_description) }}</textarea>
 
                                         </div>
 
@@ -685,7 +685,7 @@
                                         Location
                                     </label>
 
-                                    <textarea type="text" name="location" value="{{ old('location') }}" class="form-control"></textarea>
+                                    <textarea type="text" name="location" value="{{ old('location') }}" class="form-control" required></textarea>
 
                                 </div>
 
@@ -695,7 +695,7 @@
                                         Working Time
                                     </label>
 
-                                    <textarea type="text" name="work_time" value="{{ old('work_time') }}" class="form-control" placeholder="Mon - Fri, 08:00 - 17:00"></textarea>
+                                    <textarea type="text" name="work_time" value="{{ old('work_time') }}" class="form-control" placeholder="Mon - Fri, 08:00 - 17:00" required></textarea>
 
                                 </div>
 
@@ -773,7 +773,7 @@
 
                                 <div class="mb-3">
 
-                                    <input type="file" name="thumbnail" class="form-control">
+                                    <input type="file" name="thumbnail" class="form-control" required>
 
                                 </div>
 

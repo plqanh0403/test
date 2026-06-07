@@ -468,7 +468,7 @@
                                                 Excerpt
                                             </label>
 
-                                            <textarea name="excerpt" rows="4" class="form-control admin-input" placeholder="Short description...">{{ $blog->excerpt }}</textarea>
+                                            <textarea name="excerpt" rows="4" class="form-control admin-input" placeholder="Short description..." required>{{ $blog->excerpt }}</textarea>
 
                                         </div>
 
@@ -504,11 +504,11 @@
                                             </label>
 
                                             <select name="status" class="form-select">
-                                                <option value="draft">
+                                                <option value="draft" {{ old('status', $blog->status) == 'draft' ? 'selected' : '' }}>
                                                     Draft
                                                 </option>
 
-                                                <option value="published">
+                                                <option value="published" {{ old('status', $blog->status) == 'published' ? 'selected' : '' }}>
                                                     Published
                                                 </option>
                                             </select>
@@ -522,11 +522,11 @@
                                             </label>
 
                                             <select name="is_visible" class="form-select">
-                                                <option value="1">
+                                                <option value="1" {{ old('is_visible', $blog->is_visible) == '1' ? 'selected' : '' }}>
                                                     Visible
                                                 </option>
 
-                                                <option value="0">
+                                                <option value="0" {{ old('is_visible', $blog->is_visible) == '0' ? 'selected' : '' }}>
                                                     Hidden
                                                 </option>
                                             </select>
@@ -573,7 +573,7 @@
 
                                                 @foreach($categories as $category)
 
-                                                <option value="{{ $category->id }}">
+                                                <option value="{{ $category->id }}" {{ old('category_id', $blog->category_id) == $category->id ? 'selected' : '' }}>
                                                     {{ $category->name }}
                                                 </option>
 
@@ -591,11 +591,11 @@
 
                                             <select name="type" class="form-select">
 
-                                                <option value="tech-service">
+                                                <option value="tech-service" {{ old('type', $blog->type) == 'tech-service' ? 'selected' : '' }}>
                                                     Tech Service
                                                 </option>
 
-                                                <option value="EGEAD-activity">
+                                                <option value="EGEAD-activity" {{ old('type', $blog->type) == 'EGEAD-activity' ? 'selected' : '' }}>
                                                     EGEAD Activity
                                                 </option>
 
@@ -740,7 +740,7 @@
                                         Excerpt
                                     </label>
 
-                                    <textarea name="excerpt" rows="4" class="form-control admin-input" placeholder="Short description...">{{ old('excerpt') }}</textarea>
+                                    <textarea name="excerpt" rows="4" class="form-control admin-input" placeholder="Short description..." required>{{ old('excerpt') }}</textarea>
 
                                 </div>
 
@@ -888,7 +888,7 @@
 
                                 <div class="mb-3">
 
-                                    <input type="file" name="thumbnail" class="form-control">
+                                    <input type="file" name="thumbnail" class="form-control" required>
 
                                 </div>
 

@@ -49,7 +49,7 @@ class ServiceController extends Controller
         request()->validate([
             'name' => 'required|string|max:255',
             'category_id' => 'nullable|exists:service_categories,id',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'thumbnail_alt' => 'nullable|string|max:255',
             'overview' => 'required|string',
             'details' => 'required|string',
@@ -64,15 +64,15 @@ class ServiceController extends Controller
             'name' => $request->name,
             'category_id' => $request->category_id,
             'thumbnail' => $request->thumbnail,
-            'thumbnail_alt' => $request->thumbnail_alt,
+            'thumbnail_alt' => $request->thumbnail_alt ?? $request->name,
             'overview' => $request->overview,
             'details' => $request->details,
             'slug' => Str::slug($request->name),
             'seo_title' => $request->seo_title ?? '',
             'seo_description' => $request->seo_description ?? '',
             'seo_keywords' => $request->seo_keywords ?? '',
-            'sort_order' => $request->sort_order ?? '0',
-            'is_visible' => $request->has('is_visible'),
+            'sort_order' => $request->sort_order,
+            'is_visible' => $request->is_visible
         ]);
 
         return redirect()->route('admin.services')->with('success', 'Service created successfully');
@@ -116,7 +116,8 @@ class ServiceController extends Controller
         $service->update([
             'name' => $request->name,
             'category_id' => $request->category_id,
-            'thumbnail_alt' => $request->thumbnail_alt,
+            'thumbnail' => $request->thumbnail,
+            'thumbnail_alt' => $request->thumbnail_alt ?? $request->name,
             'overview' => $request->overview,
             'details' => $request->details,
             'slug' => Str::slug($request->name),

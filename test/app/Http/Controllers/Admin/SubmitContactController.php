@@ -42,17 +42,17 @@ class SubmitContactController extends Controller
 
     public function store(Request $request) : RedirectResponse
     {
-        $validated = $request->validate([
-            'name'          => ['required', 'string', 'max:255'],
-            'email'         => ['required', 'email', 'max:255'],
-            'phone'         => ['nullable', 'string', 'max:255'],
-            'company'       => ['nullable', 'string', 'max:255'],
-            'message'       => ['required', 'string'],
-            'status'        => ['nullable', 'in:new,seen,processing,processed'],
-            'internal_note' => ['nullable', 'string'],
+        request()->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'nullable|string|max:255',
+            'company' => 'nullable|string|max:255',
+            'message' => 'required|string',
+            'status' => 'nullable|in:new,seen,processing,processed',
+            'internal_note' => 'nullable|string',
         ]);
 
-        SubmitContact::create($validated);
+        SubmitContact::create($request->all());
 
         return redirect()
             ->back()

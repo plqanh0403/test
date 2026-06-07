@@ -433,7 +433,7 @@
                                                 Overview
                                             </label>
 
-                                            <textarea name="overview" rows="5" class="form-control admin-input" placeholder="Short service introduction...">{{ old('overview', $service->overview) }}</textarea>
+                                            <textarea name="overview" rows="5" class="form-control admin-input" placeholder="Short service introduction..." required>{{ old('overview', $service->overview) }}</textarea>
 
                                         </div>
 
@@ -544,9 +544,7 @@
                                                 Replace Thumbnail
                                             </label>
 
-                                            <input type="file"
-                                                name="thumbnail"
-                                                class="form-control">
+                                            <input type="file" name="thumbnail" class="form-control">
                                         </div>
 
                                         <div>
@@ -697,7 +695,7 @@
                                         Overview
                                     </label>
 
-                                    <textarea name="overview" rows="5" class="form-control admin-input" placeholder="Short service introduction...">{{ old('overview') }}</textarea>
+                                    <textarea name="overview" rows="5" class="form-control admin-input" placeholder="Short service introduction..." required>{{ old('overview') }}</textarea>
 
                                 </div>
 
@@ -796,7 +794,7 @@
                                         Thumbnail
                                     </label>
 
-                                    <input type="file" name="thumbnail" class="form-control">
+                                    <input type="file" name="thumbnail" class="form-control" required>
 
                                 </div>
 
