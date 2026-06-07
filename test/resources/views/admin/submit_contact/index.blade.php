@@ -152,96 +152,191 @@ use Illuminate\Support\Str;
         <div class="modal fade" id="detailSubmitContactModal{{ $submitContact->id }}" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content border-0 rounded-4 shadow-lg">
-                    <div class="modal-header flex justify-content-start items-center gap-6 mb-10 pb-0">
+                    <div class="modal-header contact-detail-header border-0">
 
-                        <!-- Contact Info -->
-                        <div>
+                        <div class="contact-profile">
 
-                            <h2 class="text-2xl font-bold">
-                                {{ $submitContact->name }}
-                            </h2>
+                            <div class="contact-avatar">
+                                {{ strtoupper(substr($submitContact->name,0,1)) }}
+                            </div>
 
-                            <p class="text-gray-500 mt-2 text-lg">
-                                {{ $submitContact->email }}
-                            </p>
+                            <div>
 
-                            <span class=" inline-block px-4 py-2 rounded-full text-sm font-semibold
-                                        @if($submitContact->status == 'seen')
-                                            bg-blue-100 text-blue-700
-                                        @elseif($submitContact->status == 'processing')
-                                            bg-yellow-100 text-yellow-700
-                                        @elseif($submitContact->status == 'processed')
-                                            bg-green-100 text-green-700
-                                        @else
-                                            bg-red-100 text-red-700
-                                        @endif ">
-                                {{ ucfirst($submitContact->status) }}
-                            </span>
+                                <h2>
+                                    {{ $submitContact->name }}
+                                </h2>
+
+                                <p>
+                                    {{ $submitContact->email }}
+                                </p>
+
+                                <span class="contact-status status-{{ $submitContact->status }}">
+                                    {{ ucfirst($submitContact->status) }}
+                                </span>
+
+                            </div>
+
                         </div>
 
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
                     </div>
 
                     <!-- Modal Body -->
-                    <div class="modal-body px-4 pb-4">
+                    <div class="modal-body">
 
-                        <!-- User Card -->
-                        <div class="bg-white rounded-xl shadow p-8">
+                        <div class="contact-layout">
 
-                            <!-- Detail Grid -->
-                            <div class="grid grid-cols-2 gap-6">
-                                <div class="bg-gray-100 p-5 rounded-lg">
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        Phone
-                                    </p>
+                            <!-- LEFT -->
+                            <div class="contact-main-card">
 
-                                    <p class="text-xl font-semibold">
-                                        {{ $submitContact->phone ?? '-' }}
-                                    </p>
+                                <h5 class="section-title">
+                                    Message
+                                </h5>
+
+                                <div class="message-box">
+
+                                    {!! nl2br(e($submitContact->message)) !!}
+
                                 </div>
 
-                                <div class="bg-gray-100 p-5 rounded-lg">
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        Company
-                                    </p>
-
-                                    <p class="text-xl font-semibold break-all">
-                                        {{ $submitContact->company ?? '-' }}
-                                    </p>
-                                </div>
-
-                                <div class="bg-gray-100 p-5 rounded-lg">
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        Message
-                                    </p>
-
-                                    <p class="text-xl font-semibold">
-                                        {{ $submitContact->message ?? '-' }}
-                                    </p>
-                                </div>
-
-                                <div class="bg-gray-100 p-5 rounded-lg">
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        Created At
-                                    </p>
-
-                                    <p class="text-xl font-semibold">
-                                        {{ $submitContact->created_at->format('d M Y') }}
-                                    </p>
-                                </div>
-
-                                <div class="bg-gray-100 p-5 rounded-lg col-span-2">
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        Internal Note
-                                    </p>
-
-                                    <p class="text-xl font-semibold break-all">
-                                        {{ $submitContact->internal_note ?? '-' }}
-                                    </p>
-                                </div>
                             </div>
+
+                            <!-- RIGHT -->
+                            <div class="contact-side-card">
+
+                                <h5 class="section-title">
+                                    Contact Details
+                                </h5>
+
+                                <div class="info-item">
+
+                                    <i class="bi bi-envelope-fill"></i>
+
+                                    <div>
+
+                                        <span>Email</span>
+
+                                        <strong>
+                                            {{ $submitContact->email }}
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="info-item">
+
+                                    <i class="bi bi-telephone-fill"></i>
+
+                                    <div>
+
+                                        <span>Phone</span>
+
+                                        <strong>
+                                            {{ $submitContact->phone ?? '-' }}
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="info-item">
+
+                                    <i class="bi bi-building"></i>
+
+                                    <div>
+
+                                        <span>Company</span>
+
+                                        <strong>
+                                            {{ $submitContact->company ?? '-' }}
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="info-item">
+
+                                    <i class="bi bi-calendar-event"></i>
+
+                                    <div>
+
+                                        <span>Submitted</span>
+
+                                        <strong>
+                                            {{ $submitContact->created_at->format('d M Y H:i') }}
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
                         </div>
 
+                        @if($submitContact->internal_note)
+
+                            <div class="contact-note-card mt-4">
+
+                                <h5 class="section-title">
+                                    Internal Note
+                                </h5>
+
+                                <p>
+                                    {{ $submitContact->internal_note }}
+                                </p>
+
+                            </div>
+
+                        @endif
+
+                        <!-- ACTIONS -->
+                        <div class="d-flex justify-content-end gap-2 mt-4">
+
+                            @if($submitContact->status == 'seen')
+
+                                <form action="{{ route('admin.submit_contacts.update_processing', $submitContact) }}"
+                                    method="POST">
+
+                                    @csrf
+                                    @method('PUT')
+
+                                    <button class="btn btn-warning">
+
+                                        <i class="bi bi-hourglass-split me-1"></i>
+
+                                        Start Processing
+
+                                    </button>
+
+                                </form>
+
+                            @elseif($submitContact->status == 'processing')
+
+                                <form action="{{ route('admin.submit_contacts.update_processed', $submitContact) }}"
+                                    method="POST">
+
+                                    @csrf
+                                    @method('PUT')
+
+                                    <button class="btn btn-success">
+
+                                        <i class="bi bi-check-circle-fill me-1"></i>
+
+                                        Mark Processed
+
+                                    </button>
+
+                                </form>
+
+                            @endif
+
+                        </div>
+
+                    </div>
                         <!-- Footer -->
                         <div class="d-flex justify-content-end gap-1 mt-6">
                             @if($submitContact->status == 'seen')
@@ -298,21 +393,17 @@ use Illuminate\Support\Str;
                                     Internal Note
                                 </label>
 
-                                <input type="text" name="internal_note"
-                                    value="{{ old('internal_note', $submitContact->internal_note) }}"
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <textarea type="text" name="internal_note" value="{{ old('internal_note', $submitContact->internal_note) }}" class="ckeditor w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
 
                             </div>
 
                             <!-- Footer -->
                             <div class="d-flex justify-content-end gap-2 mt-6">
-                                <a href="{{ route('admin.submit_contacts') }}"
-                                    class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-3 rounded-lg font-semibold">
+                                <a href="{{ route('admin.submit_contacts') }}" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-3 rounded-lg font-semibold">
                                     Cancel
                                 </a>
 
-                                <button type="submit"
-                                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold shadow">
+                                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold shadow">
                                     Update Note
                                 </button>
                             </div>
@@ -420,7 +511,7 @@ use Illuminate\Support\Str;
                             </div>
 
                             <!-- MESSAGE -->
-                            <div class="admin-card content-card">
+                            <div class="admin-card content-card editor-wrapper">
 
                                 <label class="form-label fw-semibold">
                                     Message
@@ -480,7 +571,7 @@ use Illuminate\Support\Str;
                                     Internal Note
                                 </h6>
 
-                                <textarea name="internal_note" rows="10" class="form-control" placeholder="Internal notes for team members...">{{ old('internal_note') }}</textarea>
+                                <textarea name="internal_note" rows="10" class="form-control ckeditor" placeholder="Internal notes for team members...">{{ old('internal_note') }}</textarea>
 
                             </div>
 
@@ -491,7 +582,7 @@ use Illuminate\Support\Str;
                     <!-- FOOTER -->
                     <div class="d-flex justify-content-end gap-2 mt-4">
 
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                        <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">
 
                             Cancel
 

@@ -85,12 +85,9 @@
 </div>
 
 <!-- Create Submit Email Modal -->
-<div class="modal fade"
-     id="createSubmitEmailModal"
-     tabindex="-1"
-     aria-hidden="true">
+<div class="modal fade" id="createSubmitEmailModal" tabindex="-1" aria-hidden="true">
 
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-dialog modal-dialog-centered modal-md">
 
         <div class="modal-content admin-modal">
 
@@ -104,14 +101,12 @@
                     </h3>
 
                     <p class="text-muted mb-0">
-                        Add a new email subscriber manually.
+                        Add a newsletter subscriber manually.
                     </p>
 
                 </div>
 
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal">
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
                 </button>
 
             </div>
@@ -119,81 +114,74 @@
             <!-- BODY -->
             <div class="modal-body">
 
-                <form action="{{ route('admin.submit_emails.store') }}"
-                      method="POST">
+                <form action="{{ route('admin.submit_emails.store') }}" method="POST">
 
                     @csrf
 
-                    <div class="row g-4">
+                    <div class="admin-card">
 
-                        <!-- LEFT -->
-                        <div class="col-lg-8">
+                        <div class="d-flex align-items-center gap-3 mb-4">
 
-                            <div class="admin-card">
+                            <div class="admin-icon-box">
+                                <i class="bi bi-envelope-paper"></i>
+                            </div>
 
-                                <h6 class="admin-card-title">
+                            <div>
+                                <h6 class="mb-1 fw-bold">
                                     Subscriber Information
                                 </h6>
 
-                                <div class="mb-4">
-
-                                    <label class="form-label">
-                                        Email Address
-                                    </label>
-
-                                    <input type="email" name="email" value="{{ old('email') }}" class="form-control admin-input" placeholder="example@email.com" required>
-
-                                </div>
-
-                                <div>
-
-                                    <label class="form-label">
-                                        Source
-                                    </label>
-
-                                    <input type="text" name="source" value="{{ old('source') }}" class="form-control admin-input" placeholder="footer, popup, landing-page...">
-
-                                </div>
-
+                                <small class="text-muted">
+                                    Email information and processing status
+                                </small>
                             </div>
 
                         </div>
 
-                        <!-- RIGHT -->
-                        <div class="col-lg-4">
+                        <!-- EMAIL -->
+                        <div class="mb-4">
 
-                            <div class="admin-card">
+                            <label class="form-label">
+                                Email Address
+                            </label>
 
-                                <h6 class="admin-card-title">
-                                    Processing Status
-                                </h6>
+                            <input type="email" name="email" value="{{ old('email') }}" class="form-control admin-input" placeholder="example@email.com" required>
 
-                                <div>
+                        </div>
 
-                                    <label class="form-label">
-                                        Status
-                                    </label>
+                        <!-- SOURCE -->
+                        <div class="mb-4">
 
-                                    <select name="status"
-                                            class="form-select">
+                            <label class="form-label">
+                                Source
+                            </label>
 
-                                        <option value="pending">
-                                            Pending
-                                        </option>
+                            <input type="text" name="source" value="{{ old('source') }}" class="form-control admin-input" placeholder="footer, popup, landing-page...">
 
-                                        <option value="processing">
-                                            Processing
-                                        </option>
+                        </div>
 
-                                        <option value="processed">
-                                            Processed
-                                        </option>
+                        <!-- STATUS -->
+                        <div>
 
-                                    </select>
+                            <label class="form-label">
+                                Status
+                            </label>
 
-                                </div>
+                            <select name="status" class="form-select">
 
-                            </div>
+                                <option value="pending">
+                                    Pending
+                                </option>
+
+                                <option value="processing">
+                                    Processing
+                                </option>
+
+                                <option value="processed">
+                                    Processed
+                                </option>
+
+                            </select>
 
                         </div>
 
@@ -202,16 +190,13 @@
                     <!-- FOOTER -->
                     <div class="d-flex justify-content-end gap-2 mt-4">
 
-                        <button type="button"
-                                class="btn btn-light"
-                                data-bs-dismiss="modal">
+                        <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">
 
                             Cancel
 
                         </button>
 
-                        <button type="submit"
-                                class="btn btn-primary px-4">
+                        <button type="submit" class="btn btn-primary px-4">
 
                             Create Subscriber
 

@@ -28,7 +28,7 @@ class CategoryController extends Controller
 
     public function store(Request $request) : RedirectResponse
     {
-        $request->validate([
+        request()->validate([
             'name' => 'required|string|max:255|unique:categories,name',
                                                 //unique:ten_bang,ten_cot
         ]);
@@ -47,7 +47,7 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category) : RedirectResponse
     {
-        $request->validate([
+        request()->validate([
             'name' => ['required','string','max:255',Rule::unique('categories', 'name')->ignore($category->id),
             ],
         ]);

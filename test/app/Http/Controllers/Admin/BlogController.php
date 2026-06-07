@@ -58,6 +58,26 @@ class BlogController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+        request()->validate([
+            'category_id' => 'nullable|exists:categories,id',
+            'title' => 'required|string|max:255',
+            'type' => 'required|in:EGEAD-activity,tech-service',
+
+            'excerpt' => 'nullable|string|max:1000',
+            'content' => 'required|string',
+
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'thumbnail_alt' => 'nullable|string|max:255',
+
+            'seo_title' => 'nullable|string|max:255',
+            'seo_description' => 'nullable|string|max:500',
+
+            'sort_order' => 'nullable|integer|min:0',
+
+            'status' => 'required|in:draft,published',
+            'is_visible' => 'nullable|boolean',
+        ]);
+
         $categories = Category::all();
         $thumbnail = null;
 
@@ -70,15 +90,16 @@ class BlogController extends Controller
             'user_id' => Auth::id(),
             'category_id' => $request->category_id,
             'title' => $request->title,
-            'slug' => Str::slug($request->title),
+            'slug' => Str::slug($request->title) . '-' . time(),
+            'type' => $request->type,
             'excerpt' => $request->excerpt,
             'content' => $request->content,
             'thumbnail' => $thumbnail,
             'thumbnail_alt' => $request->thumbnail_alt,
             'seo_title' => $request->seo_title ?? $request->title,
             'seo_description' => $request->seo_description ?? $request->excerpt,
-            'status' => $request->has('status'),
-            'is_visible' => $request->has('is_visible'),
+            'status' => $request->status,
+            'is_visible' => $request->is_visible,
             'sort_order' => $request->sort_order ?? 0,
             'published_at' => $request->status === 'published' ? now() : null,
         ]);
@@ -88,6 +109,26 @@ class BlogController extends Controller
 
     public function update(Request $request, Blog $blog): RedirectResponse
     {
+        request()->validate([
+                'category_id' => 'nullable|exists:categories,id',
+                'title' => 'required|string|max:255',
+                'type' => 'required|in:EGEAD-activity,tech-service',
+
+                'excerpt' => 'nullable|string|max:1000',
+                'content' => 'required|string',
+
+                'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+                'thumbnail_alt' => 'nullable|string|max:255',
+
+                'seo_title' => 'nullable|string|max:255',
+                'seo_description' => 'nullable|string|max:500',
+
+                'sort_order' => 'nullable|integer|min:0',
+
+                'status' => 'required|in:draft,published',
+                'is_visible' => 'nullable|boolean',
+            ]);
+    
         $thumbnail = $blog->thumbnail;
 
         if ($request->hasFile('thumbnail')) {
@@ -99,17 +140,18 @@ class BlogController extends Controller
         $blog->update([
             'category_id' => $request->category_id,
             'title' => $request->title,
-            'slug' => Str::slug($request->title),
+            'slug' => Str::slug($request->title) . '-' . time(),
             'excerpt' => $request->excerpt,
             'content' => $request->content,
+            'type' => $request->type,
             'thumbnail' => $thumbnail,
             'thumbnail_alt' => $request->thumbnail_alt,
             'seo_title' => $request->seo_title ?? $request->title,
             'seo_description' => $request->seo_description ?? $request->excerpt,
             'status' => $request->status,
-            'is_visible' => $request->has('is_visible'),
+            'is_visible' => $request->is_visible,
             'sort_order' => $request->sort_order ?? 0,
-            'published_at' => $request->status === 'published' ? now() : null,
+            'published_at' => $request->status === 'published' ? ($blog->published_at ?? now()) : null,
         ]);
 
         return back()->with('success', 'Blog updated successfully.');

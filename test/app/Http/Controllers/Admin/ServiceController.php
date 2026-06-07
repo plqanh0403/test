@@ -8,6 +8,7 @@ use App\Models\Service;
 use App\Models\ServiceCategory;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
 
 class ServiceController extends Controller
 {
@@ -45,15 +46,13 @@ class ServiceController extends Controller
 
     public function store(Request $request) : RedirectResponse
     {
-        $request->validate([
+        request()->validate([
             'name' => 'required|string|max:255',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'nullable|exists:service_categories,id',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'thumbnail_alt' => 'nullable|string|max:255',
             'overview' => 'required|string',
             'details' => 'required|string',
-            'slug' => 'required|string|unique:services,slug|max:255',
-            'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'seo_title' => 'nullable|string|max:60',
             'seo_description' => 'nullable|string|max:160',
             'seo_keywords' => 'nullable|string|max:255',
@@ -68,31 +67,26 @@ class ServiceController extends Controller
             'thumbnail_alt' => $request->thumbnail_alt,
             'overview' => $request->overview,
             'details' => $request->details,
-            'slug' => $request->slug,
-            'banner_image' => $request->banner_image,
+            'slug' => Str::slug($request->name),
             'seo_title' => $request->seo_title ?? '',
             'seo_description' => $request->seo_description ?? '',
             'seo_keywords' => $request->seo_keywords ?? '',
-            'sort_order' => $request->sort_order,
+            'sort_order' => $request->sort_order ?? '0',
             'is_visible' => $request->has('is_visible'),
         ]);
 
-        return redirect()
-            ->route('admin.services')
-            ->with('success', 'Service created successfully');
+        return redirect()->route('admin.services')->with('success', 'Service created successfully');
     }
 
     public function update(Request $request, Service $service) : RedirectResponse
     {
-        $request->validate([
+        request()->validate([
             'name' => 'required|string|max:255',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'nullable|exists:service_categories,id',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'thumbnail_alt' => 'nullable|string|max:255',
             'overview' => 'required|string',
             'details' => 'required|string',
-            'slug' => 'required|string|unique:services,slug,' . $service->id . '|max:255',
-            'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'seo_title' => 'nullable|string|max:60',
             'seo_description' => 'nullable|string|max:160',
             'seo_keywords' => 'nullable|string|max:255',
@@ -100,25 +94,40 @@ class ServiceController extends Controller
             'is_visible' => 'nullable|boolean',
         ]);
 
+        // $data = [];
+
+        // if ($request->hasFile('thumbnail')) {
+
+        //     if ($service->thumbnail &&
+        //         file_exists(public_path($service->thumbnail))) {
+
+        //         unlink(public_path($service->thumbnail));
+        //     }
+
+        //     $file = $request->file('thumbnail');
+
+        //     $filename = time().'_'.$file->getClientOriginalName();
+
+        //     $file->move(public_path('uploads/services'), $filename);
+
+        //     $data['thumbnail'] = 'uploads/services/'.$filename;
+        // }
+
         $service->update([
             'name' => $request->name,
             'category_id' => $request->category_id,
-            'thumbnail' => $request->thumbnail,
             'thumbnail_alt' => $request->thumbnail_alt,
             'overview' => $request->overview,
             'details' => $request->details,
-            'slug' => $request->slug,
-            'banner_image' => $request->banner_image,
-            'seo_title' => $request->seo_title ?? '',
-            'seo_description' => $request->seo_description ?? '',
-            'seo_keywords' => $request->seo_keywords ?? '',
-            'sort_order' => $request->sort_order,
-            'is_visible' => $request->has('is_visible'),
+            'slug' => Str::slug($request->name),
+            'seo_title' => $request->seo_title,
+            'seo_description' => $request->seo_description,
+            'seo_keywords' => $request->seo_keywords,
+            'sort_order' => $request->sort_order ?? '0',
+            'is_visible' => $request->is_visible,
         ]);
 
-        return redirect()
-            ->route('admin.services')
-            ->with('success', 'Service updated successfully');
+        return redirect()->route('admin.services')->with('success', 'Service updated successfully');
     }
 
     public function show(Service $service) : RedirectResponse

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Recruitment;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
 
 class RecruitmentController extends Controller
 {
@@ -41,13 +42,15 @@ class RecruitmentController extends Controller
 
     public function store(Request $request) : RedirectResponse
     {
-        $request->validate([
+        request()->validate([
             'position' => 'required|string|max:255',
-            'description' => 'required',
-            'requirements' => 'required',
-            'benefits' => 'required',
+            'description' => 'required|string',
+            'requirements' => 'required|string',
+            'benefits' => 'required|string',
             'location' => 'required|string|max:255',
-            'work_type' => 'required',
+
+            'work_type' => 'required|in:full-time,part-time,remote,hybrid',
+
             'application_deadline' => 'nullable|date',
         ]);
 
@@ -59,6 +62,7 @@ class RecruitmentController extends Controller
             'location' => $request->location,
             'work_type' => $request->work_type,
             'application_deadline' => $request->application_deadline,
+            'slug' => Str::slug($request->position),
             'seo_title' => $request->seo_title ?? '',
             'seo_description' => $request->seo_description ?? '',
             'is_visible' => $request->has('is_visible'),
@@ -71,13 +75,15 @@ class RecruitmentController extends Controller
 
     public function update(Request $request, Recruitment $recruitment) : RedirectResponse
     {
-        $request->validate([
+        request()->validate([
             'position' => 'required|string|max:255',
-            'description' => 'required',
-            'requirements' => 'required',
-            'benefits' => 'required',
+            'description' => 'required|string',
+            'requirements' => 'required|string',
+            'benefits' => 'required|string',
             'location' => 'required|string|max:255',
-            'work_type' => 'required',
+
+            'work_type' => 'required|in:full-time,part-time,remote,hybrid',
+
             'application_deadline' => 'nullable|date',
         ]);
 
@@ -89,6 +95,7 @@ class RecruitmentController extends Controller
             'location' => $request->location,
             'work_type' => $request->work_type,
             'application_deadline' => $request->application_deadline,
+            'slug' => Str::slug($request->position),
             'seo_title' => $request->seo_title ?? '',
             'seo_description' => $request->seo_description ?? '',
             'is_visible' => $request->has('is_visible'),

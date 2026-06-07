@@ -120,158 +120,387 @@
 
         <!-- Detail User Modal -->
         <x-admin.modal id="detailUserModal{{ $user->id }}" size="xl">
+
             <x-slot:title>
-                <!-- Avatar -->
-                <div
-                    class="w-24 h-24 rounded-full bg-blue-600 text-white flex items-center justify-center text-3xl font-bold">
-                    {{ strtoupper(substr($user->name, 0, 1)) }}
-                </div>
 
-                <!-- User Info -->
-                <div>
+                <div class="user-profile-header">
 
-                    <h2 class="text-2xl font-bold">
-                        {{ $user->name }}
-                    </h2>
+                    <div class="user-avatar">
 
-                    <x-admin.role-badge :role="$user->role" />
-                </div>
-            </x-slot:title>
-
-            <!-- User Card -->
-            <div class="bg-white rounded-xl shadow p-8">
-
-                <!-- Detail Grid -->
-                <div class="grid grid-cols-2 gap-6">
-
-                    <div class="bg-gray-100 p-5 rounded-lg">
-
-                        <p class="text-gray-500 text-sm mb-1">
-                            User ID
-                        </p>
-
-                        <p class="text-xl font-semibold">
-                            #{{ $user->id }}
-                        </p>
+                        {{ strtoupper(substr($user->name, 0, 1)) }}
 
                     </div>
 
-                    <div class="bg-gray-100 p-5 rounded-lg">
+                    <div class="user-profile-info">
 
-                        <p class="text-gray-500 text-sm mb-1">
-                            Username
-                        </p>
+                        <h2>
+                            {{ $user->name }}
+                        </h2>
 
-                        <p class="text-xl font-semibold break-all">
+                        <p>
                             {{ $user->username }}
                         </p>
 
-                    </div>
+                        <div class="d-flex gap-2 mt-2">
 
-                    <div class="bg-gray-100 p-5 rounded-lg">
+                            <span class="profile-role role-{{ $user->role }}">
+                                {{ ucfirst($user->role) }}
+                            </span>
 
-                        <p class="text-gray-500 text-sm mb-1">
-                            Account Created
-                        </p>
+                            @if($user->is_active)
 
-                        <p class="text-xl font-semibold">
-                            {{ $user->created_at->format('d M Y') }}
-                        </p>
+                            <span class="profile-status active">
+                                Active
+                            </span>
 
-                    </div>
+                            @else
 
-                    <div class="bg-gray-100 p-5 rounded-lg">
+                            <span class="profile-status inactive">
+                                Inactive
+                            </span>
 
-                        <p class="text-gray-500 text-sm mb-1">
-                            Last Updated
-                        </p>
+                            @endif
 
-                        <p class="text-xl font-semibold">
-                            {{ $user->updated_at->format('d M Y') }}
-                        </p>
+                        </div>
 
                     </div>
+
                 </div>
+
+            </x-slot:title>
+
+            <div class="user-detail-layout">
+
+                <!-- LEFT -->
+                <div class="user-main-card">
+
+                    <h5 class="detail-section-title">
+                        Basic Information
+                    </h5>
+
+                    <div class="detail-grid">
+
+                        <div class="detail-box">
+
+                            <span>User ID</span>
+
+                            <h4>
+                                #{{ $user->id }}
+                            </h4>
+
+                        </div>
+
+                        <div class="detail-box">
+
+                            <span>Username</span>
+
+                            <h4>
+                                {{ $user->username }}
+                            </h4>
+
+                        </div>
+
+                        <div class="detail-box">
+
+                            <span>Role</span>
+
+                            <h4>
+                                {{ ucfirst($user->role) }}
+                            </h4>
+
+                        </div>
+
+                        <div class="detail-box">
+
+                            <span>Status</span>
+
+                            <h4>
+                                {{ $user->is_active ? 'Active' : 'Inactive' }}
+                            </h4>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- RIGHT -->
+                <div class="user-side-card">
+
+                    <h5 class="detail-section-title">
+                        Timeline
+                    </h5>
+
+                    <div class="timeline-item">
+
+                        <i class="bi bi-person-plus-fill"></i>
+
+                        <div>
+
+                            <strong>Account Created</strong>
+
+                            <p>
+                                {{ $user->created_at->format('d M Y H:i') }}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="timeline-item">
+
+                        <i class="bi bi-clock-history"></i>
+
+                        <div>
+
+                            <strong>Last Updated</strong>
+
+                            <p>
+                                {{ $user->updated_at->format('d M Y H:i') }}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
             <x-slot:footer>
+
                 @if($user->role != 'superAdmin')
-                <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded" data-bs-toggle="modal"
-                    data-bs-target="#editUserModal{{ $user->id }}">
+
+                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editUserModal{{ $user->id }}">
+                    <i class="bi bi-pencil-square me-1"></i>
                     Edit User
                 </button>
+
                 @endif
+
             </x-slot:footer>
+
         </x-admin.modal>
 
         <!-- Edit User Modal -->
         <div class="modal fade" id="editUserModal{{ $user->id }}" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content border-0 rounded-4 shadow-lg">
 
-                    <!-- Modal Header -->
-                    <div class="modal-header border-0 px-4 pt-4 pb-2">
-                        <h4 class="modal-title fw-bold text-dark mb-1">Edit User</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+
+                <div class="modal-content admin-modal">
+
+                    <!-- HEADER -->
+                    <div class="modal-header border-0 pb-0">
+
+                        <div>
+
+                            <h3 class="fw-bold mb-1">
+                                Edit User
+                            </h3>
+
+                            <p class="text-muted mb-0">
+                                Edit administrator or editor account.
+                            </p>
+
+                        </div>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                        </button>
+
                     </div>
 
-                    <!-- Modal Body -->
-                    <div class="modal-body px-4 pb-4">
+                    <!-- BODY -->
+                    <div class="modal-body">
+
                         <form action="{{ route('admin.users.update', $user->id) }}" method="POST">
+
                             @csrf
                             @method('PUT')
+                            
+                            <div class="row g-4">
 
-                            <!-- Name -->
-                            <div>
+                                <!-- LEFT -->
+                                <div class="col-lg-8 d-flex flex-column">
 
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Full Name
-                                </label>
+                                    <div class="admin-card">
 
-                                <input type="text" name="name" value="{{ old('name', $user->name) }}"
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <div class="d-flex align-items-center gap-3 mb-4">
+
+                                            <div class="admin-icon-box">
+                                                <i class="bi bi-person-plus"></i>
+                                            </div>
+
+                                            <div>
+
+                                                <h6 class="mb-1 fw-bold">
+                                                    User Information
+                                                </h6>
+
+                                                <small class="text-muted">
+                                                    Basic account details
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- NAME -->
+                                        <div class="mb-4">
+
+                                            <label class="form-label">
+                                                Full Name
+                                            </label>
+
+                                            <input type="text" name="name" value="{{ old('name', $user->name) }}" class="form-control admin-input" placeholder="Enter full name..." required>
+
+                                        </div>
+
+                                        <!-- USERNAME -->
+                                        <div class="mb-4">
+
+                                            <label class="form-label">
+                                                Username
+                                            </label>
+
+                                            <input type="text" name="username" value="{{ old('username', $user->username) }}" class="form-control admin-input" placeholder="Enter username..." required>
+
+                                        </div>
+
+                                        <div class="row">
+
+                                            <!-- PASSWORD -->
+                                            <div class="col-md-6">
+
+                                                <label class="form-label">
+                                                    Password
+                                                </label>
+
+                                                <input type="password" name="password" class="form-control admin-input" required>
+
+                                            </div>
+
+                                            <!-- CONFIRM PASSWORD -->
+                                            <div class="col-md-6">
+
+                                                <label class="form-label">
+                                                    Confirm Password
+                                                </label>
+
+                                                <input type="password" name="password_confirmation" class="form-control admin-input" required>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- RIGHT -->
+                                <div class="col-lg-4">
+
+                                    <div class="admin-card">
+
+                                        <div class="d-flex align-items-center gap-3 mb-4">
+
+                                            <div class="admin-icon-box">
+                                                <i class="bi bi-shield-lock"></i>
+                                            </div>
+
+                                            <div>
+
+                                                <h6 class="mb-1 fw-bold">
+                                                    Permissions
+                                                </h6>
+
+                                                <small class="text-muted">
+                                                    Role & account status
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- ROLE -->
+                                        <div class="mb-4">
+
+                                            <label class="form-label">
+                                                Role
+                                            </label>
+
+                                            <select name="role" class="form-select" required>
+
+                                                <option value="">
+                                                    Select Role
+                                                </option>
+
+                                                <option value="admin"
+                                                    {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>
+                                                    Admin
+                                                </option>
+
+                                                <option value="editor"
+                                                    {{ old('role', $user->role) == 'editor' ? 'selected' : '' }}>
+                                                    Editor
+                                                </option>
+
+                                            </select>
+
+                                        </div>
+
+                                        <div>
+
+                                            <label class="form-label">
+                                                Account Status
+                                            </label>
+
+                                            <select name="is_active" class="form-select">
+
+                                                <option value="1"
+                                                    {{ old('is_active', $user->is_active) == 1 ? 'selected' : '' }}>
+                                                    Active
+                                                </option>
+
+                                                <option value="0"
+                                                    {{ old('is_active', $user->is_active) == 0 ? 'selected' : '' }}>
+                                                    Inactive
+                                                </option>
+
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
 
                             </div>
 
-                            <!-- Role -->
-                            <div class="form-group">
+                            <!-- FOOTER -->
+                            <div class="d-flex justify-content-end gap-2 mt-4">
 
-                                <x-input-label for="role" :value="__('Role')" />
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">
 
-                                <select id="role" name="role" class="form-input" required>
-                                    <option value=""> Select Role </option>
-
-                                    <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>
-                                        Admin
-                                    </option>
-
-                                    <option value="editor" {{ old('role', $user->role) == 'editor' ? 'selected' : '' }}>
-                                        Editor
-                                    </option>
-
-                                </select>
-
-                                <x-input-error :messages="$errors->get('role')" class="form-error" />
-
-                            </div>
-
-                            <!-- Footer -->
-                            <div class="d-flex justify-content-end gap-2">
-
-                                <a href="{{ route('admin.users') }}"
-                                    class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-3 rounded-lg font-semibold">
                                     Cancel
-                                </a>
 
-                                <button type="submit"
-                                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold shadow">
-                                    Update User
                                 </button>
+
+                                <button type="submit" class="btn btn-primary px-4">
+
+                                    Update User
+
+                                </button>
+
                             </div>
+
                         </form>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
         @endforeach
     </tbody>
@@ -282,101 +511,248 @@
 </div>
 
 <!-- Create User Modal -->
-<div class="modal fade" id="createUserModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content border-0 rounded-4 shadow-lg">
 
-            <!-- Modal Header -->
-            <div class="modal-header border-0 px-4 pt-4 pb-2">
-                <h4 class="modal-title fw-bold text-dark mb-1">Create User</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="modal fade" id="createUserModal" tabindex="-1" aria-hidden="true">
+
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+
+        <div class="modal-content admin-modal">
+
+            <!-- HEADER -->
+            <div class="modal-header border-0 pb-0">
+
+                <div>
+
+                    <h3 class="fw-bold mb-1">
+                        Create User
+                    </h3>
+
+                    <p class="text-muted mb-0">
+                        Create a new administrator or editor account.
+                    </p>
+
+                </div>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+
             </div>
 
-            <!-- Modal Body -->
-            <div class="modal-body px-4 pb-4">
+            <!-- BODY -->
+            <div class="modal-body">
+
                 <form action="{{ route('admin.users.store') }}" method="POST">
+
                     @csrf
 
-                    <!-- Name -->
-                    <div class="form-group">
+                    <div class="row g-4">
 
-                        <x-input-label for="name" :value="__('Name')" />
+                        <!-- LEFT -->
+                        <div class="col-lg-8 d-flex flex-column">
 
-                        <x-text-input id="name" class="form-input" type="text" name="name" :value="old('name')" required
-                            autofocus autocomplete="name" />
+                            <div class="admin-card">
 
-                        <x-input-error :messages="$errors->get('name')" class="form-error" />
+                                <div class="d-flex align-items-center gap-3 mb-4">
+
+                                    <div class="admin-icon-box">
+                                        <i class="bi bi-person-plus"></i>
+                                    </div>
+
+                                    <div>
+
+                                        <h6 class="mb-1 fw-bold">
+                                            User Information
+                                        </h6>
+
+                                        <small class="text-muted">
+                                            Basic account details
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- NAME -->
+                                <div class="mb-4">
+
+                                    <label class="form-label">
+                                        Full Name
+                                    </label>
+
+                                    <input type="text" name="name" value="{{ old('name') }}" class="form-control admin-input" placeholder="Enter full name..." required>
+
+                                </div>
+
+                                <!-- USERNAME -->
+                                <div class="mb-4">
+
+                                    <label class="form-label">
+                                        Username
+                                    </label>
+
+                                    <input type="text" name="username" value="{{ old('username') }}" class="form-control admin-input" placeholder="Enter username..." required>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <!-- PASSWORD -->
+                                    <div class="col-md-6">
+
+                                        <label class="form-label">
+                                            Password
+                                        </label>
+
+                                        <input type="password" name="password" class="form-control admin-input" required>
+
+                                    </div>
+
+                                    <!-- CONFIRM PASSWORD -->
+                                    <div class="col-md-6">
+
+                                        <label class="form-label">
+                                            Confirm Password
+                                        </label>
+
+                                        <input type="password" name="password_confirmation" class="form-control admin-input" required>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- RIGHT -->
+                        <div class="col-lg-4">
+
+                            <div class="admin-card">
+
+                                <div class="d-flex align-items-center gap-3 mb-4">
+
+                                    <div class="admin-icon-box">
+                                        <i class="bi bi-shield-lock"></i>
+                                    </div>
+
+                                    <div>
+
+                                        <h6 class="mb-1 fw-bold">
+                                            Permissions
+                                        </h6>
+
+                                        <small class="text-muted">
+                                            Role & account status
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- ROLE -->
+                                <div class="mb-4">
+
+                                    <label class="form-label">
+                                        Role
+                                    </label>
+
+                                    <select name="role" class="form-select" required>
+
+                                        <option value="">
+                                            Select Role
+                                        </option>
+
+                                        <option value="admin"
+                                            {{ old('role') == 'admin' ? 'selected' : '' }}>
+                                            Admin
+                                        </option>
+
+                                        <option value="editor"
+                                            {{ old('role') == 'editor' ? 'selected' : '' }}>
+                                            Editor
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                                <!-- STATUS -->
+                                <div>
+
+                                    <label class="form-label">
+                                        Account Status
+                                    </label>
+
+                                    <select name="is_active" class="form-select">
+
+                                        <option value="1"
+                                            {{ old('is_active',1) == 1 ? 'selected' : '' }}>
+                                            Active
+                                        </option>
+
+                                        <option value="0"
+                                            {{ old('is_active') == 0 ? 'selected' : '' }}>
+                                            Inactive
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
-                    <!-- Username -->
-                    <div class="form-group">
+                    <!-- FOOTER -->
+                    <div class="d-flex justify-content-end gap-2 mt-4">
 
-                        <x-input-label for="username" :value="__('Username')" />
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">
 
-                        <x-text-input id="username" class="form-input" type="text" name="username"
-                            :value="old('username')" required autocomplete="username" />
-
-                        <x-input-error :messages="$errors->get('username')" class="form-error" />
-
-                    </div>
-
-                    <!-- Role -->
-                    <div class="form-group">
-
-                        <x-input-label for="role" :value="__('Role')" />
-
-                        <select id="role" name="role" class="form-input" required>
-                            <option value="">Select Role</option>
-
-                            <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
-
-                            <option value="editor" {{ old('role') == 'editor' ? 'selected' : '' }}>Editor</option>
-                        </select>
-
-                        <x-input-error :messages="$errors->get('role')" class="form-error" />
-
-                    </div>
-
-                    <!-- Password -->
-                    <div class="form-group">
-
-                        <x-input-label for="password" :value="__('Password')" />
-
-                        <x-text-input id="password" class="form-input" type="password" name="password" required
-                            autocomplete="new-password" />
-
-                        <x-input-error :messages="$errors->get('password')" class="form-error" />
-
-                    </div>
-
-                    <!-- Confirm Password -->
-                    <div class="form-group">
-
-                        <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                        <x-text-input id="password_confirmation" class="form-input" type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-                        <x-input-error :messages="$errors->get('password_confirmation')" class="form-error" />
-
-                    </div>
-
-                    <!-- Footer -->
-
-                    <div class="d-flex justify-content-end gap-2">
-
-                        <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">
                             Cancel
+
                         </button>
 
-                        <button type="submit" class="btn btn-create">
+                        <button type="submit" class="btn btn-primary px-4">
+
                             Create User
+
                         </button>
+
                     </div>
+
                 </form>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const nameInput = document.querySelector('#createUserModal [name="name"]');
+        const slugInput = document.querySelector('#createUserModal [name="slug"]');
+
+        if (!nameInput || !slugInput) return;
+
+        function slugify(text) {
+            return text
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/(^-|-$)/g, '');
+        }
+
+        nameInput.addEventListener('input', () => {
+            slugInput.value = slugify(nameInput.value);
+        });
+
+    });
+</script>
 @endsection

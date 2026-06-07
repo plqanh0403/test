@@ -263,7 +263,7 @@
                     <!-- FOOTER -->
                     <div class="d-flex justify-content-end gap-2 mt-4">
 
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                        <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">
 
                             Cancel
 

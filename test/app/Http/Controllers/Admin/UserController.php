@@ -65,6 +65,7 @@ class UserController extends Controller
         if ($user->role === 'superAdmin') {
             return redirect()->route('admin.users')->with('error', 'You cannot update a super admin account.');
         }
+        
         request()->validate([
             'name' => 'required|string|max:255',
             'role' => 'required|in:admin,editor'

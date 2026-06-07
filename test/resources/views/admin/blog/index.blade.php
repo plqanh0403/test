@@ -136,178 +136,546 @@
 
         <!-- Detail Blog Modal -->
         <div class="modal fade" id="detailBlogModal{{ $blog->id }}" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
+
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+
                 <div class="modal-content border-0 rounded-4 shadow-lg">
-                    <div class="modal-header flex justify-content-start items-center gap-6 mb-10 pb-0">
-                        <!-- Blog Info -->
-                        <div>
 
-                            <h2 class="text-2xl font-bold">
-                                {{ $blog->title }}
-                            </h2>
+                    <!-- HEADER -->
+                    <div class="modal-header border-0 pb-0">
 
-                            <span class=" inline-block px-4 py-2 rounded-full text-sm font-semibold
-                                        @if($blog->status == 'draft')
-                                            bg-red-100 text-red-700
-                                        @else
-                                            bg-green-100 text-green-700
-                                        @endif ">
-                            </span>
+                        <div class="d-flex align-items-center gap-4">
+
+                            <div class="modal-icon bg-primary-subtle text-primary">
+
+                                <i class="bi bi-journal-richtext"></i>
+
+                            </div>
+
+                            <div>
+
+                                <h2 class="fw-bold mb-2">
+                                    {{ $blog->title }}
+                                </h2>
+
+                                <div class="d-flex gap-2 flex-wrap">
+
+                                    <span class="badge bg-info">
+                                        {{ $blog->type }}
+                                    </span>
+
+                                    <span class="badge
+                            {{ $blog->status == 'published'
+                                ? 'bg-success'
+                                : 'bg-warning text-dark' }}">
+                                        {{ ucfirst($blog->status) }}
+                                    </span>
+
+                                    <span class="badge
+                            {{ $blog->is_visible
+                                ? 'bg-primary'
+                                : 'bg-secondary' }}">
+                                        {{ $blog->is_visible ? 'Visible' : 'Hidden' }}
+                                    </span>
+
+                                </div>
+
+                            </div>
+
                         </div>
 
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal">
+                        </button>
+
                     </div>
 
-                    <!-- Modal Body -->
-                    <div class="modal-body px-4 pb-4">
+                    <!-- BODY -->
+                    <div class="modal-body">
 
-                        <!-- Blog Card -->
-                        <div class="bg-white rounded-xl shadow p-8">
+                        <!-- Thumbnail -->
+                        @if($blog->thumbnail)
 
-                            <!-- Detail Grid -->
-                            <div class="grid grid-cols-2 gap-6">
+                        <div class="admin-card mb-4">
 
-                                <div class="bg-gray-100 p-5 rounded-lg">
+                            <img src="{{ asset($blog->thumbnail) }}"
+                                class="img-fluid rounded-4 w-100"
+                                style="max-height:350px;object-fit:cover;">
 
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        Excerpt
-                                    </p>
+                        </div>
 
-                                    <p class="text-xl font-semibold">
-                                        {{ $blog->excerpt }}
-                                    </p>
+                        @endif
 
-                                </div>
+                        <!-- Overview -->
+                        <div class="row g-4 mb-4">
 
-                                <div class="bg-gray-100 p-5 rounded-lg">
+                            <div class="col-md-3">
 
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        Slug
-                                    </p>
+                                <div class="admin-card h-100">
 
-                                    <p class="text-xl font-semibold break-all">
-                                        {{ $blog->slug }}
-                                    </p>
+                                    <small class="text-muted">
+                                        Category
+                                    </small>
 
-                                </div>
-
-                                <div class="bg-gray-100 p-5 rounded-lg">
-
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        Published Date
-                                    </p>
-
-                                    <p class="text-xl font-semibold">
-                                        {{ $blog->created_at->format('d M Y') }}
-                                    </p>
+                                    <h6 class="fw-bold mt-2">
+                                        {{ $blog->category->name ?? 'No Category' }}
+                                    </h6>
 
                                 </div>
 
-                                <div class="bg-gray-100 p-5 rounded-lg">
-
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        Last Updated
-                                    </p>
-
-                                    <p class="text-xl font-semibold">
-                                        {{ $blog->updated_at->format('d M Y') }}
-                                    </p>
-
-                                </div>
-
-                                <div class="bg-gray-100 p-5 rounded-lg">
-
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        Content
-                                    </p>
-
-                                    <p class="text-xl font-semibold">
-                                        {{ $blog->content }}
-                                    </p>
-
-                                </div>
                             </div>
+
+                            <div class="col-md-3">
+
+                                <div class="admin-card h-100">
+
+                                    <small class="text-muted">
+                                        Sort Order
+                                    </small>
+
+                                    <h6 class="fw-bold mt-2">
+                                        #{{ $blog->sort_order }}
+                                    </h6>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-3">
+
+                                <div class="admin-card h-100">
+
+                                    <small class="text-muted">
+                                        Published At
+                                    </small>
+
+                                    <h6 class="fw-bold mt-2">
+                                        {{ $blog->published_at ? \Carbon\Carbon::parse($blog->published_at)->format('d M Y') : '-' }}
+                                    </h6>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-3">
+
+                                <div class="admin-card h-100">
+
+                                    <small class="text-muted">
+                                        Author
+                                    </small>
+
+                                    <h6 class="fw-bold mt-2">
+                                        {{ $blog->user->name ?? '-' }}
+                                    </h6>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Slug -->
+                        <div class="admin-card mb-4">
+
+                            <h6 class="admin-card-title">
+                                Slug
+                            </h6>
+
+                            <code>
+                                {{ $blog->slug }}
+                            </code>
+
+                        </div>
+
+                        <!-- Excerpt -->
+                        <div class="admin-card mb-4">
+
+                            <h6 class="admin-card-title">
+                                Excerpt
+                            </h6>
+
+                            <p class="mb-0">
+                                {{ $blog->excerpt ?? '-' }}
+                            </p>
+
+                        </div>
+
+                        <!-- SEO -->
+                        <div class="row g-4 mb-4">
+
+                            <div class="col-md-6">
+
+                                <div class="admin-card h-100">
+
+                                    <h6 class="admin-card-title">
+                                        SEO Title
+                                    </h6>
+
+                                    <p class="mb-0">
+                                        {{ $blog->seo_title ?? '-' }}
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div class="admin-card h-100">
+
+                                    <h6 class="admin-card-title">
+                                        SEO Description
+                                    </h6>
+
+                                    <p class="mb-0">
+                                        {{ $blog->seo_description ?? '-' }}
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Content -->
+                        <div class="admin-card mb-4">
+
+                            <h6 class="admin-card-title">
+                                Content
+                            </h6>
+
+                            <div class="blog-content-preview">
+
+                                {!! $blog->content !!}
+
+                            </div>
+
+                        </div>
+
+                        <!-- Dates -->
+                        <div class="row g-4">
+
+                            <div class="col-md-6">
+
+                                <div class="admin-card">
+
+                                    <small class="text-muted">
+                                        Created At
+                                    </small>
+
+                                    <h6 class="fw-bold mt-2">
+                                        {{ $blog->created_at ? \Carbon\Carbon::parse($blog->created_at)->format('d M Y') : '-' }}
+                                    </h6>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div class="admin-card">
+
+                                    <small class="text-muted">
+                                        Updated At
+                                    </small>
+
+                                    <h6 class="fw-bold mt-2">
+                                        {{ $blog->published_at ? \Carbon\Carbon::parse($blog->published_at)->format('d M Y') : '-' }}
+                                    </h6>
+
+                                </div>
+
+                            </div>
+
                         </div>
 
                         <!-- Footer -->
-                        <div class="d-flex justify-content-end gap-1 mt-6">
-                            <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded"
-                                data-bs-toggle="modal" data-bs-target="#editBlogModal{{ $blog->id }}">
+                        <div class="d-flex justify-content-end mt-4">
+
+                            <button class="btn btn-warning text-white"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editBlogModal{{ $blog->id }}">
+
+                                <i class="bi bi-pencil-square me-2"></i>
                                 Edit Blog
+
                             </button>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
 
         <!-- Edit Blog Modal -->
         <div class="modal fade" id="editBlogModal{{ $blog->id }}" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content border-0 rounded-4 shadow-lg">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
 
-                    <!-- Modal Header -->
-                    <div class="modal-header border-0 px-4 pt-4 pb-2">
-                        <h4 class="modal-title fw-bold text-dark mb-1">Edit Blog</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-content admin-modal">
+
+                    <!-- HEADER -->
+                    <div class="modal-header border-0 pb-0">
+
+                        <div>
+                            <h3 class="fw-bold mb-1">
+                                Create Blog
+                            </h3>
+
+                            <p class="text-muted mb-0">
+                                Create and publish a new article.
+                            </p>
+                        </div>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
                     </div>
 
-                    <!-- Modal Body -->
-                    <div class="modal-body px-4 pb-4">
-                        <form action="{{ route('admin.blogs.update', $blog->id) }}" method="POST">
+                    <!-- BODY -->
+                    <div class="modal-body">
+
+                        <form action="{{ route('admin.blogs.update', $blog->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
-                            <!-- Name -->
-                            <div>
+                            <div class="row g-4">
 
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Full Name
-                                </label>
+                                <!-- LEFT -->
+                                <div class="col-lg-8 d-flex">
 
-                                <input type="text" name="name" value="{{ old('name', $blog->name) }}"
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <div class="admin-card content-card flex-grow-1">
+
+                                        <!-- TITLE -->
+                                        <div class="mb-4">
+
+                                            <label class="form-label fw-semibold">
+                                                Blog Title
+                                            </label>
+
+                                            <input type="text" name="title" class="form-control admin-input" value="{{ old('title', $blog->title) }}" placeholder="Enter blog title..." required>
+
+                                        </div>
+
+                                        <!-- EXCERPT -->
+                                        <div class="mb-4">
+
+                                            <label class="form-label fw-semibold">
+                                                Excerpt
+                                            </label>
+
+                                            <textarea name="excerpt" rows="4" class="form-control admin-input" placeholder="Short description...">{{ $blog->excerpt }}</textarea>
+
+                                        </div>
+
+                                        <!-- CONTENT -->
+                                        <div class="editor-wrapper">
+
+                                            <label class="form-label fw-semibold">
+                                                Content
+                                            </label>
+
+                                            <textarea name="content" class="form-control ckeditor">{{ $blog->content }}</textarea>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- RIGHT -->
+                                <div class="col-lg-4">
+
+                                    <!-- PUBLISH -->
+                                    <div class="admin-card mb-4">
+
+                                        <h6 class="admin-card-title">
+                                            Publish
+                                        </h6>
+
+                                        <div class="mb-3">
+
+                                            <label class="form-label">
+                                                Status
+                                            </label>
+
+                                            <select name="status" class="form-select">
+                                                <option value="draft">
+                                                    Draft
+                                                </option>
+
+                                                <option value="published">
+                                                    Published
+                                                </option>
+                                            </select>
+
+                                        </div>
+
+                                        <div class="mb-3">
+
+                                            <label class="form-label">
+                                                Visibility
+                                            </label>
+
+                                            <select name="is_visible" class="form-select">
+                                                <option value="1">
+                                                    Visible
+                                                </option>
+
+                                                <option value="0">
+                                                    Hidden
+                                                </option>
+                                            </select>
+
+                                        </div>
+
+                                        <div class="mb-3">
+
+                                            <label class="form-label">
+                                                Publish Date
+                                            </label>
+
+                                            <input type="datetime-local" value="{{ old('published_at', $blog->published_at) }}" name="published_at" class="form-control">
+
+                                        </div>
+
+                                        <div>
+
+                                            <label class="form-label">
+                                                Sort Order
+                                            </label>
+
+                                            <input type="number" name="sort_order" value="0" class="form-control">
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- CATEGORY -->
+                                    <div class="admin-card mb-4">
+
+                                        <h6 class="admin-card-title">
+                                            Classification
+                                        </h6>
+
+                                        <div class="mb-3">
+
+                                            <label class="form-label">
+                                                Category
+                                            </label>
+
+                                            <select name="category_id" class="form-select">
+                                                 <option value="{{ $blog->category_id }}">{{ $blog->category->name ?? '-- Select category --' }}</option>
+
+                                                @foreach($categories as $category)
+
+                                                <option value="{{ $category->id }}">
+                                                    {{ $category->name }}
+                                                </option>
+
+                                                @endforeach
+
+                                            </select>
+
+                                        </div>
+
+                                        <div>
+
+                                            <label class="form-label">
+                                                Type
+                                            </label>
+
+                                            <select name="type" class="form-select">
+
+                                                <option value="tech-service">
+                                                    Tech Service
+                                                </option>
+
+                                                <option value="EGEAD-activity">
+                                                    EGEAD Activity
+                                                </option>
+
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- THUMBNAIL -->
+                                    <div class="admin-card mb-4">
+
+                                        <h6 class="admin-card-title">
+                                            Thumbnail
+                                        </h6>
+
+                                        <div class="mb-3">
+
+                                            <input type="file" name="thumbnail" class="form-control">
+
+                                        </div>
+
+                                        <input type="text" name="thumbnail_alt" value="{{ old('thumbnail_alt', $blog->thumbnail_alt) }}" class="form-control" placeholder="Thumbnail alt text...">
+
+                                    </div>
+
+                                    <!-- SEO -->
+                                    <div class="admin-card">
+
+                                        <h6 class="admin-card-title">
+                                            SEO Settings
+                                        </h6>
+
+                                        <div class="mb-3">
+
+                                            <label class="form-label">
+                                                SEO Title
+                                            </label>
+
+                                            <input type="text" name="seo_title" value="{{ old('seo_title', $blog->seo_title) }}" class="form-control">
+
+                                        </div>
+
+                                        <div>
+
+                                            <label class="form-label">
+                                                SEO Description
+                                            </label>
+
+                                            <textarea name="seo_description" rows="4" class="form-control">{{ $blog->seo_description }}</textarea>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
 
                             </div>
 
-                            <!-- Category -->
-                            <div class="form-group">
+                            <!-- FOOTER -->
+                            <div class="d-flex justify-content-end gap-2 mt-4">
 
-                                <x-input-label for="category" :value="__('Category')" />
-
-                                <select id="category" name="category" class="form-input" required>
-                                    <option value=""> Select Category </option>
-
-                                    @foreach($categories as $category)
-                                    <option value="{{ $category->id }}"
-                                        {{ old('category', $blog->category_id) == $category->id ? 'selected' : '' }}>
-                                        {{ $category->name }}
-                                    </option>
-                                    @endforeach
-
-                                </select>
-
-                                <x-input-error :messages="$errors->get('category')" class="form-error" />
-
-                            </div>
-
-                            <!-- Footer -->
-                            <div class="d-flex justify-content-end gap-2">
-
-                                <a href="{{ route('admin.blogs') }}"
-                                    class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-3 rounded-lg font-semibold">
+                                <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">
                                     Cancel
-                                </a>
+                                </button>
 
-                                <button type="submit"
-                                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold shadow">
+                                <button type="submit" class="btn btn-primary px-4">
                                     Update Blog
                                 </button>
+
                             </div>
+
                         </form>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
         @endforeach
     </tbody>
@@ -361,7 +729,7 @@
                                         Blog Title
                                     </label>
 
-                                    <input type="text" name="title" class="form-control admin-input" value="{{ old('title') }}" placeholder="Enter blog title..." required>
+                                    <input type="text" required name="title" class="form-control admin-input" value="{{ old('title') }}" placeholder="Enter blog title..." required>
 
                                 </div>
 
@@ -407,7 +775,7 @@
                                         Status
                                     </label>
 
-                                    <select name="status" class="form-select">
+                                    <select name="status" class="form-select" required>
                                         <option value="draft">
                                             Draft
                                         </option>
@@ -495,7 +863,7 @@
                                         Type
                                     </label>
 
-                                    <select name="type" class="form-select">
+                                    <select name="type" class="form-select" required>
 
                                         <option value="tech-service">
                                             Tech Service
@@ -564,7 +932,7 @@
                     <!-- FOOTER -->
                     <div class="d-flex justify-content-end gap-2 mt-4">
 
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                        <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">
                             Cancel
                         </button>
 

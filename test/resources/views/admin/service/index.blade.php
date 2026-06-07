@@ -121,340 +121,512 @@
 
         <!-- Detail Service Modal -->
         <div class="modal fade" id="detailServiceModal{{ $service->id }}" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content border-0 rounded-4 shadow-lg">
-                    <div class="modal-header flex justify-content-start items-center gap-6 mb-10 pb-0">
 
-                        <!-- Avatar -->
-                        <div
-                            class="w-24 h-24 rounded-full bg-blue-600 text-white flex items-center justify-center text-3xl font-bold">
-                            {{ strtoupper(substr($service->name, 0, 1)) }}
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+
+                <div class="modal-content admin-modal">
+
+                    <!-- HEADER -->
+                    <div class="modal-header service-detail-header border-0">
+
+                        <div class="service-profile">
+
+                            <div class="service-avatar">
+
+                                {{ strtoupper(substr($service->name,0,1)) }}
+
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    {{ $service->name }}
+                                </h2>
+
+                                <span class="service-status {{ $service->is_visible ? 'visible' : 'hidden' }}">
+
+                                    {{ $service->is_visible ? 'Visible' : 'Hidden' }}
+
+                                </span>
+
+                            </div>
+
                         </div>
 
-                        <!-- Service Info -->
-                        <div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                        </button>
 
-                            <h2 class="text-2xl font-bold">
-                                {{ $service->name }}
-                            </h2>
-
-                            <p class="text-2xl font-bold text-secondary">
-                                #{{ $service->sort_order }}
-                            </p>
-
-                            <span class=" inline-block px-4 py-2 rounded-full text-sm font-semibold
-                                        @if($service->is_visible == 1)
-                                            bg-green-100 text-green-700
-                                        @else
-                                            bg-red-100 text-red-700
-                                        @endif ">
-                                {{ ucfirst($service->is_visible) ? 'Visible' : 'Hidden' }}
-                            </span>
-                        </div>
-
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <!-- Modal Body -->
-                    <div class="modal-body px-4 pb-4">
+                    <!-- BODY -->
+                    <div class="modal-body">
 
-                        <!-- Service Card -->
-                        <div class="bg-white rounded-xl shadow p-8">
+                        <div class="service-layout">
 
-                            <!-- Detail Grid -->
-                            <div class="grid grid-cols-2 gap-6">
+                            <!-- LEFT -->
+                            <div>
 
-                                <div class="bg-gray-100 p-5 rounded-lg">
+                                <!-- Thumbnail -->
+                                @if($service->thumbnail)
 
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        Service ID
-                                    </p>
+                                <div class="service-main-card mb-4">
 
-                                    <p class="text-xl font-semibold">
-                                        #{{ $service->id }}
-                                    </p>
-
-                                </div>
-
-                                <div class="bg-gray-100 p-5 rounded-lg">
-
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        Overview
-                                    </p>
-
-                                    <p class="text-xl font-semibold break-all">
-                                        {{ $service->overview }}
-                                    </p>
-
-                                </div>
-
-                                <div class="bg-gray-100 p-5 rounded-lg">
-
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        Details
-                                    </p>
-
-                                    <p class="text-xl font-semibold">
-                                        {{ $service->details }}
-                                    </p>
-
-                                </div>
-
-                                <div class="bg-gray-100 p-5 rounded-lg">
-
-                                    <p class="text-gray-500 text-sm mb-1">
+                                    <h5 class="section-title">
                                         Thumbnail
-                                    </p>
+                                    </h5>
 
-                                    <p class="text-xl font-semibold">
-                                        {{ $service->thumbnail }}
-                                    </p>
+                                    <img src="{{ asset($service->thumbnail) }}" alt="{{ $service->thumbnail_alt }}" class="service-preview-image">
 
                                 </div>
 
-                                <div class="bg-gray-100 p-5 rounded-lg">
+                                @endif
 
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        Thumbnail Alt Text
-                                    </p>
+                                <!-- Details -->
+                                <div class="service-main-card">
 
-                                    <p class="text-xl font-semibold">
-                                        {{ $service->thumbnail_alt }}
-                                    </p>
+                                    <h5 class="section-title">
+                                        Details
+                                    </h5>
 
-                                </div>
+                                    <div class="service-content-box">
 
-                                <div class="bg-gray-100 p-5 rounded-lg">
+                                        {!! $service->details !!}
 
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        Banner Image
-                                    </p>
-
-                                    <p class="text-xl font-semibold">
-                                        {{ $service->banner_image }}
-                                    </p>
+                                    </div>
 
                                 </div>
 
-                                <div class="bg-gray-100 p-5 rounded-lg">
-
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        Slug
-                                    </p>
-
-                                    <p class="text-xl font-semibold">
-                                        {{ $service->slug }}
-                                    </p>
-
-                                </div>
-
-                                <div class="bg-gray-100 p-5 rounded-lg">
-
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        SEO Title
-                                    </p>
-
-                                    <p class="text-xl font-semibold">
-                                        {{ $service->seo_title }}
-                                    </p>
-
-                                </div>
-
-                                <div class="bg-gray-100 p-5 rounded-lg">
-
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        SEO Description
-                                    </p>
-
-                                    <p class="text-xl font-semibold">
-                                        {{ $service->seo_description }}
-                                    </p>
-
-                                </div>
-
-                                <div class="bg-gray-100 p-5 rounded-lg">
-
-                                    <p class="text-gray-500 text-sm mb-1">
-                                        SEO Keywords
-                                    </p>
-
-                                    <p class="text-xl font-semibold">
-                                        {{ $service->seo_keywords }}
-                                    </p>
-
-                                </div>
                             </div>
 
-                            <!-- Footer -->
-                            <div class="d-flex justify-content-end gap-1 mt-6">
+                            <!-- RIGHT -->
+                            <div>
 
-                                <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded"
-                                    data-bs-toggle="modal" data-bs-target="#editServiceModal{{ $service->id }}">
-                                    Edit Service
-                                </button>
+                                <!-- Overview -->
+                                <div class="service-side-card mb-4">
+
+                                    <h5 class="section-title">
+                                        Overview
+                                    </h5>
+
+                                    <div class="service-content-box">
+
+                                        {{ $service->overview }}
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Information -->
+                                <div class="service-side-card mb-4">
+
+                                    <h5 class="section-title">
+                                        Information
+                                    </h5>
+
+                                    <div class="info-item">
+
+                                        <i class="bi bi-hash"></i>
+
+                                        <div>
+
+                                            <span>ID</span>
+
+                                            <strong>
+                                                #{{ $service->id }}
+                                            </strong>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="info-item">
+
+                                        <i class="bi bi-sort-numeric-down"></i>
+
+                                        <div>
+
+                                            <span>Category</span>
+
+                                            <strong>
+                                                {{ $service->serviceCategory->name ?? null}}
+                                            </strong>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="info-item">
+
+                                        <i class="bi bi-sort-numeric-down"></i>
+
+                                        <div>
+
+                                            <span>Sort Order</span>
+
+                                            <strong>
+                                                {{ $service->sort_order }}
+                                            </strong>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="info-item">
+
+                                        <i class="bi bi-link-45deg"></i>
+
+                                        <div>
+
+                                            <span>Slug</span>
+
+                                            <strong>
+                                                {{ $service->slug }}
+                                            </strong>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="info-item">
+
+                                        <i class="bi bi-eye"></i>
+
+                                        <div>
+
+                                            <span>Status</span>
+
+                                            <strong>
+
+                                                {{ $service->is_visible ? 'Visible' : 'Hidden' }}
+
+                                            </strong>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- SEO -->
+                                <div class="service-side-card">
+
+                                    <h5 class="section-title">
+                                        SEO Settings
+                                    </h5>
+
+                                    <div class="seo-block">
+
+                                        <label>
+                                            SEO Title
+                                        </label>
+
+                                        <p>
+                                            {{ $service->seo_title ?: '-' }}
+                                        </p>
+
+                                    </div>
+
+                                    <div class="seo-block">
+
+                                        <label>
+                                            SEO Description
+                                        </label>
+
+                                        <p>
+                                            {{ $service->seo_description ?: '-' }}
+                                        </p>
+
+                                    </div>
+
+                                    <div class="seo-block">
+
+                                        <label>
+                                            SEO Keywords
+                                        </label>
+
+                                        <p>
+                                            {{ $service->seo_keywords ?: '-' }}
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
                             </div>
+
                         </div>
+
+                        <!-- FOOTER -->
+                        <div class="d-flex justify-content-end mt-4">
+
+                            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editServiceModal{{ $service->id }}">
+
+                                <i class="bi bi-pencil-square me-1"></i>
+
+                                Edit Service
+
+                            </button>
+
+                        </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
 
         <!-- Edit Service Modal -->
         <div class="modal fade" id="editServiceModal{{ $service->id }}" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content border-0 rounded-4 shadow-lg">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
 
-                    <!-- Modal Header -->
-                    <div class="modal-header border-0 px-4 pt-4 pb-2">
-                        <h4 class="modal-title fw-bold text-dark mb-1">Edit Service</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-content admin-modal">
+
+                    <!-- HEADER -->
+                    <div class="modal-header border-0 pb-0">
+
+                        <div>
+                            <h3 class="fw-bold mb-1">
+                                Edit Service
+                            </h3>
+
+                            <p class="text-muted mb-0">
+                                Edit service in your website.
+                            </p>
+                        </div>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
                     </div>
 
-                    <!-- Modal Body -->
-                    <div class="modal-body px-4 pb-4">
-                        <form action="{{ route('admin.services.update', $service->id) }}" method="POST">
+                    <!-- BODY -->
+                    <div class="modal-body">
+
+                        <form action="{{ route('admin.services.update', $service->id) }}" method="POST" enctype="multipart/form-data">
+
                             @csrf
                             @method('PUT')
 
-                            <!-- Name -->
-                            <div>
+                            <div class="row g-4">
 
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Name
-                                </label>
+                                <!-- LEFT -->
+                                <div class="col-lg-8 d-flex">
 
-                                <input type="text" name="name" value="{{ old('name', $service->name) }}"
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <div class="admin-card content-card flex-grow-1">
 
-                            </div>
+                                        <!-- NAME -->
+                                        <div class="mb-4">
 
-                            <!-- Overview -->
-                            <div class="form-group">
+                                            <label class="form-label fw-semibold">
+                                                Service Name
+                                            </label>
 
-                                <x-input-label for="overview" :value="__('Overview')" />
+                                            <input type="text" name="name" class="form-control admin-input" value="{{ old('name', $service->name) }}" placeholder="Enter service name..." required>
 
-                                <textarea id="overview" name="overview" class="form-input" rows="4"
-                                    required>{{ old('overview', $service->overview) }}</textarea>
+                                        </div>
 
-                            </div>
+                                        <!-- OVERVIEW -->
+                                        <div class="mb-4">
 
-                            <!-- Details -->
-                            <div class="form-group">
+                                            <label class="form-label fw-semibold">
+                                                Overview
+                                            </label>
 
-                                <x-input-label for="details" :value="__('Details')" />
+                                            <textarea name="overview" rows="5" class="form-control admin-input" placeholder="Short service introduction...">{{ old('overview', $service->overview) }}</textarea>
 
-                                <textarea id="details" name="details" class="form-input" rows="4"
-                                    required>{{ old('details', $service->details) }}</textarea>
-                            </div>
+                                        </div>
 
-                            <!-- Thumbnail -->
-                            <div class="form-group">
+                                        <!-- DETAILS -->
+                                        <div class="editor-wrapper">
 
-                                <x-input-label for="thumbnail" :value="__('Thumbnail')" />
+                                            <label class="form-label fw-semibold">
+                                                Service Details
+                                            </label>
 
-                                <input type="file" id="thumbnail" name="thumbnail" class="form-input">
-                            </div>
+                                            <textarea name="details" class="form-control ckeditor">{{ old('details', $service->details) }}</textarea>
 
-                            <!-- Thumbnail Alt Text -->
-                            <div class="form-group">
+                                        </div>
 
-                                <x-input-label for="thumbnail_alt" :value="__('Thumbnail Alt Text')" />
-
-                                <input type="text" id="thumbnail_alt" name="thumbnail_alt"
-                                    value="{{ old('thumbnail_alt', $service->thumbnail_alt) }}" class="form-input">
-                            </div>
-
-                            <!-- Banner Image -->
-                            <div class="form-group">
-
-                                <x-input-label for="banner" :value="__('Banner Image')" />
-
-                                <input type="file" id="banner" name="banner" class="form-input">
-                            </div>
-
-                            <!-- Slug -->
-                            <div class="form-group">
-
-                                <x-input-label for="slug" :value="__('Slug')" />
-
-                                <input type="text" id="slug" name="slug" value="{{ old('slug', $service->slug) }}"
-                                    class="form-input">
-                            </div>
-
-                            <!-- Visibility -->
-                            <div class="form-group">
-
-                                <x-input-label for="is_visible" :value="__('Visibility')" />
-
-                                <div class="mt-2 flex items-center gap-3">
-
-                                    <input type="checkbox" id="is_visible" name="is_visible" value="1"
-                                        {{ old('is_visible', $service->is_visible) ? 'checked' : '' }} class="w-5 h-5">
-
-                                    <label for="is_visible" class="text-sm text-gray-700">
-                                        Visible on website
-                                    </label>
+                                    </div>
 
                                 </div>
 
-                                <x-input-error :messages="$errors->get('is_visible')" class="form-error" />
+                                <!-- RIGHT -->
+                                <div class="col-lg-4">
+
+                                    <!-- SETTINGS -->
+                                    <div class="admin-card mb-4">
+
+                                        <h6 class="admin-card-title">
+                                            Settings
+                                        </h6>
+
+                                        <div class="mb-3">
+
+                                            <label class="form-label">
+                                                Category
+                                            </label>
+
+                                            <select name="category_id" class="form-select">
+
+                                                <option value="{{ $service->category_id }}">{{ $service->serviceCategory->name ?? '-- Select Category --'}}</option>
+
+                                                @foreach($serviceCategories as $category)
+
+                                                <option value="{{ $category->id }}" {{ old('category_id', $service->category_id) == $category->id ? 'selected' : '' }}>
+                                                
+                                                    {{ $category->name }}
+
+                                                </option>
+
+                                                @endforeach
+
+                                            </select>
+
+                                        </div>
+
+                                        <div class="mb-3">
+
+                                            <label class="form-label">
+                                                Visibility
+                                            </label>
+
+                                            <select name="is_visible" class="form-select">
+
+                                                <option value="1" {{ old('is_visible', $service->is_visible) == 1 ? 'selected' : '' }}>
+                                                    Visible
+                                                </option>
+
+                                                <option value="0" {{ old('is_visible', $service->is_visible) == 0 ? 'selected' : '' }}>
+                                                    Hidden
+                                                </option>
+
+                                            </select>
+
+                                        </div>
+
+                                        <div>
+
+                                            <label class="form-label">
+                                                Sort Order
+                                            </label>
+
+                                            <input type="number" name="sort_order" value="{{ old('sort_order', $service->sort_order) }}" class="form-control">
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- MEDIA -->
+                                    <div class="admin-card mb-4">
+
+                                        <h6 class="admin-card-title">
+                                            Media
+                                        </h6>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">
+                                                Current Thumbnail
+                                            </label>
+
+                                            @if($service->thumbnail)
+                                                <div class="mb-2">
+                                                    <img src="{{ asset($service->thumbnail) }}" class="img-fluid rounded border" style="max-height:150px">
+                                                </div>
+                                            @else
+                                                <p class="text-muted">No thumbnail uploaded</p>
+                                            @endif
+                                        </div>
+
+                                        <div>
+                                            <label class="form-label">
+                                                Replace Thumbnail
+                                            </label>
+
+                                            <input type="file"
+                                                name="thumbnail"
+                                                class="form-control">
+                                        </div>
+
+                                        <div>
+
+                                            <label class="form-label">
+                                                Thumbnail Alt
+                                            </label>
+
+                                            <input type="text" name="thumbnail_alt" value="{{ old('thumbnail_alt', $service->thumbnail_alt) }}" class="form-control" placeholder="Image description...">
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- SEO -->
+                                    <div class="admin-card">
+
+                                        <h6 class="admin-card-title">
+                                            SEO Settings
+                                        </h6>
+
+                                        <div class="mb-3">
+
+                                            <label class="form-label">
+                                                SEO Title
+                                            </label>
+
+                                            <input type="text" name="seo_title" value="{{ old('seo_title', $service->seo_title) }}" class="form-control">
+
+                                        </div>
+
+                                        <div class="mb-3">
+
+                                            <label class="form-label">
+                                                SEO Description
+                                            </label>
+
+                                            <textarea name="seo_description" rows="4" class="form-control">{{ old('seo_description', $service->seo_description) }}</textarea>
+
+                                        </div>
+
+                                        <div>
+
+                                            <label class="form-label">
+                                                SEO Keywords
+                                            </label>
+
+                                            <input type="text" name="seo_keywords" value="{{ old('seo_keywords', $service->seo_keywords) }}" class="form-control">
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
 
                             </div>
 
-                            <!-- SEO Title -->
-                            <div class="form-group">
+                            <!-- FOOTER -->
+                            <div class="d-flex justify-content-end gap-2 mt-4">
 
-                                <x-input-label for="seo_title" :value="__('SEO Title')" />
+                                <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">
 
-                                <input type="text" id="seo_title" name="seo_title"
-                                    value="{{ old('seo_title', $service->seo_title) }}" class="form-input">
-
-                            </div>
-
-                            <!-- SEO Description -->
-                            <div class="form-group">
-
-                                <x-input-label for="seo_description" :value="__('SEO Description')" />
-
-                                <textarea id="seo_description" name="seo_description" class="form-input"
-                                    rows="4">{{ old('seo_description', $service->seo_description) }}</textarea>
-
-                            </div>
-
-                            <!-- SEO Keywords -->
-                            <div class="form-group">
-
-                                <x-input-label for="seo_keywords" :value="__('SEO Keywords')" />
-
-                                <input type="text" id="seo_keywords" name="seo_keywords"
-                                    value="{{ old('seo_keywords', $service->seo_keywords) }}" class="form-input">
-                            </div>
-
-                            <!-- Sort Order -->
-                            <div class="form-group">
-
-                                <x-input-label for="sort_order" :value="__('Sort Order')" />
-
-                                <input type="number" id="sort_order" name="sort_order"
-                                    value="{{ old('sort_order', $service->sort_order) }}" class="form-input">
-                            </div>
-
-                            <!-- Footer -->
-                            <div class="d-flex justify-content-end gap-2">
-
-                                <a href="{{ route('admin.services') }}"
-                                    class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-3 rounded-lg font-semibold">
                                     Cancel
-                                </a>
 
-                                <button type="submit"
-                                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold shadow">
-                                    Update Service
                                 </button>
+
+                                <button type="submit" class="btn btn-primary px-4">
+
+                                    Update Service
+
+                                </button>
+
                             </div>
+
                         </form>
+
                     </div>
+
                 </div>
+
             </div>
         </div>
         @endforeach
@@ -485,10 +657,7 @@
                     </p>
                 </div>
 
-                <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal">
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
                 </button>
 
             </div>
@@ -563,13 +732,9 @@
                                         Category
                                     </label>
 
-                                    <select
-                                        name="category_id"
-                                        class="form-select">
+                                    <select name="category_id" class="form-select">
 
-                                        <option value="">
-                                            -- Select Category --
-                                        </option>
+                                        <option value="">-- Select Category --</option>
 
                                         @foreach($serviceCategories as $category)
 
@@ -592,9 +757,7 @@
                                         Visibility
                                     </label>
 
-                                    <select
-                                        name="is_visible"
-                                        class="form-select">
+                                    <select name="is_visible" class="form-select">
 
                                         <option value="1">
                                             Visible
@@ -614,11 +777,7 @@
                                         Sort Order
                                     </label>
 
-                                    <input
-                                        type="number"
-                                        name="sort_order"
-                                        value="0"
-                                        class="form-control">
+                                    <input type="number" name="sort_order" value="0" class="form-control">
 
                                 </div>
 
@@ -637,10 +796,7 @@
                                         Thumbnail
                                     </label>
 
-                                    <input
-                                        type="file"
-                                        name="thumbnail"
-                                        class="form-control">
+                                    <input type="file" name="thumbnail" class="form-control">
 
                                 </div>
 
@@ -702,18 +858,13 @@
                     <!-- FOOTER -->
                     <div class="d-flex justify-content-end gap-2 mt-4">
 
-                        <button
-                            type="button"
-                            class="btn btn-light"
-                            data-bs-dismiss="modal">
+                        <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">
 
                             Cancel
 
                         </button>
 
-                        <button
-                            type="submit"
-                            class="btn btn-primary px-4">
+                        <button type="submit" class="btn btn-primary px-4">
 
                             Create Service
 
