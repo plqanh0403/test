@@ -94,7 +94,7 @@
                 <!-- LEFT -->
                 <div class="career-filters">
 
-                    <form method="GET" action="{{ route('viewer.recruitments.index') }}" class="career-search-form">
+                    <form method="GET" action="{{ route('viewer.recruitments.index') }}" class="career-search-form" id="career-search-form">
 
                         <div class="career-search">
 
@@ -118,9 +118,9 @@
                                 Part Time
                             </option>
 
-                            <option value="internship"
-                                {{ request('work_type') == 'internship' ? 'selected' : '' }}>
-                                Internship
+                            <option value="hybrid"
+                                {{ request('work_type') == 'hybrid' ? 'selected' : '' }}>
+                                Hybrid
                             </option>
 
                             <option value="remote"
@@ -134,6 +134,10 @@
                             <i class="bi bi-funnel"></i>
                             Filter
                         </button>
+
+                        <a href="{{ route('viewer.recruitments.index') }}#job-list" class="career-reset-btn">
+                                <i class="bi bi-arrow-clockwise"></i>
+                            </a>
 
                     </form>
 

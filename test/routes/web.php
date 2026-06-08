@@ -151,6 +151,8 @@ Route::middleware([
 
         Route::put('/about_us/{about_us}', [AboutUsController::class, 'update'])->name('admin.about_us.update');
 
+        Route::delete('/about_us/{about_us}', [AboutUsController::class, 'destroy'])->name('admin.about_us.destroy');
+
         // CKEditor 
         Route::post('/ckeditor/upload-image', [CKEditorController::class, 'uploadImage'])->name('admin.ckeditor.upload.image');
     });

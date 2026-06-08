@@ -20,12 +20,21 @@ class AboutUsController extends Controller
     public function store(Request $request) : RedirectResponse
     {
         AboutUs::create($request->all());
+        
         return back()->with('success','Add information successfully');
     }
 
     public function update(Request $request, AboutUs $aboutUs) : RedirectResponse
     {
         $aboutUs->update($request->all());
+
+        return back()->with('success','Update information succesfully');
+    }
+
+    public function destroy(AboutUs $aboutUs) : RedirectResponse
+    {
+        $aboutUs->delete();
+
         return back()->with('success','Update information succesfully');
     }
 }

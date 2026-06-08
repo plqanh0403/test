@@ -1251,3 +1251,60 @@ body {
 
     font-size:24px;
 }
+
+.about-container{
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
+
+.about-header{
+    background:linear-gradient(135deg,#6366f1,#0ea5e9);
+    color:white;
+    padding:30px;
+    border-radius:30px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.1);
+}
+
+.logo-box img{
+    width:90px;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:25px;
+    padding:25px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.social{
+    display:flex;
+    gap:15px;
+    font-size:26px;
+}
+
+.btn-edit{
+    background:#10b981;
+}
+
+.btn-delete{
+    background:#ef4444;
+}

@@ -15,7 +15,7 @@ class ViewerServiceController extends Controller
 
         $services = Service::where('category_id', $serviceCategory->id)
             ->latest()
-            ->get();
+            ->paginate(6);
 
         return view('viewer.service.index', compact('serviceCategory', 'services'));
     }

@@ -137,9 +137,9 @@
 
         <!-- MAP -->
         @if($about_us->google_map)
-        <div class="about-map">
-            {!! $about_us->google_map !!} {{-- Dấu !! hai đầu để chèn đoạn HTML--}}
-        </div>
+            <div class="about-map">
+                {!! $about_us->google_map !!} {{-- Dấu !! hai đầu để chèn đoạn HTML--}}
+            </div>
         @endif
 
     </div>

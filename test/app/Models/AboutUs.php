@@ -40,4 +40,6 @@ class AboutUs extends Model
         'google_analytics',
         'meta_pixel',
     ];
+
+    protected $guarded = [];
 }

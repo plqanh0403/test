@@ -297,58 +297,65 @@
 
         <div class="section-heading" id="list">
 
-            <span class="section-badge">
-                Expertise
-            </span>
-
             <h2>
                 Our Solutions
             </h2>
 
         </div>
 
-        <div class="row g-4">
+        <!-- SERVICE GRID -->
+        <div class="service-grid-wrapper" id="service-list">
 
-            @foreach($services as $service)
+            <div class="service-grid-label">
+                <span>
+                    Expertise
+                </span>
+            </div>
+            
+            <div class="service-grid">
 
-            <div class="col-lg-4 col-md-6">
+                @foreach($services as $service)
 
-                <a href="{{ route('viewer.services.show',$service->slug) }}" class="service-card-v3">
+                    <a href="{{ route('viewer.services.show',$service->slug) }}" class="service-card-v3">
 
-                    <div class="service-thumb">
+                        <div class="service-thumb">
 
-                        <img
-                            src="{{ asset($service->thumbnail) }}"
-                            alt="{{ $service->thumbnail_alt }}">
+                            <img
+                                src="{{ asset($service->thumbnail) }}"
+                                alt="{{ $service->thumbnail_alt }}">
 
-                    </div>
+                        </div>
 
-                    <div class="service-body">
+                        <div class="service-body">
 
-                        <h3>
-                            {{ $service->name }}
-                        </h3>
+                            <h3>
+                                {{ $service->name }}
+                            </h3>
 
-                        <p>
-                            {{ Str::limit($service->overview,120) }}
-                        </p>
+                            <p>
+                                {{ Str::limit($service->overview,120) }}
+                            </p>
 
-                        <span class="explore-btn">
+                            <span class="explore-btn">
 
-                            Explore Service
+                                Explore Service
 
-                            <i class="bi bi-arrow-right"></i>
+                                <i class="bi bi-arrow-right"></i>
 
-                        </span>
+                            </span>
 
-                    </div>
+                        </div>
 
-                </a>
+                    </a>
+
+                @endforeach
 
             </div>
 
-            @endforeach
+        </div>
 
+        <div class="service-pagination-center">
+            {{ $services->fragment('service-list')->links() }}
         </div>
 
     </div>

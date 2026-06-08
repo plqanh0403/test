@@ -125,7 +125,7 @@
 
                     <h2>📋 Job Description</h2>
 
-                    <p>{!! recruitment->description !!}</p>
+                    {!! $recruitment->description !!}
 
                 </div>
 
@@ -133,7 +133,7 @@
 
                     <h2>🕰️ Working time</h2>
 
-                    <p>{!! $recruitment->work_time !!}</p>
+                    {!! $recruitment->work_time !!}
 
                 </div>
 
@@ -141,7 +141,7 @@
 
                     <h2>📚 Requirements</h2>
 
-                    <p>{!! $recruitment->requirements !!}</p>
+                    {!! $recruitment->requirements !!}
 
                 </div>
 
@@ -149,7 +149,7 @@
 
                     <h2>🎁 Benefits</h2>
 
-                    <p>{!! $recruitment->benefits !!}</p>
+                    {!! $recruitment->benefits !!}
 
                 </div>
 

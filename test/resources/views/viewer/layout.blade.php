@@ -489,6 +489,12 @@
     </script>
 
     <script>
+        document.getElementById('career-search-form').addEventListener('submit', function () {
+            this.action = "{{ route('viewer.recruitments.index') }}#job-list";
+        });
+    </script>
+
+    <script>
         const items = document.querySelectorAll('.why-item');
 
         window.addEventListener('scroll', () => {

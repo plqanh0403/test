@@ -9,14 +9,24 @@ use Illuminate\Http\Request;
 class ViewerRecruitmentController extends Controller
 {
     // LIST PAGE
-    public function index()
+    public function index(Request $request)
     {
-        $recruitmentCount = Recruitment::where('is_visible', true)
-            ->where('status', 'open')
-            ->count();
+        $query = Recruitment::where('is_visible', true)
+            ->where('status', 'open');
 
-        $recruitments = Recruitment::where('is_visible', true)
-            ->where('status', 'open')
+        // Search theo vị trí công việc
+        if ($request->filled('keyword')) {
+            $query->where('position', 'like', '%' . $request->keyword . '%');
+        }
+
+        // Lọc theo loại công việc
+        if ($request->filled('work_type')) {
+            $query->where('work_type', $request->work_type);
+        }
+
+        $recruitmentCount = (clone $query)->count();
+
+        $recruitments = $query
             ->latest()
             ->paginate(6)
             ->withQueryString();
