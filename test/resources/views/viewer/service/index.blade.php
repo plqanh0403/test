@@ -11,7 +11,13 @@
 
         <section class="service-category-hero">
 
-            <div class="hero-content">
+            <div class="hero-image">
+
+                <img src="{{ asset($serviceCategory->banner_image) }}" alt="{{ $serviceCategory->name }}">
+
+            </div>
+
+            <div class="service-category-hero-content">
 
                 <span class="section-badge">
                     Service Category
@@ -39,17 +45,257 @@
 
             </div>
 
-            <div class="hero-image">
+        </section>
 
-                <img
-                    src="{{ asset($serviceCategory->banner_image) }}"
-                    alt="{{ $serviceCategory->name }}">
+        <section class="why-section">
+
+            <div class="row align-items-center">
+
+                <!-- LEFT -->
+                <div class="col-lg-6 mb-4">
+
+                    <span class="section-badge">
+                        Why Choose E-GEAD
+                    </span>
+
+                    <h2 class="why-title">
+                        Technology That Drives Business Growth
+                    </h2>
+
+                    <p class="why-desc">
+                        E-GEAD delivers modern technology solutions that empower organizations to automate processes,
+                        improve operational efficiency, and build a scalable digital foundation for long-term growth.
+                        Our services are designed to integrate seamlessly with existing systems while providing the flexibility required for future expansion.
+                    </p>
+
+                    <a href="#list" class="why-btn down-btn">
+                        Learn More
+                        <i class="bi bi-arrow-down"></i>
+                    </a>
+
+                </div>
+
+                <!-- RIGHT -->
+                <div class="col-lg-6">
+
+                    <div class="why-list">
+
+                        <div class="why-item">
+                            <i class="bi bi-lightning-charge"></i>
+                            <div>
+                                <h4>Unified Operations Management</h4>
+                                <p>Centralize business processes, data, and workflows into a single platform for better control and decision-making.</p>
+                            </div>
+                        </div>
+
+                        <div class="why-item">
+                            <i class="bi bi-shield-check"></i>
+                            <div>
+                                <h4>Real-Time Visibility</h4>
+                                <p>Monitor critical business activities with up-to-date information, automated updates, and transparent reporting.</p>
+                            </div>
+                        </div>
+
+                        <div class="why-item">
+                            <i class="bi bi-bar-chart"></i>
+                            <div>
+                                <h4>Intelligent Process Automation</h4>
+                                <p>Reduce manual effort and minimize operational risks through automated workflows and smart synchronization.</p>
+                            </div>
+                        </div>
+
+                        <div class="why-item">
+                            <i class="bi bi-people"></i>
+                            <div>
+                                <h4>Performance Insights</h4>
+                                <p>Gain actionable analytics to improve efficiency, identify bottlenecks, and support strategic planning.</p>
+                            </div>
+                        </div>
+
+                        <div class="why-item">
+                            <i class="bi bi-people"></i>
+                            <div>
+                                <h4>Enterprise Integration</h4>
+                                <p>Seamlessly connect existing systems, third-party services, and business applications through secure APIs.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
         </section>
 
-        <div class="section-heading">
+        <section class="service-value-section">
+
+            <div class="service-value-left">
+
+                <div class="capability-card">
+
+                    <div class="capability-icon">
+                        <i class="bi bi-arrow-repeat"></i>
+                    </div>
+
+                    <div>
+                        <h4>Real-Time Synchronization</h4>
+
+                        <p>
+                            Keep information consistent across all systems
+                            without manual intervention.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="capability-card">
+
+                    <div class="capability-icon">
+                        <i class="bi bi-eye"></i>
+                    </div>
+
+                    <div>
+                        <h4>Operational Visibility</h4>
+
+                        <p>
+                            Access live insights and monitor performance
+                            from a centralized dashboard.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="capability-card">
+
+                    <div class="capability-icon">
+                        <i class="bi bi-cpu"></i>
+                    </div>
+
+                    <div>
+                        <h4>Intelligent Automation</h4>
+
+                        <p>
+                            Reduce repetitive tasks through automation
+                            and standardized workflows.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="capability-card">
+
+                    <div class="capability-icon">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+
+                    <div>
+                        <h4>Scalable Growth</h4>
+
+                        <p>
+                            Infrastructure and processes designed to
+                            support business expansion.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="service-value-right">
+
+                <span class="section-badge">
+                    Business Value
+                </span>
+
+                <h2>
+                    Technology That Creates Measurable Results
+                </h2>
+
+                <p>
+                    Our solutions are designed to simplify operations,
+                    improve visibility, and help businesses scale with confidence.
+                </p>
+
+                <div class="service-overview-grid">
+
+                    <div class="overview-box box-1">
+
+                        <i class="ti ti-device-desktop-code"></i>
+
+                        <div>
+
+                            <h4>E-Commerce Platform</h4>
+
+                            <p>
+                                Build and manage online stores with flexible customization,
+                                centralized management, and streamlined operations.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="overview-box box-2">
+
+                        <i class="ti ti-bulb"></i>
+
+                        <div>
+
+                            <h4>Website & Hosting</h4>
+
+                            <p>
+                                Deliver fast, secure, and scalable web experiences with
+                                professional hosting and infrastructure support.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="overview-box box-3">
+
+                        <i class="ti ti-brain"></i>
+
+                        <div>
+
+                            <h4>Sales Automation</h4>
+
+                            <p>
+                                Automate business processes, order handling,
+                                customer interactions, and data synchronization.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="overview-box box-4">
+
+                        <i class="ti ti-settings-automation"></i>
+
+                        <div>
+
+                            <h4>Fulfillment Automation</h4>
+
+                            <p>
+                                Streamline logistics workflows, shipment tracking,
+                                inventory updates, and operational visibility.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </section>
+
+        <div class="section-heading" id="list">
 
             <span class="section-badge">
                 Expertise

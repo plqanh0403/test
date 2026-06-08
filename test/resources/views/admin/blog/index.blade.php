@@ -199,9 +199,7 @@
 
                         <div class="admin-card mb-4">
 
-                            <img src="{{ asset($blog->thumbnail) }}"
-                                class="img-fluid rounded-4 w-100"
-                                style="max-height:350px;object-fit:cover;">
+                            <img src="{{ asset($blog->thumbnail) }}" class="img-fluid rounded-4 w-100" tyle="max-height:350px;object-fit:cover;">
 
                         </div>
 

@@ -37,6 +37,8 @@ class ServiceController extends Controller
         $services = $query
             ->with('serviceCategory')
             ->latest()
+            ->orderByDesc('sort_order')
+            ->orderByDesc('created_at')
             ->paginate(10)
             ->withQueryString();
 

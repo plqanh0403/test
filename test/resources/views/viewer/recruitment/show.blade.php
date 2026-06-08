@@ -36,7 +36,7 @@
                     @if($recruitment->application_deadline)
                     <span>
                         <i class="bi bi-hourglass-split"></i>
-                        {{ \Carbon\Carbon::parse($recruitment->application_deadline)->format('d M Y') }}
+                        {{ $recruitment->application_deadline ? \Carbon\Carbon::parse($recruitment->application_deadline)->format('d M Y') : "Open until filled" }}
                     </span>
                     @endif
 
@@ -50,9 +50,7 @@
 
             <div class="job-hero-image">
 
-                <img
-                    src="{{ asset($recruitment->thumbnail) }}"
-                    alt="{{ $recruitment->thumbnail_alt ?? $recruitment->position }}">
+                <img src="{{ asset($recruitment->thumbnail) }}" alt="{{ $recruitment->thumbnail_alt ?? $recruitment->position }}">
 
             </div>
 
@@ -96,7 +94,7 @@
                 <div>
                     <span>Deadline</span>
                     <h5>
-                        {{ \Carbon\Carbon::parse($recruitment->application_deadline)->format('d M Y') }}
+                        {{ $recruitment->application_deadline ? \Carbon\Carbon::parse($recruitment->application_deadline)->format('d M Y') : "Open until filled" }}
                     </h5>
                 </div>
 
@@ -128,6 +126,14 @@
                     <h2>📋 Job Description</h2>
 
                     {!! nl2br(e($recruitment->description)) !!}
+
+                </div>
+
+                <div class="job-card">
+
+                    <h2>🕰️ Working time</h2>
+
+                    {{ ($recruitment->work_time) }}
 
                 </div>
 

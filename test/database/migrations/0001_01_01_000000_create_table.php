@@ -183,11 +183,31 @@ return new class extends Migration
 
         Schema::create('media', function (Blueprint $table) {
             $table->id();
+
             $table->string('name');
+            $table->string('original_name');
+
             $table->string('path');
             $table->string('url');
+
             $table->string('mime_type')->nullable();
-            $table->unsignedBigInteger('size')->nullable();
+
+            $table->unsignedBigInteger('size')->default(0);
+
+            $table->enum('type', [
+                'image',
+                'video',
+                'document',
+                'other'
+            ]);
+
+            $table->string('folder')->nullable();
+
+            $table->foreignId('uploaded_by')
+                ->nullable()
+                ->constrained('users')
+                ->nullOnDelete();
+
             $table->timestamps();
         });
     }

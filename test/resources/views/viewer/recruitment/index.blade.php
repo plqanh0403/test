@@ -205,12 +205,10 @@
                                 {{ $job->location }}
                             </span>
 
-                            @if($job->application_deadline)
                             <span>
                                 <i class="bi bi-hourglass-split"></i>
-                                {{ \Carbon\Carbon::parse($job->application_deadline)->format('d M Y') }}
+                                {{ $job->application_deadline ? \Carbon\Carbon::parse($job->application_deadline)->format('d M Y') : "Open until filled" }}
                             </span>
-                            @endif
 
                         </div>
 

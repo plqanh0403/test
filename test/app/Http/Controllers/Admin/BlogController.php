@@ -48,6 +48,8 @@ class BlogController extends Controller
 
         $blogs = $query->with(['category', 'user'])
             ->latest()
+            ->orderByDesc('sort_order')
+            ->orderByDesc('created_at')
             ->paginate(10)
             ->withQueryString();
 
@@ -123,7 +125,7 @@ class BlogController extends Controller
                 'status' => 'required|in:draft,published',
                 'is_visible' => 'nullable|boolean',
             ]);
-    
+
         $thumbnail = $blog->thumbnail;
 
         if ($request->hasFile('thumbnail')) {

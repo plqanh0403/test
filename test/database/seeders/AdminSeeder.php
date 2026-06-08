@@ -96,41 +96,45 @@ class AdminSeeder extends Seeder
             "source"=> "Test email 3"
         ]);
 
-        Recruitment::create([
-            "position" => "Software Engineer",
-            "description" => "We are looking for a skilled Software Engineer to join our team.",
-            "requirements" => "Bachelor's degree in Computer Science or related field, 3+ years of experience in software development.",
-            "benefits" => "Competitive salary, health insurance, flexible working hours.",
-            "location" => "Hanoi, Vietnam",
-            "work_type" => "full-time",
-            "application_deadline" => now()->addMonth(),
-            "status" => "open",
-            "slug" => Str::slug('Software Engineer' . '-' . Str::random(6))
-        ]);
+        // Recruitment::create([
+        //     "position" => "Software Engineer",
+        //     "description" => "We are looking for a skilled Software Engineer to join our team.",
+        //     "requirements" => "Bachelor's degree in Computer Science or related field, 3+ years of experience in software development.",
+        //     "benefits" => "Competitive salary, health insurance, flexible working hours.",
+        //     "location" => "Hanoi, Vietnam",
+        //     "work_type" => "full-time",
+        //     "work_time" => "Mon - Sat 8:00 - 17:30",
+        //     "application_deadline" => now()->addMonth(),
+        //     "status" => "open",
+        //     "slug" => Str::slug('Software Engineer' . '-' . Str::random(6))
+        // ]);
 
-        Recruitment::create([
-            "position" => "Product Manager",
-            "description" => "We are seeking an experienced Product Manager to lead our product development efforts.",
-            "requirements" => "Bachelor's degree in Business or related field, 5+ years of experience in product management.",
-            "benefits" => "Competitive salary, health insurance, stock options.",
-            "location" => "Hanoi, Vietnam",
-            "work_type" => "full-time",
-            "application_deadline" => now()->addMonth(),
-            "status" => "open",
-            "slug" => Str::slug('Product Manager' . '-' . Str::random(6))
-        ]);
+        // Recruitment::create([
+        //     "position" => "Product Manager",
+        //     "description" => "We are seeking an experienced Product Manager to lead our product development efforts.",
+        //     "requirements" => "Bachelor's degree in Business or related field, 5+ years of experience in product management.",
+        //     "benefits" => "Competitive salary, health insurance, stock options.",
+        //     "location" => "Hanoi, Vietnam",
+        //     "work_type" => "full-time",
+        //     "work_time" => "Mon - Sat 8:00 - 17:30",
+        //     "application_deadline" => now()->addMonth(),
+        //     "status" => "open",
+        //     "slug" => Str::slug('Product Manager' . '-' . Str::random(6))
+        // ]);
 
-        Recruitment::create([
-            "position" => "UX/UI Designer",
-            "description" => "We are looking for a creative UX/UI Designer to design user-friendly interfaces for our products.",
-            "requirements" => "Bachelor's degree in Design or related field, 3+ years of experience in UX/UI design.",
-            "benefits" => "Competitive salary, health insurance, flexible working hours.",
-            "location" => "Hanoi, Vietnam",
-            "work_type" => "full-time",
-            "application_deadline" => now()->addMonth(),
-            "status" => "open",
-            "slug" => Str::slug('UX/UI Designer' . '-' . Str::random(6))
-        ]);
+        // Recruitment::create([
+        //     "position" => "UX/UI Designer",
+        //     "description" => "We are looking for a creative UX/UI Designer to design user-friendly interfaces for our products.",
+        //     "requirements" => "Bachelor's degree in Design or related field, 3+ years of experience in UX/UI design.",
+        //     "benefits" => "Competitive salary, health insurance, flexible working hours.",
+
+        //     "location" => "Hanoi, Vietnam",
+        //     "work_type" => "full-time",
+        //     "work_time" => "Mon - Sat 8:00 - 17:30",
+        //     "application_deadline" => now()->addMonth(),
+        //     "status" => "open",
+        //     "slug" => Str::slug('UX/UI Designer' . '-' . Str::random(6))
+        // ]);
 
         // ServiceCategory::create([
         //     "name" => "IT Services",
