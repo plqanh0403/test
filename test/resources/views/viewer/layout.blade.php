@@ -41,7 +41,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     @stack('styles')
 </head>
@@ -60,45 +60,50 @@
                     <img src="{{ asset('images/logo.png') }}" alt="EGEAD Logo">
                 </a>
 
-                <div id="mainNavbar" class="navbar-content"> {{--class="collapse navbar-collapse" --- IGNORE -----}}
+                <div id="mainNavbar" class="navbar-content"> {{-- class="collapse navbar-collapse" --- IGNORE --- --}}
 
                     <ul class="navbar-nav nav-menu">
 
                         <li class="nav-item dropdown-custom">
-                            <a class="nav-link">
+                            <a class="nav-link {{ request()->routeIs('viewer.services.*') ? 'active' : '' }}">
                                 Services <i class="bi bi-chevron-down"></i>
                             </a>
 
                             <div class="dropdown-menu-custom">
-                                @foreach($serviceCategories as $serviceCategory)
-                                <a href="{{ route('viewer.services.index', $serviceCategory->slug) }}">
-                                    <i class="bi bi-grid"></i>
-                                    {{ $serviceCategory->name}}
-                                </a>
+                                @foreach ($serviceCategories as $serviceCategory)
+                                    <a href="{{ route('viewer.services.index', $serviceCategory->slug) }}">
+                                        <i class="bi bi-grid"></i>
+                                        {{ $serviceCategory->name }}
+                                    </a>
                                 @endforeach
                             </div>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('viewer.recruitments.index')}}" class="nav-link">
+                            <a href="{{ route('viewer.recruitments.index') }}"
+                                class="nav-link {{ request()->routeIs('viewer.recruitments.*') ? 'active' : '' }}">
                                 Recruitment
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('viewer.about_us')}}" class="nav-link">
+                            <a href="{{ route('viewer.about_us') }}"
+                                class="nav-link {{ request()->routeIs('viewer.about_us') ? 'active' : '' }}">
                                 About Us
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('viewer.blogs.index')}}" class="nav-link">
+                            <a href="{{ route('viewer.blogs.index') }}"
+                                class="nav-link {{ request()->routeIs('viewer.blogs.*') ? 'active' : '' }}">
                                 Blogs
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('viewer.contact')}}" class="nav-link">Contact Us</a>
+                            <a href="{{ route('viewer.contact') }}"
+                                class="nav-link {{ request()->routeIs('viewer.contact') ? 'active' : '' }}">Contact
+                                Us</a>
                         </li>
                     </ul>
 
@@ -148,7 +153,7 @@
                 </div>
 
                 <div class="cta-action">
-                    <a href="{{ route('viewer.contact') }}" class="cta-btn"> {{--{{ route('contact') }}--}}
+                    <a href="{{ route('viewer.contact') }}" class="cta-btn"> {{-- {{ route('contact') }} --}}
                         Get Free Consultation
                     </a>
                 </div>
@@ -173,7 +178,7 @@
 
 
                     <div class="footer-action">
-                        <a href="{{ route('viewer.contact') }}" class="consultation-btn"> {{--{{ route('contact') }}--}}
+                        <a href="{{ route('viewer.contact') }}" class="consultation-btn"> {{-- {{ route('contact') }} --}}
                             Get Free Consultation
                         </a>
                     </div>
@@ -192,10 +197,11 @@
                     <h4>Services</h4>
 
                     <ul>
-                        @foreach($serviceCategories as $category)
-                        <li>
-                            <a href="{{ route('viewer.services.index', $category->slug) }}">{{ $category->name}}</a>
-                        </li>
+                        @foreach ($serviceCategories as $category)
+                            <li>
+                                <a
+                                    href="{{ route('viewer.services.index', $category->slug) }}">{{ $category->name }}</a>
+                            </li>
                         @endforeach
                     </ul>
 
@@ -210,7 +216,7 @@
                         Get latest updates, job opportunities and tech insights from EGEAD.
                     </p>
 
-                    <form action=" {{ route('viewer.email.store')}}" method="POST" class="subscribe-form">
+                    <form action=" {{ route('viewer.email.store') }}" method="POST" class="subscribe-form">
                         @csrf
 
                         <div class="subscribe-box">
@@ -266,18 +272,18 @@
 
     <div class="position-fixed top-0 end-0 p-4" style="z-index:9999;">
 
-        @if(session('success'))
-        <div class="custom-alert success-alert auto-hide-alert">
-            <i class="bi bi-check-circle-fill"></i>
-            <span>{{ session('success') }}</span>
-        </div>
+        @if (session('success'))
+            <div class="custom-alert success-alert auto-hide-alert">
+                <i class="bi bi-check-circle-fill"></i>
+                <span>{{ session('success') }}</span>
+            </div>
         @endif
 
-        @if(session('error'))
-        <div class="custom-alert error-alert auto-hide-alert">
-            <i class="bi bi-x-circle-fill"></i>
-            <span>{{ session('error') }}</span>
-        </div>
+        @if (session('error'))
+            <div class="custom-alert error-alert auto-hide-alert">
+                <i class="bi bi-x-circle-fill"></i>
+                <span>{{ session('error') }}</span>
+            </div>
         @endif
     </div>
 
@@ -393,21 +399,15 @@
         }
 
         /* TESTIMONIAL SWIPER */
-        new Swiper('.testimonialSwiper', {
-            direction: 'vertical',
-
-            slidesPerView: 'auto', // 👈 QUAN TRỌNG
+        new Swiper(".testimonialSwiper", {
+            direction: "vertical",
+            slidesPerView: 3,
             centeredSlides: true,
-
             loop: true,
-            loopedSlides: 4,
-            loopAdditionalSlides: 2,
-
-            spaceBetween: 20,
-            speed: 800,
-
+            speed: 1000,
+            spaceBetween: 0,
             autoplay: {
-                delay: 2500,
+                delay: 3000,
                 disableOnInteraction: false,
             },
         });

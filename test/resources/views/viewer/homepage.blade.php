@@ -581,18 +581,16 @@
 
     </section>
 
-    {{-- Chưa xong, đang lỗi bố cục --}}
     <section class="testimonial-section">
         <div class="row align-items-center">
 
             <!-- LEFT -->
-            <div class="col-lg-6 testimonial-content">
+            <div class="col-lg-5 testimonial-content">
 
                 <span class="section-badge">Testimonials</span>
 
                 <h2>
-                    Trusted by <br>
-                    Our Clients Worldwide
+                    Trusted by Our Clients Worldwide
                 </h2>
 
                 <p>
@@ -608,9 +606,121 @@
             </div>
 
             <!-- RIGHT -->
-            <div class="col-lg-6">
+            <div class="col-lg-7">
                 <div class="swiper testimonialSwiper">
                     <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+
+                                <div class="testimonial-top">
+                                    <img src="{{ asset('images/billgates.jpg') }}" class="avatar">
+
+                                    <div class="info">
+                                        <h4>Bill Gates</h4>
+                                        <span>CEO, ABC Company</span>
+
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="testimonial-text">
+                                    <i class="bi bi-quote"></i>
+                                    “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                </p>
+
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+
+                                <div class="testimonial-top">
+                                    <img src="{{ asset('images/mark.jpg') }}" class="avatar">
+
+                                    <div class="info">
+                                        <h4>Mark Zuckerberg</h4>
+                                        <span>CEO, Meta</span>
+
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="testimonial-text">
+                                    <i class="bi bi-quote"></i>
+                                    “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                </p>
+
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+
+                                <div class="testimonial-top">
+                                    <img src="{{ asset('images/trump.jpg') }}" class="avatar">
+
+                                    <div class="info">
+                                        <h4>Donald Trump</h4>
+                                        <span>CEO, ABC Company</span>
+
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="testimonial-text">
+                                    <i class="bi bi-quote"></i>
+                                    “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                </p>
+
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+
+                                <div class="testimonial-top">
+                                    <img src="https://i.pravatar.cc/100?img=1" class="avatar">
+
+                                    <div class="info">
+                                        <h4>Nguyễn Văn A</h4>
+                                        <span>CEO, ABC Company</span>
+
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="testimonial-text">
+                                    <i class="bi bi-quote"></i>
+                                    “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                </p>
+
+                            </div>
+                        </div>
 
                         <div class="swiper-slide">
                             <div class="testimonial-card">

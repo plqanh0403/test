@@ -52,17 +52,9 @@
                     </div>
 
                     <div class="hero-actions">
-
-                        <a href="{{ route('viewer.contact') }}" class="consultation-btn">
-                            Get Free Consultation
-                        </a>
-
-                        <a href="#service-content" class="hero-link">
-
+                        <a href="#details" class="why-btn down-btn">
                             Learn More
-
                             <i class="bi bi-arrow-down"></i>
-
                         </a>
 
                     </div>
@@ -79,35 +71,81 @@
 
             <!-- OVERVIEW -->
 
-            <section class="service-highlights">
+            <section class="service-outcomes">
 
-                <div class="highlight-card">
+                <div class="outcome-card">
 
-                    <i class="bi bi-layers"></i>
+                    <div class="outcome-card-header">
 
-                    <h4>Category</h4>
+                        <i class="bi bi-clock-history"></i>
 
-                    <p>{{ $service->serviceCategory->name }}</p>
+                        <h4>
+                            Save Time
+                        </h4>
+
+                    </div>
+
+                    <p>
+                        Automate repetitive processes and reduce manual workload, allowing teams to focus on strategic
+                        priorities.
+                    </p>
 
                 </div>
 
-                <div class="highlight-card">
+                <div class="outcome-card">
 
-                    <i class="bi bi-lightning-charge"></i>
+                    <div class="outcome-card-header">
 
-                    <h4>Solution Type</h4>
+                        <i class="bi bi-arrow-repeat"></i>
 
-                    <p>Professional Service</p>
+                        <h4>
+                            Improve Accuracy
+                        </h4>
+
+                    </div>
+
+                    <p>
+                        Eliminate data inconsistencies and minimize human errors through automated workflows and
+                        synchronization.
+                    </p>
 
                 </div>
 
-                <div class="highlight-card">
+                <div class="outcome-card">
 
-                    <i class="bi bi-headset"></i>
+                    <div class="outcome-card-header">
 
-                    <h4>Support</h4>
+                        <i class="bi bi-bar-chart-line"></i>
 
-                    <p>Dedicated Team</p>
+                        <h4>
+                            Increase Visibility
+                        </h4>
+
+                    </div>
+
+                    <p>
+                        Gain real-time insights into operations, performance, and business activities from a centralized
+                        platform.
+                    </p>
+
+                </div>
+
+                <div class="outcome-card">
+
+                    <div class="outcome-card-header">
+
+                        <i class="bi bi-graph-up-arrow"></i>
+
+                        <h4>
+                            Scale With Confidence
+                        </h4>
+
+                    </div>
+
+                    <p>
+                        Build a foundation that supports growth, adapts to increasing demand, and evolves with your
+                        business.
+                    </p>
 
                 </div>
 
@@ -115,7 +153,7 @@
 
             <!-- CONTENT -->
 
-            <div class="service-layout">
+            <div class="service-layout" id="details">
 
                 <div class="service-main">
 
@@ -123,7 +161,7 @@
 
                     <div class="content-card">
 
-                        {!! nl2br(e($service->details)) !!}
+                        <p>{!! $service->details !!}</p>
 
                     </div>
 

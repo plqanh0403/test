@@ -125,7 +125,7 @@
 
                     <h2>📋 Job Description</h2>
 
-                    {!! nl2br(e($recruitment->description)) !!}
+                    <p>{!! recruitment->description !!}</p>
 
                 </div>
 
@@ -133,7 +133,7 @@
 
                     <h2>🕰️ Working time</h2>
 
-                    {{ ($recruitment->work_time) }}
+                    <p>{!! $recruitment->work_time !!}</p>
 
                 </div>
 
@@ -141,7 +141,7 @@
 
                     <h2>📚 Requirements</h2>
 
-                    {!! nl2br(e($recruitment->requirements)) !!}
+                    <p>{!! $recruitment->requirements !!}</p>
 
                 </div>
 
@@ -149,7 +149,7 @@
 
                     <h2>🎁 Benefits</h2>
 
-                    {!! nl2br(e($recruitment->benefits)) !!}
+                    <p>{!! $recruitment->benefits !!}</p>
 
                 </div>
 
