@@ -1,4 +1,4 @@
-@extends('admin.layout.layoutAdmin1')
+@extends('admin.layout')
 
 @section('content')
 <x-admin.page-header title="Recruitment Management" description="Manage all recruitment opportunities in the system">

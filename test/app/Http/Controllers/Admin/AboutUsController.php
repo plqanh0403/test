@@ -19,6 +19,10 @@ class AboutUsController extends Controller
 
     public function store(Request $request) : RedirectResponse
     {
+        if (AboutUs::exists()) {
+            return back()->with('error', 'Company profile already exists.');
+        }
+
         AboutUs::create($request->all());
 
         return back()->with('success','Add information successfully');

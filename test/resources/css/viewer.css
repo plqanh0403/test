@@ -3503,8 +3503,6 @@ body::after{
 }
 
 .about-hero-content h1{
-    font-size:60px;
-    font-weight:800;
     margin-top:15px;
     color:#0f172a;
 }
@@ -3523,11 +3521,6 @@ body::after{
 /* STORY */
 .about-story{
     margin:80px 0;
-}
-
-.about-story h2{
-    font-size:36px;
-    font-weight:700;
 }
 
 .about-story p{
@@ -3559,8 +3552,6 @@ body::after{
 }
 
 .about-sidebar-card h3{
-    font-size:26px;
-    font-weight:800;
     margin-bottom:25px;
     position:relative;
 }
@@ -4551,8 +4542,6 @@ body::after{
 
 .blog-sidebar-card h4{
     margin-bottom:25px;
-    font-size:22px;
-    font-weight:800;
 }
 
 .related-blog-item{
@@ -4584,9 +4573,7 @@ body::after{
 .related-blog-content h5{
     margin-top:8px;
     color:#0f172a;
-    font-size:15px;
     line-height:1.5;
-    font-weight: 600;
 }
 
 /* MOBILE */

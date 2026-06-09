@@ -1,4 +1,4 @@
-@extends('admin.layout.layoutAdmin1')
+@extends('admin.layout')
 
 @section('content')
 <x-admin.page-header title="User Management" description="Manage all users in the system">
@@ -316,7 +316,7 @@
 
                             @csrf
                             @method('PUT')
-                            
+
                             <div class="row g-4">
 
                                 <!-- LEFT -->
@@ -407,7 +407,7 @@
 
                                             </select>
 
-                                        </div>                           
+                                        </div>
 
                                     </div>
 

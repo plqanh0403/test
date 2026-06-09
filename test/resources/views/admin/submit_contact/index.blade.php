@@ -2,7 +2,7 @@
 use Illuminate\Support\Str;
 @endphp
 
-@extends('admin/layout/layoutAdmin1')
+@extends('admin.layout')
 
 @section('content')
 <x-admin.page-header title="Submit Contact Management" description="Manage all submit contacts in the system">

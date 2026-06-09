@@ -670,14 +670,7 @@ body {
     justify-content:center;
 }
 
-.user-profile-info h2{
-    margin:0;
-    font-size:30px;
-    font-weight:800;
-}
-
 .user-profile-info p{
-    margin:0;
     color:#64748b;
 }
 
@@ -761,10 +754,6 @@ body {
 
 .detail-box h4{
     margin-top:8px;
-    margin-bottom:0;
-
-    font-size:20px;
-    font-weight:700;
 }
 
 .timeline-item{
@@ -830,12 +819,6 @@ body {
     display:flex;
     align-items:center;
     justify-content:center;
-}
-
-.contact-profile h2{
-    margin:0;
-    font-size:28px;
-    font-weight:800;
 }
 
 .contact-profile p{
@@ -1204,7 +1187,6 @@ body {
 }
 
 .detail-card h5{
-    font-weight:700;
     margin-bottom:18px;
 }
 
@@ -1268,14 +1250,10 @@ body {
     background:white;
     border-radius:28px;
     padding:28px;
-
-    box-shadow:
-    0 8px 30px rgba(15,23,42,.08);
+    box-shadow:0 8px 30px rgba(15,23,42,.08);
 }
 
 .dashboard-card h3{
-    font-size:20px;
-    font-weight:700;
     margin-bottom:20px;
 }
 
@@ -1284,11 +1262,8 @@ body {
 }
 
 .content-box{
-
     background:#f8fafc;
-
     border-radius:16px;
-
     padding:16px 18px;
 }
 
@@ -1298,30 +1273,14 @@ body {
     gap:16px;
 }
 
-.info-list label, .seo-grid label, .tracking-box label{
-
+label{
     display:block;
-
     font-size:12px;
     font-weight:600;
     text-transform:uppercase;
     letter-spacing:.8px;
-
     color:#94a3b8;
-
     margin-bottom:8px;
-}
-
-.info-list p{
-
-    margin:0;
-
-    font-size:15px;
-    font-weight:600;
-
-    color:#0f172a;
-
-    line-height:1.7;
 }
 
 .social-grid{
@@ -1335,10 +1294,8 @@ body {
     display:flex;
     align-items:center;
     justify-content:center;
-
     border-radius:16px;
     background:#f8fafc;
-
     font-size:22px;
 }
 
@@ -1355,6 +1312,13 @@ body {
     border-radius:16px;
     background:#f8fafc;
     padding:10px;
+}
+.dashboard-card iframe{
+    width:100%;
+    height: 90%;
+    border:0;
+    display:block;
+    border-radius:28px;
 }
 
 .full-width{
@@ -1395,4 +1359,41 @@ body {
     .seo-grid{
         grid-template-columns:1fr;
     }
+}
+
+.about-modal-layout{
+    display:grid;
+    grid-template-columns: minmax(0,2fr) minmax(320px,1fr);
+    gap:24px;
+}
+
+.about-main, .about-sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+
+.form-card{
+    background:#fff;
+    border:1px solid #e2e8f0;
+    border-radius:24px;
+    padding:24px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+.modal-xl{
+    max-width:90%;
+}
+
+.modal-body{
+    background:#f8fafc;
 }
