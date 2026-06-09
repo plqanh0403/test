@@ -20,7 +20,7 @@
                 <!-- Slide 1 -->
                 <div class="carousel-item active">
 
-                    <img src="{{ asset('images/hero1.jpg') }}"
+                    <img src="{{ Storage::url('images/hero1.jpg') }}"
                         class="hero-image"
                         alt="Technology Solutions">
 
@@ -65,7 +65,7 @@
                 <!-- Slide 2 -->
                 <div class="carousel-item">
 
-                    <img src="{{ asset('images/hero2.jpg') }}"
+                    <img src="{{ Storage::url('images/hero2.jpg') }}"
                         class="hero-image"
                         alt="Recruitment">
 
@@ -110,7 +110,7 @@
                 <!-- Slide 3 -->
                 <div class="carousel-item">
 
-                    <img src="{{ asset('images/hero3.jpg') }}" class="hero-image" alt="Digital Transformation">
+                    <img src="{{ Storage::url('images/hero3.jpg') }}" class="hero-image" alt="Digital Transformation">
 
                     <div class="hero-overlay"></div>
 
@@ -527,7 +527,7 @@
 
                 <div class="swiper-slide">
                     <a href="#" class="portfolio-card">
-                        <img src="{{ asset('images/hero1.jpg') }}">
+                        <img src="{{ Storage::url('images/hero1.jpg') }}">
                         <div class="portfolio-overlay">
                             <span class="portfolio-tag">E-commerce</span>
                             <h4>E-commerce Platform</h4>
@@ -537,7 +537,7 @@
 
                 <div class="swiper-slide">
                     <a href="#" class="portfolio-card">
-                        <img src="{{ asset('images/hero2.jpg') }}">
+                        <img src="{{ Storage::url('images/hero2.jpg') }}">
                         <div class="portfolio-overlay">
                             <span class="portfolio-tag">Mobile</span>
                             <h4>Banking App</h4>
@@ -547,7 +547,7 @@
 
                 <div class="swiper-slide">
                     <a href="#" class="portfolio-card">
-                        <img src="{{ asset('images/hero3.jpg') }}">
+                        <img src="{{ Storage::url('images/hero3.jpg') }}">
                         <div class="portfolio-overlay">
                             <span class="portfolio-tag">AI</span>
                             <h4>AI Dashboard</h4>
@@ -557,7 +557,7 @@
 
                 <div class="swiper-slide">
                     <a href="#" class="portfolio-card">
-                        <img src="{{ asset('images/hero3.jpg') }}">
+                        <img src="{{ Storage::url('images/hero3.jpg') }}">
                         <div class="portfolio-overlay">
                             <span class="portfolio-tag">Four</span>
                             <h4>Cái số 4</h4>
@@ -614,7 +614,7 @@
                             <div class="testimonial-card">
 
                                 <div class="testimonial-top">
-                                    <img src="{{ asset('images/billgates.jpg') }}" class="avatar">
+                                    <img src="{{ Storage::url('images/billgates.jpg') }}" class="avatar">
 
                                     <div class="info">
                                         <h4>Bill Gates</h4>
@@ -642,7 +642,7 @@
                             <div class="testimonial-card">
 
                                 <div class="testimonial-top">
-                                    <img src="{{ asset('images/mark.jpg') }}" class="avatar">
+                                    <img src="{{ Storage::url('images/mark.jpg') }}" class="avatar">
 
                                     <div class="info">
                                         <h4>Mark Zuckerberg</h4>
@@ -670,7 +670,7 @@
                             <div class="testimonial-card">
 
                                 <div class="testimonial-top">
-                                    <img src="{{ asset('images/trump.jpg') }}" class="avatar">
+                                    <img src="{{ Storage::url('images/trump.jpg') }}" class="avatar">
 
                                     <div class="info">
                                         <h4>Donald Trump</h4>
@@ -726,7 +726,7 @@
                             <div class="testimonial-card">
 
                                 <div class="testimonial-top">
-                                    <img src="{{ asset('images/billgates.jpg') }}" class="avatar">
+                                    <img src="{{ Storage::url('images/billgates.jpg') }}" class="avatar">
 
                                     <div class="info">
                                         <h4>Bill Gates</h4>
@@ -754,7 +754,7 @@
                             <div class="testimonial-card">
 
                                 <div class="testimonial-top">
-                                    <img src="{{ asset('images/mark.jpg') }}" class="avatar">
+                                    <img src="{{ Storage::url('images/mark.jpg') }}" class="avatar">
 
                                     <div class="info">
                                         <h4>Mark Zuckerberg</h4>
@@ -782,7 +782,7 @@
                             <div class="testimonial-card">
 
                                 <div class="testimonial-top">
-                                    <img src="{{ asset('images/trump.jpg') }}" class="avatar">
+                                    <img src="{{ Storage::url('images/trump.jpg') }}" class="avatar">
 
                                     <div class="info">
                                         <h4>Donald Trump</h4>
@@ -864,7 +864,7 @@
                 <a href="#" class="blog-card">
 
                     <div class="blog-image">
-                        <img src="{{ asset('images/hero1.jpg') }}" alt="AI Trends 2025">
+                        <img src="{{ Storage::url('images/hero1.jpg') }}" alt="AI Trends 2025">
                         <span class="blog-tag">Technology</span>
                     </div>
 
@@ -896,7 +896,7 @@
                 <a href="#" class="blog-card">
 
                     <div class="blog-image">
-                        <img src="{{ asset('images/hero2.jpg') }}">
+                        <img src="{{ Storage::url('images/hero2.jpg') }}">
                         <span class="blog-tag">Business</span>
                     </div>
 
@@ -921,7 +921,7 @@
                 <a href="#" class="blog-card">
 
                     <div class="blog-image">
-                        <img src="{{ asset('images/hero3.jpg') }}">
+                        <img src="{{ Storage::url('images/hero3.jpg') }}">
                         <span class="blog-tag">Recruitment</span>
                     </div>
 

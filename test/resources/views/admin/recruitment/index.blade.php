@@ -369,7 +369,7 @@
                                                 Job Description
                                             </label>
 
-                                            <textarea name="description" class="ckeditor">{{ $recruitment->description }}</textarea>
+                                            <textarea name="description" class="ckeditor" data-folder="recruitments">{{ $recruitment->description }}</textarea>
 
                                         </div>
 
@@ -380,7 +380,7 @@
                                                 Requirements
                                             </label>
 
-                                            <textarea name="requirements" class="ckeditor">{{ old('requirements') }}</textarea>
+                                            <textarea name="requirements" class="ckeditor" data-folder="recruitments">{{ old('requirements') }}</textarea>
 
                                         </div>
 
@@ -391,7 +391,7 @@
                                                 Benefits
                                             </label>
 
-                                            <textarea name="benefits" class="ckeditor">{{ $recruitment->benefits }}</textarea>
+                                            <textarea name="benefits" class="ckeditor" data-folder="recruitments">{{ $recruitment->benefits }}</textarea>
 
                                         </div>
 
@@ -497,14 +497,26 @@
                                     <!-- THUMBNAIL -->
                                     <div class="admin-card mb-4">
 
-                                        <h6 class="admin-card-title">
-                                            Thumbnail
-                                        </h6>
-
                                         <div class="mb-3">
+                                            <label class="form-label">
+                                                Current Thumbnail
+                                            </label>
+
+                                            @if($recruitment->thumbnail)
+                                                <div class="mb-2">
+                                                    <img src="{{ Storage::url($recruitment->thumbnail) }}" class="img-fluid rounded border" style="max-height:150px">
+                                                </div>
+                                            @else
+                                                <p class="text-muted">No thumbnail uploaded</p>
+                                            @endif
+                                        </div>
+
+                                        <div>
+                                            <label class="form-label">
+                                                Replace Thumbnail
+                                            </label>
 
                                             <input type="file" name="thumbnail" class="form-control">
-
                                         </div>
 
                                         <input type="text" name="thumbnail_alt" value="{{ old('thumbnail_alt', $recruitment->thumbnail_alt) }}" class="form-control" placeholder="Thumbnail alt text">
@@ -639,7 +651,7 @@
                                         Job Description
                                     </label>
 
-                                    <textarea name="description" class="ckeditor">{{ old('description') }}</textarea>
+                                    <textarea name="description" class="ckeditor" data-folder="recruitments">{{ old('description') }}</textarea>
 
                                 </div>
 
@@ -650,7 +662,7 @@
                                         Requirements
                                     </label>
 
-                                    <textarea name="requirements" class="ckeditor">{{ old('requirements') }}</textarea>
+                                    <textarea name="requirements" class="ckeditor" data-folder="recruitments">{{ old('requirements') }}</textarea>
 
                                 </div>
 
@@ -661,7 +673,7 @@
                                         Benefits
                                     </label>
 
-                                    <textarea name="benefits" class="ckeditor">{{ old('benefits') }}</textarea>
+                                    <textarea name="benefits" class="ckeditor" data-folder="recruitments">{{ old('benefits') }}</textarea>
 
                                 </div>
 

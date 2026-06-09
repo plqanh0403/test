@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use App\Services\MediaService;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ServiceController extends Controller
@@ -46,7 +48,7 @@ class ServiceController extends Controller
         );
     }
 
-    public function store(Request $request) : RedirectResponse
+    public function store(Request $request, MediaService $mediaService) : RedirectResponse
     {
         request()->validate([
             'name' => 'required|string|max:255',
@@ -62,10 +64,12 @@ class ServiceController extends Controller
             'is_visible' => 'nullable|boolean',
         ]);
 
+        $path = $mediaService->uploadImg($request->file('thumbnail'), 'services');
+
         Service::create([
             'name' => $request->name,
             'category_id' => $request->category_id,
-            'thumbnail' => $request->thumbnail,
+            'thumbnail' => $path,
             'thumbnail_alt' => $request->thumbnail_alt ?? $request->name,
             'overview' => $request->overview,
             'details' => $request->details,
@@ -80,7 +84,7 @@ class ServiceController extends Controller
         return redirect()->route('admin.services')->with('success', 'Service created successfully');
     }
 
-    public function update(Request $request, Service $service) : RedirectResponse
+    public function update(Request $request, Service $service, MediaService $mediaService) : RedirectResponse
     {
         request()->validate([
             'name' => 'required|string|max:255',
@@ -96,29 +100,21 @@ class ServiceController extends Controller
             'is_visible' => 'nullable|boolean',
         ]);
 
-        // $data = [];
+        $data = [];
 
-        // if ($request->hasFile('thumbnail')) {
+        if ($request->hasFile('thumbnail')) {
 
-        //     if ($service->thumbnail &&
-        //         file_exists(public_path($service->thumbnail))) {
+            if ($service->thumbnail) {
+                Storage::disk('public')->delete($service->thumbnail);
+            }
 
-        //         unlink(public_path($service->thumbnail));
-        //     }
-
-        //     $file = $request->file('thumbnail');
-
-        //     $filename = time().'_'.$file->getClientOriginalName();
-
-        //     $file->move(public_path('uploads/services'), $filename);
-
-        //     $data['thumbnail'] = 'uploads/services/'.$filename;
-        // }
+            $data['thumbnail'] = $mediaService->uploadImg($request->file('thumbnail'), 'services');
+        }
 
         $service->update([
             'name' => $request->name,
             'category_id' => $request->category_id,
-            'thumbnail' => $request->thumbnail,
+            'thumbnail' => $data['thumbnail'] ?? $service->thumbnail,
             'thumbnail_alt' => $request->thumbnail_alt ?? $request->name,
             'overview' => $request->overview,
             'details' => $request->details,

@@ -50,7 +50,7 @@
 
             <div class="job-hero-image">
 
-                <img src="{{ asset($recruitment->thumbnail) }}" alt="{{ $recruitment->thumbnail_alt ?? $recruitment->position }}">
+                <img src="{{ Storage::url($recruitment->thumbnail) }}" alt="{{ $recruitment->thumbnail_alt ?? $recruitment->position }}">
 
             </div>
 
@@ -296,7 +296,7 @@
 
                         <div class="recruitment-thumbnail">
 
-                            <img src="{{ asset($job->thumbnail) }}" alt="{{ $job->position }}">
+                            <img src="{{ Storage::url($job->thumbnail) }}" alt="{{ $job->position }}">
 
                             <span class="job-type">
                                 {{ strtoupper($job->work_type) }}

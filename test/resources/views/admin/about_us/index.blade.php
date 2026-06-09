@@ -1,170 +1,238 @@
 @extends('admin.layout.layoutAdmin1')
 
 @section('content')
+    <x-admin.page-header title="E-GEAD Company Information"
+        description="Everything about your company in one place — branding, contacts, HR information, social media and SEO settings.">
 
-<x-admin.page-header
-    title="EGEAD Headquarters"
-    description="Everything about your company in one place — branding, contacts, HR information, social media and SEO settings.">
+        <x-slot:action>
 
-    <x-slot:action>
-
-        @if(!$about_us)
-            <a href="#" class="btn btn-create"> {{-- {{ route('admin.about_us.create') }} --}}
-
-                <i class="bi bi-plus-lg"></i>
-                Create Profile
-
-            </a>
-
-        @else
-
-            <a href="#" class="btn btn-edit"> {{--{{ route('admin.about_us.edit', $about_us) }}--}}
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateAboutUsModal">
 
                 <i class="bi bi-pencil-fill"></i>
                 Edit Profile
 
-            </a>
+            </button>
 
-            <form action="{{ route('admin.about_us.destroy', $about_us) }}"
-                  method="POST">
+            <button class="btn-delete">
+                <i class="bi bi-trash"></i>
+                Delete
+            </button>
 
-                @csrf
-                @method('DELETE')
+        </x-slot:action>
 
-                <button class="btn btn-delete">
+    </x-admin.page-header>
 
-                    <i class="bi bi-trash-fill"></i>
-                    Delete
+    <div class="about-dashboard">
 
-                </button>
+        <!-- INFO GRID -->
+        <div class="dashboard-grid">
 
-            </form>
+            <!-- COMPANY -->
+            <div class="dashboard-card">
 
-        @endif
+                <h3>
+                    <i class="bi bi-building"></i>
+                    Company Information
+                </h3>
 
-    </x-slot:action>
+                <div class="info-list">
 
-</x-admin.page-header>
+                    <div>
+                        <label>Email</label>
+                        <p class="content-box">{{ $about_us->email }}</p>
+                    </div>
 
-@if($about_us)
+                    <div>
+                        <label>Phone</label>
+                        <p class="content-box">{{ $about_us->phone }}</p>
+                    </div>
 
-<div class="about-container">
+                    <div>
+                        <label>Address</label>
+                        <p class="content-box">{{ $about_us->address }}</p>
+                    </div>
 
-    <div class="about-header">
+                </div>
 
-        <div class="logo-box">
+            </div>
 
-            @if($about_us->light_logo)
-                <img src="{{ asset($about_us->light_logo) }}">
-            @endif
+            <!-- HR -->
+            <div class="dashboard-card">
 
-        </div>
+                <h3>
+                    <i class="bi bi-people"></i>
+                    HR Contact
+                </h3>
 
-        <div>
+                <div class="info-list">
 
-            <h2>{{ $about_us->name }}</h2>
+                    <div>
+                        <label>HR Email</label>
+                        <p class="content-box">{{ $about_us->hr_email }}</p>
+                    </div>
 
-            <p>{{ $about_us->slogan }}</p>
+                    <div>
+                        <label>HR Phone</label>
+                        <p class="content-box">{{ $about_us->hr_phone }}</p>
+                    </div>
 
-        </div>
+                </div>
 
-        <div class="action-group">
+            </br>
 
-            <a href="{{ route('admin.about_us.update',$about_us) }}"
-               class="btn-edit">
+                <h3>
+                    <i class="bi bi-share"></i>
+                    Social Media
+                </h3>
 
-                <i class="bi bi-pencil-fill"></i>
+                <div class="social-grid">
 
-                Edit
+                    <a href="{{ $about_us->facebook }}">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
 
-            </a>
+                    <a href="{{ $about_us->linkedin }}">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
 
-            <form method="POST" action="{{ route('admin.about_us.destroy', $about_us) }}">
+                    <a href="{{ $about_us->youtube }}">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
 
-                @csrf
-                @method('DELETE')
+                    <a href="{{ $about_us->tiktok }}">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
 
-                <button class="btn-delete">
+                    <a href="{{ $about_us->instagram }}">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
 
-                    <i class="bi bi-trash-fill"></i>
-
-                    Delete
-
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-
-
-    <div class="info-grid">
-
-        <div class="card">
-            <h4>Company</h4>
-
-            <p><b>Email:</b> {{ $about_us->email }}</p>
-
-            <p><b>Phone:</b> {{ $about_us->phone }}</p>
-
-            <p><b>Address:</b> {{ $about_us->address }}</p>
-
-        </div>
-
-
-        <div class="card">
-
-            <h4>HR Contact</h4>
-
-            <p><b>Email:</b> {{ $about_us->hr_email }}</p>
-
-            <p><b>Phone:</b> {{ $about_us->hr_phone }}</p>
-
-        </div>
-
-
-        <div class="card">
-
-            <h4>Social Media</h4>
-
-            <div class="social">
-
-                <a href="{{ $about_us->facebook }}">
-                    <i class="bi bi-facebook"></i>
-                </a>
-
-                <a href="{{ $about_us->youtube }}">
-                    <i class="bi bi-youtube"></i>
-                </a>
-
-                <a href="{{ $about_us->linkedin }}">
-                    <i class="bi bi-linkedin"></i>
-                </a>
-
-                <a href="{{ $about_us->tiktok }}">
-                    <i class="bi bi-tiktok"></i>
-                </a>
+                </div>
 
             </div>
 
         </div>
 
+        <!-- BRANDING -->
+        <div class="dashboard-card full-width">
 
-        <div class="card">
+            <h3>
+                <i class="bi bi-palette"></i>
+                Branding Assets
+            </h3>
 
-            <h4>SEO Information</h4>
+            <div class="branding-grid">
 
-            <p>{{ $about_us->seo_title }}</p>
+                <div>
+                    <label>Thumbnail</label>
+                    <img src="{{ Storage::url($about_us->thumbnail) }}" alt="Thumbnail">
+                </div>
 
-            <p>{{ $about_us->canonical_url }}</p>
+                <div>
+                    <label>Light Logo</label>
+                    <img src="{{ Storage::url($about_us->light_logo) }}" alt="Light logo">
+                </div>
+
+                <div>
+                    <label>Dark Logo</label>
+                    <img src="{{ Storage::url($about_us->dark_logo) }}" alt="Dark logo">
+                </div>
+
+                <div>
+                    <label>Favicon</label>
+                    <img src="{{ Storage::url($about_us->favicon) }}" alt="Favicon">
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div class="dashboard-card full-width">
+
+            <h3>
+                <i class="bi bi-file-text"></i>
+                Company Description
+            </h3>
+
+            <div class="content-box">{!! $about_us->description !!}</div>
+
+        </div>
+
+        <!-- MAP -->
+        <div class="dashboard-card full-width">
+
+            <h3>
+                <i class="bi bi-map"></i>
+                Google Map
+            </h3>
+
+            {!! $about_us->google_map !!}
+
+        </div>
+
+        <!-- SEO -->
+        <div class="dashboard-card full-width">
+
+            <h3>
+                <i class="bi bi-search"></i>
+                SEO Settings
+            </h3>
+
+            <div class="seo-grid">
+
+                <div>
+                    <label>SEO Title</label>
+                    <p class="content-box">{{ $about_us->seo_title }}</p>
+                </div>
+
+                <div>
+                    <label>Canonical URL</label>
+                    <p class="content-box">{{ $about_us->canonical_url }}</p>
+                </div>
+
+                <div>
+                    <label>SEO Description</label>
+                    <p class="content-box">{{ $about_us->seo_description }}</p>
+                </div>
+
+                <div>
+                    <label>Keywords</label>
+                    <p class="content-box">{{ $about_us->seo_keywords }}</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- TRACKING -->
+        <div class="dashboard-card full-width">
+
+            <h3>
+                <i class="bi bi-graph-up"></i>
+                Tracking & Verification
+            </h3>
+
+            <div class="tracking-box">
+
+                <div>
+                    <label>Google Site Verification</label>
+                    <pre>{{ $about_us->google_site_verification }}</pre>
+                </div>
+
+                <div>
+                    <label>Google Analytics</label>
+                    <pre>{{ $about_us->google_analytics }}</pre>
+                </div>
+
+                <div>
+                    <label>Meta Pixel</label>
+                    <pre>{{ $about_us->meta_pixel }}</pre>
+                </div>
+
+            </div>
 
         </div>
 
     </div>
-
-</div>
-
-@endif
-
 @endsection

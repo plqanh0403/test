@@ -20,7 +20,7 @@ class AboutUsController extends Controller
     public function store(Request $request) : RedirectResponse
     {
         AboutUs::create($request->all());
-        
+
         return back()->with('success','Add information successfully');
     }
 

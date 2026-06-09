@@ -5,7 +5,7 @@
     <title>EGEAD CMS Admin</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ Storage::url($about_us->favicon) }}">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +18,8 @@
     <!-- Admin CSS -->
     <link rel="stylesheet" href="{{ asset('admin1.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -253,10 +255,12 @@
     <script>
         document.querySelectorAll('.ckeditor').forEach(editor => {
 
+            let folder = editor.dataset.folder || 'editor';
+
             ClassicEditor.create(editor, {
 
                     ckfinder: {
-                        uploadUrl: "{{ route('admin.ckeditor.upload.image') }}?_token={{ csrf_token() }}"
+                        uploadUrl: "/ckeditor/upload-image/{folder}?_token={{ csrf_token() }}"
                     }
 
                 })

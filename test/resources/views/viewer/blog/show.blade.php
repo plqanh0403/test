@@ -52,8 +52,7 @@
         @if($blog->thumbnail)
         <div class="blog-detail-cover">
 
-            <img src="{{ asset('images/hero1.jpg') }}" {{-- $blog->thumbnail --}}
-                alt="{{ $blog->thumbnail_alt ?? $blog->title }}">
+            <img src="{{ Storage::url($blog->thumbnail) }}" alt="{{ $blog->thumbnail_alt ?? $blog->title }}">
 
         </div>
         @endif
@@ -106,8 +105,7 @@
 
                         <div class="related-blog-image">
 
-                            <img src="{{ asset('images/hero3.jpg') }}" {{-- $item->thumbnail --}}
-                                alt="{{ $item->thumbnail_alt ?? $item->title }}">
+                            <img src="{{ Storage::url($item->thumbnail) }}" alt="{{ $item->thumbnail_alt ?? $item->title }}">
 
                         </div>
 

@@ -13,7 +13,7 @@
 
             <div class="hero-image">
 
-                <img src="{{ asset($serviceCategory->banner_image) }}" alt="{{ $serviceCategory->name }}">
+                <img src="{{ Storage::url($serviceCategory->banner_image) }}" alt="{{ $serviceCategory->name }}">
 
             </div>
 
@@ -311,7 +311,7 @@
                     Expertise
                 </span>
             </div>
-            
+
             <div class="service-grid">
 
                 @foreach($services as $service)
@@ -320,9 +320,7 @@
 
                         <div class="service-thumb">
 
-                            <img
-                                src="{{ asset($service->thumbnail) }}"
-                                alt="{{ $service->thumbnail_alt }}">
+                            <img src="{{ Storage::url($service->thumbnail) }}" alt="{{ $service->thumbnail_alt }}">
 
                         </div>
 

@@ -23,7 +23,7 @@
     <meta property="og:type" content="website">
 
     {{-- Favicon --}}
-    <link rel="icon" href="{{ asset('images/favicon.png') }}">
+    <link rel="icon" href="{{ Storage::url($about_us->favicon) }}">
 
     {{-- Bootstrap --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -57,7 +57,7 @@
 
                 {{-- Logo --}}
                 <a class="navbar-brand fw-bold" href="{{ route('home') }}">
-                    <img src="{{ asset('images/logo.png') }}" alt="EGEAD Logo">
+                    <img src="{{ Storage::url($about_us->light_logo) }}" alt="EGEAD Logo">
                 </a>
 
                 <div id="mainNavbar" class="navbar-content"> {{-- class="collapse navbar-collapse" --- IGNORE --- --}}
@@ -172,7 +172,7 @@
                 <div class="footer-col footer-brand">
 
                     <a href="#" class="footer-logo">
-                        <img src="{{ asset('images/logo.png') }}" alt="EGEAD Logo">
+                        <img src="{{ Storage::url($about_us->light_logo) }}" alt="EGEAD Logo">
                     </a>
 
 
@@ -187,6 +187,8 @@
                         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
                         <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
                     </div>
 
                 </div>

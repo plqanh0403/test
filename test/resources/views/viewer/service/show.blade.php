@@ -63,7 +63,7 @@
 
                 <div class="hero-right">
 
-                    <img src="{{ asset($service->thumbnail) }}" alt="{{ $service->thumbnail_alt }}">
+                    <img src="{{ Storage::url($service->thumbnail) }}" alt="{{ $service->thumbnail_alt }}">
 
                 </div>
 

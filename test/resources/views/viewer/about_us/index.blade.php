@@ -25,7 +25,7 @@
 
             @if($about_us->light_logo)
             <div class="about-hero-logo">
-                <img src="{{ asset('$about_us->light_logo') }}">
+                <img src="{{ Storage::url($about_us->light_logo) }}">
             </div>
             @endif
 

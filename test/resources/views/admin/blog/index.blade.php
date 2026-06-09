@@ -199,7 +199,7 @@
 
                         <div class="admin-card mb-4">
 
-                            <img src="{{ asset($blog->thumbnail) }}" class="img-fluid rounded-4 w-100" tyle="max-height:350px;object-fit:cover;">
+                            <img src="{{ Storage::url($blog->thumbnail) }}" class="img-fluid rounded-4 w-100" tyle="max-height:350px;object-fit:cover;">
 
                         </div>
 
@@ -477,7 +477,7 @@
                                                 Content
                                             </label>
 
-                                            <textarea name="content" class="form-control ckeditor">{{ $blog->content }}</textarea>
+                                            <textarea name="content" class="form-control ckeditor" data-folder="blogs">{{ $blog->content }}</textarea>
 
                                         </div>
 
@@ -606,14 +606,26 @@
                                     <!-- THUMBNAIL -->
                                     <div class="admin-card mb-4">
 
-                                        <h6 class="admin-card-title">
-                                            Thumbnail
-                                        </h6>
-
                                         <div class="mb-3">
+                                            <label class="form-label">
+                                                Current Thumbnail
+                                            </label>
+
+                                            @if($blog->thumbnail)
+                                                <div class="mb-2">
+                                                    <img src="{{ Storage::url($blog->thumbnail) }}" class="img-fluid rounded border" style="max-height:150px">
+                                                </div>
+                                            @else
+                                                <p class="text-muted">No thumbnail uploaded</p>
+                                            @endif
+                                        </div>
+
+                                        <div>
+                                            <label class="form-label">
+                                                Replace Thumbnail
+                                            </label>
 
                                             <input type="file" name="thumbnail" class="form-control">
-
                                         </div>
 
                                         <input type="text" name="thumbnail_alt" value="{{ old('thumbnail_alt', $blog->thumbnail_alt) }}" class="form-control" placeholder="Thumbnail alt text...">
@@ -749,7 +761,7 @@
                                         Content
                                     </label>
 
-                                    <textarea name="content" class="form-control ckeditor">{{ old('content') }}</textarea>
+                                    <textarea name="content" class="form-control ckeditor" data-folder="blogs">{{ old('content') }}</textarea>
 
                                 </div>
 

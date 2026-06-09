@@ -24,6 +24,7 @@ class AboutUs extends Model
         'youtube',
         'linkedin',
         'tiktok',
+        'instagram',
         'description',
         'footer_text',
         'hr_email',

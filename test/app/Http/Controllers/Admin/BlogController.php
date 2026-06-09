@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Services\MediaService;
 use Illuminate\Support\Str;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -58,7 +59,7 @@ class BlogController extends Controller
         return view('admin.blog.index', compact('blogs', 'categories', 'servicesCount', 'activitiesCount', 'type'));
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request, MediaService $mediaService): RedirectResponse
     {
         request()->validate([
             'category_id' => 'nullable|exists:categories,id',
@@ -75,13 +76,7 @@ class BlogController extends Controller
             'is_visible' => 'nullable|boolean',
         ]);
 
-        $categories = Category::all();
-        $thumbnail = null;
-
-        if ($request->hasFile('thumbnail')) {
-
-            $thumbnail = $request->file('thumbnail')->store('blogs', 'public');
-        }
+        $path = $mediaService->uploadImg($request->file('thumbnail'), 'blogs');
 
         Blog::create([
             'user_id' => Auth::id(),
@@ -91,7 +86,7 @@ class BlogController extends Controller
             'type' => $request->type,
             'excerpt' => $request->excerpt,
             'content' => $request->content,
-            'thumbnail' => $thumbnail,
+            'thumbnail' => $path,
             'thumbnail_alt' => $request->thumbnail_alt ?? $request->title,
             'seo_title' => $request->seo_title ?? $request->title,
             'seo_description' => $request->seo_description ?? $request->excerpt,
@@ -104,34 +99,32 @@ class BlogController extends Controller
         return back()->with('success', 'Blog created successfully.');
     }
 
-    public function update(Request $request, Blog $blog): RedirectResponse
+    public function update(Request $request, Blog $blog, MediaService $mediaService): RedirectResponse
     {
         request()->validate([
                 'category_id' => 'nullable|exists:categories,id',
                 'title' => 'required|string|max:255',
                 'type' => 'required|in:EGEAD-activity,tech-service',
-
                 'excerpt' => 'required|string|max:1000',
                 'content' => 'required|string',
-
                 'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
                 'thumbnail_alt' => 'nullable|string|max:255',
-
                 'seo_title' => 'nullable|string|max:255',
                 'seo_description' => 'nullable|string|max:500',
-
                 'sort_order' => 'nullable|integer|min:0',
-
                 'status' => 'required|in:draft,published',
                 'is_visible' => 'nullable|boolean',
             ]);
 
-        $thumbnail = $blog->thumbnail;
+        $data = [];
 
         if ($request->hasFile('thumbnail')) {
-            Storage::disk('public')->delete($thumbnail);
 
-            $thumbnail = $request->file('thumbnail')->store('blogs', 'public');
+            if ($blog->thumbnail) {
+                Storage::disk('public')->delete($blog->thumbnail);
+            }
+
+            $data['thumbnail'] = $mediaService->uploadImg($request->file('thumbnail'), 'blogs');
         }
 
         $blog->update([
@@ -141,7 +134,7 @@ class BlogController extends Controller
             'excerpt' => $request->excerpt,
             'content' => $request->content,
             'type' => $request->type,
-            'thumbnail' => $thumbnail,
+            'thumbnail' => $data['thumbnail'] ?? $blog->thumbnail,
             'thumbnail_alt' => $request->thumbnail_alt ?? $request->title,
             'seo_title' => $request->seo_title ?? $request->title,
             'seo_description' => $request->seo_description ?? $request->excerpt,

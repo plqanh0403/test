@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Recruitment;
+use App\Services\MediaService;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class RecruitmentController extends Controller
@@ -40,7 +42,7 @@ class RecruitmentController extends Controller
         );
     }
 
-    public function store(Request $request) : RedirectResponse
+    public function store(Request $request, MediaService $mediaService) : RedirectResponse
     {
         request()->validate([
             'position' => 'required|string|max:255',
@@ -55,6 +57,8 @@ class RecruitmentController extends Controller
             'thumbnail_alt' => 'nullable|string|max:255',
         ]);
 
+        $path = $mediaService->uploadImg($request->file('thumbnail'), 'recruitments');
+
         Recruitment::create([
             'position' => $request->position,
             'description' => $request->description,
@@ -68,7 +72,7 @@ class RecruitmentController extends Controller
             'seo_title' => $request->seo_title,
             'seo_description' => $request->seo_description,
             'is_visible' => $request->is_visible,
-            'thumbnail' => $request->thumbnail,
+            'thumbnail' => $path,
             'thumbnail_alt' => $request->thumbnail_alt ?? $request->position,
         ]);
 
@@ -77,7 +81,7 @@ class RecruitmentController extends Controller
             ->with('success', 'Recruitment created successfully');
     }
 
-    public function update(Request $request, Recruitment $recruitment) : RedirectResponse
+    public function update(Request $request, Recruitment $recruitment, MediaService $mediaService) : RedirectResponse
     {
         request()->validate([
             'position' => 'required|string|max:255',
@@ -92,6 +96,17 @@ class RecruitmentController extends Controller
             'thumbnail_alt' => 'nullable|string|max:255',
         ]);
 
+        $data = [];
+
+        if ($request->hasFile('thumbnail')) {
+
+            if ($recruitment->thumbnail) {
+                Storage::disk('public')->delete($recruitment->thumbnail);
+            }
+
+            $data['thumbnail'] = $mediaService->uploadImg($request->file('thumbnail'), 'recruitments');
+        }
+
         $recruitment->update([
             'position' => $request->position,
             'description' => $request->description,
@@ -104,7 +119,7 @@ class RecruitmentController extends Controller
             'seo_title' => $request->seo_title,
             'seo_description' => $request->seo_description,
             'is_visible' => $request->is_visible,
-            'thumbnail' => $request->thumbnail,
+            'thumbnail' => $data['thumbnail'] ?? $recruitment->thumbnail,
             'thumbnail_alt' => $request->thumbnail_alt ?? $request->position,
             'work_time' => $request->work_time,
         ]);

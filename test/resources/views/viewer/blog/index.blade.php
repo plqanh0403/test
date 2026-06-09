@@ -56,7 +56,7 @@
         <a href="{{ route('viewer.blogs.show', $featuredMain->slug) }}" class="featured-blog">
 
             <div class="featured-image">
-                <img src="{{ asset($featuredMain->thumbnail) }}" alt="{{ $featuredMain->thumbnail_alt }}">
+                <img src="{{ Storage::url($featuredMain->thumbnail) }}" alt="{{ $featuredMain->thumbnail_alt }}">
             </div>
 
             <div class="featured-content">

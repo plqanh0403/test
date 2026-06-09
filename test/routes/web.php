@@ -153,8 +153,8 @@ Route::middleware([
 
         Route::delete('/about_us/{about_us}', [AboutUsController::class, 'destroy'])->name('admin.about_us.destroy');
 
-        // CKEditor 
-        Route::post('/ckeditor/upload-image', [CKEditorController::class, 'uploadImage'])->name('admin.ckeditor.upload.image');
+        // CKEditor
+        Route::post('/ckeditor/upload-image/{folder}', [CKEditorController::class, 'uploadImage'])->name('admin.ckeditor.upload.image');
     });
 
 require __DIR__ . '/auth.php';

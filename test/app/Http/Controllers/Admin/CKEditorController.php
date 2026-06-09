@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\MediaService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class CKEditorController extends Controller
 {
-    public function upload(Request $request)
+    public function upload(Request $request, string $folder, MediaService $mediaService)
     {
         if (!$request->hasFile('upload')) {
             return response()->json([
@@ -18,16 +20,10 @@ class CKEditorController extends Controller
             ], 400);
         }
 
-        $file = $request->file('upload');
-
-        $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
-
-        $file->move(public_path('uploads/editor'), $filename);
-
-        $url = asset('uploads/editor/' . $filename);
+        $path = $mediaService->uploadImg($request->file('upload'), $folder);
 
         return response()->json([
-            'url' => $url
+            'url' => Storage::url($path)
         ]);
     }
 }

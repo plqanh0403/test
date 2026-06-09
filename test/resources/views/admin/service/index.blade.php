@@ -444,7 +444,7 @@
                                                 Service Details
                                             </label>
 
-                                            <textarea name="details" class="form-control ckeditor">{{ old('details', $service->details) }}</textarea>
+                                            <textarea name="details" class="form-control ckeditor" data-folder="services">{{ old('details', $service->details) }}</textarea>
 
                                         </div>
 
@@ -475,7 +475,7 @@
                                                 @foreach($serviceCategories as $category)
 
                                                 <option value="{{ $category->id }}" {{ old('category_id', $service->category_id) == $category->id ? 'selected' : '' }}>
-                                                
+
                                                     {{ $category->name }}
 
                                                 </option>
@@ -532,7 +532,7 @@
 
                                             @if($service->thumbnail)
                                                 <div class="mb-2">
-                                                    <img src="{{ asset($service->thumbnail) }}" class="img-fluid rounded border" style="max-height:150px">
+                                                    <img src="{{ Storage::url($service->thumbnail) }}" class="img-fluid rounded border" style="max-height:150px">
                                                 </div>
                                             @else
                                                 <p class="text-muted">No thumbnail uploaded</p>
@@ -706,7 +706,7 @@
                                         Service Details
                                     </label>
 
-                                    <textarea name="details" class="form-control ckeditor">{{ old('details') }}</textarea>
+                                    <textarea name="details" class="form-control ckeditor" data-folder="services">{{ old('details') }}</textarea>
 
                                 </div>
 

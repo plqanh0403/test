@@ -55,7 +55,7 @@
 
                 <div class="career-intro-image">
 
-                    <img src="{{ asset('images/career-banner.jpg') }}"
+                    <img src="{{ Storage::url('images/career-banner.jpg') }}"
                         alt="Career at EGEAD">
 
                 </div>
@@ -77,7 +77,7 @@
                 <div class="career-highlight-right">
 
                     <div class="career-highlight-badge">
-                        <img src="{{ asset('images/logo.png') }}" alt="logo E-Gead">
+                        <img src="{{ Storage::url($about_us->light_logo) }}" alt="Logo E-Gead">
                         <span class="text-lg">Best Career Opportunities</span>
                     </div>
 
@@ -192,7 +192,7 @@
 
                     <div class="recruitment-thumbnail">
 
-                        <img src="{{ asset($job->thumbnail) }}" alt="{{ $job->position }}">
+                        <img src="{{ Storage::url($job->thumbnail) }}" alt="{{ $job->position }}">
 
                         <span class="job-type">
                             {{ strtoupper($job->work_type) }}
