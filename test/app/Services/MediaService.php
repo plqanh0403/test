@@ -10,13 +10,13 @@ use Illuminate\Support\Str;
 
 class MediaService
 {
-    public function uploadImg(UploadedFile $file, string $folder): Media {
-
+    public function uploadImg(UploadedFile $file, string $folder) : string
+    {
         $filename = time() . '_' . Str::random(8) . '.' . $file->extension();
 
         $path = $file->storeAs("images/{$folder}", $filename, 'public');
 
-        return Media::create([
+        $media = Media::create([
             'name' => $filename,
             'original_name' => $file->getClientOriginalName(),
             'path' => $path,
@@ -27,15 +27,17 @@ class MediaService
             'folder' => $folder,
             'uploaded_by' => Auth::id(),
         ]);
+
+        return $media->path;
     }
 
-    public function uploadFile(UploadedFile $file, string $folder, $type): Media {
-
+    public function uploadFile(UploadedFile $file, string $folder, string $type) : string
+    {
         $filename = time() . '_' . Str::random(8) . '.' . $file->extension();
 
         $path = $file->storeAs($folder, $filename, 'public');
 
-        return Media::create([
+        $media = Media::create([
             'name' => $filename,
             'original_name' => $file->getClientOriginalName(),
             'path' => $path,
@@ -46,5 +48,7 @@ class MediaService
             'folder' => $folder,
             'uploaded_by' => Auth::id(),
         ]);
+
+        return $media->path;
     }
 }

@@ -142,8 +142,8 @@ return new class extends Migration
             $table->text('footer_text')->nullable();
 
             // HR Contact
-            $table->string('hr_email');
-            $table->string('hr_phone');
+            $table->string('hr_email')->nullable();
+            $table->string('hr_phone')->nullable();
 
             // Google Map
             $table->longText('google_map')->nullable();

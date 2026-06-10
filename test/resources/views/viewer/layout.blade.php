@@ -35,8 +35,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     {{-- App CSS & JS --}}
-    <link rel="stylesheet" href="{{ asset('viewer.css') }}">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
@@ -60,8 +58,13 @@
                     <img src="{{ Storage::url($about_us->light_logo) }}" alt="EGEAD Logo">
                 </a>
 
-                <div id="mainNavbar" class="navbar-content"> {{-- class="collapse navbar-collapse" --- IGNORE --- --}}
+                <button class="navbar-toggler" data-bs-toggle="collapse" type="button" data-bs-target="#mainNavbar">
 
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+                <div id="mainNavbar" class="navbar-content collapse navbar-collapse">
                     <ul class="navbar-nav nav-menu">
 
                         <li class="nav-item dropdown-custom">
@@ -107,19 +110,13 @@
                         </li>
                     </ul>
 
+                    <div class="nav-action">
+                        <a href="{{ route('viewer.contact') }}" class="consultation-btn">
+                            Get Free Consultation
+                        </a>
+                    </div>
+
                 </div>
-
-                <div class="nav-action">
-                    <a href="{{ route('viewer.contact') }}" class="consultation-btn">
-                        Get Free Consultation
-                    </a>
-                </div>
-
-                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
-
-                    <span class="navbar-toggler-icon"></span>
-
-                </button>
 
             </div>
 
@@ -312,6 +309,22 @@
     </script>
 
     <script>
+        document.querySelectorAll('.dropdown-custom > .nav-link')
+            .forEach(item => {
+
+                item.addEventListener('click', function() {
+
+                    if (window.innerWidth < 992) {
+
+                        this.parentElement.classList.toggle('active');
+
+                    }
+
+                });
+
+            });
+    </script>
+    <script>
         /* SERVICE SWIPER */
         new Swiper(".serviceSwiper", {
 
@@ -491,7 +504,7 @@
     </script>
 
     <script>
-        document.getElementById('career-search-form').addEventListener('submit', function () {
+        document.getElementById('career-search-form').addEventListener('submit', function() {
             this.action = "{{ route('viewer.recruitments.index') }}#job-list";
         });
     </script>
