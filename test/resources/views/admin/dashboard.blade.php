@@ -1,4 +1,4 @@
-@extends('admin.layout.layoutAdmin1') {{-- kế thừa layout --}}
+@extends('admin.layout') {{-- kế thừa layout --}}
 
 @section('content') {{-- đổ content vào layout --}}
 <div class="dashboard-cards">

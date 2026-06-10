@@ -88,7 +88,7 @@ Route::middleware([
 
         Route::post('/submit-contacts', [SubmitContactController::class, 'store'])->name('admin.submit_contacts.store');
 
-        Route::put('/api/submit-contacts/{submitContact}/seen', [SubmitContactController::class, 'updateSeenStatus'])->name('admin.submit_contacts.update_seen');
+        Route::put('/submit-contacts/{submitContact}/seen', [SubmitContactController::class, 'updateSeenStatus'])->name('admin.submit_contacts.update_seen');
 
         Route::put('/submit-contacts/{submitContact}/processing', [SubmitContactController::class, 'updateProcessingStatus'])->name('admin.submit_contacts.update_processing');
 

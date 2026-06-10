@@ -48,14 +48,11 @@ a {
     width: 250px;
     background: #fff;
     border-right: 1px solid #eee;
-
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
-
     overflow-y: auto;
-
     transition: all .3s ease;
     z-index: 1000;
 }
@@ -73,19 +70,14 @@ a {
     display: flex;
     align-items: center;
     gap: 12px;
-
     width: 100%;
-
     padding: 12px 15px;
     margin-bottom: 8px;
-
     border-radius: 12px;
-
     text-decoration: none;
     color: #555;
     border: none;
     background: none;
-
     font-size: 16px;
     font-weight: 500;
 }
@@ -95,8 +87,13 @@ a {
 }
 
 .menu-item.active {
-    background: var(--tech-blue);
+    background: black;
     color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(15px);
+    box-shadow:
+        5px 5px 5px rgba(0, 0, 0, 0.1),
+        inset 0 2px 4px rgba(255, 255, 255, 0.6);
 }
 
 .logout-btn {
@@ -372,6 +369,18 @@ a {
         inset 0 2px 4px rgba(255, 255, 255, 0.6);
 }
 
+
+.btn-export{
+    background: black;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(15px);
+    box-shadow:
+        5px 5px 5px rgba(0, 0, 0, 0.1),
+        inset 0 2px 4px rgba(255, 255, 255, 0.6);
+}
+
+
 .btn-cancel {
     background: linear-gradient(135deg, #112D60, #B6C0C5);
 }
@@ -427,21 +436,22 @@ a {
 }
 
 .table-header {
-    background: var(--tech-pink);
+    background: white;
+
 }
 
 .index-table th {
-    color: #ffffff;
+    color: black;
     text-align: left;
     padding: 15px;
     font-size: 16px;
     font-weight: 600;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .index-table td {
     padding: 15px;
     border-bottom: 1px solid #e5e7eb;
-
 }
 
 .index-table td:last-child {
@@ -650,16 +660,12 @@ a {
 .admin-icon-box{
     width:50px;
     height:50px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     border-radius:14px;
-
     background:rgba(56,171,248,.12);
     color:#38abf8;
-
     font-size:22px;
 }
 
@@ -672,20 +678,11 @@ a {
 .user-avatar{
     width:90px;
     height:90px;
-
     border-radius:24px;
-
-    background:linear-gradient(
-        135deg,
-        #2563eb,
-        #38abf8
-    );
-
+    background:linear-gradient(135deg,#2563eb,#38abf8);
     color:white;
-
     font-size:36px;
     font-weight:800;
-
     display:flex;
     align-items:center;
     justify-content:center;
@@ -695,8 +692,7 @@ a {
     color:#64748b;
 }
 
-.profile-role,
-.profile-status{
+.profile-role, .profile-status{
     padding:6px 14px;
     border-radius:999px;
     font-size:13px;
@@ -734,18 +730,12 @@ a {
     gap:25px;
 }
 
-.user-main-card,
-.user-side-card{
+.user-main-card, .user-side-card{
     background:white;
-
     border-radius:24px;
-
     padding:25px;
-
     border:1px solid #e5e7eb;
-
-    box-shadow:
-        0 10px 30px rgba(15,23,42,.05);
+    box-shadow: 0 10px 30px rgba(15,23,42,.05);
 }
 
 .detail-section-title{
@@ -823,20 +813,11 @@ a {
 .contact-avatar{
     width:80px;
     height:80px;
-
     border-radius:22px;
-
-    background:linear-gradient(
-        135deg,
-        #2563eb,
-        #38abf8
-    );
-
+    background:linear-gradient(135deg,#2563eb,#38abf8);
     color:white;
-
     font-size:32px;
     font-weight:800;
-
     display:flex;
     align-items:center;
     justify-content:center;
@@ -847,52 +828,24 @@ a {
     color:#64748b;
 }
 
-.contact-status{
-    padding:6px 14px;
-    border-radius:999px;
-    font-size:13px;
-    font-weight:600;
-}
-
-.status-new{
-    background:#fee2e2;
-    color:#dc2626;
-}
-
-.status-seen{
-    background:#dbeafe;
-    color:#2563eb;
-}
-
-.status-processing{
-    background:#fef3c7;
-    color:#d97706;
-}
-
-.status-processed{
-    background:#dcfce7;
-    color:#16a34a;
-}
-
 .contact-layout{
     display:grid;
     grid-template-columns:2fr 1fr;
     gap:24px;
 }
 
-.contact-main-card,
-.contact-side-card,
-.contact-note-card{
+.contact-side-column{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+
+.contact-main-card, .contact-side-card, .contact-note-card{
     background:white;
-
     border-radius:24px;
-
     padding:24px;
-
     border:1px solid #e5e7eb;
-
-    box-shadow:
-        0 10px 30px rgba(15,23,42,.05);
+    box-shadow:0 10px 30px rgba(15,23,42,.05);
 }
 
 .section-title{
@@ -903,15 +856,10 @@ a {
 
 .message-box{
     padding:20px;
-
     border-radius:18px;
-
     background:#f8fafc;
-
     line-height:1.9;
-
     color:#475569;
-
     min-height:250px;
 }
 
@@ -955,15 +903,9 @@ a {
 }
 
 @media(max-width:992px){
-
     .contact-layout{
         grid-template-columns:1fr;
     }
-
-}
-
-.service-detail-header{
-    padding:30px;
 }
 
 .service-profile{
@@ -975,21 +917,16 @@ a {
 .service-avatar{
     width:80px;
     height:80px;
-
     border-radius:22px;
-
     background:linear-gradient(
         135deg,
         #2563eb,
         #38abf8
     );
-
     color:white;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     font-size:32px;
     font-weight:800;
 }
@@ -1127,49 +1064,14 @@ a {
         grid-template-columns:1fr;
     }
 
-}.recruitment-detail-header{
-    position:relative;
-    padding:40px;
-    background:linear-gradient(
-        135deg,
-        #0f172a,
-        #1e3a8a
-    );
-}
-
-.recruitment-detail-overlay{
-    position:absolute;
-    inset:0;
-    background:
-        radial-gradient(circle at top right,
-        rgba(255,255,255,.12),
-        transparent 40%);
-}
-
-.recruitment-detail-content{
-    position:relative;
-    display:flex;
-    align-items:center;
-    gap:24px;
-}
-
-.recruitment-avatar{
-    width:90px;
-    height:90px;
-    border-radius:24px;
-    background:rgba(255,255,255,.15);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    font-size:38px;
 }
 
 .detail-id{
-    background:rgba(255,255,255,.15);
-    color:white;
+    background:rgba(243, 243, 243, 0.514);
+    color:black;
     padding:6px 14px;
     border-radius:999px;
+    font-weight: 600;
     font-size:13px;
 }
 
@@ -1198,17 +1100,6 @@ a {
 
 .detail-stat-card strong{
     color:#0f172a;
-}
-
-.detail-card{
-    background:#fff;
-    border-radius:24px;
-    padding:24px;
-    border:1px solid #eef2f7;
-}
-
-.detail-card h5{
-    margin-bottom:18px;
 }
 
 .detail-content{

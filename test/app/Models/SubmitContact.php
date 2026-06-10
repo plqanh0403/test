@@ -16,5 +16,6 @@ class SubmitContact extends Model
         "company",
         "message",
         "internal_note",
+        "status"
     ];
 }

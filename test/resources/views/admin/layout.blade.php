@@ -47,12 +47,12 @@
                     <span>Information</span>
                 </a>
 
-                @if(Auth::user()->role === 'superAdmin')
-                <a href="{{ route('admin.users') }}"
-                    class="menu-item {{ request()->routeIs('admin.users') ? 'active' : '' }}">
-                    <i class="bi bi-people"></i>
-                    <span>Users</span>
-                </a>
+                @if (Auth::user()->role === 'superAdmin')
+                    <a href="{{ route('admin.users') }}"
+                        class="menu-item {{ request()->routeIs('admin.users') ? 'active' : '' }}">
+                        <i class="bi bi-people"></i>
+                        <span>Users</span>
+                    </a>
                 @endif
 
                 <a href="{{ route('admin.blogs') }}"
@@ -61,30 +61,30 @@
                     <span>Blogs</span>
                 </a>
 
-                @if(Auth::user()->role === 'superAdmin' || Auth::user()->role === 'admin')
-                <a href="{{ route('admin.services') }}"
-                    class="menu-item {{ request()->routeIs('admin.services') ? 'active' : '' }}">
-                    <i class="bi bi-briefcase"></i>
-                    <span>Services</span>
-                </a>
+                @if (Auth::user()->role === 'superAdmin' || Auth::user()->role === 'admin')
+                    <a href="{{ route('admin.services') }}"
+                        class="menu-item {{ request()->routeIs('admin.services') ? 'active' : '' }}">
+                        <i class="bi bi-briefcase"></i>
+                        <span>Services</span>
+                    </a>
 
-                <a href="{{ route('admin.recruitments') }}"
-                    class="menu-item {{ request()->routeIs('admin.recruitments') ? 'active' : '' }}">
-                    <i class="bi bi-person-workspace"></i>
-                    <span>Recruitments</span>
-                </a>
+                    <a href="{{ route('admin.recruitments') }}"
+                        class="menu-item {{ request()->routeIs('admin.recruitments') ? 'active' : '' }}">
+                        <i class="bi bi-person-workspace"></i>
+                        <span>Recruitments</span>
+                    </a>
 
-                <a href="{{ route('admin.submit_emails') }}"
-                    class="menu-item {{ request()->routeIs('admin.submit_emails') ? 'active' : '' }}">
-                    <i class="bi bi-envelope"></i>
-                    <span>Submit Email</span>
-                </a>
+                    <a href="{{ route('admin.submit_emails') }}"
+                        class="menu-item {{ request()->routeIs('admin.submit_emails') ? 'active' : '' }}">
+                        <i class="bi bi-envelope"></i>
+                        <span>Submit Email</span>
+                    </a>
 
-                <a href="{{ route('admin.submit_contacts') }}"
-                    class="menu-item {{ request()->routeIs('admin.submit_contacts') ? 'active' : '' }}">
-                    <i class="bi bi-chat-left-text"></i>
-                    <span>Submit Contact</span>
-                </a>
+                    <a href="{{ route('admin.submit_contacts') }}"
+                        class="menu-item {{ request()->routeIs('admin.submit_contacts') ? 'active' : '' }}">
+                        <i class="bi bi-chat-left-text"></i>
+                        <span>Submit Contact</span>
+                    </a>
                 @endif
 
                 <form method="POST" action="{{ route('logout') }}">
@@ -129,7 +129,7 @@
                     <div class="user-profile">
 
                         <div class="avatar">
-                            {{ strtoupper(substr(Auth::user()->name,0,1)) }}
+                            {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                         </div>
 
                         <div>
@@ -163,18 +163,18 @@
 
     <div class="position-fixed top-0 end-0 p-4" style="z-index:9999;">
 
-        @if(session('success'))
-        <div class="custom-alert success-alert auto-hide-alert">
-            <i class="bi bi-check-circle-fill"></i>
-            <span>{{ session('success') }}</span>
-        </div>
+        @if (session('success'))
+            <div class="custom-alert success-alert auto-hide-alert">
+                <i class="bi bi-check-circle-fill"></i>
+                <span>{{ session('success') }}</span>
+            </div>
         @endif
 
-        @if(session('error'))
-        <div class="custom-alert error-alert auto-hide-alert">
-            <i class="bi bi-x-circle-fill"></i>
-            <span>{{ session('error') }}</span>
-        </div>
+        @if (session('error'))
+            <div class="custom-alert error-alert auto-hide-alert">
+                <i class="bi bi-x-circle-fill"></i>
+                <span>{{ session('error') }}</span>
+            </div>
         @endif
     </div>
 
@@ -196,26 +196,69 @@
 
     <script>
         document.querySelectorAll('.mark-seen-btn').forEach(button => {
+
             button.addEventListener('click', function() {
+
                 const id = this.dataset.id;
+                const status = this.dataset.status;
 
-                markAsSeen(id);
-            });
-        });
-
-        function markAsSeen(submitContact) {
-            console.log(submitContact);
-
-            fetch(`/admin/submit-contacts/${submitContact}/seen`, {
-                method: 'PUT',
-
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                if (status !== 'new') {
+                    return;
                 }
+
+                fetch(`/admin/submit-contacts/${id}/seen`, {
+
+                        method: 'PUT',
+
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Accept': 'application/json'
+                        }
+
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+
+                        if (data.success) {
+
+                            this.dataset.status = 'seen';
+
+                            const tableBadge = document.getElementById(`table-status-badge-${id}`);
+
+                            const modalBadge = document.getElementById(`modal-status-badge-${id}`);
+
+                            modalBadge.innerText = 'Seen';
+
+                            modalBadge.classList.remove(
+                                'bg-red-100',
+                                'text-red-600'
+                            );
+
+                            modalBadge.classList.add(
+                                'bg-blue-100',
+                                'text-blue-600'
+                            );
+
+                            tableBadge.innerText = 'Seen';
+
+                            tableBadge.classList.remove(
+                                'bg-red-100',
+                                'text-red-600'
+                            );
+
+                            tableBadge.classList.add(
+                                'bg-blue-100',
+                                'text-blue-600'
+                            );
+
+                        }
+
+                    })
+                    .catch(error => console.log(error));
+
             });
-        }
+
+        });
     </script>
 
     <script>

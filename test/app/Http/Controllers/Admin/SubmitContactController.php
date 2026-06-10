@@ -54,49 +54,56 @@ class SubmitContactController extends Controller
 
         SubmitContact::create($request->all());
 
-        return redirect()
-            ->back()
-            ->with('success', 'Contact submission created successfully.');
+        return redirect()->back()->with('success', 'Contact submission created successfully.');
     }
 
-    public function updateSeenStatus(SubmitContact $submitContact): JsonResponse
+    public function updateSeenStatus(SubmitContact $submitContact)
     {
         try {
-            $submitContact->update([
-                'status' => 'seen'
-            ]);
+
+            if ($submitContact->status == 'new') {
+
+                $submitContact->update([
+                    'status' => 'seen'
+                ]);
+            }
 
             return response()->json([
-                'success' => true,
-                'message' => 'Seen status updated successfully.',
-                'data' => $submitContact
-            ], 200);
+                'success' => true
+            ]);
 
         } catch (\Exception $e) {
 
             return response()->json([
-                'success' => false,
-                'message' => 'Failed to update seen status.',
-                'error' => $e->getMessage()
+                'success' => false
             ], 500);
         }
     }
 
-    public function updateProcessingStatus(SubmitContact $submitContact)
+    public function updateProcessingStatus(SubmitContact $submitContact) : RedirectResponse
     {
-        $submitContact->update(['status' => 'processing',]); 
+        try {
+            $submitContact->update(['status' => 'processing',]);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Seen status updated successfully.'
-        ]);
+            return redirect()->back()->with('success', 'Contact submission updated successfully.');
+
+        } catch (\Exception $e) {
+
+            return redirect()->back()->with('error', 'Fail to update processing contact submission.');
+        }
     }
 
     public function updateProcessedStatus(SubmitContact $submitContact) : RedirectResponse
     {
-        $submitContact->update(['status' => 'processed']);
+        try{
+            $submitContact->update(['status' => 'processed']);
 
-        return redirect()->back()->with('success', 'Processed status updated successfully.');
+            return redirect()->back()->with('success', 'Processed status updated successfully.');
+        } catch (\Exception $e) {
+
+            return redirect()->back()->with('error', 'Fail to update processed contact submission.');
+        }
+
     }
 
     public function updateNote(Request $request, SubmitContact $submitContact) : RedirectResponse
