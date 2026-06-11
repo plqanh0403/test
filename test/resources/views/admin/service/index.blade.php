@@ -4,6 +4,10 @@
     <x-admin.page-header title="Service Management" description="Manage all services in the system">
 
         <x-slot:action>
+            <a href="{{ route('admin.service_categories') }}" class="btn btn-export d-flex align-items-center justify-content-center">
+                Category Management
+            </a>
+
             <button class="btn btn-create" data-bs-toggle="modal" data-bs-target="#createServiceModal">
                 + Create Service
             </button>
@@ -63,8 +67,7 @@
 
                     @if ($service->is_visible)
                         <td>
-                            <span
-                                class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">Visible</span>
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">Visible</span>
                         </td>
                     @else
                         <td>
@@ -582,6 +585,18 @@
                                                 <div class="mb-3">
 
                                                     <label class="form-label">
+                                                        Slug
+                                                    </label>
+
+                                                    <input type="text" name="slug"
+                                                        value="{{ old('slug', $service->slug) }}"
+                                                        class="form-control">
+
+                                                </div>
+
+                                                <div class="mb-3">
+
+                                                    <label class="form-label">
                                                         SEO Title
                                                     </label>
 
@@ -830,6 +845,16 @@
                                     <h6 class="admin-card-title">
                                         SEO Settings
                                     </h6>
+
+                                    <div class="mb-3">
+
+                                        <label class="form-label">
+                                            Slug
+                                        </label>
+
+                                        <input type="text" name="slug" class="form-control">
+
+                                    </div>
 
                                     <div class="mb-3">
 

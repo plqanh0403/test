@@ -291,7 +291,23 @@
                                 <!-- SEO -->
                                 <div class="row g-4 mb-4">
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
+
+                                        <div class="admin-card h-100">
+
+                                            <h6 class="admin-card-title">
+                                                Slug
+                                            </h6>
+
+                                            <p class="mb-0">
+                                                {{ $recruitment->slug ?? '-' }}
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-4">
 
                                         <div class="admin-card h-100">
 
@@ -300,14 +316,14 @@
                                             </h6>
 
                                             <p class="mb-0">
-                                                {{ $blog->seo_title ?? '-' }}
+                                                {{ $recruitment->seo_title ?? '-' }}
                                             </p>
 
                                         </div>
 
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
 
                                         <div class="admin-card h-100">
 
@@ -316,7 +332,7 @@
                                             </h6>
 
                                             <p class="mb-0">
-                                                {{ $blog->seo_description ?? '-' }}
+                                                {{ $recruitment->seo_description ?? '-' }}
                                             </p>
 
                                         </div>
@@ -621,6 +637,18 @@
                                                 <div class="mb-3">
 
                                                     <label class="form-label">
+                                                        Slug
+                                                    </label>
+
+                                                    <input type="text" name="slug"
+                                                        value="{{ old('slug', $recruitment->slug) }}"
+                                                        class="form-control">
+
+                                                </div>
+
+                                                <div class="mb-3">
+
+                                                    <label class="form-label">
                                                         SEO Title
                                                     </label>
 
@@ -915,10 +943,20 @@
                                     <div class="mb-3">
 
                                         <label class="form-label">
+                                            Slug
+                                        </label>
+
+                                        <input type="text" name="slug" value="{{ old('slug') }}" class="form-control">
+
+                                    </div>
+
+                                    <div class="mb-3">
+
+                                        <label class="form-label">
                                             SEO Title
                                         </label>
 
-                                        <input type="text" name="seo_title" class="form-control">
+                                        <input type="text" name="seo_title" class="form-control" value="{{ old('seo_title') }}">
 
                                     </div>
 
@@ -928,7 +966,7 @@
                                             SEO Description
                                         </label>
 
-                                        <textarea name="seo_description" rows="4" class="form-control"></textarea>
+                                        <textarea name="seo_description" rows="4" class="form-control" value="{{ old('seo_description') }}"></textarea>
 
                                     </div>
 

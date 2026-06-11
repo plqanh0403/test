@@ -8,17 +8,6 @@
 <section class="contact-section">
     <div class="container">
 
-        <!-- HEADER -->
-        <div class="section-heading text-center">
-            <span class="section-badge">Contact</span>
-
-            <h2>Let’s Talk About Your Project</h2>
-
-            <p>
-                Have a question or need a solution? Send us a message and we’ll get back to you shortly.
-            </p>
-        </div>
-
         <div class="row g-5 align-items-stretch">
 
             <!-- LEFT: COMPANY INFO -->
@@ -28,7 +17,7 @@
 
                     <div class="contact-info-box h-100">
                         <h2>
-                            Let’s Talk With Us
+                            Let’s Start With Us
                         </h2>
 
                         <p>
@@ -87,7 +76,7 @@
                     <div class="contact-form-header">
                         <span class="section-badge">Keep In Touch</span>
 
-                        <h3>Let’s Start Your Project</h3>
+                        <h1>Talk About Your Project</h1>
 
                         <p>
                             Whether you're planning a new digital product, modernizing existing systems,

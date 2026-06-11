@@ -237,10 +237,10 @@
 
             <span class="section-badge">Our Services</span>
 
-            <h2>
+            <h1>
                 Technology Solutions
                 Tailored For Your Business
-            </h2>
+            </h1>
 
             <p>
                 We provide end-to-end technology services
@@ -373,10 +373,10 @@
                     Why Choose Us
                 </span>
 
-                <h2 class="why-title">
+                <h1 class="why-title">
                     We Build Scalable
                     Digital Solutions
-                </h2>
+                </h1>
 
                 <p class="why-desc">
                     At EGEAD, we combine technology expertise with business insight
@@ -441,9 +441,9 @@
             <div class="process-cta-box">
 
                 <div class="process-cta-content">
-                    <h3>
+                    <h1>
                         Let's Build Something Great Together
-                    </h3>
+                    </h1>
                 </div>
 
                 <div class="process-cta-actions">
@@ -470,7 +470,7 @@
 
             <div class="section-heading">
                 <span class="section-badge">Our Process</span>
-                <h2>How We Work</h2>
+                <h1>How We Work</h1>
                 <p>We follow a proven process to deliver high-quality solutions</p>
             </div>
 
@@ -509,11 +509,9 @@
 
         <div class="section-heading text-center">
 
-            <span class="section-badge">Our Work</span>
-
-            <h2>
+            <h1>
                 Featured Projects
-            </h2>
+            </h1>
 
             <p>
                 Explore some of our recent projects and success stories
@@ -589,9 +587,9 @@
 
                 <span class="section-badge">Testimonials</span>
 
-                <h2>
+                <h1>
                     Trusted by Our Clients Worldwide
-                </h2>
+                </h1>
 
                 <p>
                     We deliver scalable solutions and real business value
@@ -845,11 +843,9 @@
 
         <!-- HEADING -->
         <div class="section-heading text-center">
-            <span class="section-badge">Insights</span>
-
-            <h2>
+            <h1>
                 Latest Articles & Insights
-            </h2>
+            </h1>
 
             <p>
                 Stay updated with technology trends, business strategies and expert knowledge from EGEAD.

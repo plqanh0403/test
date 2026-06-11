@@ -13,9 +13,9 @@
 
             <div class="about-hero-content">
 
-                <span class="section-badge">
+                {{-- <span class="section-badge">
                     About Us
-                </span>
+                </span> --}}
 
                 <h1>
                     {{ $about_us->name }}

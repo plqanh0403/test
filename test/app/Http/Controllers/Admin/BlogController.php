@@ -48,7 +48,6 @@ class BlogController extends Controller
         }
 
         $blogs = $query->with(['category', 'user'])
-            ->latest()
             ->orderByDesc('sort_order')
             ->orderByDesc('created_at')
             ->paginate(10)

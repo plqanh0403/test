@@ -18,6 +18,7 @@ class ServiceCategory extends Model
         'is_visible',
         'sort_order',
         'banner_image',
+        'banner_image_alt'
     ];
 
     public function services()

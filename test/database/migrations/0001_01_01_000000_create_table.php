@@ -89,6 +89,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('description');
             $table->string('banner_image')->nullable();
+            $table->string('banner_image_alt')->nullable();
             $table->text('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->boolean('is_visible')->default(true);

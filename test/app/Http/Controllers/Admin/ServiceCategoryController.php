@@ -23,7 +23,7 @@ class ServiceCategoryController extends Controller
         ->latest()
         ->paginate(10);
 
-        return view('admin.serviceCategory.index', compact('categories'));
+        return view('admin.service_category.index', compact('categories'));
     }
 
     public function store(Request $request, MediaService $mediaService) : RedirectResponse
@@ -33,7 +33,7 @@ class ServiceCategoryController extends Controller
             'description' => 'required|string|max:255',
         ]);
 
-        $path = $mediaService->uploadImg($request->file('banner_image'), 'serviceCategories');
+        $path = $mediaService->uploadImg($request->file('banner_image'), 'service_categories');
 
         ServiceCategory::create([
             'name'=> $request->name,
@@ -43,7 +43,8 @@ class ServiceCategoryController extends Controller
             'seo_description' => $request->seo_description,
             'is_visible' => $request->is_visible,
             'sort_order' => $request->sort_order,
-            'banner_image' => $path
+            'banner_image' => $path,
+            'banner_image_alt' => $request->banner_image_alt ?? $request->name
         ]);
 
         return redirect()->back()->with('success', 'Category created successfully.');;
@@ -64,7 +65,7 @@ class ServiceCategoryController extends Controller
                 Storage::disk('public')->delete($category->banner_image);
             }
 
-            $data['banner_image'] = $mediaService->uploadImg($request->file('banner_image'), 'serviceCategories');
+            $data['banner_image'] = $mediaService->uploadImg($request->file('banner_image'), 'service_categories');
         }
 
         $category->update([
@@ -75,6 +76,8 @@ class ServiceCategoryController extends Controller
             'seo_description' => $request->seo_description,
             'is_visible' => $request->is_visible,
             'sort_order' => $request->sort_order,
+            'banner_image' => $data['banner_image'] ?? $category->banner_image,
+            'banner_image_alt' => $request->banner_image_alt ?? $request->name
         ]);
 
         return redirect()->back()->with('success', 'Category updated successfully.');

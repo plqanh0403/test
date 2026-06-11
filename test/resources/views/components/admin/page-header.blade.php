@@ -10,8 +10,10 @@
         </p>
     </div>
 
-    <div  class="flex gap-2">
-        {{ $action }}
-    </div>
+    @isset($action)
+        <div class="flex gap-2">
+            {{ $action }}
+        </div>
+    @endisset
 
 </div>

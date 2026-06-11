@@ -4,6 +4,10 @@
     <x-admin.page-header title="Category Management" description="Manage all categories in the system">
 
         <x-slot:action>
+            <a href="{{ route('admin.blogs') }}" class="btn btn-export d-flex align-items-center justify-content-center">
+                Blog Management
+            </a>
+
             <button class="btn btn-create" data-bs-toggle="modal" data-bs-target="#createCategoryModal">
                 + Create Category
             </button>
@@ -19,6 +23,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Slug</th>
+                <th>Status</th>
                 <th width="215">Actions</th>
             </tr>
 
@@ -35,7 +40,22 @@
 
                     <td>{{ $category->slug }}</td>
 
+                    @if ($category->is_visible)
+                        <td>
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">Visible</span>
+                        </td>
+                    @else
+                        <td>
+                            <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold">Hidden</span>
+                        </td>
+                    @endif
+
                     <td>
+                        <button class="btn btn-view" data-bs-toggle="modal"
+                            data-bs-target="#detailCategoryModal{{ $category->id }}">
+                            <i class="bi bi-file-earmark-text-fill"></i>
+                        </button>
+
                         <button class="btn btn-edit" data-bs-toggle="modal"
                             data-bs-target="#editCategoryModal{{ $category->id }}">
                             <i class="bi bi-pencil-fill"></i>
@@ -53,6 +73,124 @@
                         </form>
                     </td>
                 </tr>
+
+                <!-- Detail Category Modal -->
+                <div class="modal fade" id="detailCategoryModal{{ $category->id }}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content admin-modal border-0 rounded-4 shadow-lg">
+                            <div class="modal-header contact-detail-header border-0">
+
+                                <div class="contact-profile">
+
+                                    <div class="contact-avatar">
+                                        {{ strtoupper(substr($category->name, 0, 1)) }}
+                                    </div>
+
+                                    <div>
+
+                                        <h2>
+                                            {{ $category->name }}
+                                        </h2>
+
+                                        @if ($category->is_visible)
+                                            <span
+                                                class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">Visible</span>
+                                        @else
+                                            <span
+                                                class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold">Hidden</span>
+                                        @endif
+
+                                    </div>
+
+                                </div>
+
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                            </div>
+
+                            <!-- Modal Body -->
+                            <div class="modal-body">
+
+                                <div class="contact-layout">
+
+                                    <!-- LEFT -->
+                                    <div class="contact-main-card">
+
+                                        <div class="info-item">
+
+                                            <div>
+
+                                                <span>SEO Title</span>
+
+                                                <div class="message-box">
+
+                                                    {{ $category->seo_title ?? '-' }}
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="info-item">
+                                            <div>
+
+                                                <span>SEO Description</span>
+
+                                                <div class="message-box">
+
+                                                    {{ $category->seo_description ?? '-' }}
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- RIGHT -->
+                                    <div class="contact-side-column">
+                                        <div class="contact-side-card">
+
+                                            <div class="info-item">
+
+                                                <div>
+
+                                                    <span>Slug</span>
+
+                                                    <div class="message-box">
+                                                        {{ $category->slug ?? '-' }}
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="info-item">
+
+                                                <div>
+
+                                                    <span>Sort Order</span>
+
+                                                    <div class="message-box">
+                                                        {{ $category->sort_order ?? '-' }}
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Edit Category Modal -->
                 <div class="modal fade" id="editCategoryModal{{ $category->id }}" tabindex="-1" aria-hidden="true">

@@ -9,7 +9,9 @@ use App\Http\Controllers\Admin\SubmitContactController;
 use App\Http\Controllers\Admin\SubmitEmailController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CKEditorController;
+use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\RecruitmentController;
+use App\Http\Controllers\Admin\ServiceCategoryController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Viewer\HomeController;
 use App\Http\Controllers\viewer\ViewerAboutUsController;
@@ -153,8 +155,24 @@ Route::middleware([
 
         Route::delete('/about_us/{about_us}', [AboutUsController::class, 'destroy'])->name('admin.about_us.destroy');
 
+        // Blog Category Management
+        Route::get('/service-categories', [ServiceCategoryController::class, 'index'])->name('admin.service_categories');
+
+        Route::post('/service-categories', [ServiceCategoryController::class, 'store'])->name('admin.service_categories.store');
+
+        Route::put('/service-categories/{category}', [ServiceCategoryController::class, 'update'])->name('admin.service_categories.update');
+
+        Route::delete('/service-categories/{category}', [ServiceCategoryController::class, 'destroy'])->name('admin.service_categories.destroy');
+
         // CKEditor
         Route::post('/ckeditor/upload-image/{folder}', [CKEditorController::class, 'uploadImage'])->name('admin.ckeditor.upload.image');
+
+        Route::get('/media', [MediaController::class, 'index'])->name('admin.media');
+
+        Route::post('/media', [MediaController::class, 'store'])->name('admin.media.store');
+
+        Route::delete('/media/{media}', [MediaController::class, 'destroy'])->name('admin.media.destroy');
+
     });
 
 require __DIR__ . '/auth.php';

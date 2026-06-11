@@ -4,6 +4,10 @@
     <x-admin.page-header title="Category Management" description="Manage all categories in the system">
 
         <x-slot:action>
+            <a href="{{ route('admin.services') }}" class="btn btn-export d-flex align-items-center justify-content-center">
+                Service Management
+            </a>
+
             <button class="btn btn-create" data-bs-toggle="modal" data-bs-target="#createCategoryModal">
                 + Create Category
             </button>
@@ -18,7 +22,9 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Description</th>
                 <th>Slug</th>
+                <th>Status</th>
                 <th width="215">Actions</th>
             </tr>
 
@@ -33,15 +39,33 @@
 
                     <td>{{ $category->name }}</td>
 
+                    <td>{{ Str::limit($category->description, 30) }}</td>
+
                     <td>{{ $category->slug }}</td>
 
+                    @if ($category->is_visible)
+                        <td>
+                            <span
+                                class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">Visible</span>
+                        </td>
+                    @else
+                        <td>
+                            <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold">Hidden</span>
+                        </td>
+                    @endif
+
                     <td>
+                        <button class="btn btn-view" data-bs-toggle="modal"
+                            data-bs-target="#detailCategoryModal{{ $category->id }}">
+                            <i class="bi bi-file-earmark-text-fill"></i>
+                        </button>
+
                         <button class="btn btn-edit" data-bs-toggle="modal"
                             data-bs-target="#editCategoryModal{{ $category->id }}">
                             <i class="bi bi-pencil-fill"></i>
                         </button>
 
-                        <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST"
+                        <form action="{{ route('admin.service_categories.destroy', $category->id) }}" method="POST"
                             class="inline-block">
 
                             @csrf
@@ -54,9 +78,143 @@
                     </td>
                 </tr>
 
+                <!-- Detail Category Modal -->
+                <div class="modal fade" id="detailCategoryModal{{ $category->id }}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content admin-modal border-0 rounded-4 shadow-lg">
+                            <div class="modal-header contact-detail-header border-0">
+
+                                <div class="contact-profile">
+
+                                    <div class="contact-avatar">
+                                        {{ strtoupper(substr($category->name, 0, 1)) }}
+                                    </div>
+
+                                    <div>
+
+                                        <h2>
+                                            {{ $category->name }}
+                                        </h2>
+
+                                        @if ($category->is_visible)
+                                            <span
+                                                class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">Visible</span>
+                                        @else
+                                            <span
+                                                class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold">Hidden</span>
+                                        @endif
+
+                                    </div>
+
+                                </div>
+
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                            </div>
+
+                            <!-- Modal Body -->
+                            <div class="modal-body">
+
+                                <div class="contact-layout">
+
+                                    <!-- LEFT -->
+                                    <div class="contact-main-card">
+
+                                        <div class="info-item">
+
+                                            <div>
+
+                                                <span>Description</span>
+
+                                                <div class="message-box">
+
+                                                    {!! nl2br(e($category->description)) !!}
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="info-item">
+
+                                            <div>
+
+                                                <span>SEO Title</span>
+
+                                                <div class="message-box">
+
+                                                    {{ $category->seo_title ?? '-' }}
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="info-item">
+                                            <div>
+
+                                                <span>SEO Description</span>
+
+                                                <div class="message-box">
+
+                                                    {{ $category->seo_description ?? '-' }}
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- RIGHT -->
+                                    <div class="contact-side-column">
+                                        <div class="contact-side-card">
+
+                                            <div class="info-item">
+
+                                                <div>
+
+                                                    <span>Slug</span>
+
+                                                    <div class="message-box">
+                                                        {{ $category->slug ?? '-' }}
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="info-item">
+
+                                                <div>
+
+                                                    <span>Sort Order</span>
+
+                                                    <div class="message-box">
+                                                        {{ $category->sort_order ?? '-' }}
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Edit Category Modal -->
                 <div class="modal fade" id="editCategoryModal{{ $category->id }}" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-dialog modal-dialog-centered modal-xl">
                         <div class="modal-content border-0 rounded-4 shadow-lg">
 
                             <!-- Modal Header -->
@@ -68,7 +226,8 @@
 
                             <!-- Modal Body -->
                             <div class="modal-body px-4 pb-4">
-                                <form action="{{ route('admin.categories.update', $category->id) }}" method="POST">
+                                <form action="{{ route('admin.service_categories.update', $category->id) }}"
+                                    method="POST">
                                     @csrf
                                     @method('PUT')
 
@@ -89,6 +248,16 @@
                                                     <input type="text" name="name" class="form-control admin-input"
                                                         value="{{ old('name', $category->name) }}"
                                                         placeholder="Enter category name..." required>
+
+                                                </div>
+
+                                                <div class="mb-4">
+
+                                                    <label class="form-label fw-semibold">
+                                                        Description
+                                                    </label>
+
+                                                    <textarea type="text" name="description" class="form-control admin-input" placeholder="Enter description..." required>{{ old('description', $category->description) }}</textarea>
 
                                                 </div>
 
@@ -178,6 +347,50 @@
 
                                             </div>
 
+                                            <div class="admin-card mb-4">
+
+                                                <h6 class="admin-card-title">
+                                                    Media
+                                                </h6>
+
+                                                <div class="mb-3">
+                                                    <label class="form-label">
+                                                        Current Banner Image
+                                                    </label>
+
+                                                    @if ($category->banner_image)
+                                                        <div class="mb-2">
+                                                            <img src="{{ Storage::url($category->banner_image) }}"
+                                                                class="img-fluid rounded border" style="max-height:150px">
+                                                        </div>
+                                                    @else
+                                                        <p class="text-muted">No banner image uploaded</p>
+                                                    @endif
+                                                </div>
+
+                                                <div class="mb-3">
+
+                                                    <label class="form-label">
+                                                        Replace Banner Image
+                                                    </label>
+
+                                                    <input type="file" name="banner_image" class="form-control">
+                                                </div>
+
+                                                <div>
+
+                                                    <label class="form-label">
+                                                        Banner Image Alt
+                                                    </label>
+
+                                                    <input type="text" name="banner_image_alt"
+                                                        value="{{ old('banner_image_alt', $category->banner_image_alt) }}"
+                                                        class="form-control" placeholder="Image description...">
+
+                                                </div>
+
+                                            </div>
+
                                             <!-- INFO CARD -->
                                             <div class="admin-card category_infor">
 
@@ -213,8 +426,7 @@
                                             Cancel
                                         </a>
 
-                                        <button type="submit"
-                                            class="btn btn-update">
+                                        <button type="submit" class="btn btn-update">
                                             Update Category
                                         </button>
                                     </div>
@@ -277,6 +489,17 @@
 
                                         <input type="text" name="name" class="form-control admin-input"
                                             value="{{ old('name') }}" placeholder="Enter category name..." required>
+
+                                    </div>
+
+                                    <!-- Description -->
+                                    <div class="mb-4">
+
+                                        <label class="form-label fw-semibold">
+                                            Description
+                                        </label>
+
+                                        <textarea type="text" name="description" class="form-control admin-input" placeholder="Enter description..." required>{{ old('description') }}</textarea>
 
                                     </div>
 
@@ -356,6 +579,35 @@
                                         </label>
 
                                         <input type="number" name="sort_order" value="0" class="form-control">
+
+                                    </div>
+
+                                </div>
+
+                                <div class="admin-card mb-4">
+
+                                    <h6 class="admin-card-title">
+                                        Media
+                                    </h6>
+
+                                    <div class="mb-3">
+
+                                        <label class="form-label">
+                                            Banner Image
+                                        </label>
+
+                                        <input type="file" name="banner_image" class="form-control">
+                                    </div>
+
+                                    <div>
+
+                                        <label class="form-label">
+                                            Banner Image Alt
+                                        </label>
+
+                                        <input type="text" name="banner_image_alt"
+                                            value="{{ old('banner_image_alt') }}"
+                                            class="form-control" placeholder="Image description...">
 
                                     </div>
 

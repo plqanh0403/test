@@ -266,12 +266,12 @@
 
                     <div class="contact-item">
                         <i class="bi bi-envelope"></i>
-                        <span>{{ $about_us->email }}</span>
+                        <span>{{ $about_us->hr_email }}</span>
                     </div>
 
                     <div class="contact-item">
                         <i class="bi bi-telephone"></i>
-                        <span>{{ $about_us->phone }}</span>
+                        <span>{{ $about_us->hr_phone }}</span>
                     </div>
 
                 </div>
