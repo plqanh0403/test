@@ -174,57 +174,49 @@
         <!-- JOB GRID -->
         <div class="recruitment-grid-wrapper" id="job-list">
 
-            <div class="blog-grid-label">
-                <span>
-                    Careers
-                </span>
-            </div>
-
             <div class="recruitment-grid">
 
                 @foreach($recruitments as $job)
 
                 <a href="{{ route('viewer.recruitments.show', $job->slug) }}" class="recruitment-card">
 
-                    <div class="recruitment-thumbnail">
-
-                        <img src="{{ Storage::url($job->thumbnail) }}" alt="{{ $job->position }}">
-
-                        <span class="job-type">
-                            {{ strtoupper($job->work_type) }}
-                        </span>
-
-                    </div>
-
                     <div class="recruitment-body">
 
-                        <div class="job-meta">
+                        <div class="job-header">
 
-                            <span>
-                                <i class="bi bi-geo-alt"></i>
-                                {{ $job->location }}
-                            </span>
-
-                            <span>
-                                <i class="bi bi-hourglass-split"></i>
-                                {{ $job->application_deadline ? \Carbon\Carbon::parse($job->application_deadline)->format('d M Y') : "Open until filled" }}
-                            </span>
-
-                        </div>
-
-                        <h4>
-                            {{ $job->position }}
-                        </h4>
-
-                        <p>
-                            {{ Str::limit(strip_tags($job->description), 120) }}
-                        </p>
-
-                        <div class="job-footer">
+                            <h4>
+                                {{ $job->position }}
+                            </h4>
 
                             <span class="job-status">
                                 {{ ucfirst($job->status) }}
                             </span>
+
+                        </div>
+
+                        <div class="job-bottom">
+
+                            <div class="job-meta">
+
+                                <span>
+                                    <i class="bi bi-geo-alt"></i>
+                                    {{ $job->location }}
+                                </span>
+
+                                <span>
+                                    <i class="bi bi-hourglass-split"></i>
+                                    {{ $job->application_deadline
+                                        ? \Carbon\Carbon::parse($job->application_deadline)->format('d M Y')
+                                        : 'Open until filled'
+                                    }}
+                                </span>
+
+                                <span>
+                                    <i class="bi bi-hourglass-split"></i>
+                                    {{ ucfirst($job->work_type) }}
+                                </span>
+
+                            </div>
 
                             <span class="apply-btn">
                                 Read More

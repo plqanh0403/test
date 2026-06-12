@@ -73,8 +73,6 @@ return new class extends Migration
             $table->string('work_time');
             $table->enum('work_type', ['full-time', 'part-time', 'remote', 'hybrid']);
             $table->timestamp('application_deadline')->nullable();
-            $table->string('thumbnail');
-            $table->string('thumbnail_alt');
             $table->enum('status', ['open', 'paused', 'closed'])->default('open');
             $table->string('slug')->unique();
             $table->text('seo_title')->nullable();

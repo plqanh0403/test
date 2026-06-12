@@ -220,9 +220,7 @@
                 <div class="service-overview-grid">
 
                     <div class="overview-box box-1">
-
-                        <i class="ti ti-device-desktop-code"></i>
-
+                        
                         <div>
 
                             <h4>E-Commerce Platform</h4>
@@ -237,9 +235,7 @@
                     </div>
 
                     <div class="overview-box box-2">
-
-                        <i class="ti ti-bulb"></i>
-
+                        
                         <div>
 
                             <h4>Website & Hosting</h4>
@@ -254,9 +250,7 @@
                     </div>
 
                     <div class="overview-box box-3">
-
-                        <i class="ti ti-brain"></i>
-
+                     
                         <div>
 
                             <h4>Sales Automation</h4>
@@ -271,9 +265,7 @@
                     </div>
 
                     <div class="overview-box box-4">
-
-                        <i class="ti ti-settings-automation"></i>
-
+                    
                         <div>
 
                             <h4>Fulfillment Automation</h4>
@@ -290,8 +282,6 @@
                 </div>
 
             </div>
-
-
 
         </section>
 

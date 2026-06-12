@@ -22,15 +22,25 @@ use App\Http\Controllers\Viewer\ViewerServiceController;
 use App\Http\Controllers\Viewer\ViewerRecruitmentController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
+
 Route::get('/services/category/{slug}', [ViewerServiceController::class, 'index'])->name('viewer.services.index');
+
 Route::get('/services/{slug}', [ViewerServiceController::class, 'show'])->name('viewer.services.show');
+
 Route::get('/recruitments', [ViewerRecruitmentController::class, 'index'])->name('viewer.recruitments.index');
+
 Route::get('/recruitments/{slug}', [ViewerRecruitmentController::class, 'show'])->name('viewer.recruitments.show');
+
 Route::get('/contact', [ViewerContactController::class, 'index'])->name('viewer.contact');
+
 Route::post('/contact', [ViewerContactController::class, 'store'])->name('viewer.contact.store');
+
 Route::get('/about_us', [ViewerAboutUsController::class, 'index'])->name('viewer.about_us');
+
 Route::get('/blogs', [ViewerBlogController::class, 'index'])->name('viewer.blogs.index');
+
 Route::get('/blogs/{slug}', [ViewerBlogController::class, 'show'])->name('viewer.blogs.show');
+
 Route::post('/email', [ViewerEmailController::class, 'store'])->name('viewer.email.store');
 
 Route::get('/dashboard', function () {

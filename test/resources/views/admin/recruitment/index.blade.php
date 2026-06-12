@@ -702,8 +702,11 @@
                 </div>
 
                 </div>
+
             @endforeach
+
         </tbody>
+
     </table>
 
     <div class="mt-4 d-flex justify-content-center">
@@ -914,25 +917,7 @@
                                     </div>
 
                                 </div>
-
-                                <!-- THUMBNAIL -->
-                                <div class="admin-card mb-4">
-
-                                    <h6 class="admin-card-title">
-                                        Thumbnail
-                                    </h6>
-
-                                    <div class="mb-3">
-
-                                        <input type="file" name="thumbnail" class="form-control" required>
-
-                                    </div>
-
-                                    <input type="text" name="thumbnail_alt" class="form-control"
-                                        placeholder="Thumbnail alt text">
-
-                                </div>
-
+                       
                                 <!-- SEO -->
                                 <div class="admin-card">
 

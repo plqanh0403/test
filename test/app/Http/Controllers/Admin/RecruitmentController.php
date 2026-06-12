@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Recruitment;
-use App\Services\MediaService;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
@@ -42,7 +41,7 @@ class RecruitmentController extends Controller
         );
     }
 
-    public function store(Request $request, MediaService $mediaService) : RedirectResponse
+    public function store(Request $request) : RedirectResponse
     {
         request()->validate([
             'position' => 'required|string|max:255',
@@ -53,11 +52,7 @@ class RecruitmentController extends Controller
             'work_type' => 'required|in:full-time,part-time,remote,hybrid',
             'work_time' => 'required|string|max:255',
             'application_deadline' => 'nullable|date',
-            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'thumbnail_alt' => 'nullable|string|max:255',
         ]);
-
-        $path = $mediaService->uploadImg($request->file('thumbnail'), 'recruitments');
 
         Recruitment::create([
             'position' => $request->position,
@@ -72,8 +67,6 @@ class RecruitmentController extends Controller
             'seo_title' => $request->seo_title,
             'seo_description' => $request->seo_description,
             'is_visible' => $request->is_visible,
-            'thumbnail' => $path,
-            'thumbnail_alt' => $request->thumbnail_alt ?? $request->position,
         ]);
 
         return redirect()
@@ -81,7 +74,7 @@ class RecruitmentController extends Controller
             ->with('success', 'Recruitment created successfully');
     }
 
-    public function update(Request $request, Recruitment $recruitment, MediaService $mediaService) : RedirectResponse
+    public function update(Request $request, Recruitment $recruitment) : RedirectResponse
     {
         request()->validate([
             'position' => 'required|string|max:255',
@@ -92,20 +85,7 @@ class RecruitmentController extends Controller
             'location' => 'required|string|max:255',
             'work_type' => 'required|in:full-time,part-time,remote,hybrid',
             'application_deadline' => 'nullable|date',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'thumbnail_alt' => 'nullable|string|max:255',
         ]);
-
-        $data = [];
-
-        if ($request->hasFile('thumbnail')) {
-
-            if ($recruitment->thumbnail) {
-                Storage::disk('public')->delete($recruitment->thumbnail);
-            }
-
-            $data['thumbnail'] = $mediaService->uploadImg($request->file('thumbnail'), 'recruitments');
-        }
 
         $recruitment->update([
             'position' => $request->position,
@@ -119,8 +99,6 @@ class RecruitmentController extends Controller
             'seo_title' => $request->seo_title,
             'seo_description' => $request->seo_description,
             'is_visible' => $request->is_visible,
-            'thumbnail' => $data['thumbnail'] ?? $recruitment->thumbnail,
-            'thumbnail_alt' => $request->thumbnail_alt ?? $request->position,
             'work_time' => $request->work_time,
         ]);
 

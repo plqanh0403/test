@@ -19,8 +19,6 @@ class Recruitment extends Model
         'work_time',
         'application_deadline',
         'status',
-        'thumbnail',
-        'thumbnail_alt',
         'is_visible',
         'slug',
         'seo_title',

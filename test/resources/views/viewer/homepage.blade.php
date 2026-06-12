@@ -569,8 +569,8 @@
                     that help companies grow faster and smarter.
                 </p>
 
-                <a href="#" class="testimonial-btn">
-                    View More Reviews
+                <a href="{{ route('viewer.about_us')}}" class="testimonial-btn">
+                    Explore our company
                     <i class="bi bi-arrow-right"></i>
                 </a>
 

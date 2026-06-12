@@ -10,7 +10,7 @@
     <div class="container">
 
         {{-- HERO --}}
-        <div class="job-hero">
+        <!-- <div class="job-hero">
 
             <div class="job-hero-content">
 
@@ -48,13 +48,7 @@
 
             </div>
 
-            <div class="job-hero-image">
-
-                <img src="{{ Storage::url($recruitment->thumbnail) }}" alt="{{ $recruitment->thumbnail_alt ?? $recruitment->position }}">
-
-            </div>
-
-        </div>
+        </div> -->
 
         {{-- OVERVIEW --}}
         {{-- <div class="job-overview">
@@ -120,6 +114,47 @@
 
             {{-- LEFT --}}
             <div class="job-main">
+
+                <div class="job-hero-content">
+
+                    <div class="job-badges">
+
+                        <span class="job-status">
+                            {{ strtoupper($recruitment->status) }}
+                        </span>
+
+                    </div>
+
+                    <h1>
+                        {{ $recruitment->position }}
+                    </h1>
+
+                    <div class="job-meta">
+
+                        <span>
+                            <i class="bi bi-geo-alt"></i>
+                            {{ $recruitment->location }}
+                        </span>
+
+                        @if($recruitment->application_deadline)
+                        <span>
+                            <i class="bi bi-hourglass-split"></i>
+                            {{ $recruitment->application_deadline ? \Carbon\Carbon::parse($recruitment->application_deadline)->format('d M Y') : "Open until filled" }}
+                        </span>
+                        @endif
+
+                        <span>
+                            <i class="bi bi-hourglass-split"></i>
+                            {{ ucfirst($recruitment->work_type) }}
+                        </span>
+
+                    </div>
+
+                    <a href="#apply" class="consultation-btn">
+                        Apply Now
+                    </a>
+
+                </div>
 
                 <div class="job-card">
 
