@@ -69,6 +69,46 @@
 
             </section>
 
+
+
+            <!-- CONTENT -->
+
+            <div class="service-layout" id="details">
+
+                <div class="service-main">
+
+                    <h4>📑 Service Details</h4>
+
+                    <div class="content-card">
+
+                        <p>{!! $service->details !!}</p>
+
+                    </div>
+
+                </div>
+
+                <aside class="service-sidebar">
+
+                    <div class="sidebar-card cta">
+
+                        <h3>
+                            Ready To Start?
+                        </h3>
+
+                        <p>
+                            Let's discuss your project and build the best solution together.
+                        </p>
+
+                        <a href="{{ route('viewer.contact') }}" class="consultation-light-btn">
+                            Contact Us
+                        </a>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
             <!-- OVERVIEW -->
 
             <section class="service-outcomes">
@@ -85,10 +125,7 @@
 
                     </div>
 
-                    <p>
-                        Automate repetitive processes and reduce manual workload, allowing teams to focus on strategic
-                        priorities.
-                    </p>
+                    <p>Automate repetitive processes and reduce manual workload, allowing teams to focus on strategic priorities.</p>
 
                 </div>
 
@@ -104,10 +141,7 @@
 
                     </div>
 
-                    <p>
-                        Eliminate data inconsistencies and minimize human errors through automated workflows and
-                        synchronization.
-                    </p>
+                    <p>Eliminate data inconsistencies and minimize human errors through automated workflows and synchronization.</p>
 
                 </div>
 
@@ -151,44 +185,8 @@
 
             </section>
 
-            <!-- CONTENT -->
-
-            <div class="service-layout" id="details">
-
-                <div class="service-main">
-
-                    <h4>📑 Service Details</h4>
-
-                    <div class="content-card">
-
-                        <p>{!! $service->details !!}</p>
-
-                    </div>
-
-                </div>
-
-                <aside class="service-sidebar">
-
-                    <div class="sidebar-card cta">
-
-                        <h3>
-                            Ready To Start?
-                        </h3>
-
-                        <p>
-                            Let's discuss your project and build the best solution together.
-                        </p>
-
-                        <a href="{{ route('viewer.contact') }}" class="consultation-light-btn">
-                            Contact Us
-                        </a>
-
-                    </div>
-
-                </aside>
-
-            </div>
         </div>
+
     </section>
 
 @endsection

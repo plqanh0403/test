@@ -13,179 +13,106 @@
     <!-- HERO SECTION -->
     <section class="hero-section">
 
-        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+        <div class="hero-wrapper">
 
-            <div class="carousel-inner">
+            <!-- LEFT -->
+            <div class="hero-content">
 
-                <!-- Slide 1 -->
-                <div class="carousel-item active">
+                <span class="hero-badge">
 
-                    <img src="{{ Storage::url('images/hero1.jpg') }}"
-                        class="hero-image"
-                        alt="Technology Solutions">
+                    <span class="hero-badge-dot"></span>
 
-                    <div class="hero-overlay"></div>
+                    E-GEAD - POD Commerce & Sales Automation
 
-                    <div class="hero-content">
+                </span>
 
-                        <span class="hero-badge">
-                            <i class="bi bi-circle-fill"></i>
-                            Technology Solutions
-                        </span>
+                <h1>
+                    Scale Your Business With
+                    <span class="hero-highlight">
+                        Smart Automation
+                    </span>
+                </h1>
 
-                        <h1>
-                            Smart Sales Automation
-                        </h1>
+                <p>
+                    <strong class="hero-highlight">E-GEAD</strong>
+                    specializes in
+                    <span class="hero-highlight">Sales Automation</span>
+                    and
+                    <span class="hero-highlight">Print-On-Demand Solutions</span>
+                    that help businesses automate operations, optimize workflows, and scale across
+                    <span class="hero-highlight">Global Marketplaces</span>.
 
-                        <p>
-                            Automate your entire sales process with seamless API integration,
-                            smart tracking, and instant fulfillment - saving time, cutting costs,
-                            and scaling your business.
-                        </p>
+                    Through
+                    <span class="hero-highlight">Intelligent Technology</span>,
+                    seamless integrations, and efficient fulfillment processes, we enable organizations to
+                    <span class="hero-highlight">Reduce Costs</span>,
+                    <span class="hero-highlight">Increase Productivity</span>,
+                    and deliver exceptional customer experiences.
 
-                        <div class="hero-buttons">
+                    Our mission is to empower businesses with
+                    <span class="hero-highlight">Innovative Digital Solutions</span>
+                    that drive
+                    <span class="hero-highlight">Sustainable Growth</span>
+                    and long-term success in the modern marketplace.
+                </p>
 
-                            <a href="{{ route('viewer.contact') }}"
-                                class="btn-hero-primary">
-                                Contact Us
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
+                <div class="hero-features">
 
-                            <a href="#"
-                                class="btn-hero-secondary">
-                                Explore Services
-                            </a>
+                    <div class="hero-feature">
+                        <i class="bi bi-lightning-charge-fill"></i>
+                        Automated Sales Workflow
+                    </div>
 
-                        </div>
+                    <div class="hero-feature">
+                        <i class="bi bi-shop"></i>
+                        POD Marketplace Integration
+                    </div>
 
+                    <div class="hero-feature">
+                        <i class="bi bi-graph-up-arrow"></i>
+                        Business Growth Solutions
                     </div>
 
                 </div>
 
-                <!-- Slide 2 -->
-                <div class="carousel-item">
+                <div class="hero-buttons">
 
-                    <img src="{{ Storage::url('images/hero2.jpg') }}"
-                        class="hero-image"
-                        alt="Recruitment">
+                    <a href="{{ route('viewer.contact') }}"
+                        class="btn-hero-primary">
 
-                    <div class="hero-overlay"></div>
+                        Contact Us
 
-                    <div class="hero-content">
+                        <i class="bi bi-arrow-right"></i>
 
-                        <span class="hero-badge">
-                            <i class="bi bi-circle-fill"></i>
-                            Recruitment Solutions
-                        </span>
+                    </a>
 
-                        <h1>
-                            Hire. Connect.
-                            Grow.
-                        </h1>
+                    <a href="#"
+                        class="btn-hero-secondary"> {{--{{ route('viewer.services') }}--}}
 
-                        <p>
-                            Find and connect with the right talent through our recruitment solutions,
-                            helping businesses strengthen teams, boost performance,
-                            and achieve long-term success.
-                        </p>
+                        Explore Services
 
-                        <div class="hero-buttons">
-
-                            <a href="{{ route('viewer.contact') }}"
-                                class="btn-hero-primary">
-                                Contact Us
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-
-                            <a href="{{ route('viewer.recruitments.index') }}"
-                                class="btn-hero-secondary">
-                                Explore Recruitment
-                            </a>
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Slide 3 -->
-                <div class="carousel-item">
-
-                    <img src="{{ Storage::url('images/hero3.jpg') }}" class="hero-image" alt="Digital Transformation">
-
-                    <div class="hero-overlay"></div>
-
-                    <div class="hero-content">
-
-                        <span class="hero-badge">
-                            <i class="bi bi-circle-fill"></i>
-                            Technology Solutions
-
-                        </span>
-
-                        <h1>
-                            All-in-One Platform
-                        </h1>
-
-                        <p>
-                            Build and manage powerful websites with reliable hosting and centralized tools
-                            designed to keep your business connected, efficient,
-                            and ready to grow sustainably.
-                        </p>
-
-                        <div class="hero-buttons">
-
-                            <a href="{{ route('viewer.contact') }}"
-                                class="btn-hero-primary">
-                                Contact Us
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-
-                            <a href="#"
-                                class="btn-hero-secondary">
-                                Explore Technology Solutions
-                            </a>
-
-                        </div>
-                    </div>
+                    </a>
 
                 </div>
 
             </div>
 
-            <!-- Arrows -->
+            <!-- RIGHT -->
+            <div class="hero-gallery">
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <div class="hero-gallery-main">
 
-                <span class="hero-arrow">
-                    <i class="bi bi-arrow-left"></i>
-                </span>
+                    <img src="{{ Storage::url('images/automation.jpg') }}" alt="Automation E-Gead">
 
-            </button>
+                </div>
 
-            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <div class="hero-gallery-grid">
 
-                <span class="hero-arrow">
-                    <i class="bi bi-arrow-right"></i>
-                </span>
+                    <img src="{{ Storage::url('images/pod3.jpg') }}" alt="POD E-Gead">
 
-            </button>
+                    <img src="{{ Storage::url('images/pod2.jpg') }}" alt="POD E-Gead">
 
-            <!-- Dots -->
-
-            <div class="carousel-indicators">
-
-                <button type="button"
-                    data-bs-target="#heroCarousel"
-                    data-bs-slide-to="0"
-                    class="active"></button>
-
-                <button type="button"
-                    data-bs-target="#heroCarousel"
-                    data-bs-slide-to="1"></button>
-
-                <button type="button"
-                    data-bs-target="#heroCarousel"
-                    data-bs-slide-to="2"></button>
+                </div>
 
             </div>
 
@@ -193,45 +120,53 @@
 
     </section>
 
-    <section class="trust-section">
+    <section class="partners-section">
+
         <div class="container">
 
-            <div class="row text-center">
+            <div class="partners-wrapper">
 
-                <div class="col-md-3 col-6">
-                    <div class="trust-item">
-                        <h3>100+</h3>
-                        <p>Clients Worldwide</p>
-                    </div>
+                <div class="partners-title">
+
+                    Driving Loyalty. Chosen by Industry-Leading Brands.
+
                 </div>
 
-                <div class="col-md-3 col-6">
-                    <div class="trust-item">
-                        <h3>50+</h3>
-                        <p>Projects Delivered</p>
-                    </div>
-                </div>
+                <div class="partners-track">
 
-                <div class="col-md-3 col-6">
-                    <div class="trust-item">
-                        <h3>5+</h3>
-                        <p>Years Experience</p>
+                    <div class="partner-item">
+                        <img src="{{ Storage::url('images/google.png') }}" alt="Google ">
                     </div>
-                </div>
 
-                <div class="col-md-3 col-6">
-                    <div class="trust-item">
-                        <h3>24/7</h3>
-                        <p>Support</p>
+                    <div class="partner-item">
+                        <img src="{{ Storage::url('images/ebay.png') }}" alt="Ebay">
                     </div>
+
+                    <div class="partner-item">
+                        <img src="{{ Storage::url('images/amazon.png') }}" alt="Amazon">
+                    </div>
+
+                    <div class="partner-item">
+                        <img src="{{ Storage::url('images/esty.png') }}" alt="Esty">
+                    </div>
+
+                    <div class="partner-item">
+                        <img src="{{ Storage::url('images/seo.png') }}" alt="SEO">
+                    </div>
+
+                    <div class="partner-item">
+                        <img src="{{ Storage::url('images/tiktok.png') }}" alt="Tiktok">
+                    </div>
+
                 </div>
 
             </div>
 
         </div>
+
     </section>
 
-    <section class="services-section">
+    {{-- <section class="services-section">
 
         <div class="section-heading">
 
@@ -360,7 +295,7 @@
             <div class="swiper-button-prev service-prev"></div>
             <div class="swiper-button-next service-next"></div>
         </div>
-    </section>
+    </section> --}}
 
     <section class="why-section">
 
@@ -435,6 +370,44 @@
 
     </section>
 
+    <section class="trust-section">
+        <div class="container">
+
+            <div class="row text-center">
+
+                <div class="col-md-3 col-6">
+                    <div class="trust-item">
+                        <h3>100+</h3>
+                        <p>Clients Worldwide</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-6">
+                    <div class="trust-item">
+                        <h3>50+</h3>
+                        <p>Projects Delivered</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-6">
+                    <div class="trust-item">
+                        <h3>5+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-6">
+                    <div class="trust-item">
+                        <h3>24/7</h3>
+                        <p>Support</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
     <section class="process-cta">
         <div class="container">
 
@@ -505,7 +478,7 @@
         </div>
     </section>
 
-    <section class="portfolio-section">
+    {{-- <section class="portfolio-section">
 
         <div class="section-heading text-center">
 
@@ -577,7 +550,7 @@
             </a>
         </div>
 
-    </section>
+    </section> --}}
 
     <section class="testimonial-section">
         <div class="row align-items-center">
@@ -855,88 +828,41 @@
         <!-- BLOG GRID -->
         <div class="row g-4">
 
-            <!-- ITEM -->
-            <div class="col-lg-4 col-md-6">
-                <a href="#" class="blog-card">
+            @foreach($latest_blogs as $blog)
 
-                    <div class="blog-image">
-                        <img src="{{ Storage::url('images/hero1.jpg') }}" alt="AI Trends 2025">
-                        <span class="blog-tag">Technology</span>
-                    </div>
+                <div class="col-lg-4 col-md-6">
+                    <a href="{{ route('viewer.blogs.show', $blog->slug) }}" class="blog-card">
 
-                    <div class="blog-content">
-
-                        <div class="blog-meta">
-                            <span><i class="bi bi-calendar"></i> May 2026</span>
-                            <span><i class="bi bi-clock"></i> 5 min read</span>
+                        <div class="blog-image">
+                            <img src="{{ $blog->thumbnail }}" alt="{{ $blog->thumbnail_alt }}">
+                            <span class="blog-tag">{{ $blog->category->name }}</span>
                         </div>
 
-                        <h3>
-                            Top AI Trends That Will Shape 2026
-                        </h3>
+                        <div class="blog-content">
 
-                        <p>
-                            Discover how artificial intelligence is transforming industries and what businesses should prepare for.
-                        </p>
+                            <div class="blog-meta">
+                                <span><i class="bi bi-calendar"></i>{{ date('d M Y', strtotime($blog->published_at)) }}</span>
+                                <span><i class="bi bi-clock"></i> 5 min read</span>
+                            </div>
 
-                        <span class="blog-read-more">
-                            Read More <i class="bi bi-arrow-right"></i>
-                        </span>
+                            <h4>
+                                {{ $blog->title }}
+                            </h4>
 
-                    </div>
-                </a>
-            </div>
+                            <p>
+                                {{ $blog->excerpt }}
+                            </p>
 
-            <!-- COPY thêm 2-3 card nữa -->
-            <div class="col-lg-4 col-md-6">
-                <a href="#" class="blog-card">
+                            <span class="blog-read-more">
+                                Read More <i class="bi bi-arrow-right"></i>
+                            </span>
 
-                    <div class="blog-image">
-                        <img src="{{ Storage::url('images/hero2.jpg') }}">
-                        <span class="blog-tag">Business</span>
-                    </div>
-
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span><i class="bi bi-calendar"></i> May 2026</span>
-                            <span><i class="bi bi-clock"></i> 6 min</span>
                         </div>
+                    </a>
 
-                        <h3>How Digital Transformation Boosts Growth</h3>
+                </div>
 
-                        <p>Practical strategies for companies to scale using modern technologies.</p>
-
-                        <span class="blog-read-more">
-                            Read More <i class="bi bi-arrow-right"></i>
-                        </span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <a href="#" class="blog-card">
-
-                    <div class="blog-image">
-                        <img src="{{ Storage::url('images/hero3.jpg') }}">
-                        <span class="blog-tag">Recruitment</span>
-                    </div>
-
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span><i class="bi bi-calendar"></i> May 2026</span>
-                            <span><i class="bi bi-clock"></i> 4 min</span>
-                        </div>
-
-                        <h3>Hiring Tech Talent in 2026</h3>
-
-                        <p>What companies need to know to attract and retain top developers.</p>
-
-                        <span class="blog-read-more">
-                            Read More <i class="bi bi-arrow-right"></i>
-                        </span>
-                    </div>
-                </a>
-            </div>
+            @endforeach
 
         </div>
 

@@ -57,7 +57,7 @@
         </div>
 
         {{-- OVERVIEW --}}
-        <div class="job-overview">
+        {{-- <div class="job-overview">
 
             <div class="overview-item">
 
@@ -113,7 +113,7 @@
 
             </div>
 
-        </div>
+        </div> --}}
 
         {{-- MAIN --}}
         <div class="job-layout">
@@ -123,7 +123,7 @@
 
                 <div class="job-card">
 
-                    <h4>📋 Job Description</h4>
+                    <strong>Job Description</strong>
 
                     {!! $recruitment->description !!}
 
@@ -131,7 +131,7 @@
 
                 <div class="job-card">
 
-                    <h4>🕰️ Working time</h4>
+                    <strong>Working time</strong>
 
                     {!! $recruitment->work_time !!}
 
@@ -139,7 +139,7 @@
 
                 <div class="job-card">
 
-                    <h4>📚 Requirements</h4>
+                    <strong>Requirements</strong>
 
                     {!! $recruitment->requirements !!}
 
@@ -147,7 +147,7 @@
 
                 <div class="job-card">
 
-                    <h4>🎁 Benefits</h4>
+                    <strong>Benefits</strong>
 
                     {!! $recruitment->benefits !!}
 
@@ -158,7 +158,7 @@
             {{-- RIGHT --}}
             <div class="job-sidebar">
 
-                <div class="job-sidebar-card apply-card" id="apply">
+                {{-- <div class="job-sidebar-card apply-card" id="apply">
 
                     <div class="apply-icon">
                         <i class="bi bi-rocket-takeoff"></i>
@@ -196,11 +196,11 @@
                         <i class="bi bi-arrow-right"></i>
                     </a>
 
-                </div>
+                </div> --}}
 
-                {{-- <div class="job-sidebar-card">
+                <div class="job-sidebar-card">
 
-                    <h3>Job Summary</h3>
+                    {{-- <h3>Job Summary</h3> --}}
 
                     <div class="summary-grid">
 
@@ -256,7 +256,7 @@
 
                     </div>
 
-                </div> --}}
+                </div>
 
                 <div class="job-sidebar-card contact-hr-card">
 
@@ -281,7 +281,7 @@
         </div>
 
         {{-- RELATED JOBS --}}
-        @if($relatedJobs->count())
+        {{-- @if($relatedJobs->count())
 
         <div class="related-jobs">
 
@@ -353,7 +353,7 @@
 
         </div>
 
-        @endif
+        @endif --}}
 
     </div>
 

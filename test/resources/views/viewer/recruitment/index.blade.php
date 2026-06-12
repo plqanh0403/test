@@ -169,10 +169,6 @@
                 Build The Future With EGEAD
             </h1>
 
-            <p>
-                Join our talented team and help create innovative technology solutions.
-            </p>
-
         </section>
 
         <!-- JOB GRID -->
