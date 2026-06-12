@@ -21,9 +21,9 @@
 
         </div>
 
-        <h3>
+        <h4>
             {{ $blog->title }}
-        </h3>
+        </h4>
 
         <p>
             {{ Str::limit($blog->excerpt, 70) }}

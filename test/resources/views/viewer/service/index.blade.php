@@ -326,9 +326,9 @@
 
                         <div class="service-body">
 
-                            <h3>
+                            <h4>
                                 {{ $service->name }}
-                            </h3>
+                            </h4>
 
                             <p>
                                 {{ Str::limit($service->overview,120) }}

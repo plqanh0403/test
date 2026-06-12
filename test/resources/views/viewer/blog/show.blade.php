@@ -101,27 +101,27 @@
 
                     @foreach($relatedBlogs as $item)
 
-                    <a href="{{ route('viewer.blogs.show',$item->slug) }}" class="related-blog-item">
+                        <a href="{{ route('viewer.blogs.show',$item->slug) }}" class="related-blog-item">
 
-                        <div class="related-blog-image">
+                            <div class="related-blog-image">
 
-                            <img src="{{ Storage::url($item->thumbnail) }}" alt="{{ $item->thumbnail_alt ?? $item->title }}">
+                                <img src="{{ Storage::url($item->thumbnail) }}" alt="{{ $item->thumbnail_alt ?? $item->title }}">
 
-                        </div>
+                            </div>
 
-                        <div class="related-blog-content">
+                            <div class="related-blog-content">
 
-                            <span>
-                                {{ date('d M Y', strtotime($item->published_at)) }}
-                            </span>
+                                <span>
+                                    {{ date('d M Y', strtotime($item->published_at)) }}
+                                </span>
 
-                            <h5>
-                                {{ Str::limit($item->title,70) }}
-                            </h5>
+                                <h5>
+                                    {{ Str::limit($item->title,70) }}
+                                </h5>
 
-                        </div>
+                            </div>
 
-                    </a>
+                        </a>
 
                     @endforeach
 

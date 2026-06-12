@@ -216,9 +216,9 @@
 
                         </div>
 
-                        <h3>
+                        <h4>
                             {{ $job->position }}
-                        </h3>
+                        </h4>
 
                         <p>
                             {{ Str::limit(strip_tags($job->description), 120) }}

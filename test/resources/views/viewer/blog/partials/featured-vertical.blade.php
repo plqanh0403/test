@@ -6,7 +6,7 @@
 
     <div class="blog-content">
 
-        <h3>{{ $blog->title }}</h3>
+        <h4>{{ $blog->title }}</h4>
 
         <p>
             {{ Str::limit($blog->excerpt, 150) }}

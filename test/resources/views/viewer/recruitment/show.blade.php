@@ -123,7 +123,7 @@
 
                 <div class="job-card">
 
-                    <h2>📋 Job Description</h2>
+                    <h4>📋 Job Description</h4>
 
                     {!! $recruitment->description !!}
 
@@ -131,7 +131,7 @@
 
                 <div class="job-card">
 
-                    <h2>🕰️ Working time</h2>
+                    <h4>🕰️ Working time</h4>
 
                     {!! $recruitment->work_time !!}
 
@@ -139,7 +139,7 @@
 
                 <div class="job-card">
 
-                    <h2>📚 Requirements</h2>
+                    <h4>📚 Requirements</h4>
 
                     {!! $recruitment->requirements !!}
 
@@ -147,7 +147,7 @@
 
                 <div class="job-card">
 
-                    <h2>🎁 Benefits</h2>
+                    <h4>🎁 Benefits</h4>
 
                     {!! $recruitment->benefits !!}
 
@@ -198,7 +198,7 @@
 
                 </div>
 
-                <div class="job-sidebar-card">
+                {{-- <div class="job-sidebar-card">
 
                     <h3>Job Summary</h3>
 
@@ -256,7 +256,7 @@
 
                     </div>
 
-                </div>
+                </div> --}}
 
                 <div class="job-sidebar-card contact-hr-card">
 
