@@ -51,6 +51,8 @@ class RecruitmentController extends Controller
             'location' => 'required|string|max:255',
             'work_type' => 'required|in:full-time,part-time,remote,hybrid',
             'work_time' => 'required|string|max:255',
+            'salary' => 'required|string|max:50',
+            'department' => 'required|string|max:50',
             'application_deadline' => 'nullable|date',
         ]);
 
@@ -62,6 +64,8 @@ class RecruitmentController extends Controller
             'location' => $request->location,
             'work_type' => $request->work_type,
             'work_time' => $request->work_time,
+            'salary' => $request->salary ?? 'Negotiable',
+            'department' => $request->department,
             'application_deadline' => $request->application_deadline,
             'slug' => $request->slug ?? Str::slug($request->position),
             'seo_title' => $request->seo_title,
@@ -84,6 +88,8 @@ class RecruitmentController extends Controller
             'work_time' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'work_type' => 'required|in:full-time,part-time,remote,hybrid',
+            'salary' => 'required|string|max:50',
+            'department' => 'required|string|max:50',
             'application_deadline' => 'nullable|date',
         ]);
 
@@ -98,6 +104,8 @@ class RecruitmentController extends Controller
             'slug' => $request->slug ?? Str::slug($request->position),
             'seo_title' => $request->seo_title,
             'seo_description' => $request->seo_description,
+            'salary' => $request->salary ?? 'Negotiable',
+            'department' => $request->department,
             'is_visible' => $request->is_visible,
             'work_time' => $request->work_time,
         ]);

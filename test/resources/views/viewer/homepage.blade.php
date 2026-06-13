@@ -36,23 +36,23 @@
                 <p>
                     <strong class="hero-highlight">E-GEAD</strong>
                     specializes in
-                    <span class="hero-highlight">Sales Automation</span>
+                    <strong class="hero-highlight">Sales Automation</strong>
                     and
-                    <span class="hero-highlight">Print-On-Demand Solutions</span>
+                    <strong class="hero-highlight">Print-On-Demand Solutions</strong>
                     that help businesses automate operations, optimize workflows, and scale across
-                    <span class="hero-highlight">Global Marketplaces</span>.
+                    <strong class="hero-highlight">Global Marketplaces</strong>.
 
                     Through
-                    <span class="hero-highlight">Intelligent Technology</span>,
+                    <strong class="hero-highlight">Intelligent Technology</strong>,
                     seamless integrations, and efficient fulfillment processes, we enable organizations to
-                    <span class="hero-highlight">Reduce Costs</span>,
-                    <span class="hero-highlight">Increase Productivity</span>,
+                    <strong class="hero-highlight">Reduce Costs</strong>,
+                    <strong class="hero-highlight">Increase Productivity</strong>,
                     and deliver exceptional customer experiences.
 
                     Our mission is to empower businesses with
-                    <span class="hero-highlight">Innovative Digital Solutions</span>
+                    <strong class="hero-highlight">Innovative Digital Solutions</strong>
                     that drive
-                    <span class="hero-highlight">Sustainable Growth</span>
+                    <strong class="hero-highlight">Sustainable Growth</strong>
                     and long-term success in the modern marketplace.
                 </p>
 
@@ -408,6 +408,163 @@
         </div>
     </section>
 
+    <section class="service-value-section">
+
+        <div class="service-value-left">
+
+            <div class="capability-card">
+
+                <div class="capability-icon">
+                    <i class="bi bi-arrow-repeat"></i>
+                </div>
+
+                <div>
+                    <h4>Real-Time Synchronization</h4>
+
+                    <p>
+                        Keep information consistent across all systems
+                        without manual intervention.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="capability-card">
+
+                <div class="capability-icon">
+                    <i class="bi bi-eye"></i>
+                </div>
+
+                <div>
+                    <h4>Operational Visibility</h4>
+
+                    <p>
+                        Access live insights and monitor performance
+                        from a centralized dashboard.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="capability-card">
+
+                <div class="capability-icon">
+                    <i class="bi bi-cpu"></i>
+                </div>
+
+                <div>
+                    <h4>Intelligent Automation</h4>
+
+                    <p>
+                        Reduce repetitive tasks through automation
+                        and standardized workflows.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="capability-card">
+
+                <div class="capability-icon">
+                    <i class="bi bi-graph-up-arrow"></i>
+                </div>
+
+                <div>
+                    <h4>Scalable Growth</h4>
+
+                    <p>
+                        Infrastructure and processes designed to
+                        support business expansion.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="service-value-right">
+
+            <span class="section-badge">
+                Business Value
+            </span>
+
+            <h2>
+                Technology That Creates Measurable Results
+            </h2>
+
+            <p>
+                Our solutions are designed to simplify operations,
+                improve visibility, and help businesses scale with confidence.
+            </p>
+
+            <div class="service-overview-grid">
+
+                <div class="overview-box box-1">
+
+                    <div>
+
+                        <h4>E-Commerce Platform</h4>
+
+                        <p>
+                            Build and manage online stores with flexible customization,
+                            centralized management, and streamlined operations.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="overview-box box-2">
+
+                    <div>
+
+                        <h4>Website & Hosting</h4>
+
+                        <p>
+                            Deliver fast, secure, and scalable web experiences with
+                            professional hosting and infrastructure support.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="overview-box box-3">
+
+                    <div>
+
+                        <h4>Sales Automation</h4>
+
+                        <p>
+                            Automate business processes, order handling,
+                            customer interactions, and data synchronization.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="overview-box box-4">
+
+                    <div>
+
+                        <h4>Fulfillment Automation</h4>
+
+                        <p>
+                            Streamline logistics workflows, shipment tracking,
+                            inventory updates, and operational visibility.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
     <section class="process-cta">
         <div class="container">
 
@@ -442,7 +599,7 @@
         <div class="container">
 
             <div class="section-heading">
-                <span class="section-badge">Our Process</span>
+                {{-- <span class="section-badge">Our Process</span> --}}
                 <h1>How We Work</h1>
                 <p>We follow a proven process to deliver high-quality solutions</p>
             </div>

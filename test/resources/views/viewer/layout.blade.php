@@ -324,6 +324,7 @@
 
             });
     </script>
+
     <script>
         /* SERVICE SWIPER */
         new Swiper(".serviceSwiper", {
@@ -520,7 +521,9 @@
                 }
             });
         });
+
     </script>
+
 </body>
 
 </html>

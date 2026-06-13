@@ -208,8 +208,11 @@
                                 </div>
 
                             </div>
+
                         </div>
+
                     </div>
+
                 </div>
 
                 <!-- Edit Category Modal -->
@@ -347,7 +350,7 @@
 
                                             </div>
 
-                                            <div class="admin-card mb-4">
+                                            {{-- <div class="admin-card mb-4">
 
                                                 <h6 class="admin-card-title">
                                                     Media
@@ -389,7 +392,7 @@
 
                                                 </div>
 
-                                            </div>
+                                            </div> --}}
 
                                             <!-- INFO CARD -->
                                             <div class="admin-card category_infor">
@@ -584,7 +587,7 @@
 
                                 </div>
 
-                                <div class="admin-card mb-4">
+                                {{-- <div class="admin-card mb-4">
 
                                     <h6 class="admin-card-title">
                                         Media
@@ -611,7 +614,7 @@
 
                                     </div>
 
-                                </div>
+                                </div> --}}
 
                                 <!-- INFO CARD -->
                                 <div class="admin-card category_infor">

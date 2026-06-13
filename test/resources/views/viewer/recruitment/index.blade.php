@@ -55,14 +55,14 @@
 
                 <div class="career-intro-image">
 
-                    <img src="{{ Storage::url('images/career-banner.jpg') }}"
+                    <img src="{{ Storage::url('images/career.jpg') }}"
                         alt="Career at EGEAD">
 
                 </div>
 
             </div>
 
-            <section class="career-highlight">
+            {{-- <section class="career-highlight">
 
                 <div class="career-highlight-left">
 
@@ -87,9 +87,9 @@
 
                 </div>
 
-            </section>
+            </section> --}}
 
-            <div class="career-toolbar">
+            <div class="career-toolbar" id="job-list">
 
                 <!-- LEFT -->
                 <div class="career-filters">
@@ -172,7 +172,7 @@
         </section>
 
         <!-- JOB GRID -->
-        <div class="recruitment-grid-wrapper" id="job-list">
+        <div class="recruitment-grid-wrapper">
 
             <div class="recruitment-grid">
 
@@ -184,13 +184,19 @@
 
                         <div class="job-header">
 
-                            <h4>
-                                {{ $job->position }}
-                            </h4>
+                            <span class="department">{{ $job->department }}</span>
 
-                            <span class="job-status">
-                                {{ ucfirst($job->status) }}
-                            </span>
+                            <div class="job-title-row">
+
+                                <h4>
+                                    {{ $job->position }}
+                                </h4>
+
+                                <span class="job-status">
+                                    {{ ucfirst($job->status) }}
+                                </span>
+
+                            </div>
 
                         </div>
 
@@ -214,6 +220,11 @@
                                 <span>
                                     <i class="bi bi-hourglass-split"></i>
                                     {{ ucfirst($job->work_type) }}
+                                </span>
+
+                                <span>
+                                    <i class="bi bi-cash-stack"></i>
+                                    {{ ucfirst($job->salary) }}
                                 </span>
 
                             </div>

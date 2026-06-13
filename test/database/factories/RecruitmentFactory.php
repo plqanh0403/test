@@ -32,6 +32,8 @@ class RecruitmentFactory extends Factory
                 'hybrid'
             ]),
             'work_time' => fake()->sentence(),
+            'salary' => fake()->sentence(),
+            'department' => fake()->sentence(),
             'status' => 'open',
             'application_deadline' => fake()->optional()->dateTimeBetween('now', '1 month'),
             'slug' => Str::slug($position . '-' . fake()->unique()->numberBetween(1, 9999)),

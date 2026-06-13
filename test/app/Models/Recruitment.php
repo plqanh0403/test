@@ -17,6 +17,8 @@ class Recruitment extends Model
         'location',
         'work_type',
         'work_time',
+        'salary',
+        'department',
         'application_deadline',
         'status',
         'is_visible',

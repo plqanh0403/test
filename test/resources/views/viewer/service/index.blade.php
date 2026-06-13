@@ -9,7 +9,7 @@
 
     <div class="container">
 
-        <section class="service-category-hero">
+        {{-- <section class="service-category-hero">
 
             <div class="hero-image">
 
@@ -45,7 +45,7 @@
 
             </div>
 
-        </section>
+        </section> --}}
 
         <section class="why-section">
 
@@ -54,18 +54,54 @@
                 <!-- LEFT -->
                 <div class="col-lg-6 mb-4">
 
-                    <span class="section-badge">
-                        Why Choose E-GEAD
-                    </span>
+                    <div>
+
+                        {{-- <span class="section-badge">
+                            Service Category
+                        </span> --}}
+
+                        <h1>
+                            {{ $serviceCategory->name }}
+                        </h1>
+
+                        <p>
+                            {{ $serviceCategory->description }}
+                        </p>
+
+                        <div class="hero-stat">
+
+                            <strong>
+                                {{ $services->count() }}
+                            </strong>
+
+                            <span>
+                                Services Available
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    {{-- <span class="section-badge">
+                        Why Choose E-GEAD?
+                    </span> --}}
 
                     <h2 class="why-title">
                         Technology That Drives Business Growth
                     </h2>
 
                     <p class="why-desc">
-                        E-GEAD delivers modern technology solutions that empower organizations to automate processes,
-                        improve operational efficiency, and build a scalable digital foundation for long-term growth.
-                        Our services are designed to integrate seamlessly with existing systems while providing the flexibility required for future expansion.
+                        At <strong class="hero-highlight">E-GEAD</strong>, we deliver innovative
+                        <strong class="hero-highlight">Sales Automation</strong> and
+                        <strong class="hero-highlight">Print-On-Demand solutions</strong>
+                        that help businesses streamline operations, enhance productivity,
+                        and accelerate sustainable growth. By combining
+                        <strong class="hero-highlight">intelligent technology</strong>,
+                        seamless system integrations, and scalable digital infrastructure,
+                        we empower organizations to reduce operational costs, optimize workflows,
+                        and unlock new opportunities in global markets. Our solutions are designed
+                        not only to solve today's challenges but also to provide the flexibility
+                        and resilience required for long-term success in an ever-evolving digital landscape.
                     </p>
 
                     <a href="#list" class="why-btn down-btn">
@@ -104,13 +140,13 @@
                             </div>
                         </div>
 
-                        <div class="why-item">
+                        {{-- <div class="why-item">
                             <i class="bi bi-people"></i>
                             <div>
                                 <h4>Performance Insights</h4>
                                 <p>Gain actionable analytics to improve efficiency, identify bottlenecks, and support strategic planning.</p>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="why-item">
                             <i class="bi bi-people"></i>
@@ -128,7 +164,7 @@
 
         </section>
 
-        <section class="service-value-section">
+        {{-- <section class="service-value-section">
 
             <div class="service-value-left">
 
@@ -220,7 +256,7 @@
                 <div class="service-overview-grid">
 
                     <div class="overview-box box-1">
-                        
+
                         <div>
 
                             <h4>E-Commerce Platform</h4>
@@ -235,7 +271,7 @@
                     </div>
 
                     <div class="overview-box box-2">
-                        
+
                         <div>
 
                             <h4>Website & Hosting</h4>
@@ -250,7 +286,7 @@
                     </div>
 
                     <div class="overview-box box-3">
-                     
+
                         <div>
 
                             <h4>Sales Automation</h4>
@@ -265,7 +301,7 @@
                     </div>
 
                     <div class="overview-box box-4">
-                    
+
                         <div>
 
                             <h4>Fulfillment Automation</h4>
@@ -283,7 +319,7 @@
 
             </div>
 
-        </section>
+        </section> --}}
 
         <div class="section-heading" id="list">
 

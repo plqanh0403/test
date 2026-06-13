@@ -71,6 +71,8 @@ return new class extends Migration
             $table->text('benefits');
             $table->string('location');
             $table->string('work_time');
+            $table->string('salary');
+            $table->string('department');
             $table->enum('work_type', ['full-time', 'part-time', 'remote', 'hybrid']);
             $table->timestamp('application_deadline')->nullable();
             $table->enum('status', ['open', 'paused', 'closed'])->default('open');
@@ -86,8 +88,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('description');
-            $table->string('banner_image')->nullable();
-            $table->string('banner_image_alt')->nullable();
             $table->text('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->boolean('is_visible')->default(true);

@@ -183,7 +183,7 @@
                                 <!-- QUICK STATS -->
                                 <div class="row g-3 mb-4">
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
 
                                         <div class="detail-stat-card">
 
@@ -199,7 +199,7 @@
 
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
 
                                         <div class="detail-stat-card">
 
@@ -215,7 +215,7 @@
 
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
 
                                         <div class="detail-stat-card">
 
@@ -233,7 +233,39 @@
 
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
+
+                                        <div class="detail-stat-card">
+
+                                            <i class="bi bi-cash-stack"></i>
+
+                                            <span>Salary</span>
+
+                                            <strong>
+                                                {{ $recruitment->salary }}
+                                            </strong>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-2">
+
+                                        <div class="detail-stat-card">
+
+                                            <i class="bi bi-diagram-3"></i>
+
+                                            <span>Department</span>
+
+                                            <strong>
+                                                {{ $recruitment->department }}
+                                            </strong>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-2">
 
                                         <div class="detail-stat-card">
 
@@ -242,7 +274,7 @@
                                             <span>Visibility</span>
 
                                             <strong>
-                                                {{ $recruitment->is_visible ? 'Visible' : 'Hidden' }}
+                                                {{ $recruitment->visible == 1 ? 'Visible' : 'Hidden' }}
                                             </strong>
 
                                         </div>
@@ -438,6 +470,19 @@
 
                                                 </div>
 
+                                                <!-- POSITION -->
+                                                <div class="mb-4">
+
+                                                    <label class="form-label fw-semibold">
+                                                        Department
+                                                    </label>
+
+                                                    <input type="text" name="department"
+                                                        value="{{ old('department', $recruitment->department) }}"
+                                                        class="form-control admin-input" required>
+
+                                                </div>
+
                                                 <!-- DESCRIPTION -->
                                                 <div class="mb-4 editor-wrapper">
 
@@ -504,6 +549,17 @@
 
                                                     <textarea type="text" name="work_time" value="{{ old('work_time', $recruitment->work_time) }}"
                                                         class="form-control" placeholder="Mon - Fri, 08:00 - 17:00" required></textarea>
+
+                                                </div>
+
+                                                <div class="mb-3">
+
+                                                    <label class="form-label">
+                                                        Salary
+                                                    </label>
+
+                                                    <textarea type="text" name="salary" value="{{ old('salary', $recruitment->salary) }}"
+                                                        class="form-control" placeholder="Negotiable..." required></textarea>
 
                                                 </div>
 
@@ -588,43 +644,6 @@
 
                                                 </div>
 
-                                            </div>
-
-                                            <!-- THUMBNAIL -->
-                                            <div class="admin-card mb-4">
-
-                                                <div class="mb-3">
-                                                    <label class="form-label">
-                                                        Current Thumbnail
-                                                    </label>
-
-                                                    @if ($recruitment->thumbnail)
-                                                        <div class="mb-2">
-                                                            <img src="{{ Storage::url($recruitment->thumbnail) }}"
-                                                                class="img-fluid rounded border" style="max-height:150px">
-                                                        </div>
-                                                    @else
-                                                        <p class="text-muted">No thumbnail uploaded</p>
-                                                    @endif
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label class="form-label">
-                                                        Replace Thumbnail
-                                                    </label>
-
-                                                    <input type="file" name="thumbnail" class="form-control">
-                                                </div>
-
-                                                <div>
-                                                    <label class="form-label">
-                                                        Replace Thumbnail
-                                                    </label>
-
-                                                    <input type="text" name="thumbnail_alt"
-                                                        value="{{ old('thumbnail_alt', $recruitment->thumbnail_alt) }}"
-                                                        class="form-control" placeholder="Thumbnail alt text">
-                                                </div>
                                             </div>
 
                                             <!-- SEO -->
@@ -785,6 +804,18 @@
 
                                     </div>
 
+                                    <!-- POSITION -->
+                                    <div class="mb-4">
+
+                                        <label class="form-label fw-semibold">
+                                            Department
+                                        </label>
+
+                                        <input type="text" name="department" value="{{ old('department') }}"
+                                            class="form-control admin-input" required>
+
+                                    </div>
+
                                     <!-- DESCRIPTION -->
                                     <div class="mb-4 editor-wrapper">
 
@@ -856,6 +887,17 @@
                                     <div class="mb-3">
 
                                         <label class="form-label">
+                                            Salary
+                                        </label>
+
+                                        <textarea type="text" name="salary" value="{{ old('salary') }}" class="form-control"
+                                            placeholder="Negotiable..." required></textarea>
+
+                                    </div>
+
+                                    <div class="mb-3">
+
+                                        <label class="form-label">
                                             Work Type
                                         </label>
 
@@ -917,7 +959,7 @@
                                     </div>
 
                                 </div>
-                       
+
                                 <!-- SEO -->
                                 <div class="admin-card">
 

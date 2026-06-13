@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ServiceCategory;
-use App\Services\MediaService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -26,14 +25,12 @@ class ServiceCategoryController extends Controller
         return view('admin.service_category.index', compact('categories'));
     }
 
-    public function store(Request $request, MediaService $mediaService) : RedirectResponse
+    public function store(Request $request) : RedirectResponse
     {
         request()->validate([
             'name' => 'required|string|max:255|unique:categories,name', //unique:ten_bang,ten_cot
             'description' => 'required|string|max:255',
         ]);
-
-        $path = $mediaService->uploadImg($request->file('banner_image'), 'service_categories');
 
         ServiceCategory::create([
             'name'=> $request->name,
@@ -43,30 +40,17 @@ class ServiceCategoryController extends Controller
             'seo_description' => $request->seo_description,
             'is_visible' => $request->is_visible,
             'sort_order' => $request->sort_order,
-            'banner_image' => $path,
-            'banner_image_alt' => $request->banner_image_alt ?? $request->name
         ]);
 
         return redirect()->back()->with('success', 'Category created successfully.');;
     }
 
-    public function update(Request $request, ServiceCategory $category, MediaService $mediaService) : RedirectResponse
+    public function update(Request $request, ServiceCategory $category) : RedirectResponse
     {
         request()->validate([
             'name' => 'required|string|max:255|unique:categories,name',
             'description' => 'required|string|max:255',
         ]);
-
-         $data = [];
-
-        if ($request->hasFile('banner_image')) {
-
-            if ($category->banner_image) {
-                Storage::disk('public')->delete($category->banner_image);
-            }
-
-            $data['banner_image'] = $mediaService->uploadImg($request->file('banner_image'), 'service_categories');
-        }
 
         $category->update([
             'name'=> $request->name,
@@ -76,8 +60,6 @@ class ServiceCategoryController extends Controller
             'seo_description' => $request->seo_description,
             'is_visible' => $request->is_visible,
             'sort_order' => $request->sort_order,
-            'banner_image' => $data['banner_image'] ?? $category->banner_image,
-            'banner_image_alt' => $request->banner_image_alt ?? $request->name
         ]);
 
         return redirect()->back()->with('success', 'Category updated successfully.');

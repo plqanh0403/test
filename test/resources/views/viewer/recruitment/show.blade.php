@@ -148,6 +148,11 @@
                             {{ ucfirst($recruitment->work_type) }}
                         </span>
 
+                        <span>
+                            <i class="bi bi-cash-stack"></i>
+                            {{ ucfirst($recruitment->salary) }}
+                        </span>
+
                     </div>
 
                     <a href="#apply" class="consultation-btn">
@@ -283,9 +288,9 @@
                                 <i class="bi bi-check-circle-fill"></i>
                             </div>
 
-                            <span>Status</span>
+                            <span>Department</span>
 
-                            <h5>{{ ucfirst($recruitment->status) }}</h5>
+                            <h5>{{ ucfirst($recruitment->department) }}</h5>
 
                         </div>
 

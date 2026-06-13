@@ -77,7 +77,7 @@
 
                 <div class="service-main">
 
-                    <h4>📑 Service Details</h4>
+                    <strong>Service Details</strong>
 
                     <div class="content-card">
 
