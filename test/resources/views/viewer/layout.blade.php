@@ -49,7 +49,7 @@
     {{-- HEADER --}}
     <header class="page-header shadow-sm">
 
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg navbar-dark">
 
             <div class="container">
 

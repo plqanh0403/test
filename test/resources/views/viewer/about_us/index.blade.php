@@ -77,21 +77,46 @@
                         <h2 class="text-gradient">Our Story</h2>
 
                         <p>
-                            Not every journey is measured by the miles we travel.
+                            <strong class="hero-highlight">E-Gead</strong> is a technology and cross-border e-commerce
+                            company headquartered in
+                            <strong class="hero-highlight">Buon Ma Thuot, Vietnam</strong>. Founded with the vision of
+                            empowering businesses through innovation and automation,
+                            we deliver high-quality digital solutions that help organizations operate more efficiently and
+                            compete successfully in global markets.
+                        </p>
 
-                            Some journeys are defined by the moments we share,
-                            the challenges we overcome,
-                            and the memories we create together.
+                        <p>
+                            Our expertise spans
+                            <strong class="hero-highlight">Information Technology</strong>,
+                            <strong class="hero-highlight">Cross-Border E-Commerce</strong>,
+                            <strong class="hero-highlight">Digital Marketing</strong>, and
+                            <strong class="hero-highlight">Print-On-Demand Services</strong>.
+                            We provide end-to-end solutions including website development, business automation systems,
+                            customer service platforms, and API integrations that streamline daily operations.
+                        </p>
 
-                            It's not about how far we go,
-                            but about the courage to take the first step,
-                            the laughter that echoes through the mountains,
-                            and the spirit that keeps us moving forward.
+                        <p>
+                            Through our advanced
+                            <strong class="hero-highlight">Sales Automation</strong> and
+                            <strong class="hero-highlight">Global E-Commerce Ecosystem</strong>,
+                            businesses can expand across leading marketplaces such as
+                            <strong class="hero-highlight">Amazon</strong>,
+                            <strong class="hero-highlight">eBay</strong>,
+                            <strong class="hero-highlight">Etsy</strong>,
+                            <strong class="hero-highlight">TikTok Shop</strong>, and independent online stores.
+                            Our scalable infrastructure enables clients to automate workflows, improve operational
+                            efficiency, and accelerate growth.
+                        </p>
 
-                            Because in the end,
-                            the most meaningful journeys are not about the destination,
-                            but about the people, the experiences,
-                            and the growth we discover along the way.
+                        <p>
+                            With a growing international presence and partnerships with trusted global brands including
+                            <strong class="hero-highlight">Google</strong>,
+                            <strong class="hero-highlight">Amazon</strong>,
+                            <strong class="hero-highlight">PayPal</strong>,
+                            <strong class="hero-highlight">Stripe</strong>, and
+                            <strong class="hero-highlight">Airwallex</strong>,
+                            E-Gead is committed to delivering innovative technology solutions that help businesses achieve
+                            <strong class="hero-highlight">sustainable long-term success</strong>.
                         </p>
 
                     </div>
@@ -219,7 +244,7 @@
                 <div class="section-heading">
 
                     <h2>
-                        Why Businesses Trust E-GEAD
+                        Trusted by Businesses Worldwide
                     </h2>
 
                     <p>
@@ -306,9 +331,138 @@
 
         </section>
 
+        {{-- <div class="company-layout">
+
+            <!-- Company Information -->
+            <div class="about-sidebar-card company-info-card">
+
+                <h3>Company Information</h3>
+
+                <div class="about-info-item">
+                    <i class="bi bi-telephone"></i>
+                    <div>
+                        <h5>Phone</h5>
+                        <p>{{ $about_us->phone }}</p>
+                    </div>
+                </div>
+
+                <div class="about-info-item">
+                    <i class="bi bi-envelope"></i>
+                    <div>
+                        <h5>Email</h5>
+                        <p>{{ $about_us->email }}</p>
+                    </div>
+                </div>
+
+                <div class="about-info-item">
+                    <i class="bi bi-geo-alt"></i>
+                    <div>
+                        <h5>Address</h5>
+                        <p>{{ $about_us->address }}</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Core Values -->
+            <div class="about-sidebar-card core-values-card">
+
+                <h3>Our Core Values</h3>
+
+                <div class="values-grid">
+
+                    <div class="value-item">
+                        <i class="bi bi-lightning-charge"></i>
+                        <div>
+                            <span>Automation Excellence</span>
+                            <small>Delivering efficient and intelligent workflows.</small>
+                        </div>
+                    </div>
+
+                    <div class="value-item">
+                        <i class="bi bi-diagram-3"></i>
+                        <div>
+                            <span>Seamless Integration</span>
+                            <small>Connecting systems and platforms effortlessly.</small>
+                        </div>
+                    </div>
+
+                    <div class="value-item">
+                        <i class="bi bi-graph-up-arrow"></i>
+                        <div>
+                            <span>Scalable Solutions</span>
+                            <small>Built to support long-term business growth.</small>
+                        </div>
+                    </div>
+
+                    <div class="value-item">
+                        <i class="bi bi-shield-check"></i>
+                        <div>
+                            <span>Reliable Partnership</span>
+                            <small>Committed to trust, stability, and success.</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="about-sidebar-card connect-card">
+
+            <h3>Connect With Us</h3>
+
+            <div class="social-list">
+
+                @if ($about_us->facebook)
+                    <a href="{{ $about_us->facebook }}">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                @endif
+
+                @if ($about_us->linkedin)
+                    <a href="{{ $about_us->linkedin }}">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                @endif
+
+                @if ($about_us->youtube)
+                    <a href="{{ $about_us->youtube }}">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                @endif
+
+                @if ($about_us->tiktok)
+                    <a href="{{ $about_us->tiktok }}">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                @endif
+
+            </div>
+
+            <form action="{{ route('viewer.email.store') }}" method="POST" class="subscribe-form">
+
+                @csrf
+
+                <div class="subscribe-box">
+
+                    <input type="email" name="email" placeholder="Enter your email..." required>
+
+                    <input type="hidden" name="source" value="about_us">
+
+                    <button type="submit">
+                        <i class="bi bi-send"></i>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div> --}}
 
         {{-- WHO WE ARE --}}
-        <section class="about-company">
+        {{-- <section class="about-company">
 
             <div class="container">
 
@@ -416,10 +570,10 @@
 
             </div>
 
-        </section>
+        </section> --}}
 
         {{-- CORE VALUES --}}
-        <section class="company-values">
+        {{-- <section class="company-values">
 
             <div class="container">
 
@@ -442,44 +596,44 @@
 
             </div>
 
-        </section>
+        </section> --}}
 
         {{-- PARTNERS --}}
-        <section class="partners-section">
+        <section class="about-partners-section">
 
             <div class="container">
 
-                <div class="partners-wrapper">
+                <div class="about-partners-wrapper">
 
-                    <h2 class="partners-title-h2">
+                    <h2 class="about-partners-title-h2">
 
                         Our Partner
 
                     </h2>
 
-                    <div class="partners-track">
+                    <div class="about-partners-track">
 
-                        <div class="partner-item">
+                        <div class="about-partner-item">
                             <img src="{{ Storage::url('images/google.png') }}" alt="Google ">
                         </div>
 
-                        <div class="partner-item">
+                        <div class="about-partner-item">
                             <img src="{{ Storage::url('images/ebay.png') }}" alt="Ebay">
                         </div>
 
-                        <div class="partner-item">
+                        <div class="about-partner-item">
                             <img src="{{ Storage::url('images/amazon.png') }}" alt="Amazon">
                         </div>
 
-                        <div class="partner-item">
+                        <div class="about-partner-item">
                             <img src="{{ Storage::url('images/esty.png') }}" alt="Esty">
                         </div>
 
-                        <div class="partner-item">
+                        <div class="about-partner-item">
                             <img src="{{ Storage::url('images/seo.png') }}" alt="SEO">
                         </div>
 
-                        <div class="partner-item">
+                        <div class="about-partner-item">
                             <img src="{{ Storage::url('images/tiktok.png') }}" alt="Tiktok">
                         </div>
 

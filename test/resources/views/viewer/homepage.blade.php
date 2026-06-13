@@ -8,119 +8,121 @@
 
 @section('content')
 
-<div class="container">
+<div class="homepage">
 
     <!-- HERO SECTION -->
     <section class="hero-section">
 
-        <div class="hero-wrapper">
+        <div class="container">
+            <div class="hero-wrapper">
 
-            <!-- LEFT -->
-            <div class="hero-content">
+                <!-- LEFT -->
+                <div class="hero-content">
 
-                <span class="hero-badge">
+                    <span class="hero-badge">
 
-                    <span class="hero-badge-dot"></span>
+                        <span class="hero-badge-dot"></span>
 
-                    E-GEAD - POD Commerce & Sales Automation
+                        E-GEAD - POD Commerce & Sales Automation
 
-                </span>
-
-                <h1>
-                    Scale Your Business With
-                    <span class="hero-highlight">
-                        Smart Automation
                     </span>
-                </h1>
 
-                <p>
-                    <strong class="hero-highlight">E-GEAD</strong>
-                    specializes in
-                    <strong class="hero-highlight">Sales Automation</strong>
-                    and
-                    <strong class="hero-highlight">Print-On-Demand Solutions</strong>
-                    that help businesses automate operations, optimize workflows, and scale across
-                    <strong class="hero-highlight">Global Marketplaces</strong>.
+                    <h1>
+                        Scale Your Business With
+                        <span class="hero-highlight">
+                            Smart Automation
+                        </span>
+                    </h1>
 
-                    Through
-                    <strong class="hero-highlight">Intelligent Technology</strong>,
-                    seamless integrations, and efficient fulfillment processes, we enable organizations to
-                    <strong class="hero-highlight">Reduce Costs</strong>,
-                    <strong class="hero-highlight">Increase Productivity</strong>,
-                    and deliver exceptional customer experiences.
+                    <p>
+                        <strong class="hero-highlight">E-GEAD</strong>
+                        specializes in
+                        <strong class="hero-highlight">Sales Automation</strong>
+                        and
+                        <strong class="hero-highlight">Print-On-Demand Solutions</strong>
+                        that help businesses automate operations, optimize workflows, and scale across
+                        <strong class="hero-highlight">Global Marketplaces</strong>.
 
-                    Our mission is to empower businesses with
-                    <strong class="hero-highlight">Innovative Digital Solutions</strong>
-                    that drive
-                    <strong class="hero-highlight">Sustainable Growth</strong>
-                    and long-term success in the modern marketplace.
-                </p>
+                        Through
+                        <strong class="hero-highlight">Intelligent Technology</strong>,
+                        seamless integrations, and efficient fulfillment processes, we enable organizations to
+                        <strong class="hero-highlight">Reduce Costs</strong>,
+                        <strong class="hero-highlight">Increase Productivity</strong>,
+                        and deliver exceptional customer experiences.
 
-                <div class="hero-features">
+                        Our mission is to empower businesses with
+                        <strong class="hero-highlight">Innovative Digital Solutions</strong>
+                        that drive
+                        <strong class="hero-highlight">Sustainable Growth</strong>
+                        and long-term success in the modern marketplace.
+                    </p>
 
-                    <div class="hero-feature">
-                        <i class="bi bi-lightning-charge-fill"></i>
-                        Automated Sales Workflow
+                    <div class="hero-features">
+
+                        <div class="hero-feature">
+                            <i class="bi bi-lightning-charge-fill"></i>
+                            Automated Sales Workflow
+                        </div>
+
+                        <div class="hero-feature">
+                            <i class="bi bi-shop"></i>
+                            POD Marketplace Integration
+                        </div>
+
+                        <div class="hero-feature">
+                            <i class="bi bi-graph-up-arrow"></i>
+                            Business Growth Solutions
+                        </div>
+
                     </div>
 
-                    <div class="hero-feature">
-                        <i class="bi bi-shop"></i>
-                        POD Marketplace Integration
-                    </div>
+                    <div class="hero-buttons">
 
-                    <div class="hero-feature">
-                        <i class="bi bi-graph-up-arrow"></i>
-                        Business Growth Solutions
+                        <a href="{{ route('viewer.contact') }}"
+                            class="btn-hero-primary">
+
+                            Contact Us
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+                        <a href="#"
+                            class="btn-hero-secondary"> {{--{{ route('viewer.services') }}--}}
+
+                            Explore Services
+
+                        </a>
+
                     </div>
 
                 </div>
 
-                <div class="hero-buttons">
+                <!-- RIGHT -->
+                <div class="hero-gallery">
 
-                    <a href="{{ route('viewer.contact') }}"
-                        class="btn-hero-primary">
+                    <div class="hero-gallery-main">
 
-                        Contact Us
+                        <img src="{{ Storage::url('images/automation.jpg') }}" alt="Automation E-Gead">
 
-                        <i class="bi bi-arrow-right"></i>
+                    </div>
 
-                    </a>
+                    <div class="hero-gallery-grid">
 
-                    <a href="#"
-                        class="btn-hero-secondary"> {{--{{ route('viewer.services') }}--}}
+                        <img src="{{ Storage::url('images/pod3.jpg') }}" alt="POD E-Gead">
 
-                        Explore Services
+                        <img src="{{ Storage::url('images/pod2.jpg') }}" alt="POD E-Gead">
 
-                    </a>
+                    </div>
 
                 </div>
 
             </div>
-
-            <!-- RIGHT -->
-            <div class="hero-gallery">
-
-                <div class="hero-gallery-main">
-
-                    <img src="{{ Storage::url('images/automation.jpg') }}" alt="Automation E-Gead">
-
-                </div>
-
-                <div class="hero-gallery-grid">
-
-                    <img src="{{ Storage::url('images/pod3.jpg') }}" alt="POD E-Gead">
-
-                    <img src="{{ Storage::url('images/pod2.jpg') }}" alt="POD E-Gead">
-
-                </div>
-
-            </div>
-
         </div>
 
     </section>
 
-    <section class="partners-section">
+    {{-- <section class="partners-section">
 
         <div class="container">
 
@@ -162,6 +164,83 @@
 
             </div>
 
+        </div>
+
+    </section> --}}
+
+    <section class="partners-section">
+
+        <div class="container">
+
+            <div class="partners-wrapper">
+
+                <div class="partners-title-box">
+
+                    <h3>
+                        Trusted by Industry-Leading Brands
+                    </h3>
+
+                </div>
+
+                <div class="partners-slider">
+
+                    <div class="partners-track">
+
+                        <!-- Lần 1 -->
+                        <div class="partner-item">
+                            <img src="{{ Storage::url('images/google.png') }}" alt="Google">
+                        </div>
+
+                        <div class="partner-item">
+                            <img src="{{ Storage::url('images/ebay.png') }}" alt="Ebay">
+                        </div>
+
+                        <div class="partner-item">
+                            <img src="{{ Storage::url('images/amazon.png') }}" alt="Amazon">
+                        </div>
+
+                        <div class="partner-item">
+                            <img src="{{ Storage::url('images/esty.png') }}" alt="Etsy">
+                        </div>
+
+                        <div class="partner-item">
+                            <img src="{{ Storage::url('images/seo.png') }}" alt="SEO">
+                        </div>
+
+                        <div class="partner-item">
+                            <img src="{{ Storage::url('images/tiktok.png') }}" alt="TikTok">
+                        </div>
+
+                        <!-- Lần 2 để loop mượt -->
+                        <div class="partner-item">
+                            <img src="{{ Storage::url('images/google.png') }}" alt="Google">
+                        </div>
+
+                        <div class="partner-item">
+                            <img src="{{ Storage::url('images/ebay.png') }}" alt="Ebay">
+                        </div>
+
+                        <div class="partner-item">
+                            <img src="{{ Storage::url('images/amazon.png') }}" alt="Amazon">
+                        </div>
+
+                        <div class="partner-item">
+                            <img src="{{ Storage::url('images/esty.png') }}" alt="Etsy">
+                        </div>
+
+                        <div class="partner-item">
+                            <img src="{{ Storage::url('images/seo.png') }}" alt="SEO">
+                        </div>
+
+                        <div class="partner-item">
+                            <img src="{{ Storage::url('images/tiktok.png') }}" alt="TikTok">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
         </div>
 
     </section>
@@ -299,78 +378,81 @@
 
     <section class="why-section">
 
-        <div class="row align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
 
-            <!-- LEFT -->
-            <div class="col-lg-6 mb-4">
+                <!-- LEFT -->
+                <div class="col-lg-6 mb-4">
 
-                <span class="section-badge">
-                    Why Choose Us
-                </span>
+                    <span class="section-badge">
+                        Why Choose Us
+                    </span>
 
-                <h1 class="why-title">
-                    We Build Scalable
-                    Digital Solutions
-                </h1>
+                    <h1 class="why-title">
+                        We Build Scalable
+                        Digital Solutions
+                    </h1>
 
-                <p class="why-desc">
-                    At EGEAD, we combine technology expertise with business insight
-                    to deliver solutions that drive growth and innovation.
-                </p>
+                    <p class="why-desc">
+                        At EGEAD, we combine technology expertise with business insight
+                        to deliver solutions that drive growth and innovation.
+                    </p>
 
-                <a href="#" class="why-btn">
-                    Learn More
-                    <i class="bi bi-arrow-right"></i>
-                </a>
+                    <a href="#" class="why-btn">
+                        Learn More
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
 
-            </div>
+                </div>
 
-            <!-- RIGHT -->
-            <div class="col-lg-6">
+                <!-- RIGHT -->
+                <div class="col-lg-6">
 
-                <div class="why-list">
+                    <div class="why-list">
 
-                    <div class="why-item">
-                        <i class="bi bi-lightning-charge"></i>
-                        <div>
-                            <h4>Fast Delivery</h4>
-                            <p>Quick turnaround with high quality output</p>
+                        <div class="why-item">
+                            <i class="bi bi-lightning-charge"></i>
+                            <div>
+                                <h4>Fast Delivery</h4>
+                                <p>Quick turnaround with high quality output</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="why-item">
-                        <i class="bi bi-shield-check"></i>
-                        <div>
-                            <h4>Secure Systems</h4>
-                            <p>Enterprise-grade security and reliability</p>
+                        <div class="why-item">
+                            <i class="bi bi-shield-check"></i>
+                            <div>
+                                <h4>Secure Systems</h4>
+                                <p>Enterprise-grade security and reliability</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="why-item">
-                        <i class="bi bi-bar-chart"></i>
-                        <div>
-                            <h4>Business Growth</h4>
-                            <p>Solutions designed to scale your business</p>
+                        <div class="why-item">
+                            <i class="bi bi-bar-chart"></i>
+                            <div>
+                                <h4>Business Growth</h4>
+                                <p>Solutions designed to scale your business</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="why-item">
-                        <i class="bi bi-people"></i>
-                        <div>
-                            <h4>Expert Team</h4>
-                            <p>Experienced engineers and consultants</p>
+                        <div class="why-item">
+                            <i class="bi bi-people"></i>
+                            <div>
+                                <h4>Expert Team</h4>
+                                <p>Experienced engineers and consultants</p>
+                            </div>
                         </div>
+
                     </div>
 
                 </div>
 
             </div>
-
         </div>
 
     </section>
 
     <section class="trust-section">
+
         <div class="container">
 
             <div class="row text-center">
@@ -408,164 +490,167 @@
         </div>
     </section>
 
-    <section class="service-value-section">
+    <div class="container">
+        <section class="service-value-section">
 
-        <div class="service-value-left">
+            <div class="service-value-left">
 
-            <div class="capability-card">
+                <div class="capability-card">
 
-                <div class="capability-icon">
-                    <i class="bi bi-arrow-repeat"></i>
-                </div>
-
-                <div>
-                    <h4>Real-Time Synchronization</h4>
-
-                    <p>
-                        Keep information consistent across all systems
-                        without manual intervention.
-                    </p>
-                </div>
-
-            </div>
-
-            <div class="capability-card">
-
-                <div class="capability-icon">
-                    <i class="bi bi-eye"></i>
-                </div>
-
-                <div>
-                    <h4>Operational Visibility</h4>
-
-                    <p>
-                        Access live insights and monitor performance
-                        from a centralized dashboard.
-                    </p>
-                </div>
-
-            </div>
-
-            <div class="capability-card">
-
-                <div class="capability-icon">
-                    <i class="bi bi-cpu"></i>
-                </div>
-
-                <div>
-                    <h4>Intelligent Automation</h4>
-
-                    <p>
-                        Reduce repetitive tasks through automation
-                        and standardized workflows.
-                    </p>
-                </div>
-
-            </div>
-
-            <div class="capability-card">
-
-                <div class="capability-icon">
-                    <i class="bi bi-graph-up-arrow"></i>
-                </div>
-
-                <div>
-                    <h4>Scalable Growth</h4>
-
-                    <p>
-                        Infrastructure and processes designed to
-                        support business expansion.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="service-value-right">
-
-            <span class="section-badge">
-                Business Value
-            </span>
-
-            <h2>
-                Technology That Creates Measurable Results
-            </h2>
-
-            <p>
-                Our solutions are designed to simplify operations,
-                improve visibility, and help businesses scale with confidence.
-            </p>
-
-            <div class="service-overview-grid">
-
-                <div class="overview-box box-1">
+                    <div class="capability-icon">
+                        <i class="bi bi-arrow-repeat"></i>
+                    </div>
 
                     <div>
-
-                        <h4>E-Commerce Platform</h4>
+                        <h4>Real-Time Synchronization</h4>
 
                         <p>
-                            Build and manage online stores with flexible customization,
-                            centralized management, and streamlined operations.
+                            Keep information consistent across all systems
+                            without manual intervention.
                         </p>
-
                     </div>
 
                 </div>
 
-                <div class="overview-box box-2">
+                <div class="capability-card">
+
+                    <div class="capability-icon">
+                        <i class="bi bi-eye"></i>
+                    </div>
 
                     <div>
-
-                        <h4>Website & Hosting</h4>
+                        <h4>Operational Visibility</h4>
 
                         <p>
-                            Deliver fast, secure, and scalable web experiences with
-                            professional hosting and infrastructure support.
+                            Access live insights and monitor performance
+                            from a centralized dashboard.
                         </p>
-
                     </div>
 
                 </div>
 
-                <div class="overview-box box-3">
+                <div class="capability-card">
+
+                    <div class="capability-icon">
+                        <i class="bi bi-cpu"></i>
+                    </div>
 
                     <div>
-
-                        <h4>Sales Automation</h4>
+                        <h4>Intelligent Automation</h4>
 
                         <p>
-                            Automate business processes, order handling,
-                            customer interactions, and data synchronization.
+                            Reduce repetitive tasks through automation
+                            and standardized workflows.
                         </p>
-
                     </div>
 
                 </div>
 
-                <div class="overview-box box-4">
+                <div class="capability-card">
+
+                    <div class="capability-icon">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
 
                     <div>
-
-                        <h4>Fulfillment Automation</h4>
+                        <h4>Scalable Growth</h4>
 
                         <p>
-                            Streamline logistics workflows, shipment tracking,
-                            inventory updates, and operational visibility.
+                            Infrastructure and processes designed to
+                            support business expansion.
                         </p>
-
                     </div>
 
                 </div>
 
             </div>
 
-        </div>
+            <div class="service-value-right">
 
-    </section>
+                <span class="section-badge">
+                    Business Value
+                </span>
+
+                <h2>
+                    Technology That Creates Measurable Results
+                </h2>
+
+                <p>
+                    Our solutions are designed to simplify operations,
+                    improve visibility, and help businesses scale with confidence.
+                </p>
+
+                <div class="service-overview-grid">
+
+                    <div class="overview-box box-1">
+
+                        <div>
+
+                            <h4>E-Commerce Platform</h4>
+
+                            <p>
+                                Build and manage online stores with flexible customization,
+                                centralized management, and streamlined operations.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="overview-box box-2">
+
+                        <div>
+
+                            <h4>Website & Hosting</h4>
+
+                            <p>
+                                Deliver fast, secure, and scalable web experiences with
+                                professional hosting and infrastructure support.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="overview-box box-3">
+
+                        <div>
+
+                            <h4>Sales Automation</h4>
+
+                            <p>
+                                Automate business processes, order handling,
+                                customer interactions, and data synchronization.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="overview-box box-4">
+
+                        <div>
+
+                            <h4>Fulfillment Automation</h4>
+
+                            <p>
+                                Streamline logistics workflows, shipment tracking,
+                                inventory updates, and operational visibility.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+    </div>
 
     <section class="process-cta">
+
         <div class="container">
 
             <div class="process-cta-box">
@@ -593,9 +678,11 @@
             </div>
 
         </div>
+
     </section>
 
     <section class="process-section">
+
         <div class="container">
 
             <div class="section-heading">
@@ -633,6 +720,7 @@
             </div>
 
         </div>
+
     </section>
 
     {{-- <section class="portfolio-section">
@@ -710,324 +798,334 @@
     </section> --}}
 
     <section class="testimonial-section">
-        <div class="row align-items-center">
 
-            <!-- LEFT -->
-            <div class="col-lg-5 testimonial-content">
+        <div class="container">
 
-                <span class="section-badge">Testimonials</span>
+            <div class="row align-items-center">
 
-                <h1>
-                    Trusted by Our Clients Worldwide
-                </h1>
+                <!-- LEFT -->
+                <div class="col-lg-5 testimonial-content">
 
-                <p>
-                    We deliver scalable solutions and real business value
-                    that help companies grow faster and smarter.
-                </p>
+                    <span class="section-badge">Testimonials</span>
 
-                <a href="{{ route('viewer.about_us')}}" class="testimonial-btn">
-                    Explore our company
-                    <i class="bi bi-arrow-right"></i>
-                </a>
+                    <h1>
+                        Trusted by Our Clients Worldwide
+                    </h1>
 
-            </div>
+                    <p>
+                        We deliver scalable solutions and real business value
+                        that help companies grow faster and smarter.
+                    </p>
 
-            <!-- RIGHT -->
-            <div class="col-lg-7">
-                <div class="swiper testimonialSwiper">
-                    <div class="swiper-wrapper">
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-card">
-
-                                <div class="testimonial-top">
-                                    <img src="{{ Storage::url('images/billgates.jpg') }}" class="avatar">
-
-                                    <div class="info">
-                                        <h4>Bill Gates</h4>
-                                        <span>CEO, ABC Company</span>
-
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p class="testimonial-text">
-                                    <i class="bi bi-quote"></i>
-                                    “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
-                                </p>
-
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-card">
-
-                                <div class="testimonial-top">
-                                    <img src="{{ Storage::url('images/mark.jpg') }}" class="avatar">
-
-                                    <div class="info">
-                                        <h4>Mark Zuckerberg</h4>
-                                        <span>CEO, Meta</span>
-
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p class="testimonial-text">
-                                    <i class="bi bi-quote"></i>
-                                    “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
-                                </p>
-
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-card">
-
-                                <div class="testimonial-top">
-                                    <img src="{{ Storage::url('images/trump.jpg') }}" class="avatar">
-
-                                    <div class="info">
-                                        <h4>Donald Trump</h4>
-                                        <span>CEO, ABC Company</span>
-
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p class="testimonial-text">
-                                    <i class="bi bi-quote"></i>
-                                    “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
-                                </p>
-
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-card">
-
-                                <div class="testimonial-top">
-                                    <img src="https://i.pravatar.cc/100?img=1" class="avatar">
-
-                                    <div class="info">
-                                        <h4>Nguyễn Văn A</h4>
-                                        <span>CEO, ABC Company</span>
-
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p class="testimonial-text">
-                                    <i class="bi bi-quote"></i>
-                                    “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
-                                </p>
-
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-card">
-
-                                <div class="testimonial-top">
-                                    <img src="{{ Storage::url('images/billgates.jpg') }}" class="avatar">
-
-                                    <div class="info">
-                                        <h4>Bill Gates</h4>
-                                        <span>CEO, ABC Company</span>
-
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p class="testimonial-text">
-                                    <i class="bi bi-quote"></i>
-                                    “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
-                                </p>
-
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-card">
-
-                                <div class="testimonial-top">
-                                    <img src="{{ Storage::url('images/mark.jpg') }}" class="avatar">
-
-                                    <div class="info">
-                                        <h4>Mark Zuckerberg</h4>
-                                        <span>CEO, Meta</span>
-
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p class="testimonial-text">
-                                    <i class="bi bi-quote"></i>
-                                    “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
-                                </p>
-
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-card">
-
-                                <div class="testimonial-top">
-                                    <img src="{{ Storage::url('images/trump.jpg') }}" class="avatar">
-
-                                    <div class="info">
-                                        <h4>Donald Trump</h4>
-                                        <span>CEO, ABC Company</span>
-
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p class="testimonial-text">
-                                    <i class="bi bi-quote"></i>
-                                    “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
-                                </p>
-
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-card">
-
-                                <div class="testimonial-top">
-                                    <img src="https://i.pravatar.cc/100?img=1" class="avatar">
-
-                                    <div class="info">
-                                        <h4>Nguyễn Văn A</h4>
-                                        <span>CEO, ABC Company</span>
-
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p class="testimonial-text">
-                                    <i class="bi bi-quote"></i>
-                                    “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
-                                </p>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="blog-section">
-
-        <!-- HEADING -->
-        <div class="section-heading text-center">
-            <h1>
-                Latest Articles & Insights
-            </h1>
-
-            <p>
-                Stay updated with technology trends, business strategies and expert knowledge from EGEAD.
-            </p>
-        </div>
-
-        <!-- BLOG GRID -->
-        <div class="row g-4">
-
-            @foreach($latest_blogs as $blog)
-
-                <div class="col-lg-4 col-md-6">
-                    <a href="{{ route('viewer.blogs.show', $blog->slug) }}" class="blog-card">
-
-                        <div class="blog-image">
-                            <img src="{{ $blog->thumbnail }}" alt="{{ $blog->thumbnail_alt }}">
-                            <span class="blog-tag">{{ $blog->category->name }}</span>
-                        </div>
-
-                        <div class="blog-content">
-
-                            <div class="blog-meta">
-                                <span><i class="bi bi-calendar"></i>{{ date('d M Y', strtotime($blog->published_at)) }}</span>
-                                <span><i class="bi bi-clock"></i> 5 min read</span>
-                            </div>
-
-                            <h4>
-                                {{ $blog->title }}
-                            </h4>
-
-                            <p>
-                                {{ $blog->excerpt }}
-                            </p>
-
-                            <span class="blog-read-more">
-                                Read More <i class="bi bi-arrow-right"></i>
-                            </span>
-
-                        </div>
+                    <a href="{{ route('viewer.about_us')}}" class="testimonial-btn">
+                        Explore our company
+                        <i class="bi bi-arrow-right"></i>
                     </a>
 
                 </div>
 
-            @endforeach
+                <!-- RIGHT -->
+                <div class="col-lg-7">
+                    <div class="swiper testimonialSwiper">
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-card">
+
+                                    <div class="testimonial-top">
+                                        <img src="{{ Storage::url('images/billgates.jpg') }}" class="avatar">
+
+                                        <div class="info">
+                                            <h4>Bill Gates</h4>
+                                            <span>CEO, ABC Company</span>
+
+                                            <div class="stars">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="testimonial-text">
+                                        <i class="bi bi-quote"></i>
+                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                    </p>
+
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-card">
+
+                                    <div class="testimonial-top">
+                                        <img src="{{ Storage::url('images/mark.jpg') }}" class="avatar">
+
+                                        <div class="info">
+                                            <h4>Mark Zuckerberg</h4>
+                                            <span>CEO, Meta</span>
+
+                                            <div class="stars">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="testimonial-text">
+                                        <i class="bi bi-quote"></i>
+                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                    </p>
+
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-card">
+
+                                    <div class="testimonial-top">
+                                        <img src="{{ Storage::url('images/trump.jpg') }}" class="avatar">
+
+                                        <div class="info">
+                                            <h4>Donald Trump</h4>
+                                            <span>CEO, ABC Company</span>
+
+                                            <div class="stars">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="testimonial-text">
+                                        <i class="bi bi-quote"></i>
+                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                    </p>
+
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-card">
+
+                                    <div class="testimonial-top">
+                                        <img src="https://i.pravatar.cc/100?img=1" class="avatar">
+
+                                        <div class="info">
+                                            <h4>Nguyễn Văn A</h4>
+                                            <span>CEO, ABC Company</span>
+
+                                            <div class="stars">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="testimonial-text">
+                                        <i class="bi bi-quote"></i>
+                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                    </p>
+
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-card">
+
+                                    <div class="testimonial-top">
+                                        <img src="{{ Storage::url('images/billgates.jpg') }}" class="avatar">
+
+                                        <div class="info">
+                                            <h4>Bill Gates</h4>
+                                            <span>CEO, ABC Company</span>
+
+                                            <div class="stars">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="testimonial-text">
+                                        <i class="bi bi-quote"></i>
+                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                    </p>
+
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-card">
+
+                                    <div class="testimonial-top">
+                                        <img src="{{ Storage::url('images/mark.jpg') }}" class="avatar">
+
+                                        <div class="info">
+                                            <h4>Mark Zuckerberg</h4>
+                                            <span>CEO, Meta</span>
+
+                                            <div class="stars">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="testimonial-text">
+                                        <i class="bi bi-quote"></i>
+                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                    </p>
+
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-card">
+
+                                    <div class="testimonial-top">
+                                        <img src="{{ Storage::url('images/trump.jpg') }}" class="avatar">
+
+                                        <div class="info">
+                                            <h4>Donald Trump</h4>
+                                            <span>CEO, ABC Company</span>
+
+                                            <div class="stars">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="testimonial-text">
+                                        <i class="bi bi-quote"></i>
+                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                    </p>
+
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-card">
+
+                                    <div class="testimonial-top">
+                                        <img src="https://i.pravatar.cc/100?img=1" class="avatar">
+
+                                        <div class="info">
+                                            <h4>Nguyễn Văn A</h4>
+                                            <span>CEO, ABC Company</span>
+
+                                            <div class="stars">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="testimonial-text">
+                                        <i class="bi bi-quote"></i>
+                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                    </p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
 
-        <!-- CTA -->
-        <div class="text-center mt-5">
-            <a href="{{ route('viewer.blogs.index') }}" class="blog-btn">
-                View All Articles
-            </a>
+    </section>
+
+    <section class="blog-section">
+
+        <div class="container">
+
+            <!-- HEADING -->
+            <div class="section-heading text-center">
+                <h1>
+                    Latest Articles & Insights
+                </h1>
+
+                <p>
+                    Stay updated with technology trends, business strategies and expert knowledge from EGEAD.
+                </p>
+            </div>
+
+            <!-- BLOG GRID -->
+            <div class="row g-4">
+
+                @foreach($latest_blogs as $blog)
+
+                    <div class="col-lg-4 col-md-6">
+                        <a href="{{ route('viewer.blogs.show', $blog->slug) }}" class="blog-card">
+
+                            <div class="blog-image">
+                                <img src="{{ $blog->thumbnail }}" alt="{{ $blog->thumbnail_alt }}">
+                                <span class="blog-tag">{{ $blog->category->name }}</span>
+                            </div>
+
+                            <div class="blog-content">
+
+                                <div class="blog-meta">
+                                    <span><i class="bi bi-calendar"></i>{{ date('d M Y', strtotime($blog->published_at)) }}</span>
+                                    <span><i class="bi bi-clock"></i> 5 min read</span>
+                                </div>
+
+                                <h4>
+                                    {{ $blog->title }}
+                                </h4>
+
+                                <p>
+                                    {{ $blog->excerpt }}
+                                </p>
+
+                                <span class="blog-read-more">
+                                    Read More <i class="bi bi-arrow-right"></i>
+                                </span>
+
+                            </div>
+                        </a>
+
+                    </div>
+
+                @endforeach
+
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center mt-5">
+                <a href="{{ route('viewer.blogs.index') }}" class="blog-btn">
+                    View All Articles
+                </a>
+            </div>
+
         </div>
 
     </section>

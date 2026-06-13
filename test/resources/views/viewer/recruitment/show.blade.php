@@ -246,10 +246,6 @@
 
                         <div class="summary-box location">
 
-                            <div class="summary-icon">
-                                <i class="bi bi-geo-alt-fill"></i>
-                            </div>
-
                             <span>Location</span>
 
                             <h5>{{ $recruitment->location }}</h5>
@@ -257,10 +253,6 @@
                         </div>
 
                         <div class="summary-box type">
-
-                            <div class="summary-icon">
-                                <i class="bi bi-briefcase-fill"></i>
-                            </div>
 
                             <span>Work Type</span>
 
@@ -270,10 +262,6 @@
 
                         <div class="summary-box deadline">
 
-                            <div class="summary-icon">
-                                <i class="bi bi-hourglass-split"></i>
-                            </div>
-
                             <span>Deadline</span>
 
                             <h5>
@@ -282,11 +270,7 @@
 
                         </div>
 
-                        <div class="summary-box status">
-
-                            <div class="summary-icon">
-                                <i class="bi bi-check-circle-fill"></i>
-                            </div>
+                        <div class="summary-box department">
 
                             <span>Department</span>
 
