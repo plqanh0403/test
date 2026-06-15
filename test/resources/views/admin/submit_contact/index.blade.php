@@ -680,22 +680,22 @@
                                         <select name="status" class="form-select">
 
                                             <option value="new"
-                                                {{ old('status', $submitContact->status) == 'new' ? 'selected' : '' }}>
+                                                {{ old('status') == 'new' ? 'selected' : '' }}>
                                                 New
                                             </option>
 
                                             <option value="seen"
-                                                {{ old('status', $submitContact->status) == 'seen' ? 'selected' : '' }}>
+                                                {{ old('status') == 'seen' ? 'selected' : '' }}>
                                                 Seen
                                             </option>
 
                                             <option value="processing"
-                                                {{ old('status', $submitContact->status) == 'processing' ? 'selected' : '' }}>
+                                                {{ old('status') == 'processing' ? 'selected' : '' }}>
                                                 Processing
                                             </option>
 
                                             <option value="processed"
-                                                {{ old('status', $submitContact->status) == 'processed' ? 'selected' : '' }}>
+                                                {{ old('status') == 'processed' ? 'selected' : '' }}>
                                                 Processed
                                             </option>
 
@@ -713,7 +713,7 @@
                                     </h6>
 
                                     <textarea name="internal_note" rows="10" class="form-control ckeditor"
-                                        placeholder="Internal notes for team members...">{{ old('internal_note', $submitContact->internal_note) }}</textarea>
+                                        placeholder="Internal notes for team members...">{{ old('internal_note') }}</textarea>
 
                                 </div>
 

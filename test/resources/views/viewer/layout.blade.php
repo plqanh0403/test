@@ -502,9 +502,10 @@
     </script>
 
     <script>
-        document.getElementById('career-search-form').addEventListener('submit', function() {
-            this.action = "{{ route('viewer.recruitments.index') }}#job-list";
-        });
+        document.getElementById('career-search-form')
+            ?.addEventListener('submit', function () {
+                this.action = "{{ route('viewer.recruitments.index') }}#job-list";
+            });
     </script>
 
     <script>

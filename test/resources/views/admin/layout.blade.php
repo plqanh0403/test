@@ -338,16 +338,16 @@
 
             let folder = editor.dataset.folder || 'editor';
 
+            let uploadUrl =
+                "{{ route('admin.ckeditor.upload.image', ['folder' => '__folder__']) }}";
+
+            uploadUrl = uploadUrl.replace('__folder__', folder);
+
             ClassicEditor.create(editor, {
-
-                    ckfinder: {
-                        uploadUrl: "/ckeditor/upload-image/{folder}?_token={{ csrf_token() }}"
-                    }
-
-                })
-                .catch(error => {
-                    console.error(error);
-                });
+                ckfinder: {
+                    uploadUrl: uploadUrl
+                }
+            });
 
         });
     </script>
@@ -396,46 +396,48 @@
         const uploadZone = document.querySelector('.upload-zone');
         const fileInput = document.getElementById('mediaFile');
 
-        uploadZone.addEventListener('click', () => {
+        if (uploadZone && fileInput) {
+            uploadZone.addEventListener('click', () => {
 
-            fileInput.click();
+                fileInput.click();
 
-        });
+            });
 
-        uploadZone.addEventListener('dragover', e => {
+            uploadZone.addEventListener('dragover', e => {
 
-            e.preventDefault();
+                e.preventDefault();
 
-            uploadZone.classList.add('active');
+                uploadZone.classList.add('active');
 
-        });
+            });
 
-        uploadZone.addEventListener('dragleave', () => {
+            uploadZone.addEventListener('dragleave', () => {
 
-            uploadZone.classList.remove('active');
+                uploadZone.classList.remove('active');
 
-        });
+            });
 
-        uploadZone.addEventListener('drop', e => {
+            uploadZone.addEventListener('drop', e => {
 
-            e.preventDefault();
+                e.preventDefault();
 
-            uploadZone.classList.remove('active');
+                uploadZone.classList.remove('active');
 
-            fileInput.files = e.dataTransfer.files;
+                fileInput.files = e.dataTransfer.files;
 
-        });
+            });
 
-        fileInput.addEventListener('change', () => {
+            fileInput.addEventListener('change', () => {
 
-            if(fileInput.files.length){
+                if(fileInput.files.length){
 
-                uploadZone.querySelector('p').innerText =
-                    fileInput.files[0].name;
+                    uploadZone.querySelector('p').innerText =
+                        fileInput.files[0].name;
 
-            }
+                }
 
-        });
+            });
+        }
 
     </script>
 
@@ -445,164 +447,167 @@
         const input = document.getElementById('mediaInput');
         const preview = document.getElementById('previewArea');
 
-        let selectedFiles = new DataTransfer();
+        if (dropzone && input && preview) {
+            let selectedFiles = new DataTransfer();
 
-        dropzone.onclick = () => input.click();
+            dropzone.onclick = () => input.click();
 
-        dropzone.addEventListener('dragover', function (e) {
+            dropzone.addEventListener('dragover', function (e) {
 
-            e.preventDefault();
+                e.preventDefault();
 
-            dropzone.classList.add('dragging');
+                dropzone.classList.add('dragging');
 
-        });
+            });
 
-        dropzone.addEventListener('dragleave', function () {
+            dropzone.addEventListener('dragleave', function () {
 
-            dropzone.classList.remove('dragging');
+                dropzone.classList.remove('dragging');
 
-        });
+            });
 
-        dropzone.addEventListener('drop', function (e) {
+            dropzone.addEventListener('drop', function (e) {
 
-            e.preventDefault();
+                e.preventDefault();
 
-            dropzone.classList.remove('dragging');
+                dropzone.classList.remove('dragging');
 
-            addFiles(e.dataTransfer.files);
+                addFiles(e.dataTransfer.files);
 
-        });
+            });
 
-        input.addEventListener('change', function () {
+            input.addEventListener('change', function () {
 
-            addFiles(this.files);
+                addFiles(this.files);
 
-        });
+            });
 
-        function addFiles(files) {
+            function addFiles(files) {
 
-            [...files].forEach(file => {
+                [...files].forEach(file => {
 
-                const exists = [...selectedFiles.files].some(existingFile => {
+                    const exists = [...selectedFiles.files].some(existingFile => {
 
-                    return existingFile.name === file.name &&
-                        existingFile.size === file.size &&
-                        existingFile.lastModified === file.lastModified;
+                        return existingFile.name === file.name &&
+                            existingFile.size === file.size &&
+                            existingFile.lastModified === file.lastModified;
 
-                });
-
-                if (exists) {
-
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'Duplicate file',
-                        text: `${file.name} already exists`
                     });
 
-                    return;
+                    if (exists) {
 
-                }
-
-                selectedFiles.items.add(file);
-
-            });
-
-            input.files = selectedFiles.files;
-
-            renderPreview();
-
-        }
-
-        function removeFile(index) {
-
-            const newFiles = new DataTransfer();
-
-            [...selectedFiles.files].forEach((file, i) => {
-
-                if (i !== index) {
-
-                    newFiles.items.add(file);
-
-                }
-
-            });
-
-            selectedFiles = newFiles;
-
-            input.files = selectedFiles.files;
-
-            renderPreview();
-
-        }
-
-        function renderPreview() {
-
-            preview.innerHTML = '';
-
-            [...selectedFiles.files].forEach((file, index) => {
-
-                if (!file.type.startsWith('image/')) {
-
-                    return;
-
-                }
-
-                const reader = new FileReader();
-
-                reader.onload = function (e) {
-
-                    const item = document.createElement('div');
-
-                    item.classList.add('preview-item');
-
-                    item.innerHTML = `
-                        <img
-                            src="${e.target.result}"
-                            class="preview-image">
-
-                        <button
-                            type="button"
-                            class="remove-file">
-
-                            <i class="bi bi-x-lg"></i>
-
-                        </button>
-                    `;
-
-                    item.querySelector('.remove-file')
-                        .addEventListener('click', function () {
-
-                            removeFile(index);
-
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Duplicate file',
+                            text: `${file.name} already exists`
                         });
 
-                    preview.appendChild(item);
+                        return;
 
-                };
+                    }
 
-                reader.readAsDataURL(file);
+                    selectedFiles.items.add(file);
 
-            });
+                });
 
-        }
+                input.files = selectedFiles.files;
 
-        document.querySelectorAll('.copy-url').forEach(btn => {
+                renderPreview();
 
-            btn.addEventListener('click', () => {
+            }
 
-                navigator.clipboard.writeText(btn.dataset.url);
+            function removeFile(index) {
 
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Copied',
-                    text: 'URL copied to clipboard',
-                    timer: 1500,
-                    showConfirmButton: false
+                const newFiles = new DataTransfer();
+
+                [...selectedFiles.files].forEach((file, i) => {
+
+                    if (i !== index) {
+
+                        newFiles.items.add(file);
+
+                    }
+
+                });
+
+                selectedFiles = newFiles;
+
+                input.files = selectedFiles.files;
+
+                renderPreview();
+
+            }
+
+            function renderPreview() {
+
+                preview.innerHTML = '';
+
+                [...selectedFiles.files].forEach((file, index) => {
+
+                    if (!file.type.startsWith('image/')) {
+
+                        return;
+
+                    }
+
+                    const reader = new FileReader();
+
+                    reader.onload = function (e) {
+
+                        const item = document.createElement('div');
+
+                        item.classList.add('preview-item');
+
+                        item.innerHTML = `
+                            <img
+                                src="${e.target.result}"
+                                class="preview-image">
+
+                            <button
+                                type="button"
+                                class="remove-file">
+
+                                <i class="bi bi-x-lg"></i>
+
+                            </button>
+                        `;
+
+                        item.querySelector('.remove-file')
+                            .addEventListener('click', function () {
+
+                                removeFile(index);
+
+                            });
+
+                        preview.appendChild(item);
+
+                    };
+
+                    reader.readAsDataURL(file);
+
+                });
+
+            }
+
+            document.querySelectorAll('.copy-url').forEach(btn => {
+
+                btn.addEventListener('click', () => {
+
+                    navigator.clipboard.writeText(btn.dataset.url);
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Copied',
+                        text: 'URL copied to clipboard',
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+
                 });
 
             });
 
-        });
+        }
 
     </script>
 
