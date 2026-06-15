@@ -103,7 +103,7 @@
 
                     <div class="hero-gallery-main">
 
-                        <img src="{{ Storage::url('images/automation.jpg') }}" alt="Automation E-Gead">
+                        <img src="{{ Storage::url('images/automate1.jpg') }}" alt="Automation E-Gead">
 
                     </div>
 
@@ -397,6 +397,18 @@
                         At EGEAD, we combine technology expertise with business insight
                         to deliver solutions that drive growth and innovation.
                     </p>
+
+                    {{-- <div class="why-images">
+
+                        <div class="main-image">
+                            <img src="{{ Storage::url('images/time.webp') }}" alt="Fast delivery">
+                        </div>
+
+                        <div class="floating-image">
+                            <img src="{{ Storage::url('images/secure.jpg') }}" alt="Secure">
+                        </div>
+
+                    </div> --}}
 
                     <a href="#" class="why-btn">
                         Learn More
@@ -833,11 +845,11 @@
                                 <div class="testimonial-card">
 
                                     <div class="testimonial-top">
-                                        <img src="{{ Storage::url('images/billgates.jpg') }}" class="avatar">
+                                        <img src="{{ Storage::url('images/nam.png') }}" class="avatar">
 
                                         <div class="info">
-                                            <h4>Bill Gates</h4>
-                                            <span>CEO, ABC Company</span>
+                                            <h4>Michael Anderson</h4>
+                                            <span>CEO, TechNova Solutions (USA)</span>
 
                                             <div class="stars">
                                                 <i class="bi bi-star-fill"></i>
@@ -851,7 +863,7 @@
 
                                     <p class="testimonial-text">
                                         <i class="bi bi-quote"></i>
-                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                        "Working with EGEAD has been an outstanding experience. Their team delivered innovative solutions that significantly improved our operational efficiency and customer satisfaction."
                                     </p>
 
                                 </div>
@@ -861,11 +873,11 @@
                                 <div class="testimonial-card">
 
                                     <div class="testimonial-top">
-                                        <img src="{{ Storage::url('images/mark.jpg') }}" class="avatar">
+                                        <img src="{{ Storage::url('images/nu.jpg') }}" class="avatar">
 
                                         <div class="info">
-                                            <h4>Mark Zuckerberg</h4>
-                                            <span>CEO, Meta</span>
+                                            <h4>Emma Richardson</h4>
+                                            <span>Marketing Director, BrightWave Media (UK)</span>
 
                                             <div class="stars">
                                                 <i class="bi bi-star-fill"></i>
@@ -879,7 +891,7 @@
 
                                     <p class="testimonial-text">
                                         <i class="bi bi-quote"></i>
-                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                        "EGEAD exceeded our expectations in every aspect. Their professionalism, creativity, and attention to detail helped us achieve remarkable results in a short period."
                                     </p>
 
                                 </div>
@@ -889,11 +901,11 @@
                                 <div class="testimonial-card">
 
                                     <div class="testimonial-top">
-                                        <img src="{{ Storage::url('images/trump.jpg') }}" class="avatar">
+                                        <img src="{{ Storage::url('images/nam.png') }}" class="avatar">
 
                                         <div class="info">
-                                            <h4>Donald Trump</h4>
-                                            <span>CEO, ABC Company</span>
+                                            <h4>Daniel Müller</h4>
+                                            <span>Founder, DigitalCraft GmbH (Germany)</span>
 
                                             <div class="stars">
                                                 <i class="bi bi-star-fill"></i>
@@ -907,7 +919,7 @@
 
                                     <p class="testimonial-text">
                                         <i class="bi bi-quote"></i>
-                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                        "The quality of service provided by EGEAD is exceptional. Their expertise and commitment to excellence have made them a trusted partner for our business growth."
                                     </p>
 
                                 </div>
@@ -917,11 +929,11 @@
                                 <div class="testimonial-card">
 
                                     <div class="testimonial-top">
-                                        <img src="https://i.pravatar.cc/100?img=1" class="avatar">
+                                        <img src="{{ Storage::url('images/nu.jpg') }}" class="avatar">
 
                                         <div class="info">
-                                            <h4>Nguyễn Văn A</h4>
-                                            <span>CEO, ABC Company</span>
+                                            <h4>Olivia Thompson</h4>
+                                            <span>Product Manager, FutureLink Technologies (Singapore)</span>
 
                                             <div class="stars">
                                                 <i class="bi bi-star-fill"></i>
@@ -935,7 +947,7 @@
 
                                     <p class="testimonial-text">
                                         <i class="bi bi-quote"></i>
-                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                        "We were impressed by EGEAD's ability to understand our requirements and deliver beyond expectations. Their team consistently maintained high standards throughout the project."
                                     </p>
 
                                 </div>
@@ -945,11 +957,11 @@
                                 <div class="testimonial-card">
 
                                     <div class="testimonial-top">
-                                        <img src="{{ Storage::url('images/billgates.jpg') }}" class="avatar">
+                                        <img src="{{ Storage::url('images/nam.png') }}" class="avatar">
 
                                         <div class="info">
-                                            <h4>Bill Gates</h4>
-                                            <span>CEO, ABC Company</span>
+                                            <h4>James Wilson</h4>
+                                            <span>Managing Director, Apex Innovations (Australia)</span>
 
                                             <div class="stars">
                                                 <i class="bi bi-star-fill"></i>
@@ -963,7 +975,7 @@
 
                                     <p class="testimonial-text">
                                         <i class="bi bi-quote"></i>
-                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                        "EGEAD provided solutions that perfectly aligned with our business objectives. Their responsiveness and dedication made the entire collaboration smooth and successful."
                                     </p>
 
                                 </div>
@@ -973,11 +985,11 @@
                                 <div class="testimonial-card">
 
                                     <div class="testimonial-top">
-                                        <img src="{{ Storage::url('images/mark.jpg') }}" class="avatar">
+                                        <img src="{{ Storage::url('images/nu.jpg') }}" class="avatar">
 
                                         <div class="info">
-                                            <h4>Mark Zuckerberg</h4>
-                                            <span>CEO, Meta</span>
+                                            <h4>Sophia Martinez</h4>
+                                            <span>Operations Manager, GlobalEdge Consulting (Canada)</span>
 
                                             <div class="stars">
                                                 <i class="bi bi-star-fill"></i>
@@ -991,7 +1003,7 @@
 
                                     <p class="testimonial-text">
                                         <i class="bi bi-quote"></i>
-                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                        "From the initial consultation to project delivery, EGEAD demonstrated outstanding communication and technical capabilities. We highly recommend their services."
                                     </p>
 
                                 </div>
@@ -1001,11 +1013,11 @@
                                 <div class="testimonial-card">
 
                                     <div class="testimonial-top">
-                                        <img src="{{ Storage::url('images/trump.jpg') }}" class="avatar">
+                                        <img src="{{ Storage::url('images/nam.png') }}" class="avatar">
 
                                         <div class="info">
-                                            <h4>Donald Trump</h4>
-                                            <span>CEO, ABC Company</span>
+                                            <h4>Christopher Lee</h4>
+                                            <span>Chief Technology Officer, Vertex Systems (New Zealand)</span>
 
                                             <div class="stars">
                                                 <i class="bi bi-star-fill"></i>
@@ -1019,7 +1031,7 @@
 
                                     <p class="testimonial-text">
                                         <i class="bi bi-quote"></i>
-                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                        "EGEAD delivered a highly scalable solution that perfectly matched our technical requirements. Their team's expertise and dedication were evident throughout the entire project."
                                     </p>
 
                                 </div>
@@ -1029,11 +1041,11 @@
                                 <div class="testimonial-card">
 
                                     <div class="testimonial-top">
-                                        <img src="https://i.pravatar.cc/100?img=1" class="avatar">
+                                        <img src="{{ Storage::url('images/nu.jpg') }}" class="avatar">
 
                                         <div class="info">
-                                            <h4>Nguyễn Văn A</h4>
-                                            <span>CEO, ABC Company</span>
+                                            <h4>Isabella Rossi</h4>
+                                            <span>Business Development Manager, NovaVision Group (Italy)</span>
 
                                             <div class="stars">
                                                 <i class="bi bi-star-fill"></i>
@@ -1047,7 +1059,7 @@
 
                                     <p class="testimonial-text">
                                         <i class="bi bi-quote"></i>
-                                        “EGEAD giúp chúng tôi tăng trưởng nhanh chóng với hệ thống cực kỳ ổn định.”
+                                        "Partnering with EGEAD was one of the best decisions we made. Their innovative approach, reliability, and commitment to quality helped us achieve our goals efficiently."
                                     </p>
 
                                 </div>

@@ -175,7 +175,7 @@ Route::middleware([
         Route::delete('/service-categories/{category}', [ServiceCategoryController::class, 'destroy'])->name('admin.service_categories.destroy');
 
         // CKEditor
-        Route::post('/ckeditor/upload-image/{folder}', [CKEditorController::class, 'uploadImage'])->name('admin.ckeditor.upload.image');
+        Route::post('/ckeditor/upload-image/{folder}', [CKEditorController::class, 'upload'])->name('admin.ckeditor.upload.image');
 
         Route::get('/media', [MediaController::class, 'index'])->name('admin.media');
 

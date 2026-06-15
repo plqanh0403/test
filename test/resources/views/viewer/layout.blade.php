@@ -172,8 +172,6 @@
                         <img src="{{ Storage::url($about_us->light_logo) }}" alt="EGEAD Logo">
                     </a>
 
-
-
                     <div class="footer-action">
                         <a href="{{ route('viewer.contact') }}" class="consultation-btn"> {{-- {{ route('contact') }} --}}
                             Get Free Consultation
@@ -185,7 +183,6 @@
                         <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
                         <a href="#"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
                     </div>
 
                 </div>

@@ -48,53 +48,53 @@ class AdminSeeder extends Seeder
             'slug' => Str::slug('Editor 123' . '-' . Str::random(6)),
         ]);
 
-        Category::create([
-            "name"=> "Technology",
-            "slug"=> Str::slug("Technology")
-        ]);
+        // Category::create([
+        //     "name"=> "Technology",
+        //     "slug"=> Str::slug("Technology")
+        // ]);
 
-        Category::create([
-            "name"=> "AI",
-            "slug"=> Str::slug("AI")
-        ]);
+        // Category::create([
+        //     "name"=> "AI",
+        //     "slug"=> Str::slug("AI")
+        // ]);
 
-        Category::create([
-            "name"=> "Company Activity",
-            "slug"=> Str::slug("Company Activity")
-        ]);
+        // Category::create([
+        //     "name"=> "Company Activity",
+        //     "slug"=> Str::slug("Company Activity")
+        // ]);
 
-        SubmitContact::create([
-            "name"=> "Contact Một",
-            "email"=> "contact1@gmail.com",
-            "message"=> "Test contact 1"
-        ]);
+        // SubmitContact::create([
+        //     "name"=> "Contact Một",
+        //     "email"=> "contact1@gmail.com",
+        //     "message"=> "Test contact 1"
+        // ]);
 
-        SubmitContact::create([
-            "name"=> "Contact Hai",
-            "email"=> "contact2@gmail.com",
-            "message"=> "Test contact 2"
-        ]);
+        // SubmitContact::create([
+        //     "name"=> "Contact Hai",
+        //     "email"=> "contact2@gmail.com",
+        //     "message"=> "Test contact 2"
+        // ]);
 
-        SubmitContact::create([
-            "name"=> "Contact Ba",
-            "email"=> "contact3@gmail.com",
-            "message"=> "Test contact 3"
-        ]);
+        // SubmitContact::create([
+        //     "name"=> "Contact Ba",
+        //     "email"=> "contact3@gmail.com",
+        //     "message"=> "Test contact 3"
+        // ]);
 
-        SubmitEmail::create([
-            "email"=> "email1@gmail.com",
-            "source"=> "Test email 1"
-        ]);
+        // SubmitEmail::create([
+        //     "email"=> "email1@gmail.com",
+        //     "source"=> "Test email 1"
+        // ]);
 
-        SubmitEmail::create([
-            "email"=> "email2@gmail.com",
-            "source"=> "Test email 2"
-        ]);
+        // SubmitEmail::create([
+        //     "email"=> "email2@gmail.com",
+        //     "source"=> "Test email 2"
+        // ]);
 
-        SubmitEmail::create([
-            "email"=> "email3@gmail.com",
-            "source"=> "Test email 3"
-        ]);
+        // SubmitEmail::create([
+        //     "email"=> "email3@gmail.com",
+        //     "source"=> "Test email 3"
+        // ]);
 
         // Recruitment::create([
         //     "position" => "Software Engineer",
@@ -208,13 +208,13 @@ class AdminSeeder extends Seeder
         //     "sort_order" => 3,
         // ]);
 
-        SubmitEmail::factory(50)->create();
-        SubmitContact::factory(50)->create();
-        Category::factory(5)->create();
-        Blog::factory(100)->create();
-        ServiceCategory::factory(5)->create();
-        Service::factory(50)->create();
-        Recruitment::factory(10)->create();
-        AboutUs::factory()->create();
+        // SubmitEmail::factory(50)->create();
+        // SubmitContact::factory(50)->create();
+        // Category::factory(5)->create();
+        // Blog::factory(100)->create();
+        // ServiceCategory::factory(5)->create();
+        // Service::factory(50)->create();
+        // Recruitment::factory(10)->create();
+         AboutUs::factory()->create();
     }
 }

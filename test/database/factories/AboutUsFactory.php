@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\AboutUs;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * @extends Factory<AboutUs>
@@ -19,27 +20,22 @@ class AboutUsFactory extends Factory
     {
         return [
             // Company
-            'name' => fake()->company(),
-            'phone' => fake()->phoneNumber(),
-            'email' => fake()->companyEmail(),
-            'address' => fake()->address(),
+            'name' => 'E-Gead',
+            'phone' => '+84(77) 631 9999',
+            'email' => 'contact@egeadcompany.com',
+            'address' => '217/9 Ngo Quyen Street, Tan An Ward, Buon Ma Thuot City, Dak Lak Province',
 
             // Logo & Favicon
-            'light_logo' => 'logos/light-logo.png',
-            'dark_logo' => 'logos/dark-logo.png',
-            'favicon' => 'logos/favicon.ico',
+            'light_logo' => Storage::url('images/light_logo.png'),
+            'favicon' => Storage::url('images/favicon.png'),
 
             'hr_phone' => fake()->phoneNumber(),
             'hr_email' => fake()->companyEmail(),
 
             // Social
-            'facebook' => fake()->url(),
-            'youtube' => fake()->url(),
-            'linkedin' => fake()->url(),
-            'tiktok' => fake()->url(),
+            'facebook' => 'https://www.facebook.com/EGEADCompany?locale=vi_VN',
 
             // Description
-            'description' => fake()->paragraph(),
             'footer_text' => fake()->sentence(),
 
             // Google Map
